@@ -240,7 +240,6 @@ sudo EDITOR=emacs visudo
 # deployer ALL=NOPASSWD:/etc/init.d/memcached restart, /bin/cp /home/deployer/* /etc/apache2/sites-available/, /usr/sbin/service apache2 restart, /usr/sbin/service apache2 reload, /usr/sbin/a2ensite *, /usr/sbin/a2dissite *
 # [Note that if you get a syntax error when saving the above, it might be missing a newline before the EOF]
 
-
 # ---------------------
 # Apache
 # ---------------------
