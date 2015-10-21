@@ -1,0 +1,15 @@
+!!! html5
+%html{lang: "en"}
+  %head
+    %title= yield(:title)
+    = render "layouts/meta"
+
+    = stylesheet_link_tag 'application', media: :all
+    = javascript_include_tag 'application'
+    / = raw(analytics_tracking_codes)
+
+  %body
+    %section#wrapper
+      = render 'layouts/header'
+      = render 'layouts/main'
+    = render 'layouts/footer'
