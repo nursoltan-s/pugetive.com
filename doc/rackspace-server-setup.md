@@ -155,67 +155,6 @@ sudo emacs /etc/apache2/apache2.conf
 # Add this line at the bottom of the file:
 # Include sites-available/experi_server.conf
 
-# ---------------------
-# Secure Server (Not required for staging)
-# ---------------------
-sudo a2enmod ssl
-sudo mkdir /etc/apache2/ssl
-
-
-# -----------------------------
-# START SSL NOTES
-# (Okay to ignore up to END OF SSL)
-# -----------------------------
-# THIS WAS TO CREATE A SELF-SIGNED CERT:
-# sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/apache2/ssl/apache.key -out /etc/apache2/ssl/apache.crt
-
-# THIS WAS TO CREATE A REAL KEY:
-# sudo openssl genrsa -des3 -out <domain-name>.key 2048
-#    OR (if you don't want to passphrase the key)
-# sudo openssl genrsa -out <domain-name>.key 2048
-
-# THIS WAS TO USE THE REAL KEY TO CREATE A CSR:
-# sudo openssl req -new -key <domain-name>.key -out <domain-name>.csr
-
-# PER RAPIDSSL INSTRUCTIONS: "NOTE: Please do not enter an email address, challenge password or an optional company name when generating the CSR."
-# Country Name (2 letter code) [AU]:US
-# State or Province Name (full name) [Some-State]:Washington
-# Locality Name (eg, city) []:Bainbridge Island
-# Organization Name (eg, company) [Internet Widgits Pty Ltd]:<company-name>
-# Organizational Unit Name (eg, section) []:
-# Common Name (e.g. server FQDN or YOUR name) []:*.<domain-name>
-# Email Address []:
-
-# THEN DOWNLOADED AN INTERMEDIATE/CHAIN FILE FROM RAPIDSSL AND RENAMED IT:
-# sudo mv RapidSSLCABundle.pem intermediate.crt
-
-
-cd /etc/apache2/ssl/ && sudo chmod 600 *
-
-
-sudo emacs /etc/apache2/sites-available/default-ssl.conf
-# Add under admin email:
-ServerName <FILL-IN-DOMAIN>:443
-# Make sure the following settings match (should have to edit second and third):
-SSLEngine on
-SSLCertificateFile /etc/apache2/ssl/<whatever>.crt
-SSLCertificateKeyFile /etc/apache2/ssl/<whatever>.key
-SSLCertificateChainFile /etc/apache2/ssl/intermediate.crt
-
-# Open up the firewall
-sudo ufw allow https
-
-# NOTE: change config.force_ssl value in Rails environment if you want to force https
-
-sudo emacs /etc/apache2/sites-available/default-ssl.conf
-# Change opening tag to: <VirtualHost *:443>
-# -----------------------------
-# END OF SSL NOTES
-# -----------------------------
-
-
-
-
 
 # ---------------------
 # Mod PageSpeed
@@ -272,53 +211,5 @@ gem install wkhtmltopdf-binary
 # ---------------------
 http://www.rackspace.com/knowledge_center/article/rackspace-cloud-backup-install-the-agent
 
-
-
-# ---------------------
-# FTP (if necessary)
-# ---------------------
-# http://www.sigerr.org/linux/setup-vsftpd-custom-multiple-directories-users-accounts-ubuntu-step-by-step
-sudo apt-get install vsftpd libpam-pwdfile
-sudo mv /etc/vsftpd.conf /etc/vsftpd.conf.bak
-sudo emacs /etc/vsftpd.conf
-# Entire contents of the new conf file:
-# ---------------------
-listen=YES
-anonymous_enable=NO
-local_enable=YES
-write_enable=YES
-local_umask=022
-nopriv_user=vsftpd
-virtual_use_local_privs=YES
-guest_enable=YES
-user_sub_token=$USER
-local_root=/home/deployer/apps/nomad/shared/public/ftp
-chroot_local_user=YES
-hide_ids=YES
-guest_username=vsftpd
-allow_writeable_chroot=YES
-seccomp_sandbox=NO
-# ---------------------
-
-sudo mkdir /etc/vsftpd
-sudo htpasswd -cd /etc/vsftpd/ftpd.passwd rrector
-sudo htpasswd -d /etc/vsftpd/ftpd.passwd <user2>
-
-sudo mv /etc/pam.d/vsftpd /etc/pam.d/vsftpd.bak
-sudo emacs /etc/pam.d/vsftpd
-# Entire contents of file:
-# ---------------------
-auth required pam_pwdfile.so pwdfile /etc/vsftpd/ftpd.passwd
-account required pam_permit.so
-# ---------------------
-
-sudo useradd --home /home/vsftpd --gid nogroup -m --shell /bin/false vsftpd
-sudo service vsftpd restart
-sudo ufw allow ftp
-
-# ---------------------
-# Add a new user later:
-# ---------------------
-sudo htpasswd -d /etc/vsftpd/ftpd.passwd <username>
 
 
