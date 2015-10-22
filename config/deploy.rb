@@ -46,13 +46,28 @@ after :deploy, "config:symlink"
 
 namespace :deploy do
 
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
+  desc 'Restart application'
+  task :restart do
+    on roles(:app), in: :sequence, wait: 5 do
+      execute "mkdir -p #{current_path.join('tmp')}"
+      execute :touch, current_path.join('tmp/restart.txt')
     end
   end
+
+  before :deploy, "config:push"
+  after :deploy, "config:symlink"
+  # after "deploy:updated", "newrelic:notice_deployment"
+
+  after :publishing, :restart
+
+
+  # after :restart, :clear_cache do
+  #   on roles(:web), in: :groups, limit: 3, wait: 10 do
+  #     # Here we can do anything such as:
+  #     # within release_path do
+  #     #   execute :rake, 'cache:clear'
+  #     # end
+  #   end
+  # end
 
 end
