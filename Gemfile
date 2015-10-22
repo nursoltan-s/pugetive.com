@@ -44,7 +44,7 @@ group :development, :test do
   gem 'byebug'
   gem 'capistrano'
   gem 'capistrano-bundler'
-  gem 'capistrano-rails'
+  gem 'capistrano-rails', '~> 1.1.3'
   gem 'capistrano-passenger'
   gem 'capistrano-rvm', '~> 0.0.3'
   gem 'quiet_assets'
