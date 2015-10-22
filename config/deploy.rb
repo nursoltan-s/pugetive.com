@@ -42,17 +42,10 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 # set :keep_releases, 5
 
 after :deploy, "config:symlink"
+set :passenger_restart_with_touch, true
 
 
 namespace :deploy do
-
-  desc 'Restart application'
-  task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      execute "mkdir -p #{current_path.join('tmp')}"
-      execute :touch, current_path.join('tmp/restart.txt')
-    end
-  end
 
   before :deploy, "config:push"
   after :deploy, "config:symlink"

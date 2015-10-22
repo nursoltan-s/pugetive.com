@@ -44,6 +44,7 @@ group :development, :test do
   gem 'capistrano'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
+  gem 'capistrano-passenger'
   gem 'capistrano-rvm', '~> 0.0.3'
   gem 'quiet_assets'
 end
