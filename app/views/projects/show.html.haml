@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @project.name
+%p
+  %b Category:
+  = @project.category
+%p
+  %b Pro:
+  = @project.pro
+%p
+  %b Start year:
+  = @project.start_year
+%p
+  %b Stop year:
+  = @project.stop_year
+%p
+  %b Description:
+  = @project.description
+%p
+  %b Status:
+  = @project.status
+
+= link_to 'Edit', edit_project_path(@project)
+\|
+= link_to 'Back', projects_path

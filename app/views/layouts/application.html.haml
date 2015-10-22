@@ -6,10 +6,13 @@
 
     = stylesheet_link_tag 'application', media: :all
     = javascript_include_tag 'application'
-    / = raw(analytics_tracking_codes)
+    = javascript_include_tag "vendor/modernizr"
+    = google_analytics
 
   %body
     %section#wrapper
-      = render 'layouts/header'
-      %section.main-section= yield
-    = render 'layouts/footer'
+      %section#header= render 'layouts/header'
+      %section#main
+        .row
+          .large-12.columns= yield
+    %section#footer= render 'layouts/footer'

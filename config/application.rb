@@ -15,6 +15,10 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+CONFIG = YAML.load_file("config/pugetive.yml").with_indifferent_access
+BOOLEAN_OPTIONS = [0, 1, false, true]
+YEARS_OF_LIFE = Time.now.year.downto(1970)
+
 module PugetiveCom
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.

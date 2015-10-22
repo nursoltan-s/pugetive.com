@@ -6,3 +6,8 @@
       - if Time.now.year != 2015
         == -#{Time.now.year}
       Todd Gehman
+      - if user_signed_in?
+        = link_to delete_icon, destroy_user_session_path, :method => :delete, class: 'secondary'
+      - else
+        = link_to new_icon, new_user_session_path, class: 'secondary'
+
