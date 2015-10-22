@@ -11,9 +11,9 @@ set :domain, 'pugetive.net'
 # is considered to be the first unless any hosts have the primary
 # property set.  Don't declare `role :all`, it's a meta role.
 
-role :app, %w{deployer@pugetive.net}
-role :web, %w{deployer@pugetive.net}
-role :db,  %w{deployer@pugetive.net}
+role :app, "#{fetch(:user)}@#{fetch(:domain)}"
+role :web, "#{fetch(:user)}@#{fetch(:domain)}"
+role :db, "#{fetch(:user)}@#{fetch(:domain)}"
 
 
 # Extended Server Syntax
