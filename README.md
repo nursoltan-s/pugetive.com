@@ -10,7 +10,7 @@ I've never worked at a company where testing was prioritized over shipping, so I
 
 Server Setup
 ------------
-The repository includes [step-by-step instruction](doc/rackspace-server-setup.md) for setting up a cloud server.
+The repository includes [step-by-step instruction](doc/rackspace-server-setup.sh) for setting up a cloud server.
 
 Apache
 ------------
