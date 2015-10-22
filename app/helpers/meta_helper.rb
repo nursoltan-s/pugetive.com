@@ -22,4 +22,52 @@ module MetaHelper
     raw(content)
   end
 
+  def page_description
+    SITE_DESCRIPTION
+  end
+
+  def add_html_class(html_class_string_or_array)
+    @html_class_list ||= []
+    if html_class_string_or_array.is_a?(String)
+      @html_class_list << html_class_string_or_array
+    elsif html_class_string_or_array.is_a?(Array)
+      html_class_string_or_array.each { |html_class| @html_class_list << html_class }
+    end
+  end
+
+  def html_classes
+    add_html_class([Rails.env, params[:controller], "#{params[:controller]}-#{params[:action]}"])
+    if params[:debug]
+      add_html_class('debug')
+    end
+    @html_class_list
+  end
+
+  def title(page_title, show_title = true, hide_suffix = false)
+    content_for(:title) { raw(page_title.to_s) }
+    @show_title = show_title
+    @hide_title_suffix = hide_suffix
+  end
+
+  def compound_page_title(title_text)
+    rv = ''
+
+    unless production?
+      rv << '[' + Rails.env.gsub(/development/, 'dev') + '] '
+    end
+
+    unless title_text.blank?
+      rv << title_text
+      rv << ' :::'
+    end
+    rv << ' Pugetive.com ~ Todd Gehman'
+
+    raw(rv)
+  end
+
+  def page_url
+    "#{request.protocol}#{request.host_with_port}#{request.fullpath}"
+  end
+
+
 end

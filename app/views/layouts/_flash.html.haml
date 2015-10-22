@@ -1,0 +1,6 @@
+- if flash.any?
+  .flash-message
+    - flash.each do |name, msg|
+      .alert-box{id: "flash_#{name}", class: (name == 'notice' ? 'success' : 'alert')}
+        .row
+          .medium-12.columns= msg
