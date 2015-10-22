@@ -1,33 +1,5 @@
-%h1 Listing projects
+- title('Projects')
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th Category
-      %th Pro
-      %th Start year
-      %th Stop year
-      %th Description
-      %th Status
-      %th
-      %th
-      %th
-      
-  %tbody
-    - @projects.each do |project|
-      %tr
-        %td= project.name
-        %td= project.category
-        %td= project.pro
-        %td= project.start_year
-        %td= project.stop_year
-        %td= project.description
-        %td= project.status
-        %td= link_to 'Show', project
-        %td= link_to 'Edit', edit_project_path(project)
-        %td= link_to 'Destroy', project, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-%br
-
+= render @projects
 = link_to 'New Project', new_project_path

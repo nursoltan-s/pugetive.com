@@ -1,8 +1,5 @@
-%p#notice= notice
+- title(@project.name)
 
-%p
-  %b Name:
-  = @project.name
 %p
   %b Category:
   = @project.category
@@ -18,9 +15,6 @@
 %p
   %b Description:
   = @project.description
-%p
-  %b Status:
-  = @project.status
 
 = link_to 'Edit', edit_project_path(@project)
 \|
