@@ -35,6 +35,7 @@ gem 'foundation-icons-sass-rails'
 gem 'foundation-rails'
 gem 'haml'
 gem 'haml-rails'
+gem 'whenever', require: false
 
 
 group :development, :test do
