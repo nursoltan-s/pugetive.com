@@ -1,8 +1,12 @@
-ORGANIZATIONS
+PARTIES
   name
   type [Company, Band]
+  url
+  description
   start_year
   stop_year
+
+rails g scaffold Party name type url description start_year:integer stop_year:integer
 
 SKILLS
   name

@@ -11,20 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151023132341) do
+ActiveRecord::Schema.define(version: 20151023135818) do
 
-  create_table "projects", force: :cascade do |t|
-    t.string   "name",        limit: 255
-    t.string   "category",    limit: 255
-    t.boolean  "pro",         limit: 1
-    t.integer  "start_year",  limit: 4
-    t.integer  "stop_year",   limit: 4
-    t.text     "description", limit: 65535
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
-    t.boolean  "live",        limit: 1,     default: true
+  create_table "parties", force: :cascade do |t|
+    t.string   "name",        limit: 255,   null: false
+    t.string   "type",        limit: 255,   null: false
     t.string   "url",         limit: 255
+    t.text     "description", limit: 65535
+    t.integer  "start_year",  limit: 4,     null: false
+    t.integer  "stop_year",   limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
+
+  add_index "parties", ["name"], name: "index_parties_on_name", using: :btree
+  add_index "parties", ["start_year"], name: "index_parties_on_start_year", using: :btree
+  add_index "parties", ["stop_year"], name: "index_parties_on_stop_year", using: :btree
+  add_index "parties", ["type"], name: "index_parties_on_type", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false

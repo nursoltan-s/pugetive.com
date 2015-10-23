@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :parties
+  resources :artists
+  resources :companies
+
   devise_for :users
   get 'about/home'
 

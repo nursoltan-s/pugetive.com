@@ -1,0 +1,3 @@
+class Artist < Party
+
+end
