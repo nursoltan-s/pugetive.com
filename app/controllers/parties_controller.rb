@@ -4,7 +4,8 @@ class PartiesController < ApplicationController
   # GET /parties
   # GET /parties.json
   def index
-    @parties = Party.all
+    @parties = policy_scope(Party.all)
+    authorize @parties
   end
 
   # GET /parties/1

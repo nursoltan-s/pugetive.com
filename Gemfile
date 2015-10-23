@@ -36,6 +36,7 @@ gem 'foundation-icons-sass-rails'
 gem 'foundation-rails'
 gem 'haml'
 gem 'haml-rails'
+gem 'pundit'
 gem 'whenever', require: false
 
 
