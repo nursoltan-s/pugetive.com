@@ -153,7 +153,7 @@ sudo a2enmod rewrite headers expires
 
 sudo emacs /etc/apache2/apache2.conf
 # Add this line at the bottom of the file:
-# Include sites-available/experi_server.conf
+# Include sites-available/pugetive_server.conf
 
 
 # ---------------------
