@@ -24,6 +24,28 @@ parties = Party.create!([
     stop_year: nil
   ],
   [
+    name: 'Speler',
+    type: 'Artist',
+    url:  '',
+    start_year: 2005,
+    stop_year: 2005
+  ],
+  [
+    name: 'The Snockerers',
+    type: 'Artist',
+    url:  '',
+    start_year: 2006,
+    stop_year: 2006
+  ],
+  [
+    name: 'The Novemberists',
+    type: 'Artist',
+    url:  '',
+    start_year: 2007,
+    stop_year: 2007
+  ],
+
+  [
     name: 'The Shiners',
     type: 'Artist',
     start_year: 1998,
