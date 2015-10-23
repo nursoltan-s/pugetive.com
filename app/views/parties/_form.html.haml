@@ -1,17 +1,12 @@
 = form_for @party do |f|
-  - if @party.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@party.errors.count, "error")} prohibited this party from being saved:"
-      %ul
-        - @party.errors.full_messages.each do |msg|
-          %li= msg
+  - handle_errors(@party)
 
   .field
     = f.label :name
     = f.text_field :name
   .field
     = f.label :type
-    = f.text_field :type
+    = f.select :type, options_for_select(Party::TYPES)
   .field
     = f.label :url
     = f.text_field :url
@@ -20,9 +15,9 @@
     = f.text_area :description
   .field
     = f.label :start_year
-    = f.number_field :start_year
+    = f.select :start_year, options_for_select(YEARS_OF_LIFE)
   .field
     = f.label :stop_year
-    = f.number_field :stop_year
+    = f.select :stop_year, options_for_select(YEARS_OF_LIFE)
   .actions
     = f.submit 'Save'

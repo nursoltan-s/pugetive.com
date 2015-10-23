@@ -8,22 +8,17 @@ PARTIES
 
 rails g scaffold Party name type url description start_year:integer stop_year:integer
 
-SKILLS
-  name
-  category
-  start_year
-
-ACTIVITY
-  name
-
 PROJECTS
   name
-  category [Photography|Software|Music]
-  company_id
+  type [PhotoSeries|SoftwareApplication|RecordingProject]
+  party_id
+  url
   start_year
   stop_year
   description
-  status
+  live?
+
+rails g scaffold Project name type party_id:integer url start_year:integer stop_year:integer description:text live:boolean
 
 ARTIST
   name

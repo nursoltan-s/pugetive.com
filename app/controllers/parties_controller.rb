@@ -16,6 +16,7 @@ class PartiesController < ApplicationController
   # GET /parties/new
   def new
     @party = Party.new
+    authorize @party
   end
 
   # GET /parties/1/edit
@@ -27,6 +28,7 @@ class PartiesController < ApplicationController
   def create
     @party = Party.new(party_params)
 
+    authorize @party
     respond_to do |format|
       if @party.save
         format.html { redirect_to @party, notice: 'Party was successfully created.' }
