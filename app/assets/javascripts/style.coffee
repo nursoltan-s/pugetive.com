@@ -1,7 +1,6 @@
 $ ->
   class Pugetive.Style
     constructor: ->
-      alert('doing')
       @apply_dynamic_styles()
 
     apply_dynamic_styles: ->
