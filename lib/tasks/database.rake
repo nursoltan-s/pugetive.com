@@ -3,7 +3,7 @@ namespace :db do
   task :rebuild do
     system("rake db:drop")
     system("rake db:create")
-    system("rake db:sync")
+    # system("rake db:sync")
     system("rake db:seed")
   end
 

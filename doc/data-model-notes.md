@@ -1,3 +1,9 @@
+ORGANIZATIONS
+  name
+  type [Company, Band]
+  start_year
+  stop_year
+
 SKILLS
   name
   category
@@ -9,12 +15,11 @@ ACTIVITY
 PROJECTS
   name
   category [Photography|Software|Music]
-  pro
+  company_id
   start_year
   stop_year
   description
   status
-
 
 ARTIST
   name
