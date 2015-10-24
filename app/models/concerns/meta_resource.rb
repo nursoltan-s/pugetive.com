@@ -42,6 +42,10 @@ class MetaResource
     controller_class.send("#{singular_token}_params")
   end
 
+  def items_url
+    controller_class.send("#{plural_token}_url")
+  end
+
   def new_item
     return nil unless action == 'new'
     @new_item ||= item_class.new

@@ -4,7 +4,7 @@ class MetaResourceController < ApplicationController
   before_action :set_items, only: [:index]
 
   attr_reader :meta_resource
-  delegate :item, :items, :item_params, :set_item, :set_items, :item_class, :plural_token, :singular_token, to: :meta_resource
+  delegate :item, :items, :item_params, :items_url, :set_item, :set_items, to: :meta_resource
 
 
   def index
@@ -50,13 +50,14 @@ class MetaResourceController < ApplicationController
     end
   end
 
-  # def destroy
-  #   @email.destroy
-  #   respond_to do |format|
-  #     format.html { redirect_to emails_url, notice: 'Email was successfully destroyed.' }
-  #     format.json { head :no_content }
-  #   end
-  # end
+  def destroy
+    authorize(item, :destroy?)
+    item.destroy
+    respond_to do |format|
+      format.html { redirect_to items_url, notice: 'Email was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
 
 
   private
