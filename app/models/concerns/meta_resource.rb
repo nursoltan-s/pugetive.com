@@ -1,11 +1,12 @@
 class MetaResource
   include ActiveSupport::Inflector
-  attr_reader :controller_class, :item_id
+  attr_reader :controller_class, :action, :item_id
 
   delegate :singular_token, :plural_token, :item_class, to: :dynamic_item
 
-  def initialize(controller_param, id_param, controller_class)
+  def initialize(controller_param, action_param, id_param, controller_class)
     @token = controller_param
+    @action = action_param
     @item_id = id_param
     @controller_class = controller_class
   end
@@ -15,7 +16,14 @@ class MetaResource
   end
 
   def set_item
-    controller_class.instance_variable_set("@#{singular_token}", item_class.find(item_id))
+    if new_item
+      value = new_item
+    elsif item_id
+      value = item_class.find(item_id)
+    else
+      value = item_class.new(item_params)
+    end
+    controller_class.instance_variable_set("@#{singular_token}", value)
   end
 
   def set_items
@@ -33,4 +41,10 @@ class MetaResource
   def item_params
     controller_class.send("#{singular_token}_params")
   end
+
+  def new_item
+    return nil unless action == 'new'
+    @new_item ||= item_class.new
+  end
+
 end

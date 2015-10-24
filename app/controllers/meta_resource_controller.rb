@@ -1,6 +1,6 @@
 class MetaResourceController < ApplicationController
   before_action :set_meta_resource
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_item, only: [:show, :new, :create, :edit, :update, :destroy]
   before_action :set_items, only: [:index]
 
   attr_reader :meta_resource
@@ -16,28 +16,26 @@ class MetaResourceController < ApplicationController
     authorize(item)
   end
 
-  # def new
-  #   @email = Email.new
-  #   authorize @email
-  # end
+  def new
+    authorize(item, :new?)
+  end
 
   def edit
     authorize(item, :update?)
   end
 
-  # def create
-  #   @email = Email.new(email_params)
-
-  #   respond_to do |format|
-  #     if @email.save
-  #       format.html { redirect_to @email, notice: 'Email was successfully created.' }
-  #       format.json { render :show, status: :created, location: @email }
-  #     else
-  #       format.html { render :new }
-  #       format.json { render json: @email.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
+  def create
+    authorize(item, :create?)
+    respond_to do |format|
+      if item.save
+        format.html { redirect_to item, notice: 'Email was successfully created.' }
+        format.json { render :show, status: :created, location: item }
+      else
+        format.html { render :new }
+        format.json { render json: item.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   def update
     authorize(item, :update?)
@@ -64,7 +62,7 @@ class MetaResourceController < ApplicationController
   private
 
     def set_meta_resource
-      @meta_resource = MetaResource.new(params[:controller], params[:id], self)
+      @meta_resource = MetaResource.new(params[:controller], params[:action], params[:id], self)
     end
 
 
