@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @tool.name
+%p
+  %b Type:
+  = @tool.type
+
+= link_to 'Edit', edit_tool_path(@tool)
+\|
+= link_to 'Back', tools_path

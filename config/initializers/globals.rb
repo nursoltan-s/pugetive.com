@@ -4,4 +4,4 @@ DIVIDER = '~'
 SITE_DESCRIPTION = 'Online hub for Todd Gehman and his various amateur and professional projects. Total rewrite of the website is currently in progress.'
 US_STATES = Carmen::Country.coded('US').subregions.map{|subregion| [subregion.code, subregion.name]}
 YEARS_OF_LIFE = Time.now.year.downto(1970)
-
+PURSUITS = ['Software', 'Music', 'Photography', 'Writing']

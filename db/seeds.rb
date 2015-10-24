@@ -159,3 +159,158 @@ Address.create!(street: '17 Monitor St',
                 city: 'Brooklyn',
                 state: 'NY',
                 zip: 11222)
+
+Tool.create([
+  [
+    name: 'Ruby on Rails',
+    type: 'System',
+    category: 'Software',
+    front_end: false
+  ],
+  [
+    name: 'jQuery',
+    type: 'System',
+    category: 'Software',
+    front_end: true
+  ],
+  [
+    name: 'HTML',
+    type: 'Language',
+    category: 'Software',
+    front_end: true
+  ],
+  [
+    name: 'Ruby',
+    type: 'Language',
+    category: 'Software',
+    front_end: false
+  ],
+  [
+    name: 'JavaScript',
+    type: 'Language',
+    category: 'Software',
+    front_end: true
+  ],
+  [
+    name: 'PHP',
+    type: 'Language',
+    category: 'Software',
+    front_end: false
+  ],
+  [
+    name: 'CoffeeScript',
+    type: 'Language',
+    category: 'Software',
+    front_end: true
+  ],
+  [
+    name: 'Angular',
+    type: 'System',
+    category: 'Software',
+    front_end: true
+  ],
+  [
+    name: 'AJAX',
+    type: 'Concept',
+    category: 'Software',
+    front_end: true
+  ],
+  [
+    name: 'CSS',
+    type: 'Language',
+    category: 'Software',
+    front_end: true
+  ],
+
+  [
+    name: 'SASS',
+    type: 'Language',
+    category: 'Software',
+    front_end: true
+  ],
+  [
+    name: 'HAML',
+    type: 'Language',
+    category: 'Software',
+    front_end: true
+  ],
+  [
+    name: 'MySQL',
+    type: 'System',
+    category: 'Software',
+    front_end: false
+  ],
+  [
+    name: 'Photoshop',
+    type: 'Program',
+    category: 'Software',
+    front_end: true
+  ],
+  [
+    name: 'Responsive Design',
+    type: 'Concept',
+    category: 'Software',
+    front_end: true
+  ],
+  [
+    name: 'Data Modeling',
+    type: 'Concept',
+    category: 'Software',
+    front_end: false
+  ],
+  [
+    name: 'Apache',
+    type: 'System',
+    category: 'Software',
+    front_end: false
+  ],
+  [
+    name: 'Drupal',
+    type: 'System',
+    category: 'Software',
+    front_end: false
+  ],
+  [
+    name: 'Perl',
+    type: 'Language',
+    category: 'Software',
+    front_end: false
+  ],
+  [
+    name: 'Linux',
+    type: 'System',
+    category: 'Software',
+    front_end: false
+  ],
+  [
+    name: 'FreeBSD',
+    type: 'System',
+    category: 'Software',
+    front_end: false
+  ],
+  [
+    name: 'Backbone',
+    type: 'System',
+    category: 'Software',
+    front_end: true
+  ],
+  [
+    name: 'Zurb Foundation',
+    type: 'System',
+    category: 'Software',
+    front_end: true
+  ],
+
+  [
+    name: 'System Administration',
+    type: 'System',
+    category: 'Software',
+    front_end: false
+  ],
+  [
+    name: 'Wordpress',
+    type: 'System',
+    category: 'Software',
+    front_end: false
+  ],
+])

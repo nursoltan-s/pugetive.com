@@ -42,6 +42,23 @@ PROJECTS
 rails g scaffold Project name type party_id:integer url start_year:integer stop_year:integer description:text live:boolean
 
 
+ROLES
+  name
+  category
+
+rails g scaffold Role name category
+
+TOOLS
+  name
+  type
+  category
+  front_end
+
+rails g scaffold Tool name type
 
 
+WIELDS
+  tool_id
+  project_id
 
+rails g scaffold Wield tool_id:integer project_id:integer

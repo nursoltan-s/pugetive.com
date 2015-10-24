@@ -1,0 +1,2 @@
+class Concept < Tool
+end
