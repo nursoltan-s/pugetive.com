@@ -5,6 +5,8 @@ ADDRESSES
   state
   zip
 
+rails g scaffold Address street unit city state zip
+
 EMAILS
   address
   category

@@ -1,3 +1,4 @@
 class Company < Party
 
+
 end

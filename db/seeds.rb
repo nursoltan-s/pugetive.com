@@ -124,6 +124,30 @@ parties = Party.create!([
 
 ])
 
+
+  # [name: '',
+  #  type: 'Software',
+  #  party_id: 1,
+  #  url:  '',
+  #  start_year: ,
+  #  stop_year: ,
+  #  description: "",
+  #  live: false
+  # ],
+
+
+projects = Project.create!([
+  [name: 'Hopville',
+   type: 'SoftwareApp',
+   party_id: 1,
+   url:  'http://hopville.com',
+   start_year: 2008,
+   stop_year: 2013,
+   description: "Acted as founder and sole proprietor for this geeky/social site for amateur and small-scale professional brewers. Hopville centered around the creation, calculation, and sharing of home brewed beer recipes. In 2013 Hopville the brand, database, and software were acquired by Ackmann & Dickenson, makers of competitor site Brewtoad.com.",
+   live: false
+  ],
+])
+
 Email.create!(address: 'toddgehman@gmail.com',
               category: 'home')
 

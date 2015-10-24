@@ -1,0 +1,2 @@
+class SoftwareApp < Project
+end
