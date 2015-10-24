@@ -1,6 +1,6 @@
 class CreateProjects < ActiveRecord::Migration
   def change
-    create_table :projects do |t|
+    create_table :projects, force: true do |t|
       t.string :name, null: false
       t.string :type, null: false, limit: 32
       t.integer :party_id, null: false

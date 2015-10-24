@@ -1,6 +1,6 @@
 class CreateParties < ActiveRecord::Migration
   def change
-    create_table :parties do |t|
+    create_table :parties, force: true do |t|
       t.string :name, null: false
       t.string :type, null: false
       t.string :url
