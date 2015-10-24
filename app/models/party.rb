@@ -8,9 +8,19 @@ class Party < ActiveRecord::Base
   validates :stop_year, inclusion: {in: YEARS_OF_LIFE, allow_nil: true}
   validate :stop_is_after_start
 
+
+  def self.sorted
+    all.sort_by{|p| p.alpha_name}
+  end
+
+  def alpha_name
+    name.gsub(/^(The|A)\s+/, '')
+  end
+
   private
 
     def stop_is_after_start
+      return if stop_year.nil?
       if stop_year < start_year
         errors.add(:stop_year, "must be equal to or later than start year")
       end

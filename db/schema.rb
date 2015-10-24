@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151023135818) do
+ActiveRecord::Schema.define(version: 20151023201748) do
 
   create_table "parties", force: :cascade do |t|
     t.string   "name",        limit: 255,   null: false
@@ -28,6 +28,26 @@ ActiveRecord::Schema.define(version: 20151023135818) do
   add_index "parties", ["start_year"], name: "index_parties_on_start_year", using: :btree
   add_index "parties", ["stop_year"], name: "index_parties_on_stop_year", using: :btree
   add_index "parties", ["type"], name: "index_parties_on_type", using: :btree
+
+  create_table "projects", force: :cascade do |t|
+    t.string   "name",        limit: 255,   null: false
+    t.string   "type",        limit: 32,    null: false
+    t.integer  "party_id",    limit: 4,     null: false
+    t.string   "url",         limit: 255
+    t.integer  "start_year",  limit: 4,     null: false
+    t.integer  "stop_year",   limit: 4
+    t.text     "description", limit: 65535
+    t.boolean  "live",        limit: 1,     null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "projects", ["live"], name: "index_projects_on_live", using: :btree
+  add_index "projects", ["name"], name: "index_projects_on_name", using: :btree
+  add_index "projects", ["party_id"], name: "index_projects_on_party_id", using: :btree
+  add_index "projects", ["start_year"], name: "index_projects_on_start_year", using: :btree
+  add_index "projects", ["stop_year"], name: "index_projects_on_stop_year", using: :btree
+  add_index "projects", ["type"], name: "index_projects_on_type", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false

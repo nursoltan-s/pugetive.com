@@ -15,3 +15,4 @@
 config/database.yml
 config/pugetive.yml
 config/secrets.yml
+db/migrate/20151023201748_create_admin.rb
