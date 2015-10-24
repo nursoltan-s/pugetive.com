@@ -9,6 +9,9 @@ class Project < ActiveRecord::Base
   validates :stop_year, inclusion: {in: YEARS_OF_LIFE}
   validates :live, inclusion: {in: BOOLEAN_OPTIONS}
 
+  has_many :wields
+  has_many :tools, through: :wields
+
   scope :software, -> {where(type: 'SoftwareApp')}
   scope :pro, -> {software.where("party_id != 1")}
   scope :amateur, -> {software.where(party_id: 1)}
@@ -17,4 +20,5 @@ class Project < ActiveRecord::Base
   def date_range
     DateRange.new(start_year, stop_year).years
   end
+
 end

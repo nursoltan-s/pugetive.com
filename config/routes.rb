@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :titles
+
+  resources :wields
+
   resources :tools
 
   resources :addresses

@@ -43,10 +43,10 @@ rails g scaffold Project name type party_id:integer url start_year:integer stop_
 
 
 ROLES
-  name
-  category
+  project_id
+  title_id
 
-rails g scaffold Role name category
+rails g scaffold Role project_id:integer title_id:integer
 
 TOOLS
   name
@@ -58,7 +58,7 @@ rails g scaffold Tool name type
 
 
 WIELDS
-  tool_id
   project_id
+  tool_id
 
-rails g scaffold Wield tool_id:integer project_id:integer
+rails g scaffold Wield project_id:integer tool_id:integer

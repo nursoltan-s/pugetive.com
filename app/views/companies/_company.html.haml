@@ -2,3 +2,6 @@
   %h3= company.name
   = company.date_range
   = link_to(company.url, company.url)
+
+  %h4 Projects
+  = render company.projects

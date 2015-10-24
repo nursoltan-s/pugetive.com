@@ -137,15 +137,27 @@ parties = Party.create!([
 
 
 projects = Project.create!([
-  [name: 'Hopville',
-   type: 'SoftwareApp',
-   party_id: 1,
-   url:  'http://hopville.com',
-   start_year: 2008,
-   stop_year: 2013,
-   description: "Acted as founder and sole proprietor for this geeky/social site for amateur and small-scale professional brewers. Hopville centered around the creation, calculation, and sharing of home brewed beer recipes. In 2013 Hopville the brand, database, and software were acquired by Ackmann & Dickenson, makers of competitor site Brewtoad.com.",
-   live: false
+  [
+    name: 'Hopville',
+    type: 'SoftwareApp',
+    party_id: 1,
+    url:  'http://hopville.com',
+    start_year: 2008,
+    stop_year: 2013,
+    description: "Acted as founder and sole proprietor for this geeky/social site for amateur and small-scale professional brewers. Hopville centered around the creation, calculation, and sharing of home brewed beer recipes. In 2013 Hopville the brand, database, and software were acquired by Ackmann & Dickenson, makers of competitor site Brewtoad.com.",
+    live: false
   ],
+  [
+    name: '43 Things',
+    type: 'SoftwareApp',
+    party_id: Party.find_by_name('Robot Co-op').id,
+    url:  'http://43things.com',
+    start_year: 2004,
+    stop_year: 2009,
+    description: "",
+    live: false
+  ],
+
 ])
 
 Email.create!(address: 'toddgehman@gmail.com',
@@ -313,4 +325,23 @@ Tool.create([
     category: 'Software',
     front_end: false
   ],
+])
+
+titles = Title.create!([
+  [
+    name: 'Developer',
+    category: 'Software'
+  ],
+  [
+    name: 'Founder',
+    category: 'Software'
+  ],
+  [
+    name: 'Designer',
+    category: 'Software'
+  ],
+  [
+    name: 'SysAdmin',
+    category: 'Software'
+  ]
 ])

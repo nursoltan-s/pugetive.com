@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151024204938) do
+ActiveRecord::Schema.define(version: 20151024220115) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "street",     limit: 64, null: false
@@ -83,6 +83,13 @@ ActiveRecord::Schema.define(version: 20151024204938) do
   add_index "projects", ["stop_year"], name: "index_projects_on_stop_year", using: :btree
   add_index "projects", ["type"], name: "index_projects_on_type", using: :btree
 
+  create_table "titles", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "category",   limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "tools", force: :cascade do |t|
     t.string   "name",       limit: 255,                 null: false
     t.string   "type",       limit: 16,                  null: false
@@ -112,5 +119,15 @@ ActiveRecord::Schema.define(version: 20151024204938) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "wields", force: :cascade do |t|
+    t.integer  "project_id", limit: 4, null: false
+    t.integer  "tool_id",    limit: 4, null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "wields", ["project_id"], name: "index_wields_on_project_id", using: :btree
+  add_index "wields", ["tool_id"], name: "index_wields_on_tool_id", using: :btree
 
 end

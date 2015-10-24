@@ -3,4 +3,7 @@ class SoftwareApp < Project
     Project.model_name
   end
 
+  def to_partial_path
+    'projects/project'
+  end
 end
