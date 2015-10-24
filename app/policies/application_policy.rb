@@ -7,7 +7,7 @@ class ApplicationPolicy
   end
 
   def index?
-    false
+    update?
   end
 
   def show?

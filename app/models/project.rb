@@ -12,6 +12,9 @@ class Project < ActiveRecord::Base
   has_many :wields
   has_many :tools, through: :wields
 
+  has_many :roles
+  has_many :titles, through: :roles
+
   scope :software, -> {where(type: 'SoftwareApp')}
   scope :pro, -> {software.where("party_id != 1")}
   scope :amateur, -> {software.where(party_id: 1)}

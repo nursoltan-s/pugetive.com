@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Project:
+  = @role.project_id
+%p
+  %b Title:
+  = @role.title_id
+
+= link_to 'Edit', edit_role_path(@role)
+\|
+= link_to 'Back', roles_path

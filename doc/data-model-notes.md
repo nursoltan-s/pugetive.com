@@ -48,6 +48,12 @@ ROLES
 
 rails g scaffold Role project_id:integer title_id:integer
 
+TITLES
+  name
+  category
+
+rails g scaffold Title name category
+
 TOOLS
   name
   type
@@ -55,6 +61,7 @@ TOOLS
   front_end
 
 rails g scaffold Tool name type
+
 
 
 WIELDS

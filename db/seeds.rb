@@ -333,6 +333,14 @@ titles = Title.create!([
     category: 'Software'
   ],
   [
+    name: 'Development Manager',
+    category: 'Software'
+  ],
+  [
+    name: 'Project Manager',
+    category: 'Software'
+  ],
+  [
     name: 'Founder',
     category: 'Software'
   ],
