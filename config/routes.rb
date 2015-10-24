@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :addresses
+
+  resources :phones
+
+  resources :emails
+
   resources :projects
 
   resources :parties

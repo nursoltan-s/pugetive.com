@@ -122,6 +122,16 @@ parties = Party.create!([
     stop_year: nil
   ],
 
-
-
 ])
+
+Email.create!(address: 'toddgehman@gmail.com',
+              category: 'home')
+
+Phone.create!(number: '206.789.0033',
+              category: 'mobile')
+
+Address.create!(street: '17 Monitor St',
+                unit: 'Apt 4C',
+                city: 'Brooklyn',
+                state: 'NY',
+                zip: 11222)

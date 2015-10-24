@@ -11,7 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151023201748) do
+ActiveRecord::Schema.define(version: 20151024140201) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.string   "street",     limit: 64, null: false
+    t.string   "unit",       limit: 32
+    t.string   "city",       limit: 64, null: false
+    t.string   "state",      limit: 2,  null: false
+    t.string   "zip",        limit: 12, null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "addresses", ["city"], name: "index_addresses_on_city", using: :btree
+  add_index "addresses", ["state"], name: "index_addresses_on_state", using: :btree
+  add_index "addresses", ["zip"], name: "index_addresses_on_zip", using: :btree
+
+  create_table "emails", force: :cascade do |t|
+    t.string   "address",    limit: 64, null: false
+    t.string   "category",   limit: 8
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "emails", ["address"], name: "index_emails_on_address", unique: true, using: :btree
+  add_index "emails", ["category"], name: "index_emails_on_category", using: :btree
 
   create_table "parties", force: :cascade do |t|
     t.string   "name",        limit: 255,   null: false
@@ -28,6 +52,16 @@ ActiveRecord::Schema.define(version: 20151023201748) do
   add_index "parties", ["start_year"], name: "index_parties_on_start_year", using: :btree
   add_index "parties", ["stop_year"], name: "index_parties_on_stop_year", using: :btree
   add_index "parties", ["type"], name: "index_parties_on_type", using: :btree
+
+  create_table "phones", force: :cascade do |t|
+    t.string   "number",     limit: 32
+    t.string   "category",   limit: 8
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "phones", ["category"], name: "index_phones_on_category", using: :btree
+  add_index "phones", ["number"], name: "index_phones_on_number", unique: true, using: :btree
 
   create_table "projects", force: :cascade do |t|
     t.string   "name",        limit: 255,   null: false

@@ -1,3 +1,16 @@
+ADDRESSES
+  street
+  unit
+  city
+  state
+  zip
+
+EMAILS
+  address
+  category
+
+rails g scaffold Email address category
+
 PARTIES
   name
   type [Company, Band]
@@ -7,6 +20,12 @@ PARTIES
   stop_year
 
 rails g scaffold Party name type url description start_year:integer stop_year:integer
+
+PHONES
+  number
+  category
+
+rails g scaffold Phone number category
 
 PROJECTS
   name
@@ -22,8 +41,5 @@ rails g scaffold Project name type party_id:integer url start_year:integer stop_
 
 
 
-EMAILS
-  address
-  category
 
-rails g scaffold Email address category
+

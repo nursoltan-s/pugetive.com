@@ -1,0 +1,11 @@
+= form_for @email do |f|
+  - handle_errors(@email)
+
+  .field
+    = f.label :address
+    = f.text_field :address
+  .field
+    = f.label :category
+    = f.select :category, options_for_select(Email::CATEGORIES, selected: @email.category)
+  .actions
+    = f.submit 'Save'
