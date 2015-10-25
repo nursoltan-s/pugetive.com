@@ -14,6 +14,6 @@ class RolesController < MetaResourceController
     end
 
     def post_create_path
-      :back
+      @role.project
     end
 end
