@@ -1,6 +1,8 @@
 - title('Listing projects')
 
-= render @projects
+%ul
+  - @projects.each do |project|
+    %li= link_to(project.name, project)
 
 - if admin?
   = link_to 'New Project', new_project_path, class: 'button'

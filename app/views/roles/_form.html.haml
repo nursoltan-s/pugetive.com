@@ -6,6 +6,6 @@
     = f.select :project_id, options_from_collection_for_select(Project.all, :id, :name, selected: @role.project_id)
   .field
     = f.label :title_id
-    = f.select :title_id, options_from_collection_for_select(Title.all, :id, :name, selected: @role.title_id)
+    = f.select :title_id, options_from_collection_for_select(Title.sorted, :id, :name, selected: @role.title_id)
   .actions
     = f.submit 'Save'
