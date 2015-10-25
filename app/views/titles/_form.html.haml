@@ -1,16 +1,11 @@
 = form_for @title do |f|
-  - if @title.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@title.errors.count, "error")} prohibited this title from being saved:"
-      %ul
-        - @title.errors.full_messages.each do |msg|
-          %li= msg
+  - handle_errors(@title)
 
   .field
     = f.label :name
     = f.text_field :name
   .field
     = f.label :category
-    = f.text_field :category
+    = f.select :category, options_for_select(PURSUITS)
   .actions
     = f.submit 'Save'

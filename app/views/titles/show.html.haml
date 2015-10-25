@@ -1,12 +1,3 @@
-%p#notice= notice
+- title(@title.name)
 
-%p
-  %b Name:
-  = @title.name
-%p
-  %b Category:
-  = @title.category
-
-= link_to 'Edit', edit_title_path(@title)
-\|
-= link_to 'Back', titles_path
+= render @title.projects

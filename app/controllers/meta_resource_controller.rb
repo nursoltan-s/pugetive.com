@@ -28,11 +28,9 @@ class MetaResourceController < ApplicationController
     authorize(item, :create?)
     respond_to do |format|
       if item.save
-        format.html { redirect_to item, notice: 'Email was successfully created.' }
-        format.json { render :show, status: :created, location: item }
+        respond_with_success(format, 'created')
       else
-        format.html { render :new }
-        format.json { render json: item.errors, status: :unprocessable_entity }
+        respond_with_error(format, :new)
       end
     end
   end
@@ -61,6 +59,16 @@ class MetaResourceController < ApplicationController
 
 
   private
+
+    def respond_with_success(format, action_name)
+      format.html { redirect_to item, notice: "#{item.class.name} was successfully #{action_name}." }
+      format.json { render :show, status: :created, location: item }
+    end
+
+    def respond_with_error(format, response_action)
+      format.html { render response_action }
+      format.json { render json: item.errors, status: :unprocessable_entity }
+    end
 
     def set_meta_resource
       @meta_resource = MetaResource.new(params[:controller], params[:action], params[:id], self)

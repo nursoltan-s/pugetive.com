@@ -1,36 +1,6 @@
 - title('Listing projects')
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th Type
-      %th Party
-      %th Url
-      %th Start year
-      %th Stop year
-      %th Description
-      %th Live
-      %th
-      %th
-      %th
-      
-  %tbody
-    - @projects.each do |project|
-      %tr
-        %td= project.name
-        %td= project.type
-        %td= project.party_id
-        %td= project.url
-        %td= project.start_year
-        %td= project.stop_year
-        %td= project.description
-        %td= project.live
-        %td= link_to 'Show', project
-        %td= link_to 'Edit', edit_project_path(project)
-        %td= link_to 'Destroy', project, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
+= render @projects
 
 - if admin?
   = link_to 'New Project', new_project_path, class: 'button'

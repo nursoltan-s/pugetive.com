@@ -1,4 +1,4 @@
-%h1 Listing titles
+- title('Titles')
 
 %table
   %thead
@@ -8,7 +8,7 @@
       %th
       %th
       %th
-      
+
   %tbody
     - @titles.each do |title|
       %tr
@@ -20,4 +20,4 @@
 
 %br
 
-= link_to 'New Title', new_title_path
+= link_to 'New Title', new_title_path, class: 'button'

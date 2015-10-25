@@ -1,12 +1,18 @@
 - cache project do
 
   .panel
-    %h3= project.name
+    %h3= link_to(project.name, project)
     = project.date_range
     %p= project.description
     = render "notes/list", subject: project
 
-    %h4 Tools
+    %h4
+      Tools
+      - if admin?
+        = link_to(new_icon, new_wield_path(project_id: project.id))
     = render project.tools
-    %h4 Roles
+    %h4
+      Roles
+      - if admin?
+        = link_to(new_icon, new_role_path(project_id: project.id))
     = render project.titles
