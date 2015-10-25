@@ -1,4 +1,5 @@
 class Project < ActiveRecord::Base
+  include Noteable
 
   TYPES = ['SoftwareApp', 'RecordingSession', 'PhotoSeries']
 
