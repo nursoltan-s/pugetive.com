@@ -37,6 +37,7 @@ gem 'foundation-icons-sass-rails'
 gem 'foundation-rails'
 gem 'haml'
 gem 'haml-rails'
+gem "nilify_blanks"
 gem 'pundit'
 gem 'whenever', require: false
 
