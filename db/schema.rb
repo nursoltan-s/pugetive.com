@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151025151143) do
+ActiveRecord::Schema.define(version: 20151025154839) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "street",     limit: 64, null: false
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20151025151143) do
     t.integer  "stop_year",   limit: 4
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.string   "location",    limit: 32
   end
 
   add_index "parties", ["name"], name: "index_parties_on_name", using: :btree

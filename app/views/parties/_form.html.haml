@@ -13,6 +13,11 @@
   .field
     = f.label :description
     = f.text_area :description
+
+  .field
+    = f.label :location
+    = f.text_field :location
+
   .field
     = f.label :start_year
     = f.select :start_year, options_for_select(YEARS_OF_LIFE)
