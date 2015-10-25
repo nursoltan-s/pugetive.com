@@ -12,4 +12,8 @@ class NotesController < MetaResourceController
     def note_params
       params.require(:note).permit(:noteable_type, :noteable_id, :contents)
     end
+
+    def post_create_path
+      @note.subject
+    end
 end

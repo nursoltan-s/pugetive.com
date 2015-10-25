@@ -1,1 +1,6 @@
-= render subject.notes
+- cache ["notes", subject] do
+  %section.notes
+    %ul= render subject.notes
+
+    - if admin?
+      %p= link_to(new_icon, new_note_path(noteable_type: subject.class.name, noteable_id: subject.id, class: 'button'))

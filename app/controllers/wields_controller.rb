@@ -14,6 +14,6 @@ class WieldsController < MetaResourceController
     end
 
     def post_create_path
-      :back
+      @wield.project
     end
 end

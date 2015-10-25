@@ -4,6 +4,6 @@ class Concept < Tool
   end
 
   def to_partial_path
-    'concepts/concept'
+    'tools/tool'
   end
 end
