@@ -11,6 +11,6 @@
     = f.select :project_id, options_from_collection_for_select(Project.all, :id, :name, selected: @wield.project_id)
   .field
     = f.label :tool_id
-    = f.select :tool_id, options_from_collection_for_select(Tool.all, :id, :name)
+    = f.select :tool_id, options_from_collection_for_select(Tool.sorted, :id, :name)
   .actions
     = f.submit 'Save'

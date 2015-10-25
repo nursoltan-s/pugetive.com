@@ -1,0 +1,6 @@
+%section.tools.panel
+  %h4 Tools
+  %ul= render project.tools
+
+  - if admin?
+    %p= link_to(new_icon, new_wield_path(project_id: project.id), class: 'button')

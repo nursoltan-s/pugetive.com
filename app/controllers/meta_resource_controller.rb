@@ -39,7 +39,7 @@ class MetaResourceController < ApplicationController
     authorize(item, :update?)
     respond_to do |format|
       if item.update(item_params)
-        format.html { redirect_to item, notice: 'Email was successfully updated.' }
+        format.html { redirect_to post_update_path, notice: 'Email was successfully updated.' }
         format.json { render :show, status: :ok, location: item }
       else
         format.html { render :edit }
@@ -61,7 +61,7 @@ class MetaResourceController < ApplicationController
   private
 
     def respond_with_success(format, action_name)
-      format.html { redirect_to item, notice: "#{item.class.name} was successfully #{action_name}." }
+      format.html { redirect_to post_create_path, notice: "#{item.class.name} was successfully #{action_name}." }
       format.json { render :show, status: :created, location: item }
     end
 
@@ -74,5 +74,12 @@ class MetaResourceController < ApplicationController
       @meta_resource = MetaResource.new(params[:controller], params[:action], params[:id], self)
     end
 
+    def post_create_path
+      item
+    end
+
+    def post_update_path
+      item
+    end
 
 end

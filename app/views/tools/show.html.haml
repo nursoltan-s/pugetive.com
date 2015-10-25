@@ -1,4 +1,4 @@
-%p#notice= notice
+- title("Projects involving #{@tool.name}")
 
 %p
   %b Name:
@@ -6,6 +6,8 @@
 %p
   %b Type:
   = @tool.type
+
+%section.projects= render @tool.projects
 
 = link_to 'Edit', edit_tool_path(@tool)
 \|

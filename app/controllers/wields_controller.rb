@@ -12,4 +12,8 @@ class WieldsController < MetaResourceController
     def wield_params
       params.require(:wield).permit(:tool_id, :project_id)
     end
+
+    def post_create_path
+      :back
+    end
 end

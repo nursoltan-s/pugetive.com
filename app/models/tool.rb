@@ -6,4 +6,9 @@ class Tool < ActiveRecord::Base
   validates :category, inclusion: {in: PURSUITS}
   validates :front_end, inclusion: {in: BOOLEAN_OPTIONS}
 
+  scope :sorted, -> {order(:name)}
+
+
+  has_many :wields
+  has_many :projects, through: :wields
 end

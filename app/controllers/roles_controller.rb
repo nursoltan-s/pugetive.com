@@ -6,4 +6,8 @@ class RolesController < MetaResourceController
     def role_params
       params.require(:role).permit(:project_id, :title_id)
     end
+
+    def post_create_path
+      :back
+    end
 end

@@ -11,6 +11,12 @@
     = f.text_field :name
   .field
     = f.label :type
-    = f.text_field :type
+    = f.select :type, options_for_select(Tool::TYPES, selected: @tool.type)
+  .field
+    = f.label :category
+    = f.select :category, options_for_select(PURSUITS, selected: @tool.category)
+  .field
+    = f.label :front_end
+    = f.check_box :front_end
   .actions
     = f.submit 'Save'
