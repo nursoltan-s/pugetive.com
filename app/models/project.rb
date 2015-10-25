@@ -7,7 +7,7 @@ class Project < ActiveRecord::Base
   validates :party_id, presence: true, numericality: {greater_than: 0}
   # validates :url
   validates :start_year, inclusion: {in: YEARS_OF_LIFE}
-  validates :stop_year, inclusion: {in: YEARS_OF_LIFE}
+  validates :stop_year, inclusion: {in: YEARS_OF_LIFE}, allow_nil: true
   validates :live, inclusion: {in: BOOLEAN_OPTIONS}
 
   has_many :wields
