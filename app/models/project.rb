@@ -19,6 +19,7 @@ class Project < ActiveRecord::Base
   scope :software, -> {where(type: 'SoftwareApp')}
   scope :pro, -> {software.where("party_id != 1")}
   scope :amateur, -> {software.where(party_id: 1)}
+  scope :sorted, -> {order(:name)}
 
   def systems
     tools.systems

@@ -1,7 +1,7 @@
 - title('Listing projects')
 
 %ul
-  - @projects.each do |project|
+  - @projects.sorted.each do |project|
     %li= link_to(project.name, project)
 
 - if admin?
