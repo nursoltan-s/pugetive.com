@@ -20,6 +20,22 @@ class Project < ActiveRecord::Base
   scope :pro, -> {software.where("party_id != 1")}
   scope :amateur, -> {software.where(party_id: 1)}
 
+  def systems
+    tools.systems
+  end
+
+  def languages
+    tools.languages
+  end
+
+  def programs
+    tools.programs
+  end
+
+  def concepts
+    tools.concepts
+  end
+
 
   def date_range
     DateRange.new(start_year, stop_year).years

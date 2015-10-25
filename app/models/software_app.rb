@@ -1,5 +1,6 @@
 class SoftwareApp < Project
 
+
   def self.model_name
     Project.model_name
   end
@@ -11,4 +12,6 @@ class SoftwareApp < Project
   def notes
     Note.where(noteable_type: 'SoftwareApp', noteable_id: self.id)
   end
+
+
 end

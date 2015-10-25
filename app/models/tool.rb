@@ -7,8 +7,12 @@ class Tool < ActiveRecord::Base
   validates :front_end, inclusion: {in: BOOLEAN_OPTIONS}
 
   scope :sorted, -> {order(:name)}
-
+  scope :systems, -> {where(type: 'System')}
+  scope :languages, -> {where(type: 'Language')}
+  scope :programs, -> {where(type: 'Program')}
+  scope :concepts, -> {where(type: 'Concept')}
 
   has_many :wields
   has_many :projects, through: :wields
+
 end

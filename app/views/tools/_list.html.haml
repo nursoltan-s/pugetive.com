@@ -1,6 +1,22 @@
 %section.tools.panel
-  %h4 Tools
-  %ul= render project.tools
+  .row
+    - if project.systems.any?
+      .medium-3.columns
+        %h5 Systems
+        = render project.systems
+    - if project.languages.any?
+      .medium-3.columns
+        %h5 Languages
+        = render project.languages
+    - if project.programs.any?
+      .medium-3.columns
+        %h5 Software
+        = render project.programs
+    - if project.concepts.any?
+      .medium-3.columns
+        %h5 Concepts
+        = render project.concepts
+
 
   - if admin?
     %p= link_to(new_icon, new_wield_path(project_id: project.id), class: 'button')
