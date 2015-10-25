@@ -23,6 +23,6 @@
     = f.select :start_year, options_for_select(YEARS_OF_LIFE)
   .field
     = f.label :stop_year
-    = f.select :stop_year, options_for_select(YEARS_OF_LIFE)
+    = f.select :stop_year, options_for_select(YEARS_OF_LIFE), include_blank: true
   .actions
     = f.submit 'Save'
