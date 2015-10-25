@@ -1,5 +1,11 @@
 class RolesController < MetaResourceController
 
+
+  def new
+    @role = Role.new(project_id: params[:project_id])
+    authorize @role
+  end
+
   private
 
     # Never trust parameters from the scary internet, only allow the white list through.

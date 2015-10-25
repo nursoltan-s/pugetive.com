@@ -3,9 +3,9 @@
 
   .field
     = f.label :project_id
-    = f.select :project_id, options_from_collection_for_select(Project.all, :id, :name)
+    = f.select :project_id, options_from_collection_for_select(Project.all, :id, :name, selected: @role.project_id)
   .field
     = f.label :title_id
-    = f.select :title_id, options_from_collection_for_select(Title.all, :id, :name)
+    = f.select :title_id, options_from_collection_for_select(Title.all, :id, :name, selected: @role.title_id)
   .actions
     = f.submit 'Save'
