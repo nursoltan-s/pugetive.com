@@ -4,6 +4,8 @@
     %h3= project.name
     = project.date_range
     %p= project.description
+    = render "notes/list", subject: project
+
     %h4 Tools
     = render project.tools
     %h4 Roles

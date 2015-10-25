@@ -1,4 +1,6 @@
 class Project < ActiveRecord::Base
+  include Noteable
+
   TYPES = ['SoftwareApp', 'RecordingSession', 'PhotoSeries']
 
   validates :name, presence: true

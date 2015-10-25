@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151024220750) do
+ActiveRecord::Schema.define(version: 20151025151143) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "street",     limit: 64, null: false
@@ -36,6 +36,16 @@ ActiveRecord::Schema.define(version: 20151024220750) do
 
   add_index "emails", ["address"], name: "index_emails_on_address", unique: true, using: :btree
   add_index "emails", ["category"], name: "index_emails_on_category", using: :btree
+
+  create_table "notes", force: :cascade do |t|
+    t.string   "noteable_type", limit: 32,  null: false
+    t.integer  "noteable_id",   limit: 4,   null: false
+    t.string   "contents",      limit: 255
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "notes", ["noteable_type", "noteable_id"], name: "index_notes_on_noteable_type_and_noteable_id", using: :btree
 
   create_table "parties", force: :cascade do |t|
     t.string   "name",        limit: 255,   null: false

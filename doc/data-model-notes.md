@@ -13,6 +13,14 @@ EMAILS
 
 rails g scaffold Email address category
 
+NOTES
+  noteable_type
+  noteable_id
+  contents
+
+rails g scaffold Note noteable_type notable_id:integer contents
+
+
 PARTIES
   name
   type [Company, Band]

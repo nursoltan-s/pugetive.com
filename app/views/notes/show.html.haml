@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Noteable type:
+  = @note.noteable_type
+%p
+  %b Noteable:
+  = @note.noteable_id
+%p
+  %b Contents:
+  = @note.contents
+
+= link_to 'Edit', edit_note_path(@note)
+\|
+= link_to 'Back', notes_path

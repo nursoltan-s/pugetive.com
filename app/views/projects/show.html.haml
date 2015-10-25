@@ -25,6 +25,8 @@
   %b Live:
   = @project.live
 
+= link_to(raw("#{new_icon} Note"), new_note_path(noteable_type: 'Project', noteable_id: @project.id))
+
 = link_to 'Edit', edit_project_path(@project)
 \|
 = link_to 'Back', projects_path
