@@ -4,6 +4,6 @@ class Program < Tool
   end
 
   def to_partial_path
-    'programs/program'
+    'tools/tool'
   end
 end
