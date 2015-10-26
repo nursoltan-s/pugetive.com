@@ -1,10 +1,10 @@
-class Instrument < Tool
+class Instrument < Title
   def self.model_name
-    Tool.model_name
+    Title.model_name
   end
 
   def to_partial_path
-    "tools/tool"
+    "titles/title"
   end
 
 end
