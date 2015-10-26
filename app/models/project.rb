@@ -17,7 +17,10 @@ class Project < ActiveRecord::Base
   has_many :roles
   has_many :titles, through: :roles
 
-  scope :software, -> {where(type: 'SoftwareApp')}
+  scope :software,    -> {where(type: 'SoftwareApp')}
+  scope :music,       -> {where(type: 'RecordingSession')}
+  scope :photography, -> {where(type: 'PhotoSeries')}
+
   scope :pro, -> {software.where("party_id != 1")}
   scope :amateur, -> {software.where(party_id: 1)}
   scope :sorted, -> {order(:name)}

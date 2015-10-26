@@ -1,8 +1,12 @@
 - title('Listing projects')
 
-%ul
-  - @projects.sorted.each do |project|
-    %li= link_to(project.name, project)
+.row
+  - [:software, :music, :photography].each do |token|
+    .medium-4.columns
+      %h2== #{token.capitalize} Projects
+      %ul
+        - @projects.send(token).sorted.each do |project|
+          %li= link_to(project.name, project)
 
 - if admin?
   = link_to 'New Project', new_project_path, class: 'button'
