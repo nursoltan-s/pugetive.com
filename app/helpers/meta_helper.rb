@@ -40,6 +40,9 @@ module MetaHelper
     if params[:debug]
       add_html_class('debug')
     end
+    if admin?
+      add_html_class('admin')
+    end
     @html_class_list
   end
 
