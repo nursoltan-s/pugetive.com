@@ -52,7 +52,7 @@ class MetaResourceController < ApplicationController
     authorize(item, :destroy?)
     item.destroy
     respond_to do |format|
-      format.html { redirect_to items_url, notice: 'Email was successfully destroyed.' }
+      format.html { redirect_to post_destroy_path, notice: 'Email was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -80,6 +80,10 @@ class MetaResourceController < ApplicationController
 
     def post_update_path
       item
+    end
+
+    def post_destroy_path
+      items
     end
 
 end

@@ -13,4 +13,10 @@
   .address {
     white-space: pre;
   }
+
+  .company {
+    .projects {
+      display: none;
+    }
+  }
 }

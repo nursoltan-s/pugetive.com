@@ -16,4 +16,8 @@ class NotesController < MetaResourceController
     def post_create_path
       @note.subject
     end
+
+    def post_destroy_path
+      resume_path
+    end
 end

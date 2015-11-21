@@ -3,6 +3,12 @@
 
   %section
     .sidebar
-      %h2 Objective
+      %h2 Summary
     .main
-      %p= @todd.objective
+      %p= @todd.summary
+
+  %section
+    .sidebar
+      %h2 Employment
+    .main
+      = render partial: 'companies/company', formats: [:html], collection: @todd.jobs

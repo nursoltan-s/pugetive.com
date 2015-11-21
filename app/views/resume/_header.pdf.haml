@@ -7,5 +7,6 @@
       %li= @todd.email.address
       %li= @todd.phone.number
       %li.address= @todd.address.complete
-      %li= link_to(@todd.linkedin.url, @todd.linkedin.url)
+      - if @todd.linkedin
+        %li= link_to(@todd.linkedin.url, @todd.linkedin.url)
 
