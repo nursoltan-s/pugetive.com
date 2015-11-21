@@ -11,8 +11,11 @@ class Tool < ActiveRecord::Base
   scope :languages, -> {where(type: 'Language')}
   scope :programs, -> {where(type: 'Program')}
   scope :concepts, -> {where(type: 'Concept')}
+  scope :software, -> {where(category: 'Software')}
 
   has_many :wields
   has_many :projects, through: :wields
+
+
 
 end

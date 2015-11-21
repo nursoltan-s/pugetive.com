@@ -16,4 +16,8 @@ class WieldsController < MetaResourceController
     def post_create_path
       @wield.project
     end
+
+    def post_destroy_path
+      projects_path
+    end
 end
