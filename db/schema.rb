@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151025164713) do
+ActiveRecord::Schema.define(version: 20151121155031) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "street",     limit: 64, null: false
@@ -65,14 +65,15 @@ ActiveRecord::Schema.define(version: 20151025164713) do
   add_index "parties", ["type"], name: "index_parties_on_type", using: :btree
 
   create_table "phones", force: :cascade do |t|
-    t.string   "number",     limit: 32
-    t.string   "category",   limit: 8
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.string   "category",              limit: 8
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "area_code",             limit: 3
+    t.string   "central_office_number", limit: 3
+    t.string   "subscriber_number",     limit: 4
   end
 
   add_index "phones", ["category"], name: "index_phones_on_category", using: :btree
-  add_index "phones", ["number"], name: "index_phones_on_number", unique: true, using: :btree
 
   create_table "projects", force: :cascade do |t|
     t.string   "name",        limit: 255,   null: false
