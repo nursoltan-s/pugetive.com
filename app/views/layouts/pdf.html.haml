@@ -1,0 +1,9 @@
+!!! html5
+%html.pdf{lang: "en"}
+  %head
+    %meta{:"http-equiv" => "content-type", content: "text/html; charset=utf-8"}
+    %title Todd Gehman
+    %style
+      = wicked_pdf_stylesheet_link_tag "pdf"
+  %body
+    = yield
