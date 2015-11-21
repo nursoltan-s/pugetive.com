@@ -1,3 +1,11 @@
+ACCOUNTS
+  company
+  username
+  url
+
+rails g scaffold Account company username url
+
+
 ADDRESSES
   street
   unit
@@ -36,6 +44,7 @@ PHONES
   category
 
 rails g scaffold Phone number category
+
 
 PROJECTS
   name
