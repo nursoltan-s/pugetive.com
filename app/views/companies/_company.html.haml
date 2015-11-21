@@ -2,7 +2,7 @@
   .company
     %h3= company.name
     = company.date_range
-    = link_to(company.url, company.url)
+    -# = link_to(company.url, company.url)
 
     - if company.projects.any?
       .projects

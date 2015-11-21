@@ -5,4 +5,8 @@ class ProjectsController < MetaResourceController
     def project_params
       params.require(:project).permit(:name, :type, :party_id, :url, :start_year, :stop_year, :description, :live)
     end
+
+    def post_destroy_path
+      projects
+    end
 end

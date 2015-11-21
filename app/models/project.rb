@@ -11,11 +11,13 @@ class Project < ActiveRecord::Base
   validates :stop_year, inclusion: {in: YEARS_OF_LIFE}, allow_nil: true
   validates :live, inclusion: {in: BOOLEAN_OPTIONS}
 
-  has_many :wields
+  has_many :wields, dependent: :destroy
   has_many :tools, through: :wields
 
-  has_many :roles
+  has_many :roles, dependent: :destroy
   has_many :titles, through: :roles
+
+  belongs_to :party, touch: true
 
   scope :software,    -> {where(type: 'SoftwareApp')}
   scope :music,       -> {where(type: 'RecordingSession')}
