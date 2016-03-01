@@ -86,14 +86,14 @@ sudo emacs ~/.bashrc
 
 sudo emacs ~/.profile
 # Add this line, un-commented-out
-# alias cn='cd ~/apps/nomad/current'
+# alias ct='cd ~/apps/pugetive.com/current'
 
 source ~/.bashrc
 
 
 rvm requirements
-rvm install 2.2.1
-rvm use 2.2.1 --default
+rvm install 2.3.0
+rvm use 2.3.0 --default
 
 
 # ---------------------
