@@ -1,14 +1,14 @@
-.row
-  .large-12.columns
-    %footer.panel.subdued
-      All content, photography, and music is owned by moi.
-      &copy;
-      Copyright 2015
-      - if Time.now.year != 2015
-        == -#{Time.now.year}
-      Todd Gehman
-      - if user_signed_in?
-        = link_to delete_icon, destroy_user_session_path, :method => :delete, class: 'secondary'
-      - else
-        = link_to signin_icon, new_user_session_path, class: 'secondary'
+-# .row
+-#   .large-12.columns
+-#     %footer.panel.subdued
+-#       All content, photography, and music is owned by moi.
+-#       &copy;
+-#       Copyright 2015
+-#       - if Time.now.year != 2015
+-#         == -#{Time.now.year}
+-#       Todd Gehman
+-#       - if user_signed_in?
+-#         = link_to delete_icon, destroy_user_session_path, :method => :delete, class: 'secondary'
+-#       - else
+-#         = link_to signin_icon, new_user_session_path, class: 'secondary'
 

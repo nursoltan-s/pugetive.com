@@ -1,4 +1,10 @@
 #resume {
+  .linked {
+    display: none;
+  }
+  .unlinked {
+    display: inherit;
+  }
   .sidebar {
     float: left;
     width: 25%;
@@ -13,11 +19,6 @@
     white-space: pre;
   }
 
-  .company {
-    .projects {
-      display: none;
-    }
-  }
 
   section.project {
     .tools {

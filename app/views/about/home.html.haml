@@ -1,4 +1,22 @@
 - title('Home', false)
 
-%p= SITE_DESCRIPTION
+.row
+  .medium-6.columns.medium-offset-3
+    %h1 Todd Gehman
+    %h2.subhead pugetive.com
 
+    %p
+      This is the online hub for Todd Gehman and his various amateur and professional projects.
+    %p
+      This site had grown weeds running on deprecated technology so it had to be kicked to the curb.
+    %p
+      A rewrite from scratch is currently in progress.
+      %br
+      %i ~ March 2016
+
+
+    %footer.subdued
+      - if user_signed_in?
+        = link_to delete_icon, destroy_user_session_path, :method => :delete, class: 'secondary'
+      - else
+        = link_to signin_icon, new_user_session_path, class: 'secondary'

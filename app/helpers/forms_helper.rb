@@ -22,4 +22,8 @@ module FormsHelper
     content_tag(:div, field, class: 'small-12 medium-9 large-9 columns form-field')
   end
 
+  def submit(f, text = 'Save')
+    label_field(nil, f.submit(text, data: {disable_with: 'Saving...'}))
+  end
+
 end

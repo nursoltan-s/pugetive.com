@@ -3,3 +3,19 @@
 .subdued {
   @include subdued();
 }
+
+form {
+  label {
+    color: $body_color;
+    text-align: right;
+    font-style: italic;
+    font-family: $header_font_family;
+  }
+}
+
+.subhead {
+  margin-top: 0;
+  margin-bottom: 1em;
+  font-size: 1.2em;
+  color: darken($header_color, 20%);
+}

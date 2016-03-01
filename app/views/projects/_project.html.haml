@@ -1,6 +1,7 @@
 - cache project do
   %section.project.panel
-    %h3= link_to(project.name, project)
+    %h3.linked= link_to(project.name, project)
+    %h3.unlinked= project.name
     .subdued
       = project.titles.map{|t| t.name}.join(', ')
       = link_to(new_icon, new_role_path(project_id: project.id), data: {visible_to: 'admin'})
