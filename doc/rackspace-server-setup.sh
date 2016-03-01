@@ -203,7 +203,7 @@ cap <env> db:push
 # ---------------------
 gem install wkhtmltopdf-binary
 # Set symlink (check locations)
-# ln -s /home/deployer/.rvm/gems/ruby-2.2.1/bin/wkhtmltopdf /home/deployer/apps/nomad/current/bin/wkhtmltopdf
+# ln -s /home/deployer/.rvm/gems/ruby-2.3.0/bin/wkhtmltopdf /home/deployer/apps/pugetive/shared/bin/wkhtmltopdf
 
 
 # ---------------------
