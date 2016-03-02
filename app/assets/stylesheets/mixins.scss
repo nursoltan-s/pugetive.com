@@ -1,17 +1,4 @@
-// $body_background: #111333;
-// $body_color: #f1d5cc;
-$body_background: #eee;
-$body_color: #222;
-
-// $header_font_family: "Trebuchet MS", Helvetica, sans-serif;
-$header_font_family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-// $header_font_family: 'Antique Olive Bold', Helvetica, Arial, sans-serif;
-// $body_font_family: Georgia, serif;
-$body_font_family: 'Open Sans', Garamond, Baskerville, 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', serif;
-// $body_font_family: Chaparral, Garamond, Baskerville, 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', serif;
-$header_color: #111333;
-
-
+@import 'colors';
 
 @mixin rounded($size: 5px) {
   -moz-border-radius: $size;

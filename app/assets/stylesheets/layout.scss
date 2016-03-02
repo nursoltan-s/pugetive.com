@@ -1,4 +1,6 @@
 @import 'mixins';
+@import 'typography';
+
 
 body {
   background: $body_background;
@@ -17,10 +19,6 @@ h1 {
   text-transform: uppercase;
 }
 
-h2 {
-  color: todd($header_color, 50%);
-}
-
 #header {
   margin-bottom: 2em;
 }
@@ -34,4 +32,8 @@ h2 {
   width: 100%;
   text-align: center;
   outline: 1px solid red;
+}
+
+nav {
+  text-align: right;
 }

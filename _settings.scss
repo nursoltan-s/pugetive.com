@@ -474,8 +474,10 @@ $switch-paddle-transition: all 0.25s ease-out;
 // 30. Table
 // ---------
 
-$table-background: $white;
+// $table-background: $white;
 $table-color-scale: 5%;
+
+$table-background: 'red';
 $table-border: 1px solid smart-scale($table-background, $table-color-scale);
 $table-padding: rem-calc(8 10 10);
 $table-hover-scale: 2%;
