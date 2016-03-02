@@ -12,6 +12,8 @@ label[for=user_remember_me] {
   margin-bottom: 1.5em;
   border: 1px solid $border_color;
   padding: 0.75em 1.25em;
+  @include rounded();
+  white-space: nowrap;
 
   &.submit {
     border: 0;
@@ -21,7 +23,8 @@ label[for=user_remember_me] {
       background-color: transparent;
       color: lighten($body_color, 30%);
       text-align: left;
-      width: 80%;
+      width: 95%;
+      @include rounded();
     }
   }
 
