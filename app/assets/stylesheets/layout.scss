@@ -37,3 +37,10 @@ h1 {
 nav {
   text-align: right;
 }
+
+.flash-message {
+  text-align: center;
+  .alert {
+    font-weight: bold;
+  }
+}

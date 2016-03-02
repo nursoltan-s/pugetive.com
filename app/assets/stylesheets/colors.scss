@@ -1,6 +1,7 @@
 $body_background: #eee;
 $body_color: #222;
 $header_color: #111333;
+$border_color: #aaa;
 
 h2, h2.subhead {
   color: lighten($header_color, 10%);
@@ -8,4 +9,8 @@ h2, h2.subhead {
 
 form label {
   color: lighten($body_color, 30%);
+}
+
+.flash-message .alert {
+  color: firebrick;
 }
