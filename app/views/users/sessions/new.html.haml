@@ -2,11 +2,11 @@
 
 .row
   .medium-6.columns.medium-offset-3
-    = label_field(nil, content_tag(:h2, 'Sign in'))
+    -# = label_field(nil, content_tag(:h2, 'Sign in'))
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       = icon_field(f, :email)
       = icon_field(f, :password)
-      = icon_field(f, :submit)
+      = icon_submit(f, 'Sign In', 'Signing In...')
       -# = icon_submit(:sign_in, :signing_in)
       -# = label_field(f.label(:email), f.email_field(:email, autofocus: true))
       -# = label_field(f.label(:password), f.password_field(:password, autocomplete: "off"))
