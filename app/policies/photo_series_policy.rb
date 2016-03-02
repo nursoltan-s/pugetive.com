@@ -1,0 +1,3 @@
+class PhotoSeriesPolicy < ApplicationPolicy
+
+end

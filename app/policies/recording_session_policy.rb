@@ -1,0 +1,2 @@
+class RecordingSessionPolicy < ProjectPolicy
+end

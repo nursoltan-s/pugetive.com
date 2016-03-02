@@ -4,7 +4,8 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '>= 5.0.0.beta3', '< 5.1'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# gem 'sqlite3'
+gem 'mysql2'
 # Use Puma as the app server
 gem 'puma'
 # Use SCSS for stylesheets
@@ -28,11 +29,30 @@ gem 'jbuilder', '~> 2.0'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+gem 'capistrano-rails', group: :development
+
+gem 'carmen'
+gem 'dalli'
+gem 'devise', :github => 'plataformatec/devise', :branch => 'master'
+gem 'foundation-icons-sass-rails'
+gem 'foundation-rails'
+gem 'haml'
+gem 'haml-rails'
+gem "nilify_blanks"
+gem 'pundit'
+gem 'whenever', require: false
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'better_errors'
   gem 'byebug'
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-passenger'
+  gem 'capistrano-rvm', '~> 0.0.3'
+  gem 'quiet_assets'
 end
 
 group :development do

@@ -1,0 +1,2 @@
+class ToolPolicy < ApplicationPolicy
+end
