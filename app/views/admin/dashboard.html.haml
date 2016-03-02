@@ -1,0 +1,18 @@
+- title "Nomad Dashboard"
+
+
+-# = render "tasks/list", user: current_user
+
+
+.panel.experi
+  %h2 Experi Info
+  .row
+    .medium-4.columns
+      = render @experi.phones
+    .medium-4.columns
+      = render @experi.addresses
+    .medium-4.columns
+      = render @experi.emails
+
+%h2 Staff Info
+= render "people/experi"

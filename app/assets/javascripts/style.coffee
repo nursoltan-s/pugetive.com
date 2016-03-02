@@ -4,6 +4,7 @@ $ ->
       @apply_dynamic_styles()
 
     apply_dynamic_styles: ->
-      $('a.button').addClass('tiny radius')
+      $('input[type=submit]').addClass('button')
+      $('a.button, input[type=submit]').addClass('radius secondary')
 
   new Pugetive.Style()

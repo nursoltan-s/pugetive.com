@@ -15,6 +15,6 @@
 //= require foundation
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
-
 var Pugetive = {};
+
+$(function(){ $(document).foundation(); });

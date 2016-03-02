@@ -1,0 +1,36 @@
+- string = "Green & Gold Getaways&hellip;Trademark/™"
+
+%table.info
+  %tr
+    %th Text
+    %td
+      = string
+  %tr
+    %th Encrypted
+    %td.tiny
+      - 3.times do
+        - @encrypted = Whisper.new.encrypt(string, @gon.whisper_key)
+        .version= @encrypted
+
+  %tr
+    %th Decrypted in Ruby
+    %td
+      - begin
+        = Whisper.new.decrypt(@encrypted, @gon.whisper_key)
+      - rescue => e
+        .warning= "ERROR: #{e.message}"
+  %tr
+    %th Decrypted in JS
+    %td.decrypted
+
+      :javascript
+        $(function() {
+          whisper = new Experi.Whisper()
+          decrypted = whisper.decrypt('#{@encrypted}');
+          $('td.decrypted').append(decrypted);
+        });
+
+  %tr
+    %th Mixpanel Profile Info
+    %td
+      %pre= Whisper.new.decrypt(@gon.user_info, @gon.whisper_key)

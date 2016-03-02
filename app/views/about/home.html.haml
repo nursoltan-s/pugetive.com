@@ -6,17 +6,10 @@
     %h2.subhead pugetive.com
 
     %p
-      This is the online hub for Todd Gehman and his various amateur and professional projects.
+      This is the online hub for my creative projects, both professional and amateur. If you're looking for something I've made, you'll soon find a link to it from here.
     %p
-      This site had grown weeds running on deprecated technology so it had to be dismantled and rebuilt.
-    %p
-      A rewrite from scratch is currently in progress.
-      %br
+      This site had grown weeds while running on deprecated technology so it had to be rethought. What you are witnessing here is a rethinking &mdash; a rewrite from scratch is currently in progress.
       %i ~ March 2016
 
 
     %footer.subdued
-      - if user_signed_in?
-        = link_to delete_icon, destroy_user_session_path, :method => :delete, class: 'secondary'
-      - else
-        = link_to signin_icon, new_user_session_path, class: 'secondary'

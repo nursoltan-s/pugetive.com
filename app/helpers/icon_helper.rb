@@ -12,6 +12,21 @@ module IconHelper
     foundation_icon('torso')
   end
 
+  def email_icon
+    foundation_icon('mail')
+  end
+
+  def password_icon
+    foundation_icon('key')
+  end
+
+  def status_icon
+    foundation_icon('wrench')
+  end
+
+  def submit_icon
+    foundation_icon('play-circle')
+  end
 
   private
 

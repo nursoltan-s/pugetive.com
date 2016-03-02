@@ -1,0 +1,48 @@
+@import 'mixins';
+@import 'colors';
+label {
+  padding-top: 0.5em;
+}
+
+label[for=user_remember_me] {
+  padding-top: 0;
+}
+
+.icon-field {
+  margin-bottom: 1em;
+  border: 1px solid $border_color;
+  padding: 0.75em 1.25em;
+  @include rounded();
+  white-space: nowrap;
+
+  &.submit {
+    border: 0;
+    background-color: darken($body_background, 10%);
+    input {
+      padding-left: 1em;
+      background-color: transparent;
+      color: lighten($body_color, 30%);
+      text-align: left;
+      width: 95%;
+      @include rounded();
+    }
+  }
+
+  .field-icon {
+    display: inline-block;
+    border-right: 1px solid $border_color;
+    padding-right: 1em;
+    @include subdued();
+  }
+
+  .field-input {
+    padding-left: 0.75em;
+    background-color: $body_background;
+    border: 0;
+    box-shadow: none;
+    display: inline-block;
+    width: 80%;
+    margin-bottom: 0;
+  }
+}
+

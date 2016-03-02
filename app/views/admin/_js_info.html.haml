@@ -1,0 +1,20 @@
+:javascript
+  $(function(){ 
+    XP.log("Here is a test log message")
+    XP.debug("Here is a test debug message")
+    XP.info("Here is a test info message")
+    XP.warn("Here is a test warn message")
+    XP.error("Here is a test error message")
+  });
+
+  document.write('<table class="info">')
+  document.write('<tbody>')
+  for (var name in gon) {
+    document.write('<tr>')
+    document.write('<th>' + name + '</th>')
+    document.write('<td>' + gon[name] + '</td>')
+    document.write('</tr>')
+  }
+  document.write('</tbody>')
+  document.write('</table>')
+                    

@@ -3,7 +3,9 @@ Pugetive.com
 
 The word "pugetive" is a portmanteau of fugitive and "Puget" as in Puget Sound, the body of water between Seattle and the Olympic Peninsula. I continue to use it even though I don't live in Seattle anymore, because as an invented word it gives me a nice open namespace for projects and user accounts.
 
-I've never worked at a company where testing was prioritized over shipping, so I'm a bit of a cowboy coder. Still, I like to write clean and well-factored code. *How am I doing, Code Climate?*
+I've never worked at a company where testing was prioritized over shipping, so I'm a bit of a cowboy coder. Still, I like to write clean and well-factored code.
+
+*How am I doing, Code Climate?*
 
 [![Code Climate](https://codeclimate.com/repos/562917c0e30ba0431f00012e/badges/cf7290c5be0fd3b44211/gpa.svg)](https://codeclimate.com/repos/562917c0e30ba0431f00012e/feed)
 
@@ -27,9 +29,9 @@ Steps to upgrade the Ruby version:
     rvm get head
     gem uninstall bundler
     gem install bundler
-    rvm install 2.2.1
-    rvm use 2.2.1 --default
-    rvm uninstall 2.1.3
+    rvm install 2.3.0
+    rvm use 2.3.0 --default
+    rvm uninstall 2.2.1
     gem uninstall passenger
     gem install passenger
 

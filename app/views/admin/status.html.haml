@@ -1,0 +1,35 @@
+- title "Status"
+
+
+%p= page_rank_icon
+
+%table.status
+  %tr.systems
+    %td
+      %h3 Application
+      = render partial: "app_info"
+  %tr.systems
+    %td
+      %h3 Server
+      = render partial: "server_info"
+  %tr
+    %td
+      %h3 Git
+      = render partial: "git_info"
+  %tr
+    %td
+      %h3 MemCache
+      - stats = Rails.cache.stats rescue nil
+      - if stats
+        - cache_info = stats.first[1]
+        - if cache_info
+          = render partial: "cache_info", locals: {cache_info: cache_info}
+        - else
+          No cache stats available.
+      - else
+        No cache stats available.
+  %tr
+    %td
+      %h3 JavaScript
+      = render partial: "js_info"
+
