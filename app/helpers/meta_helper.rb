@@ -68,8 +68,25 @@ module MetaHelper
     raw(rv)
   end
 
+  def page_rank_icon
+    text = <<-TEXT
+      <a href="http://www.prchecker.info/" title="PRchecker.info" target="_blank" rel="nofollow">
+      <img src="http://pr-v2.prchecker.info/getpr.v2.php?codex=aHR0cDovL3B1Z2V0aXZlLmNvbQ==&tag=1" alt="PRchecker.info" style="border:0;" /></a>
+    TEXT
+    raw(text)
+  end
+
+
   def page_url
     "#{request.protocol}#{request.host_with_port}#{request.fullpath}"
+  end
+
+  def server_env_hash
+    info = request.env
+    ENV.each do |key, value|
+      info[key] = value
+    end
+    info
   end
 
 

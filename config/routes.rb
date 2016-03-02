@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   devise_for :users
   get 'about/home'
 
+  get 'status' => 'admin#status', as: 'status'
+
   get 'resume' => 'resume#show', as: :resume
   match 'todd/edit' => 'about#edit', via: [:get, :post], as: :edit_todd
   # The priority is based upon order of creation: first created -> highest priority.

@@ -12,6 +12,9 @@ module IconHelper
     foundation_icon('torso')
   end
 
+  def status_icon
+    foundation_icon('wrench')
+  end
 
   private
 
