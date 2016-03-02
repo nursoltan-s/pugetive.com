@@ -3,5 +3,9 @@ $body_color: #222;
 $header_color: #111333;
 
 h2, h2.subhead {
-  color: lighten($header_color, 20%);
+  color: lighten($header_color, 10%);
+}
+
+form label {
+  color: lighten($body_color, 30%);
 }

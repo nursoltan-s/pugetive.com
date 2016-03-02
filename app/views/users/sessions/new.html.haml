@@ -4,8 +4,7 @@
   .medium-6.columns.medium-offset-3
     = label_field(nil, content_tag(:h2, 'Sign in'))
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-      = label_field(f.label(:name), f.email_field(:email, autofocus: true))
+      = label_field(f.label(:email), f.email_field(:email, autofocus: true))
       = label_field(f.label(:password), f.password_field(:password, autocomplete: "off"))
-      = label_field(f.label(:remember_me), f.check_box(:remember_me))
-      = submit(f)
-
+      = label_field(f.label(:remember_me), f.check_box(:remember_me, checked: true))
+      = submit(f, 'Sign In', 'Signing In...')
