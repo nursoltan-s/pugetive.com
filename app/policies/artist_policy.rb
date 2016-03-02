@@ -1,2 +1,0 @@
-class ArtistPolicy < PartyPolicy
-end

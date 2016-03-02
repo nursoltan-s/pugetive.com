@@ -1,5 +1,0 @@
-%section.roles.panel
-  %h4 Roles
-  %ul= render project.roles
-
-  %p{data: {visible_to: 'admin'}= link_to(new_icon, new_role_path(project_id: project.id), class: 'button')

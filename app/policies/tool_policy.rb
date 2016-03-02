@@ -1,2 +1,0 @@
-class ToolPolicy < ApplicationPolicy
-end

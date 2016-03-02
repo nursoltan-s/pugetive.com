@@ -1,3 +1,0 @@
-class AccountPolicy < ApplicationPolicy
-
-end

@@ -7,12 +7,15 @@
 # Ignore bundler config.
 /.bundle
 
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
 # Ignore all logfiles and tempfiles.
 /log/*
+/tmp/*
 !/log/.keep
-/tmp
-.capistrano
-config/database.yml
-config/pugetive.yml
-config/secrets.yml
-db/migrate/20151023201748_create_admin.rb
+!/tmp/.keep
+
+# Ignore Byebug command history file.
+.byebug_history

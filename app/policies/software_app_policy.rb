@@ -1,3 +1,0 @@
-class SoftwareAppPolicy < ProjectPolicy
-
-end

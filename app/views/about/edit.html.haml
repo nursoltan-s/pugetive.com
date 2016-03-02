@@ -1,6 +1,0 @@
-- title "Edit Todd"
-= form_tag do
-  = label_field(label_tag(:one_liner), text_field_tag(:one_liner, @todd.one_liner))
-  = label_field(label_tag(:summary),   text_field_tag(:summary,   @todd.summary))
-  = label_field(label_tag(:objective), text_field_tag(:objective, @todd.objective))
-  = label_field(nil, submit_tag(nil, data: {disable_with: 'Saving...'}))
