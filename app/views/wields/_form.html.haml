@@ -1,0 +1,16 @@
+= form_for @wield do |f|
+  - if @wield.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@wield.errors.count, "error")} prohibited this wield from being saved:"
+      %ul
+        - @wield.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :project_id
+    = f.select :project_id, options_from_collection_for_select(Project.all, :id, :name, selected: @wield.project_id)
+  .field
+    = f.label :tool_id
+    = f.select :tool_id, options_from_collection_for_select(Tool.sorted, :id, :name)
+  .actions
+    = f.submit 'Save'

@@ -1,0 +1,16 @@
+- title("Resume")
+
+%p= link_to("PDF", {format: :pdf}, class: 'button')
+
+= render "resume/contact_info"
+
+%h2 Objective
+%p Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
+
+%h2 Professional Experience
+
+= render @todd.jobs
+
+%h2 Side Projects
+
+= render @todd.side_projects

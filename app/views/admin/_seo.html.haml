@@ -1,0 +1,25 @@
+.row
+  .medium-6.columns
+    - cache 'page-ranks', expires_in: 1.day do
+      - begin
+        %table
+          %tr
+            %th Page Ranks
+          - PageRankr.ranks('experi.com').each do |token, ranking|
+            %tr
+              %th= token
+              %td= number_with_delimiter(ranking)
+      - rescue
+        %p.null Sorry, I hit an error when retrieving page ranks.
+  .medium-6.columns
+    - cache "social-ranks", expires_in: 1.day do
+      - begin
+        %table
+          %tr
+            %th Social Ranks
+          - PageRankr.socials('experi.com').each do |token, score|
+            %tr
+              %th= token
+              %td= score
+      - rescue
+        %p.null Sorry, I hit an error when retrieving social ranks.

@@ -1,0 +1,44 @@
+$body_background: #111333;
+$body_color: #f1d5cc;
+// $header_font_family: "Trebuchet MS", Helvetica, sans-serif;
+$header_font_family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$header_font_family: 'Antique Olive Bold', Helvetica, Arial, sans-serif;
+// $body_font_family: Georgia, serif;
+// $body_font_family: Garamond, Baskerville, 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', serif;
+$body_font_family: Chaparral, Garamond, Baskerville, 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', serif;
+$header_color: #fff;
+
+
+
+@mixin rounded($size: 5px) {
+  -moz-border-radius: $size;
+  -webkit-border-radius: $size;
+  border-radius: $size;
+}
+
+@mixin rounded_top($size: 5px) {
+
+  -moz-border-radius-topleft: $size;
+  -moz-border-radius-topright: $size;
+
+  -webkit-border-top-left-radius: $size;
+  -webkit-border-top-right-radius: $size;
+
+  -khtml-border-top-left-radius: $size;
+  -khtml-border-top-right-radius: $size;
+
+  border-top-left-radius: $size;
+  border-top-right-radius: $size;
+
+}
+
+@mixin subdued($percentage: 50) {
+  @include alpha($percentage);
+}
+
+@mixin alpha($percentage) {
+  opacity: ($percentage / 100);
+  filter:alpha(opacity=$percentage);
+  -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=$percentage)";
+}
+

@@ -1,0 +1,13 @@
+- title('Projects')
+
+.row
+  - [:software, :music, :photography].each do |token|
+    .medium-4.columns
+      %h2== #{token.capitalize}
+      %ul
+        - @projects.send(token).sorted.each do |project|
+          %li
+            = link_to(project.name, project)
+            = link_to(delete_icon, project, method: :delete, data: {visible_to: 'admin', confirm: "Are you sure?"})
+
+= link_to 'New Project', new_project_path, class: 'button', data: {visible_to: 'admin'}

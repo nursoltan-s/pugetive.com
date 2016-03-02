@@ -1,0 +1,8 @@
+- title(@project.name)
+
+= render @project
+
+%span{data: {visible_to: 'admin'}}
+  = link_to 'Edit', edit_project_path(@project)
+  \|
+= link_to 'Back', projects_path

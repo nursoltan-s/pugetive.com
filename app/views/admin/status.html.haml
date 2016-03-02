@@ -1,0 +1,71 @@
+- title "Status"
+
+
+= render "users/daily"
+-# - if production?
+-#   = render "about/seo"
+-# - else
+-#   [SEO stats display here in production]
+
+%p= page_rank_icon
+
+%table.status
+  %tr.systems
+    %td
+      %h3 Application
+      = render partial: "app_info"
+  %tr.systems
+    %td
+      %h3 Server
+      = render partial: "server_info"
+  %tr
+    %td
+      %h3 Git
+      = render partial: "git_info"
+  %tr
+    %td
+      %h3 MemCache
+      - stats = Rails.cache.stats rescue nil
+      - if stats
+        - cache_info = stats.first[1]
+        - if cache_info
+          = render partial: "cache_info", locals: {cache_info: cache_info}
+        - else
+          No cache stats available.
+      - else
+        No cache stats available.
+  %tr
+    %td
+      %h3 JavaScript
+      = render partial: "js_info"
+
+  %tr
+    %td
+      %h3 Encryption
+      = render partial: "encryption_info"
+
+= link_to("Send test email directly", test_email_path(now: 1), method: :post, class: 'tiny button')
+= link_to("Send test email delayed", test_email_path, method: :post, class: 'tiny button')
+
+%h3 Fonts
+.font-test
+  %p#garamond
+    If we are serving locally hosted fonts correctly, this paragraph will be in locally hosted Garamond. If that fails you'll see this in fixed-width Courier New fontface.
+    %i Some of it will be italic.
+    %b Some of it will be bold.
+    %i
+      %b Some of it will be bold and italic.
+    But most of it will be normal.
+
+  %p#lato
+    If we are serving locally hosted fonts correctly, this paragraph will be in locally hosted PT Sans. If that fails you'll see this in fixed-width Courier New fontface.
+    %i Some of it will be italic.
+    %b Some of it will be bold.
+    %i
+      %b Some of it will be bold and italic.
+    But most of it will be normal.
+
+%h3 Color Sequence
+- 0.upto(15) do |i|
+  %div{style: "float: left;padding: 20px;font-weight:bold;background-color:#{COLOR_WHEEL[i]}"}= i
+.clear

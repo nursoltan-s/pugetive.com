@@ -1,0 +1,13 @@
+- expanded ||= nil
+%table.info{class: expanded}
+  - [:curr_items, :total_items, :pid, :uptime, :version, :curr_connections, :total_connections, :get_hits, :get_misses, :bytes_read, :bytes_written, :bytes, :limit_maxbytes, :accepting_conns].each do |key|
+    %tr{class: ( [:accepting_conns, :bytes, :limit_maxbytes, :uptime].include?(key) ? 'primary' : nil)}
+      %th= key
+      %td
+        -if key.to_s.match(/bytes/)
+          = number_to_human_size(cache_info[key.to_s])
+        - elsif key.to_s.match(/uptime/)
+          = distance_of_time_in_words_to_now(Time.now - cache_info[key.to_s].to_i)
+        
+        - else
+          = cache_info[key.to_s]

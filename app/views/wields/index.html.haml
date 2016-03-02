@@ -1,0 +1,23 @@
+- title('Wields')
+
+%table
+  %thead
+    %tr
+      %th Tool
+      %th Project
+      %th
+      %th
+      %th
+
+  %tbody
+    - @wields.each do |wield|
+      %tr
+        %td= wield.tool_id
+        %td= wield.project_id
+        %td= link_to 'Show', wield
+        %td= link_to 'Edit', edit_wield_path(wield)
+        %td= link_to 'Destroy', wield, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Wield', new_wield_path, class: 'button'

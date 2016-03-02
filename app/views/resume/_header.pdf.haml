@@ -1,0 +1,12 @@
+%section#header
+  .sidebar
+    [image]
+  .main
+    %h1 Todd Gehman
+    %ul#contact-info
+      %li= @todd.email.address
+      %li= @todd.phone.number
+      %li.address= @todd.address.complete
+      - if @todd.linkedin
+        %li= @todd.linkedin.url
+

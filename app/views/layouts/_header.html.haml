@@ -1,0 +1,10 @@
+= render 'layouts/flash'
+
+.row{data: {visible_to: 'admin'}}
+  .large-12.columns
+    %nav
+      = link_to_unless_current("Resume", resume_path)
+      = link_to_unless_current("Projects", projects_path)
+      = link_to_unless_current("Titles", titles_path)
+      = link_to_unless_current("Tools", tools_path)
+

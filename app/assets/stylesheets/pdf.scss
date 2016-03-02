@@ -1,0 +1,34 @@
+#resume {
+  .linked {
+    display: none;
+  }
+  .unlinked {
+    display: inherit;
+  }
+  .sidebar {
+    float: left;
+    width: 25%;
+    clear: both;
+  }
+  .main {
+    float: left;
+    width: 60%;
+  }
+
+  .address {
+    white-space: pre;
+  }
+
+
+  section.project {
+    .tools {
+      display: none;
+    }
+  }
+
+  .page-break {
+    display:block;
+    clear:both;
+    page-break-after:always;
+  }
+}

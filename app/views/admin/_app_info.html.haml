@@ -1,0 +1,44 @@
+- expanded ||= nil
+%table.info{class: expanded}
+  %tr.primary
+    %th Rails Version
+    %td= Rails.version
+  %tr.primary
+    %th Rails Env
+    %td= Rails.env
+  %tr
+    %td{colspan: 2}
+
+  %tr.primary
+    %th Ruby
+    %td= `ruby -v`
+
+  %tr
+    %th OS
+    %td= `uname -a`
+
+  %tr
+    %th OS user
+    %td= `whoami`
+  -# %tr
+  -#   %td{colspan: 2}
+  -# 
+  -# %tr
+  -#   %th Time.zone
+  -#   %td= Time.zone
+  -# 
+  -# %tr
+  -#   %th Date.today
+  -#   %td= Date.today
+  -# 
+  -# %tr
+  -#   %th Time.now
+  -#   %td= Time.now
+  -# 
+  -# %tr
+  -#   %th Time.zone.now
+  -#   %td= Time.zone.now
+  -# 
+  -# %tr
+  -#   %th Time.zone.now.to_date
+  -#   %td= Time.zone.now.to_date

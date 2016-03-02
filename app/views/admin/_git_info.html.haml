@@ -1,0 +1,8 @@
+%table.info
+  %tr
+    %th Revision
+    %td
+      - if Git::REVISION.blank?
+        .null No Git info to display.
+      - else
+        = link_to(Git::REVISION, "https://github.com/goexperi/nomad/commit/#{Git::REVISION}")

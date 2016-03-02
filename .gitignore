@@ -21,6 +21,7 @@
 .byebug_history
 
 config/database.yml
+config/pugetive.yml
 config/secrets.yml
 test
 tmp

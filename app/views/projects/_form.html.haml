@@ -1,0 +1,29 @@
+= form_for @project do |f|
+  - handle_errors(@project)
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :type
+    = f.select :type, options_for_select(Project::TYPES, selected: @project.type)
+  .field
+    = f.label :party_id
+    = f.select :party_id, options_from_collection_for_select(Party.sorted, :id, :name, selected: @project.party_id)
+  .field
+    = f.label :url
+    = f.text_field :url
+  .field
+    = f.label :start_year
+    = f.select :start_year, options_for_select(YEARS_OF_LIFE, selected: @project.start_year)
+  .field
+    = f.label :stop_year
+    = f.select :stop_year, options_for_select(YEARS_OF_LIFE, selected: @project.stop_year), include_blank: true
+  .field
+    = f.label :description
+    = f.text_area :description
+  .field
+    = f.label :live
+    = f.check_box :live
+  .actions
+    = f.submit 'Save'
