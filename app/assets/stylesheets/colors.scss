@@ -15,6 +15,7 @@ form label {
   color: firebrick;
 }
 
+
 #resume {
   h3 {
     color: #888;
@@ -33,7 +34,7 @@ form label {
 
   #education {
     i.fa {
-      color: #736250;
+      color: #FFE180;
     }
   }
   #side-projects {
@@ -43,7 +44,12 @@ form label {
   }
   #associations {
     i.fa {
-      color: #468C52;
+      color: #E6B8CF;
+    }
+  }
+  #recognition {
+    i.fa {
+      color: #33BBFF;
     }
   }
 }

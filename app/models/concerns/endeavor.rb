@@ -39,7 +39,7 @@ class Endeavor
     # end
     def outbound_link
       if subject.url.present? and subject.live?
-        return link_to(raw("&nbsp;#{web_icon}"), subject.url, class: "subdued")
+        return link_to(raw("&nbsp;#{web_icon}"), subject.url, class: "super-subdued")
       end
     end
 

@@ -7,12 +7,6 @@
           Professional Software
         = render @todd.jobs
 
-      %section#education
-        %h3
-          = experience_icon
-          Education
-        = render @todd.schools
-
       %section#recognition
         %h3
           = experience_icon
@@ -20,6 +14,13 @@
         - Award.all.each do |award|
           %section.timeline.award
             = timeline_row(award, experience_icon)
+
+      %section#education
+        %h3
+          = experience_icon
+          Education
+        = render @todd.schools
+
 
 
     %aside.medium-5.columns

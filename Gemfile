@@ -31,6 +31,7 @@ gem 'jbuilder', '~> 2.0'
 # Use Capistrano for deployment
 gem 'capistrano-rails', group: :development
 
+gem 'actionview-encoded_mail_to'
 gem 'carmen'
 gem 'dalli'
 gem 'devise', :github => 'plataformatec/devise', :branch => 'master'

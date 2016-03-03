@@ -7,6 +7,10 @@ $body_font_family: 'Open Sans', Helvetica, Arial, sans-serif;
   @include subdued();
 }
 
+.super-subdued {
+  @include subdued(30);
+}
+
 form {
   label {
     color: $body_color;

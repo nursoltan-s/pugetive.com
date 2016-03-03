@@ -4,6 +4,14 @@
 $border_style: dotted;
 html.resume-show {
 
+
+  .fa-circle {
+    @include subdued(66);
+  }
+
+  #statement {
+    @include subdued(80);
+  }
   .languages-systems {
     p {
       margin-top: 1em;
