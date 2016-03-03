@@ -58,4 +58,16 @@ html.resume-show {
     }
     font-size: 0.8em;
   }
+
+  ul.awards {
+    list-style: none;
+    margin-left: 0;
+    li {
+      padding: 0.5em 1em;
+      background: #eee;
+      margin-bottom: 0.5em;
+      @include rounded();
+      color: #888;
+    }
+  }
 }

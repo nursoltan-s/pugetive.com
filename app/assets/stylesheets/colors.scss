@@ -16,25 +16,34 @@ form label {
 }
 
 #resume {
-  #professional, #tools {
+  h3 {
+    color: #888;
+  }
+  #professional {
     i.fa {
       color: #38628C;
     }
   }
 
+  #tools {
+    i.fa, i.fi-record {
+      color: #408080;
+    }
+  }
+
   #education {
     i.fa {
-      color: #468C52;
+      color: #736250;
     }
   }
   #side-projects {
     i.fa {
-      color: #5E4D80;
+      color: #A6433A;
     }
   }
   #associations {
     i.fa {
-      color: #736250;
+      color: #468C52;
     }
   }
 }
