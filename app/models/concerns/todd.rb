@@ -32,7 +32,7 @@ class Todd
     end
 
     def side_projects
-      Project.amateur.sort_by{|p| p.last_active_year}.reverse
+      Project.amateur.sort_by{|p| p.num_years}.reverse
     end
 
     def languages(fluency_cutoff = 0, years_of_recency = 20)

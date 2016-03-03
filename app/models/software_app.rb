@@ -13,5 +13,8 @@ class SoftwareApp < Project
     Note.where(noteable_type: 'SoftwareApp', noteable_id: self.id)
   end
 
+  def num_years
+    last_active_year - start_year
+  end
 
 end
