@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 20160303041106) do
   add_index "emails", ["address"], name: "index_emails_on_address", unique: true, using: :btree
   add_index "emails", ["category"], name: "index_emails_on_category", using: :btree
 
-  create_table "friendly_id_slugs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "friendly_id_slugs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "slug",                      null: false
     t.integer  "sluggable_id",              null: false
     t.string   "sluggable_type", limit: 50

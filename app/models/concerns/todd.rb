@@ -42,7 +42,8 @@ class Todd
     end
 
     def primary_languages
-      @primary_languages ||= languages(2, 5).delete_if{|l| l.name.match(/Perl/)}
+      @primary_languages ||= languages(2, 5).delete_if{|l| l.name.match(/Perl/) or
+                                                           l.name.match(/HTML$/)}
     end
 
     def secondary_languages

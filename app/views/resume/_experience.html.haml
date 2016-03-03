@@ -5,32 +5,23 @@
         = experience_icon
         Professional Software
       = render @todd.jobs
-      %h3
-        = experience_icon
-        Side Projects
-      = render @todd.side_projects
+
       %h3
         = experience_icon
         Education
       = render @todd.schools
-
-    .medium-5.columns
       %h3
         = experience_icon
-        Languages & Systems
-      .row
-        .medium-6.columns
-          = render @todd.primary_languages
-          %p.subdued
-            %b Basic/Lapsed:
-            = raw(@todd.secondary_languages.map{|l| link_to(l.name, l)}.join(', '))
+        Recognition
 
-        .medium-6.columns
-          = render @todd.primary_systems
-          %p.subdued
-            %b Basic/Lapsed:
-            = raw(@todd.secondary_systems.map{|s| link_to(s.name, s)}.join(', '))
-      %h3 Recognition
+    %aside.medium-5.columns
+      = render "resume/tools"
+      %h3
+        = experience_icon
+        Side Projects
+      = render @todd.side_projects
+
+
       %h3
         = experience_icon
         Volunteering

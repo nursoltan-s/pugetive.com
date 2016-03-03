@@ -23,7 +23,7 @@ module IconHelper
   def star_icon(score)
     stars_html = ''
     1.upto(3) do |index|
-      stars_html += content_tag(:span, foundation_icon('star'), class: (index > score) ? 'subdued' : nil)
+      stars_html += content_tag(:span, foundation_icon('record'), class: (index > score) ? 'subdued' : nil)
     end
     raw(stars_html)
   end

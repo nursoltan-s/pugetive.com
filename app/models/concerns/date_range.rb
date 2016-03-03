@@ -11,7 +11,7 @@ class DateRange
     if stop_date and stop_date.year == start_date.year
       return start_date.year
     end
-    "#{start_date.year} - #{stop_date.blank? ? 'Present' : stop_date.year}"
+    "#{start_date.year} - #{stop_date.blank? ? 'Now' : stop_date.year}"
   end
 
   private
