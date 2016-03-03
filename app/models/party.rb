@@ -3,7 +3,7 @@ class Party < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: [:slugged, :history]
 
-  TYPES = ['Company', 'Artist', 'School']
+  TYPES = ['Company', 'Artist', 'School', 'NonProfit']
   validates :name, presence: true
   validates :type, inclusion: {in: TYPES}
   # validates :url

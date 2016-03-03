@@ -27,6 +27,10 @@ class Todd
       School.all.sort_by{|c| c.start_year}.reverse
     end
 
+    def non_profits
+      NonProfit.all.sort_by{|c| c.start_year}.reverse
+    end
+
     def side_projects
       Project.amateur.sort_by{|p| p.last_active_year}.reverse
     end

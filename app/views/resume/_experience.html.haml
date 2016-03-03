@@ -30,6 +30,8 @@
           %p.subdued
             %b Basic/Lapsed:
             = raw(@todd.secondary_systems.map{|s| link_to(s.name, s)}.join(', '))
-      .row
-        .medium-6.columns
       %h3 Recognition
+      %h3
+        = experience_icon
+        Volunteering
+      = render @todd.non_profits
