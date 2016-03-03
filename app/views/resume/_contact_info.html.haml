@@ -1,4 +1,10 @@
-= render @todd.email
-= render @todd.phone
-= render @todd.address
+%section#contact-info
+  .row
+    .medium-4.columns.medium-offset-4
+      [logo art?]
+  .row
+    .medium-6.columns.medium.offset-3
+      = render @todd.email
+      = render @todd.phone
+      -# = render @todd.address
 

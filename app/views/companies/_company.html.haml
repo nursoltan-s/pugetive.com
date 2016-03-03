@@ -1,13 +1,3 @@
 - cache company do
-  .company
-    %h3= company.name
-    = company.date_range
-    -# = link_to(company.url, company.url)
-
-    - if company.projects.any?
-      .projects
-        %h4 Projects
-        = render company.projects
-    -# - if company.notes.any?
-    -#   .notes
-    -#     %ul= render company.notes
+  %section.timeline.company
+    = timeline_row(company.date_range, company.name, company.titles.map{|title| title.name})

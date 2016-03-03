@@ -4,6 +4,6 @@ class ToolsController < MetaResourceController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tool_params
-      params.require(:tool).permit(:name, :type, :category, :front_end)
+      params.require(:tool).permit(:name, :type, :category, :front_end, :fluency)
     end
 end

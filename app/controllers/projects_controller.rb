@@ -1,5 +1,18 @@
 class ProjectsController < MetaResourceController
 
+  def index
+    @projects ||= Project.all
+    authorize(@projects, :index?)
+    @categories ||= [:software, :music, :photography]
+  end
+
+  def software
+    @projects = Project.software
+    @categories = [:software]
+    authorize(@projects, :index?)
+    render :index
+  end
+
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params

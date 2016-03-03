@@ -1,3 +1,4 @@
+SITE_TITLE = "Todd G @ pugetive.com"
 BOOLEAN_OPTIONS = [0, 1, false, true]
 CONFIG = YAML.load_file("config/pugetive.yml").with_indifferent_access
 DIVIDER = '~'

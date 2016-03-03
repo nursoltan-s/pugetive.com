@@ -27,6 +27,14 @@ class Todd
       Project.amateur
     end
 
+    def languages
+      Tool.languages.sort_by{|l| l.num_projects}.reverse
+    end
+
+    def systems
+      Tool.systems.sort_by{|s| s.num_projects}.reverse
+    end
+
     def linkedin
       Account.find_by_company('LinkedIn')
     end

@@ -1,6 +1,6 @@
 class Party < ActiveRecord::Base
 
-  TYPES = ['Company', 'Artist']
+  TYPES = ['Company', 'Artist', 'School']
   validates :name, presence: true
   validates :type, inclusion: {in: TYPES}
   # validates :url

@@ -1,0 +1,23 @@
+%section.resume-section#experience
+  .row
+    .medium-8.columns
+      %h3
+        = experience_icon
+        Professional Software
+      = render @todd.jobs
+      %h3
+        = experience_icon
+        Side Projects
+      = render @todd.side_projects
+      %h3
+        = experience_icon
+        Education
+    .medium-4.columns
+      %h3
+        = experience_icon
+        Languages
+      %p Ordered by frequence of use.
+      .row
+        .medium-6.columns= render @todd.languages
+        .medium-6.columns= render @todd.systems
+      %h3 Recognition

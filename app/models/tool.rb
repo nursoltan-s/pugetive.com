@@ -17,5 +17,29 @@ class Tool < ActiveRecord::Base
   has_many :projects, through: :wields
 
 
+  def num_projects
+    @num_projects ||= projects.count
+  end
 
+  # def frequency
+  #   ((num_projects.to_f/ max_project_count(type)) * 3).round
+  # end
+
+  private
+    # def tool_frequencies_hash(category)
+    #   unless (@tool_frequencies_hash.nil? or @tool_frequencies_hash[category].nil?)
+    #     return @tool_frequencies_hash[category]
+    #   end
+    #   @tool_frequencies_hash = {}
+    #   @tool_frequencies_hash[category] = {}
+
+    #   Tool.send(category.downcase.pluralize).each do |tool|
+    #     @tool_frequencies_hash[category][tool.id] = tool.num_projects
+    #   end
+    #   @tool_frequencies_hash[category]
+    # end
+
+    # def max_project_count(category)
+    #   tool_frequencies_hash(category).values.max
+    # end
 end

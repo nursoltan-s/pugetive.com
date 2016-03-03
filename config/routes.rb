@@ -13,6 +13,10 @@ Rails.application.routes.draw do
   resources :notes
   resources :parties
   resources :phones
+
+  [:software, :photography, :music].each do |token|
+    get "projects/#{token}" => "projects#software", as: token
+  end
   resources :projects
   resources :roles
   resources :titles
@@ -25,6 +29,7 @@ Rails.application.routes.draw do
   get 'status' => 'admin#status', as: 'status'
 
   get 'resume' => 'resume#show', as: :resume
+
   match 'todd/edit' => 'about#edit', via: [:get, :post], as: :edit_todd
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

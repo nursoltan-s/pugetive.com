@@ -4,7 +4,21 @@
 
 html.resume-show {
 
+  .resume-section {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+  }
+
   ul.tools-edit {
     display: none;
+  }
+
+  .timeline {
+    .name {
+      font-weight: bold;
+      display: inline-block;
+      margin-right: 1em;
+    }
   }
 }
