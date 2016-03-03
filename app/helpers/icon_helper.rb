@@ -17,7 +17,10 @@ module IconHelper
   end
 
   def experience_icon
-    foundation_icon('target')
+    # foundation_icon('target')
+    # awesome_icon('bookmark')
+    # awesome_icon('dot-circle-o')
+    awesome_icon('circle')
   end
 
   def star_icon(score)
@@ -60,11 +63,20 @@ module IconHelper
     foundation_icon('wrench')
   end
 
+  def web_icon
+    foundation_icon('web')
+  end
+
   private
+
+    def awesome_icon(token, options = {})
+      fa_icon(token, options)
+    end
 
     def foundation_icon(token, options = {})
       content_tag(:i, nil, class: ['icon', "fi-#{token}"])
     end
+
 
 
 end

@@ -34,6 +34,7 @@ gem 'capistrano-rails', group: :development
 gem 'carmen'
 gem 'dalli'
 gem 'devise', :github => 'plataformatec/devise', :branch => 'master'
+gem 'font-awesome-rails'
 gem 'foundation-icons-sass-rails'
 gem 'foundation-rails'
 gem 'friendly_id'

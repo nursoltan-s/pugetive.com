@@ -10,3 +10,15 @@ ul.tools-edit {
     margin: 0;
   }
 }
+
+#resume {
+  .project-panel {
+    display: none;
+  }
+}
+
+html.projects-show {
+  .timeline {
+    display: none;
+  }
+}

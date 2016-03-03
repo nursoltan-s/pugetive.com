@@ -67,7 +67,7 @@ class Todd
 
     def primary_systems
       @primary_systems ||= (systems(2, 5).delete_if{|s| s.name.match(/^Rails/) or
-                                                        s.name.match(/Hosting/)} - highlight_systems)
+                                                        s.name.match(/^Shared/)} - highlight_systems)
     end
 
     def secondary_systems

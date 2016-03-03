@@ -1,28 +1,32 @@
 %section.resume-section#experience
   .row
     .medium-7.columns
-      %h3
-        = experience_icon
-        Professional Software
-      = render @todd.jobs
+      %section#professional
+        %h3
+          = experience_icon
+          Professional Software
+        = render @todd.jobs
 
-      %h3
-        = experience_icon
-        Education
-      = render @todd.schools
-      %h3
-        = experience_icon
-        Recognition
+      %section#education
+        %h3
+          = experience_icon
+          Education
+        = render @todd.schools
+      %section#recognition
+        %h3
+          = experience_icon
+          Recognition
 
     %aside.medium-5.columns
       = render "resume/tools"
-      %h3
-        = experience_icon
-        Side Projects
-      = render @todd.side_projects
+      %section#side-projects
+        %h3
+          = experience_icon
+          Side Projects
+        = render @todd.side_projects
 
-
-      %h3
-        = experience_icon
-        Associations
-      = render @todd.non_profits
+      %section#associations
+        %h3
+          = experience_icon
+          Associations
+        = render @todd.non_profits

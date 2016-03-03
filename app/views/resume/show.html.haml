@@ -1,16 +1,9 @@
-- title("Resume")
+- title("Resume", false)
 
 -# %p= link_to("PDF", {format: :pdf}, class: 'button')
 
-= render "resume/contact_info"
-= render "resume/statement"
+%section#resume
+  = render "resume/contact_info"
 
-= render "resume/experience"
+  = render "resume/experience"
 
--# %h2 Professional Experience
-
--# = render @todd.jobs
-
--# %h2 Side Projects
-
--# = render @todd.side_projects

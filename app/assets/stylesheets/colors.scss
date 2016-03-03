@@ -14,3 +14,27 @@ form label {
 .flash-message .alert {
   color: firebrick;
 }
+
+#resume {
+  #professional, #tools {
+    i.fa {
+      color: #38628C;
+    }
+  }
+
+  #education {
+    i.fa {
+      color: #468C52;
+    }
+  }
+  #side-projects {
+    i.fa {
+      color: #5E4D80;
+    }
+  }
+  #associations {
+    i.fa {
+      color: #736250;
+    }
+  }
+}

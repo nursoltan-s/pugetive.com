@@ -1,10 +1,19 @@
 %section#contact-info
+  -# .row
+  -#   .medium-4.columns.medium-offset-4
+  -#     [logo art?]
   .row
-    .medium-4.columns.medium-offset-4
-      [logo art?]
+    .small-12.columns
+      %h1 Todd Gehman
   .row
-    .medium-6.columns.medium.offset-3
-      = render @todd.email
-      = render @todd.phone
+    .medium-7.columns
+      = render "resume/statement"
+    .medium-5.columns
+      %ul.contacts
+        %li= render @todd.email
+        %li= render @todd.phone
+        %li
+          = web_icon
+          = link_to("pugetive.com", "http://pugetive.com")
       -# = render @todd.address
 
