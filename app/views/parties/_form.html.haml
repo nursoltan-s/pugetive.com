@@ -34,5 +34,10 @@
   .field
     = f.label :stop_year
     = f.select :stop_year, options_for_select(YEARS_OF_LIFE, selected: @party.stop_year), include_blank: true
+
+  .field
+    = f.label :live
+    = f.check_box :live
+
   .actions
     = f.submit 'Save'
