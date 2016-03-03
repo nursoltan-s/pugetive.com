@@ -29,7 +29,7 @@ class Award
       },
       {name: 'Bar-Raiser',
       official_title: "Recruiting",
-      summary: "Initiated into Amazon's program rewarding and promoting excellence in interviewing and critiquing candidates. In that role, interviewed Web Developer candidates company-wide with absolute veto power.",
+      summary: "Initiated into Amazon's program rewarding and promoting excellence in interviewing and critiquing candidates. In that role, interviewed Web Developer candidates company-wide daily with absolute veto power.",
       url: nil,
       live: false,
       date_range: DateRange.new(2002, 2002).years
