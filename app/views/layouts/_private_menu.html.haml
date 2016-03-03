@@ -1,9 +1,10 @@
--# %section.top-bar-section{data: {visible_to: 'admin'}}
--#   .private-menu-container
--#     %ul.menu
--#       %li= link_to(raw("#{project_icon} Projects"), projects_path)
--#       %li= link_to(raw("#{title_icon} Titles"), titles_path)
--#       %li= link_to(raw("#{tools_icon} Tools"), tools_path)
+%section.top-bar-section{data: {visible_to: 'admin'}}
+  #private-menu-wrapper
+    %ul.menu
+      %li= link_to(raw("#{party_icon} Parties"), parties_path)
+      %li= link_to(raw("#{project_icon} Projects"), projects_path)
+      %li= link_to(raw("#{title_icon} Titles"), titles_path)
+      %li= link_to(raw("#{tool_icon} Tools"), tools_path)
 
--#       %li.nowrap{data: {visible_to: 'admin'}}
--#         = link_to(raw("#{status_icon}"), status_path)
+      %li.nowrap{data: {visible_to: 'admin'}}
+        = link_to(raw("#{status_icon}"), status_path)

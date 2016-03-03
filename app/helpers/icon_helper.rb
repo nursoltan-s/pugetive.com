@@ -28,6 +28,10 @@ module IconHelper
     raw(stars_html)
   end
 
+  def party_icon
+    foundation_icon('torsos-all')
+  end
+
   def password_icon
     foundation_icon('key')
   end
@@ -52,7 +56,7 @@ module IconHelper
     foundation_icon('torso-business')
   end
 
-  def tools_icon
+  def tool_icon
     foundation_icon('wrench')
   end
 
