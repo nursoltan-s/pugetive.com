@@ -23,5 +23,7 @@
 config/database.yml
 config/pugetive.yml
 config/secrets.yml
+pugetive.sublime-workspace
+pugetive.sublime-project
 test
 tmp

@@ -28,8 +28,8 @@ class Award
       date_range: DateRange.new(2005, 2005).years
       },
       {name: 'Bar-Raiser',
-      official_title: "Super-Interviewer",
-      summary: "Initiated into Amazon's program rewarding and promoting excellence in interviewing and recruiting. In that role, interviewed Web Developer candidates daily with absolute veto power.",
+      official_title: "Recruiting",
+      summary: "Initiated into Amazon's program rewarding and promoting excellence in interviewing and critiquing candidates. In that role, interviewed Web Developer candidates company-wide with absolute veto power.",
       url: nil,
       live: false,
       date_range: DateRange.new(2002, 2002).years
