@@ -1,0 +1,2 @@
+class AwardPolicy < ApplicationPolicy
+end

@@ -11,9 +11,7 @@
         %h3
           = experience_icon
           Recognition
-        - Award.all.each do |award|
-          %section.timeline.award
-            = timeline_row(award, experience_icon)
+        = render @todd.awards
 
       %section#education
         %h3

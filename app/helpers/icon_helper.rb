@@ -31,6 +31,10 @@ module IconHelper
     raw(stars_html)
   end
 
+  def award_icon
+    foundation_icon('trophy')
+  end
+
   def party_icon
     foundation_icon('torsos-all')
   end

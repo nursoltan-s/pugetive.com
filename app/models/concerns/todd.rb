@@ -23,6 +23,10 @@ class Todd
       Company.all.sort_by{|c| c.start_year}.reverse
     end
 
+    def awards
+      Award.all.sort_by{|c| c.start_year}.reverse
+    end
+
     def schools
       School.all.sort_by{|c| c.start_year}.reverse
     end

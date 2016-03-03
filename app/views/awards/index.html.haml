@@ -1,0 +1,33 @@
+%h1 Listing awards
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Official title
+      %th Summary
+      %th Url
+      %th Live
+      %th Start year
+      %th Stop year
+      %th
+      %th
+      %th
+
+  %tbody
+    - @awards.each do |award|
+      %tr
+        %td= award.name
+        %td= award.official_title
+        %td= award.summary
+        %td= award.url
+        %td= award.live
+        %td= award.start_year
+        %td= award.stop_year
+        %td= link_to 'Show', award
+        %td= link_to 'Edit', edit_award_path(award)
+        %td= link_to 'Destroy', award, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Award', new_award_path

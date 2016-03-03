@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @award.name
+%p
+  %b Official title:
+  = @award.official_title
+%p
+  %b Summary:
+  = @award.summary
+%p
+  %b Url:
+  = @award.url
+%p
+  %b Live:
+  = @award.live
+%p
+  %b Start year:
+  = @award.start_year
+%p
+  %b Stop year:
+  = @award.stop_year
+
+= link_to 'Edit', edit_award_path(@award)
+\|
+= link_to 'Back', awards_path

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160303200959) do
+ActiveRecord::Schema.define(version: 20160303213017) do
 
   create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "company"
@@ -34,6 +34,18 @@ ActiveRecord::Schema.define(version: 20160303200959) do
   add_index "addresses", ["city"], name: "index_addresses_on_city", using: :btree
   add_index "addresses", ["state"], name: "index_addresses_on_state", using: :btree
   add_index "addresses", ["zip"], name: "index_addresses_on_zip", using: :btree
+
+  create_table "awards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.string   "name"
+    t.string   "official_title"
+    t.string   "summary"
+    t.string   "url"
+    t.boolean  "live"
+    t.integer  "start_year"
+    t.integer  "stop_year"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
 
   create_table "companies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "username"
