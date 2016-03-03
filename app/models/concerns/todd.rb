@@ -28,11 +28,11 @@ class Todd
     end
 
     def languages
-      Tool.languages.sort_by{|l| l.num_projects}.reverse
+      Tool.languages.sort_by{|l| l.score}.reverse
     end
 
     def systems
-      Tool.systems.sort_by{|s| s.num_projects}.reverse
+      Tool.systems.sort_by{|s| s.score}.reverse
     end
 
     def linkedin

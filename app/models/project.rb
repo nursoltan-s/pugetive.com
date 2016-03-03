@@ -1,5 +1,5 @@
 class Project < ActiveRecord::Base
-  include Noteable
+  # include Noteable
 
   TYPES = ['SoftwareApp', 'RecordingSession', 'PhotoSeries']
 
@@ -43,9 +43,15 @@ class Project < ActiveRecord::Base
     tools.concepts
   end
 
-
   def date_range
     DateRange.new(start_year, stop_year).years
+  end
+
+  def last_active_year
+    if stop_year.nil?
+      return Time.now.year
+    end
+    stop_year
   end
 
 end

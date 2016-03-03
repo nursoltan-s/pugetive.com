@@ -7,6 +7,11 @@
   .field
     = f.label :type
     = f.select :type, options_for_select(Party::TYPES)
+
+  .field
+    = f.label :official_title
+    = f.text_field :official_title
+
   .field
     = f.label :url
     = f.text_field :url

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160303003135) do
+ActiveRecord::Schema.define(version: 20160303011838) do
 
   create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "company"
@@ -63,15 +63,16 @@ ActiveRecord::Schema.define(version: 20160303003135) do
   add_index "notes", ["noteable_type", "noteable_id"], name: "index_notes_on_noteable_type_and_noteable_id", using: :btree
 
   create_table "parties", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.string   "name",                      null: false
-    t.string   "type",                      null: false
+    t.string   "name",                         null: false
+    t.string   "type",                         null: false
     t.string   "url"
-    t.text     "description", limit: 65535
-    t.integer  "start_year",                null: false
+    t.text     "description",    limit: 65535
+    t.integer  "start_year",                   null: false
     t.integer  "stop_year"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.string   "location",    limit: 32
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.string   "location",       limit: 32
+    t.string   "official_title"
   end
 
   add_index "parties", ["name"], name: "index_parties_on_name", using: :btree
@@ -91,16 +92,17 @@ ActiveRecord::Schema.define(version: 20160303003135) do
   add_index "phones", ["category"], name: "index_phones_on_category", using: :btree
 
   create_table "projects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.string   "name",                      null: false
-    t.string   "type",        limit: 32,    null: false
-    t.integer  "party_id",                  null: false
+    t.string   "name",                         null: false
+    t.string   "type",           limit: 32,    null: false
+    t.integer  "party_id",                     null: false
     t.string   "url"
-    t.integer  "start_year",                null: false
+    t.integer  "start_year",                   null: false
     t.integer  "stop_year"
-    t.text     "description", limit: 65535
-    t.boolean  "live",                      null: false
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.text     "description",    limit: 65535
+    t.boolean  "live",                         null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.string   "official_title"
   end
 
   add_index "projects", ["live"], name: "index_projects_on_live", using: :btree

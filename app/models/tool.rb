@@ -21,6 +21,19 @@ class Tool < ActiveRecord::Base
     @num_projects ||= projects.count
   end
 
+
+  def score
+    fluency * recency
+  end
+
+  def recency
+    (20 - (Time.now.year - last_used_year) * 5)
+  end
+
+  def last_used_year
+    projects.map{|p| p.last_active_year}.max.to_i
+  end
+
   # def frequency
   #   ((num_projects.to_f/ max_project_count(type)) * 3).round
   # end

@@ -39,7 +39,7 @@ class MetaResourceController < ApplicationController
     authorize(item, :update?)
     respond_to do |format|
       if item.update(item_params)
-        format.html { redirect_to post_update_path, notice: 'Email was successfully updated.' }
+        format.html { redirect_to post_update_path, notice: "#{item.class.name} was successfully updated." }
         format.json { render :show, status: :ok, location: item }
       else
         format.html { render :edit }
@@ -52,7 +52,7 @@ class MetaResourceController < ApplicationController
     authorize(item, :destroy?)
     item.destroy
     respond_to do |format|
-      format.html { redirect_to post_destroy_path, notice: 'Email was successfully destroyed.' }
+      format.html { redirect_to post_destroy_path, notice: "#{item.class.name} was successfully destroyed." }
       format.json { head :no_content }
     end
   end
