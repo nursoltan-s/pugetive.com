@@ -3,15 +3,17 @@
 %table
   %thead
     %tr
+      %th
       %th Name
       %th Type
       %th
       %th
       %th
-      
+
   %tbody
     - @tools.each do |tool|
       %tr
+        %td= star_icon(tool.fluency)
         %td= tool.name
         %td= tool.type
         %td= link_to 'Show', tool
