@@ -1,5 +1,8 @@
 class Party < ActiveRecord::Base
 
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :history]
+
   TYPES = ['Company', 'Artist', 'School']
   validates :name, presence: true
   validates :type, inclusion: {in: TYPES}
@@ -18,6 +21,10 @@ class Party < ActiveRecord::Base
 
   def date_range
     DateRange.new(start_year, stop_year).years
+  end
+
+  def should_generate_new_friendly_id?
+    slug.blank? || name_changed?
   end
 
   private

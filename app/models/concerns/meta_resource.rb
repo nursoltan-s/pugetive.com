@@ -16,7 +16,9 @@ class MetaResource
   end
 
   def set_item
-    if new_item
+    if item_id.match(/\D/) and friendly_item = item_class.friendly.find(item_id)
+      value = friendly_item
+    elsif new_item
       value = new_item
     elsif item_id
       value = item_class.find(item_id)

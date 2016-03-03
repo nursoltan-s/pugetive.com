@@ -36,6 +36,7 @@ gem 'dalli'
 gem 'devise', :github => 'plataformatec/devise', :branch => 'master'
 gem 'foundation-icons-sass-rails'
 gem 'foundation-rails'
+gem 'friendly_id'
 gem 'haml'
 gem 'haml-rails'
 gem "nilify_blanks"

@@ -14,6 +14,10 @@ class MetaResourceController < ApplicationController
 
   def show
     authorize(item)
+    if request.path != send("#{meta_resource.singular_token}_path", item)
+      return redirect_to item, :status => :moved_permanently
+    end
+
   end
 
   def new

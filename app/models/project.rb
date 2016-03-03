@@ -1,6 +1,9 @@
 class Project < ActiveRecord::Base
   # include Noteable
 
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :history]
+
   TYPES = ['SoftwareApp', 'RecordingSession', 'PhotoSeries']
 
   validates :name, presence: true
@@ -53,5 +56,10 @@ class Project < ActiveRecord::Base
     end
     stop_year
   end
+
+  def should_generate_new_friendly_id?
+    slug.blank? || name_changed?
+  end
+
 
 end

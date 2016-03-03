@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160303014148) do
+ActiveRecord::Schema.define(version: 20160303041106) do
 
   create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "company"
@@ -52,6 +52,19 @@ ActiveRecord::Schema.define(version: 20160303014148) do
   add_index "emails", ["address"], name: "index_emails_on_address", unique: true, using: :btree
   add_index "emails", ["category"], name: "index_emails_on_category", using: :btree
 
+  create_table "friendly_id_slugs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope"
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
   create_table "notes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "noteable_type", limit: 32, null: false
     t.integer  "noteable_id",              null: false
@@ -74,9 +87,11 @@ ActiveRecord::Schema.define(version: 20160303014148) do
     t.string   "location",       limit: 32
     t.string   "official_title"
     t.string   "summary"
+    t.string   "slug"
   end
 
   add_index "parties", ["name"], name: "index_parties_on_name", using: :btree
+  add_index "parties", ["slug"], name: "index_parties_on_slug", using: :btree
   add_index "parties", ["start_year"], name: "index_parties_on_start_year", using: :btree
   add_index "parties", ["stop_year"], name: "index_parties_on_stop_year", using: :btree
   add_index "parties", ["type"], name: "index_parties_on_type", using: :btree
@@ -105,11 +120,13 @@ ActiveRecord::Schema.define(version: 20160303014148) do
     t.datetime "updated_at",                   null: false
     t.string   "official_title"
     t.string   "summary"
+    t.string   "slug"
   end
 
   add_index "projects", ["live"], name: "index_projects_on_live", using: :btree
   add_index "projects", ["name"], name: "index_projects_on_name", using: :btree
   add_index "projects", ["party_id"], name: "index_projects_on_party_id", using: :btree
+  add_index "projects", ["slug"], name: "index_projects_on_slug", using: :btree
   add_index "projects", ["start_year"], name: "index_projects_on_start_year", using: :btree
   add_index "projects", ["stop_year"], name: "index_projects_on_stop_year", using: :btree
   add_index "projects", ["type"], name: "index_projects_on_type", using: :btree
@@ -143,10 +160,12 @@ ActiveRecord::Schema.define(version: 20160303014148) do
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
     t.integer  "fluency",    limit: 1,  default: 0,     null: false
+    t.string   "slug"
   end
 
   add_index "tools", ["fluency"], name: "index_tools_on_fluency", using: :btree
   add_index "tools", ["name"], name: "index_tools_on_name", using: :btree
+  add_index "tools", ["slug"], name: "index_tools_on_slug", using: :btree
   add_index "tools", ["type"], name: "index_tools_on_type", using: :btree
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|

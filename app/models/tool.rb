@@ -1,5 +1,8 @@
 class Tool < ActiveRecord::Base
 
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :history]
+
   TYPES = ['Language', 'System', 'Program', 'Concept', 'Instrument']
   validates :name, presence: true
   validates :type, inclusion: {in: TYPES}
@@ -37,6 +40,10 @@ class Tool < ActiveRecord::Base
   # def frequency
   #   ((num_projects.to_f/ max_project_count(type)) * 3).round
   # end
+
+  def should_generate_new_friendly_id?
+    slug.blank? || name_changed?
+  end
 
   private
     # def tool_frequencies_hash(category)
