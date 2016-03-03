@@ -1,6 +1,6 @@
 - cache project do
   %section.timeline.project
-    = timeline_row(project.date_range, project.name, project.official_title, project.summary)
+    = timeline_row(project.date_range, project.name, project.official_title, project.summary, project.live? ? project.url : nil)
 
   -# %section.project.panel
   -#   %h3.linked= link_to(project.name, project)

@@ -27,12 +27,33 @@ class Todd
       Project.amateur
     end
 
-    def languages
-      Tool.languages.sort_by{|l| l.score}.reverse
+    def languages(fluency_cutoff = 0, years_of_recency = 20)
+      recency_cutoff = Time.now.year - years_of_recency
+      Tool.languages.sort_by{|l| l.name}.delete_if{|l| (l.fluency < fluency_cutoff) or
+                                                       (l.last_used_year < recency_cutoff)}
     end
 
-    def systems
-      Tool.systems.sort_by{|s| s.score}.reverse
+    def primary_languages
+      @primary_languages ||= languages(2, 5).delete_if{|l| l.name.match(/Perl/)}
+    end
+
+    def secondary_languages
+      @seconary_languages ||= (languages - primary_languages)
+    end
+
+    def systems(fluency_cutoff = 0, years_of_recency = 20)
+      recency_cutoff = Time.now.year - years_of_recency
+      Tool.systems.sort_by{|s| s.name}.delete_if{|s| (s.fluency < fluency_cutoff) or
+                                                      (s.last_used_year < recency_cutoff)}
+    end
+
+    def primary_systems
+      @primary_systems ||= systems(2, 5).delete_if{|s| s.name.match(/^Rails/) or
+                                                       s.name.match(/Hosting/)}
+    end
+
+    def secondary_systems
+      @secondary_systems ||= (systems - primary_systems)
     end
 
     def linkedin

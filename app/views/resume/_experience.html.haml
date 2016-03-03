@@ -1,6 +1,6 @@
 %section.resume-section#experience
   .row
-    .medium-8.columns
+    .medium-7.columns
       %h3
         = experience_icon
         Professional Software
@@ -12,12 +12,22 @@
       %h3
         = experience_icon
         Education
-    .medium-4.columns
+    .medium-5.columns
       %h3
         = experience_icon
-        Languages
-      %p Ordered by frequence of use.
+        Languages & Systems
       .row
-        .medium-6.columns= render @todd.languages
-        .medium-6.columns= render @todd.systems
+        .medium-6.columns
+          = render @todd.primary_languages
+          %p.subdued
+            %b Basic/Lapsed:
+            = raw(@todd.secondary_languages.map{|l| link_to(l.name, l)}.join(', '))
+
+        .medium-6.columns
+          = render @todd.primary_systems
+          %p.subdued
+            %b Basic/Lapsed:
+            = raw(@todd.secondary_systems.map{|s| link_to(s.name, s)}.join(', '))
+      .row
+        .medium-6.columns
       %h3 Recognition

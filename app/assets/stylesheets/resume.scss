@@ -1,8 +1,14 @@
-// Place all the styles related to the resume controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'colors';
+@import 'mixins';
 
 html.resume-show {
+
+  a {
+    color: $body_color;
+  }
+  a:hover {
+    @include subdued();
+  }
 
   .resume-section {
     border-bottom: 1px solid #ccc;
