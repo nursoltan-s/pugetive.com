@@ -1,7 +1,7 @@
 @import 'mixins';
 
 $header_font_family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-$body_font_family: 'Open Sans', Garamond, Baskerville, 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', serif;
+$body_font_family: 'Open Sans', Helvetica, Arial, sans-serif;
 
 .subdued {
   @include subdued();
