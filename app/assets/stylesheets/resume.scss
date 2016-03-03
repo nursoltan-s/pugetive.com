@@ -8,8 +8,11 @@ html.resume-show {
     p {
       margin-top: 1em;
     }
+    .highlights {
+      margin-bottom: 0.5em;
+    }
     .primary {
-      @include subdued();
+      @include subdued(66);
     }
   }
   a {
@@ -44,7 +47,7 @@ html.resume-show {
       white-space: nowrap;
       @include subdued(60);
       font-size: 0.9em;
-      padding-top: 0.1em;
+      padding-top: 0.125em;
     }
 
   }

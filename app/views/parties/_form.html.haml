@@ -4,9 +4,10 @@
   .field
     = f.label :name
     = f.text_field :name
+
   .field
     = f.label :type
-    = f.select :type, options_for_select(Party::TYPES)
+    = f.select :type, options_for_select(Party::TYPES, selected: @party.type)
 
   .field
     = f.label :official_title

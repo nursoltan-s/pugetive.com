@@ -61,7 +61,8 @@ class Todd
     end
 
     def highlight_systems
-      @highlight_systems ||= systems(2, 5).select{|l| l.name.match(/(Ruby on Rails|Capistrano|Github|jQuery)/)}
+      keywords = %w(ruby capistrano git jquery foundation)
+      @highlight_systems ||= systems(2, 5).select{|l| l.name.match(/(#{keywords.join('|')})/i)}
     end
 
     def primary_systems
