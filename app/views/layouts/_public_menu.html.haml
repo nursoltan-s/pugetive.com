@@ -3,7 +3,7 @@
     %button.menu-icon{type: 'button', data: {toggle: true}}
     .title-bar-title Menu
 
-  .top-bar#public-menu
+  #public-menu.top-bar
     .top-bar-left
       %ul.dropdown.menu{data: {dropdown_menu: true}}
         %li.menu-text= link_to(SITE_TITLE, root_path)
@@ -12,35 +12,31 @@
           %ul.menu.vertical
             %li= link_to("Resume", resume_path)
             %li= link_to("Projects", software_path)
-        %li
-          %a{href: '#'} Music
-          %ul.menu.vertical
-            %li
-              %a{href: '#'} Active Projects
-            %li
-              %a{href: '#'} Former Bands, Releases, Gigging
-            %li
-              %a{href: '#'} Songwriting/Recording Sprints
-            %li
-              %a{href: '#'} Music Software Projects
+        -# %li{data: {visible_to: 'admin'}}
+        -#   %a{href: '#'} Music
+        -#   %ul.menu.vertical
+        -#     %li
+        -#       %a{href: '#'} Active Projects
+        -#     %li
+        -#       %a{href: '#'} Former Bands, Releases, Gigging
+        -#     %li
+        -#       %a{href: '#'} Songwriting/Recording Sprints
+        -#     %li
+        -#       %a{href: '#'} Music Software Projects
 
-        %li
-          %a{href: '#'} Photography
-          %ul.menu.vertical
-            %li
-              %a{href: '#'} Portfolios
-            %li
-              %a{href: '#'} Contests & Experiments
+        -# %li{data: {visible_to: 'admin'}}
+        -#   %a{href: '#'} Photography
+        -#   %ul.menu.vertical
+        -#     %li
+        -#       %a{href: '#'} Portfolios
+        -#     %li
+        -#       %a{href: '#'} Contests & Experiments
 
-        %li
-          %a{href: '#'} Writing
-          %ul.menu.vertical
-            %li
-              %a{href: '#'} Past & Future Blogs
-            %li
-              %a{href: '#'} Published/Commercial Work
-
-        -# %li Photography
-        -# %li Music
-        -# %li Writing
+        -# %li{data: {visible_to: 'admin'}}
+        -#   %a{href: '#'} Writing
+        -#   %ul.menu.vertical
+        -#     %li
+        -#       %a{href: '#'} Past & Future Blogs
+        -#     %li
+        -#       %a{href: '#'} Published/Commercial Work
 
