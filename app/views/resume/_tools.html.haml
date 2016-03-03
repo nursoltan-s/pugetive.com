@@ -3,13 +3,15 @@
   Languages & Systems
 .row.languages-systems
   .medium-6.columns
-    = render @todd.primary_languages
+    .highlights= render @todd.highlight_languages
+    .primary= render @todd.primary_languages
     %p.subdued
       %b Basic/Lapsed:
       = raw(@todd.secondary_languages.map{|l| link_to(l.name, l)}.join(', '))
 
   .medium-6.columns
-    = render @todd.primary_systems
+    .highlights= render @todd.highlight_systems
+    .primary= render @todd.primary_systems
     %p.subdued
       %b Basic/Lapsed:
       = raw(@todd.secondary_systems.map{|s| link_to(s.name, s)}.join(', '))

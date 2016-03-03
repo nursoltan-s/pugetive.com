@@ -8,6 +8,9 @@ html.resume-show {
     p {
       margin-top: 1em;
     }
+    .primary {
+      @include subdued();
+    }
   }
   a {
     color: $body_color;

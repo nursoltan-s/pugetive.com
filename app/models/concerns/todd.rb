@@ -41,13 +41,17 @@ class Todd
                                                        (l.last_used_year < recency_cutoff)}
     end
 
+    def highlight_languages
+      @highlight_languages ||= languages(2, 5).select{|l| l.name.match(/(CoffeeScript|Ruby|HAML|SASS)/)}
+    end
+
     def primary_languages
-      @primary_languages ||= languages(2, 5).delete_if{|l| l.name.match(/Perl/) or
-                                                           l.name.match(/HTML$/)}
+      @primary_languages ||= (languages(2, 5).delete_if{|l| l.name.match(/Perl/) or
+                                                            l.name.match(/HTML$/)} - highlight_languages)
     end
 
     def secondary_languages
-      @seconary_languages ||= (languages - primary_languages)
+      @seconary_languages ||= (languages - primary_languages - highlight_languages)
     end
 
     def systems(fluency_cutoff = 0, years_of_recency = 20)
@@ -56,13 +60,17 @@ class Todd
                                                       (s.last_used_year < recency_cutoff)}
     end
 
+    def highlight_systems
+      @highlight_systems ||= systems(2, 5).select{|l| l.name.match(/(Ruby on Rails|Capistrano|Github|jQuery)/)}
+    end
+
     def primary_systems
-      @primary_systems ||= systems(2, 5).delete_if{|s| s.name.match(/^Rails/) or
-                                                       s.name.match(/Hosting/)}
+      @primary_systems ||= (systems(2, 5).delete_if{|s| s.name.match(/^Rails/) or
+                                                        s.name.match(/Hosting/)} - highlight_systems)
     end
 
     def secondary_systems
-      @secondary_systems ||= (systems - primary_systems)
+      @secondary_systems ||= (systems - primary_systems - highlight_systems)
     end
 
     def linkedin
