@@ -10,6 +10,11 @@
   .field
     = f.label :official_title
     = f.text_field :official_title
+
+  .field
+    = f.label :summary
+    = f.text_field :summary
+
   .field
     = f.label :party_id
     = f.select :party_id, options_from_collection_for_select(Party.sorted, :id, :name, selected: @project.party_id)

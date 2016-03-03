@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160303011838) do
+ActiveRecord::Schema.define(version: 20160303014148) do
 
   create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "company"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 20160303011838) do
     t.datetime "updated_at",                   null: false
     t.string   "location",       limit: 32
     t.string   "official_title"
+    t.string   "summary"
   end
 
   add_index "parties", ["name"], name: "index_parties_on_name", using: :btree
@@ -103,6 +104,7 @@ ActiveRecord::Schema.define(version: 20160303011838) do
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.string   "official_title"
+    t.string   "summary"
   end
 
   add_index "projects", ["live"], name: "index_projects_on_live", using: :btree
