@@ -1,0 +1,7 @@
+= form_for @user, url: settings_path do |f|
+  - handle_errors(@user)
+  = label_field(f.label(:email), f.text_field(:email))
+  = label_field(f.label(:one_liner), f.text_field(:one_liner))
+  = label_field(f.label(:objective), f.text_field(:objective))
+  = label_field(f.label(:summary), f.text_field(:summary))
+  = submit(f)

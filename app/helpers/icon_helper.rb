@@ -47,6 +47,10 @@ module IconHelper
     foundation_icon('telephone')
   end
 
+  def print_icon
+    foundation_icon('print')
+  end
+
   def project_icon
     foundation_icon('page-multiple')
   end

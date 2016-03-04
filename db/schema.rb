@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20160303213017) do
   add_index "addresses", ["state"], name: "index_addresses_on_state", using: :btree
   add_index "addresses", ["zip"], name: "index_addresses_on_zip", using: :btree
 
-  create_table "awards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "awards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
     t.string   "official_title"
     t.string   "summary"

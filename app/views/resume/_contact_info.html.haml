@@ -8,7 +8,7 @@
   .row
     .medium-7.columns
       = render "resume/statement"
-    .medium-5.columns
+    .medium-3.columns
       %ul.contacts
         %li= render @todd.email
         %li= render @todd.phone
@@ -16,4 +16,7 @@
           = web_icon
           = link_to("pugetive.com", "http://pugetive.com")
       -# = render @todd.address
+    .medium-2.columns
+      %p= link_to(raw("#{print_icon} Printable PDF"), {format: :pdf}, class: 'button')
+
 
