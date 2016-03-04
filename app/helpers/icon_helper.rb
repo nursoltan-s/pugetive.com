@@ -55,6 +55,10 @@ module IconHelper
     foundation_icon('page-multiple')
   end
 
+  def settings_icon
+    awesome_icon('cog')
+  end
+
   def status_icon
     foundation_icon('web')
   end

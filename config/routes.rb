@@ -30,7 +30,6 @@ Rails.application.routes.draw do
   get 'resume' => 'resume#show', as: :resume
   match 'settings' => 'users#edit', via: [:get, :patch], as: :settings
 
-  match 'todd/edit' => 'about#edit', via: [:get, :post], as: :edit_todd
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
