@@ -3,3 +3,17 @@ html.tools-show {
     display: none;
   }
 }
+
+ul.tools-edit {
+  li {
+    width: 250px;
+    height: 2em;
+    float: left;
+    list-style: none;
+    input[type=submit] {
+      padding: 0.1em 0.3em;
+    }
+    border-bottom: 1px dotted #666;
+    margin-bottom: 1em;
+  }
+}
