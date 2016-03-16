@@ -1,21 +1,4 @@
-#resume
-  = render "header"
+%section#resume
+  = render "resume/contact_info"
 
-  %section
-    .sidebar
-      %h2 Summary
-    .main
-      %p= @todd.summary
-
-  %section
-    .sidebar
-      %h2 Employment
-    .main
-      = render partial: 'companies/company', formats: [:html], collection: @todd.jobs
-
-
-  %section.page-break
-    .sidebar
-      %h2 Side Projects
-    .main
-      = render partial: 'projects/project', formats: [:html], collection: @todd.side_projects
+  = render "resume/experience"
