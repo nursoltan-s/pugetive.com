@@ -6,6 +6,8 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+CONFIG = YAML.load_file("config/pugetive.yml").with_indifferent_access
+
 module PugetiveCom
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
