@@ -62,6 +62,7 @@ sudo apt-get install mysql-server mysql-client libmysqlclient-dev
 # Firewall
 # ---------------------
 sudo ufw allow http
+sudo ufw allow https
 
 # [OPTIONAL] Required for use of RMagick gems
 sudo apt-get install imagemagick libmagickcore-dev libmagickwand-dev
