@@ -1,13 +1,15 @@
-- title("Projects involving #{@tool.name}")
+- title("Projects involving #{@tool.name}", false)
 
-%p
-  %b Name:
-  = @tool.name
-%p
-  %b Type:
-  = @tool.type
+%h1
+  %span.intro Projects involving:
+  %span.tool-name= @tool.name
 
-%section.projects= render @tool.projects
+%h2.subhead= @tool.type
+
+%section.projects
+  .row
+    .medium-6.columns
+      = render @tool.projects
 
 = link_to 'Edit', edit_tool_path(@tool)
 \|

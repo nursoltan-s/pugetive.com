@@ -2,16 +2,39 @@
 @import 'mixins';
 
 $border_style: dotted;
+
+.fa-circle {
+  @include subdued(66);
+}
+
+.timeline {
+  .name {
+    font-weight: bold;
+    display: inline-block;
+    margin-right: 0.5em;
+  }
+  .summary {
+    margin-top: 0.3em;
+    @include subdued(60);
+    font-size: 0.9em;
+  }
+  .dates {
+    white-space: nowrap;
+    @include subdued(60);
+    font-size: 0.9em;
+    padding-top: 0.125em;
+  }
+
+}
+
+
 html.resume-show {
 
-
-  .fa-circle {
-    @include subdued(66);
-  }
 
   #statement {
     @include subdued(80);
   }
+
   .languages-systems {
     p {
       margin-top: 1em;
@@ -40,25 +63,6 @@ html.resume-show {
     display: none;
   }
 
-  .timeline {
-    .name {
-      font-weight: bold;
-      display: inline-block;
-      margin-right: 0.5em;
-    }
-    .summary {
-      margin-top: 0.3em;
-      @include subdued(60);
-      font-size: 0.9em;
-    }
-    .dates {
-      white-space: nowrap;
-      @include subdued(60);
-      font-size: 0.9em;
-      padding-top: 0.125em;
-    }
-
-  }
   aside {
     border-left: 1px $border_style $border_color;
     h3 {

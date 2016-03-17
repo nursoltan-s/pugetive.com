@@ -1,19 +1,28 @@
+@import 'mixins';
+
 html.tools-show {
   section.tools, section.notes {
     display: none;
   }
+
+  h1 {
+    .intro {
+      @include subdued();
+    }
+  }
 }
 
 ul.tools-edit {
+  margin-top: 1em;
   li {
     width: 250px;
     height: 2em;
     float: left;
     list-style: none;
+    border-bottom: 1px dotted #666;
+    margin-bottom: 1em;
     input[type=submit] {
       padding: 0.1em 0.3em;
     }
-    border-bottom: 1px dotted #666;
-    margin-bottom: 1em;
   }
 }
