@@ -60,7 +60,7 @@ Rails.application.configure do
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
-  config.action_controller.asset_host = "http://#{CONFIG[:staging][:asset_host]}"
+  config.action_controller.asset_host = "#{CONFIG[:staging][:host_protocol]}://#{CONFIG[:staging][:asset_host]}"
 
 
   # Ignore bad email addresses and do not raise email delivery errors.
