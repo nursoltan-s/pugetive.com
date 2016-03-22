@@ -213,4 +213,12 @@ gem install wkhtmltopdf-binary
 http://www.rackspace.com/knowledge_center/article/rackspace-cloud-backup-install-the-agent
 
 
-
+# ---------------------
+# Free SSL
+# ---------------------
+# https://letsencrypt.org/getting-started/
+# https://www.digitalocean.com/community/tutorials/how-to-secure-apache-with-let-s-encrypt-on-ubuntu-14-04
+sudo apt-get update
+sudo git clone https://github.com/letsencrypt/letsencrypt /opt/letsencrypt
+cd /opt/letsencrypt
+./letsencrypt-auto --apache -d pugetive.com -d assets.pugetive.com
