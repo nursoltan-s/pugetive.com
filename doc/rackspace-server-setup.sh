@@ -87,7 +87,7 @@ sudo emacs ~/.bashrc
 
 sudo emacs ~/.profile
 # Add this line, un-commented-out
-# alias ct='cd ~/apps/pugetive.com/current'
+# alias ct='cd ~/apps/pugetive/current'
 
 source ~/.bashrc
 
@@ -110,7 +110,7 @@ gem install json
 # [ If DB is local: create databases and grant permissions to db_user on localhost, remote IP, and remote host name ]
 [create and grant access to DB]
 # Example:
-# grant all on nomad_staging.* to nomad_db_user@localhost identified by '<password>'
+# grant all on pugetive_staging.* to pugetive_db_user@localhost identified by '<password>'
 
 # If the server IP isn't in public DNS yet, set it locally.
 # sudo emacs /etc/hosts
@@ -196,7 +196,7 @@ cap <env> db:push
 # or rake db:sync
 
 # Copy contents of repository files into these locations:
-# [ ADMIN: sudo emacs /etc/logrotate.d/experi-nomad-logrotate ]
+# [ ADMIN: sudo emacs /etc/logrotate.d/pugetive-logrotate ]
 # [ ADMIN: Add custom message to /etc/motd             ]
 
 # ---------------------
@@ -218,6 +218,9 @@ http://www.rackspace.com/knowledge_center/article/rackspace-cloud-backup-install
 # ---------------------
 # https://letsencrypt.org/getting-started/
 # https://www.digitalocean.com/community/tutorials/how-to-secure-apache-with-let-s-encrypt-on-ubuntu-14-04
+
+sudo ufw allow https
+
 sudo apt-get update
 sudo git clone https://github.com/letsencrypt/letsencrypt /opt/letsencrypt
 cd /opt/letsencrypt

@@ -29,11 +29,10 @@ ActiveRecord::Schema.define(version: 20160303213017) do
     t.string   "zip",        limit: 12, null: false
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
+    t.index ["city"], name: "index_addresses_on_city", using: :btree
+    t.index ["state"], name: "index_addresses_on_state", using: :btree
+    t.index ["zip"], name: "index_addresses_on_zip", using: :btree
   end
-
-  add_index "addresses", ["city"], name: "index_addresses_on_city", using: :btree
-  add_index "addresses", ["state"], name: "index_addresses_on_state", using: :btree
-  add_index "addresses", ["zip"], name: "index_addresses_on_zip", using: :btree
 
   create_table "awards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
@@ -59,10 +58,9 @@ ActiveRecord::Schema.define(version: 20160303213017) do
     t.string   "category",   limit: 8
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
+    t.index ["address"], name: "index_emails_on_address", unique: true, using: :btree
+    t.index ["category"], name: "index_emails_on_category", using: :btree
   end
-
-  add_index "emails", ["address"], name: "index_emails_on_address", unique: true, using: :btree
-  add_index "emails", ["category"], name: "index_emails_on_category", using: :btree
 
   create_table "friendly_id_slugs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "slug",                      null: false
@@ -70,12 +68,11 @@ ActiveRecord::Schema.define(version: 20160303213017) do
     t.string   "sluggable_type", limit: 50
     t.string   "scope"
     t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+    t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+    t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
   end
-
-  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
-  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
-  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
-  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "notes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "noteable_type", limit: 32, null: false
@@ -83,9 +80,8 @@ ActiveRecord::Schema.define(version: 20160303213017) do
     t.string   "contents"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.index ["noteable_type", "noteable_id"], name: "index_notes_on_noteable_type_and_noteable_id", using: :btree
   end
-
-  add_index "notes", ["noteable_type", "noteable_id"], name: "index_notes_on_noteable_type_and_noteable_id", using: :btree
 
   create_table "parties", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "name",                                         null: false
@@ -101,13 +97,12 @@ ActiveRecord::Schema.define(version: 20160303213017) do
     t.string   "summary"
     t.string   "slug"
     t.boolean  "live",                         default: false
+    t.index ["name"], name: "index_parties_on_name", using: :btree
+    t.index ["slug"], name: "index_parties_on_slug", using: :btree
+    t.index ["start_year"], name: "index_parties_on_start_year", using: :btree
+    t.index ["stop_year"], name: "index_parties_on_stop_year", using: :btree
+    t.index ["type"], name: "index_parties_on_type", using: :btree
   end
-
-  add_index "parties", ["name"], name: "index_parties_on_name", using: :btree
-  add_index "parties", ["slug"], name: "index_parties_on_slug", using: :btree
-  add_index "parties", ["start_year"], name: "index_parties_on_start_year", using: :btree
-  add_index "parties", ["stop_year"], name: "index_parties_on_stop_year", using: :btree
-  add_index "parties", ["type"], name: "index_parties_on_type", using: :btree
 
   create_table "phones", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "category",              limit: 8
@@ -116,9 +111,8 @@ ActiveRecord::Schema.define(version: 20160303213017) do
     t.string   "area_code",             limit: 3
     t.string   "central_office_number", limit: 3
     t.string   "subscriber_number",     limit: 4
+    t.index ["category"], name: "index_phones_on_category", using: :btree
   end
-
-  add_index "phones", ["category"], name: "index_phones_on_category", using: :btree
 
   create_table "projects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "name",                         null: false
@@ -134,36 +128,33 @@ ActiveRecord::Schema.define(version: 20160303213017) do
     t.string   "official_title"
     t.string   "summary"
     t.string   "slug"
+    t.index ["live"], name: "index_projects_on_live", using: :btree
+    t.index ["name"], name: "index_projects_on_name", using: :btree
+    t.index ["party_id"], name: "index_projects_on_party_id", using: :btree
+    t.index ["slug"], name: "index_projects_on_slug", using: :btree
+    t.index ["start_year"], name: "index_projects_on_start_year", using: :btree
+    t.index ["stop_year"], name: "index_projects_on_stop_year", using: :btree
+    t.index ["type"], name: "index_projects_on_type", using: :btree
   end
-
-  add_index "projects", ["live"], name: "index_projects_on_live", using: :btree
-  add_index "projects", ["name"], name: "index_projects_on_name", using: :btree
-  add_index "projects", ["party_id"], name: "index_projects_on_party_id", using: :btree
-  add_index "projects", ["slug"], name: "index_projects_on_slug", using: :btree
-  add_index "projects", ["start_year"], name: "index_projects_on_start_year", using: :btree
-  add_index "projects", ["stop_year"], name: "index_projects_on_stop_year", using: :btree
-  add_index "projects", ["type"], name: "index_projects_on_type", using: :btree
 
   create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.integer  "project_id", null: false
     t.integer  "title_id",   null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["project_id", "title_id"], name: "index_roles_on_project_id_and_title_id", unique: true, using: :btree
+    t.index ["project_id"], name: "index_roles_on_project_id", using: :btree
+    t.index ["title_id"], name: "index_roles_on_title_id", using: :btree
   end
-
-  add_index "roles", ["project_id", "title_id"], name: "index_roles_on_project_id_and_title_id", unique: true, using: :btree
-  add_index "roles", ["project_id"], name: "index_roles_on_project_id", using: :btree
-  add_index "roles", ["title_id"], name: "index_roles_on_title_id", using: :btree
 
   create_table "titles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "name",                  null: false
     t.string   "category",   limit: 16, null: false
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
+    t.index ["category"], name: "index_titles_on_category", using: :btree
+    t.index ["name"], name: "index_titles_on_name", using: :btree
   end
-
-  add_index "titles", ["category"], name: "index_titles_on_category", using: :btree
-  add_index "titles", ["name"], name: "index_titles_on_name", using: :btree
 
   create_table "tools", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "name",                                  null: false
@@ -174,12 +165,11 @@ ActiveRecord::Schema.define(version: 20160303213017) do
     t.datetime "updated_at",                            null: false
     t.integer  "fluency",    limit: 1,  default: 0,     null: false
     t.string   "slug"
+    t.index ["fluency"], name: "index_tools_on_fluency", using: :btree
+    t.index ["name"], name: "index_tools_on_name", using: :btree
+    t.index ["slug"], name: "index_tools_on_slug", using: :btree
+    t.index ["type"], name: "index_tools_on_type", using: :btree
   end
-
-  add_index "tools", ["fluency"], name: "index_tools_on_fluency", using: :btree
-  add_index "tools", ["name"], name: "index_tools_on_name", using: :btree
-  add_index "tools", ["slug"], name: "index_tools_on_slug", using: :btree
-  add_index "tools", ["type"], name: "index_tools_on_type", using: :btree
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "email",                                default: "", null: false
@@ -197,19 +187,17 @@ ActiveRecord::Schema.define(version: 20160303213017) do
     t.string   "one_liner"
     t.text     "objective",              limit: 65535
     t.text     "summary",                limit: 65535
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "wields", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.integer  "project_id", null: false
     t.integer  "tool_id",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_wields_on_project_id", using: :btree
+    t.index ["tool_id"], name: "index_wields_on_tool_id", using: :btree
   end
-
-  add_index "wields", ["project_id"], name: "index_wields_on_project_id", using: :btree
-  add_index "wields", ["tool_id"], name: "index_wields_on_tool_id", using: :btree
 
 end

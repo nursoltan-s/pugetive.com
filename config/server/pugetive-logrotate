@@ -1,0 +1,11 @@
+/home/deployer/apps/pugetive/shared/log/*.log {
+  daily
+  missingok
+  notifempty
+  rotate 30
+  compress
+  delaycompress
+  sharedscripts
+  copytruncate
+  su deployer deployer
+}
