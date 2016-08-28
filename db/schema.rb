@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160828141132) do
+ActiveRecord::Schema.define(version: 20160828172223) do
 
   create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "company"
@@ -163,13 +163,13 @@ ActiveRecord::Schema.define(version: 20160828141132) do
   end
 
   create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.integer  "project_id", null: false
+    t.integer  "work_id",    null: false
     t.integer  "title_id",   null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["project_id", "title_id"], name: "index_roles_on_project_id_and_title_id", unique: true, using: :btree
-    t.index ["project_id"], name: "index_roles_on_project_id", using: :btree
     t.index ["title_id"], name: "index_roles_on_title_id", using: :btree
+    t.index ["work_id", "title_id"], name: "index_roles_on_work_id_and_title_id", unique: true, using: :btree
+    t.index ["work_id"], name: "index_roles_on_work_id", using: :btree
   end
 
   create_table "titles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|

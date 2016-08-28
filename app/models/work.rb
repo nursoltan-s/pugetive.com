@@ -10,6 +10,10 @@ class Work < ApplicationRecord
   belongs_to :interest
   belongs_to :party
 
+  has_many :roles, dependent: :destroy
+  has_many :titles, through: :roles
+
+
   scope :sorted, -> {order("stop_year IS NULL DESC, stop_year DESC")}
 
   def date_range

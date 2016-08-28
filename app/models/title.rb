@@ -4,7 +4,7 @@ class Title < ActiveRecord::Base
   validates :category, inclusion: {in: PURSUITS}
 
   has_many :roles, dependent: :destroy
-  has_many :projects, through: :roles
+  has_many :works, through: :roles
 
   scope :sorted, -> {order(:name)}
 end

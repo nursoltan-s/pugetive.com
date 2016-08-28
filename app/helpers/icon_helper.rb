@@ -109,6 +109,8 @@ module IconHelper
       return raw(awesome_icon('first-order'))
     when :work
       return raw(awesome_icon('list-ul'))
+    when :role
+      return raw(foundation_icon('sheriff-badge'))
     end
   end
 
