@@ -95,6 +95,14 @@ module IconHelper
     foundation_icon('web')
   end
 
+  def instagram_icon
+    awesome_icon('instagram')
+  end
+
+  def flickr_icon
+    awesome_icon('flickr')
+  end
+
   def model_icon(token)
     case token.to_sym
     when :interest

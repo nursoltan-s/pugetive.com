@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   # Serve websocket cable requests in-process
   # mount ActionCable.server => '/cable'
 
+  root 'about#home'
 
+  get 'interests' => 'interests#index'
+  get 'code', to: redirect('/software')
 
   resources :accounts
   resources :addresses
@@ -23,6 +26,7 @@ Rails.application.routes.draw do
   resources :tools
   resources :wields
 
+
   devise_for :users
   get 'about/home'
   get 'status' => 'admin#status', as: 'status'
@@ -35,7 +39,6 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'about#home'
 
 
 end

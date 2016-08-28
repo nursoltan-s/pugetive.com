@@ -6,33 +6,23 @@
       %th Name
       %th Interest
       %th Party
-      %th Url
-      %th Start year
-      %th Stop year
-      %th Description
       %th Summary
       %th Live
       %th Slug
-      %th
       %th
       %th
 
   %tbody
     - @works.each do |work|
       %tr
-        %td= work.name
-        %td= work.interest_id
-        %td= work.party_id
-        %td= work.url
-        %td= work.start_year
-        %td= work.stop_year
-        %td= work.description
+        %td.nowrap= link_to(work.name, work)
+        %td= work.interest.name
+        %td= work.party.name
         %td= work.summary
         %td= work.live
         %td= work.slug
-        %td= link_to 'Show', work
-        %td= link_to 'Edit', edit_work_path(work)
-        %td= link_to 'Destroy', work, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= link_to edit_icon, edit_work_path(work)
+        %td= link_to destroy_icon, work, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 

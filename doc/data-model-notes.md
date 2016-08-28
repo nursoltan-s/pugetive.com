@@ -21,7 +21,7 @@ WORK
   summary
   slug
 
-  status [pre, production, post, released, scrapped]
+  status [pre, production, post, released, scrapped, retired]
 
 rails g scaffold Work name interest_id:integer party_id:integer url start_year:integer stop_year:integer description:text summary live:boolean slug
 
