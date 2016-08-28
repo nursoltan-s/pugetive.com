@@ -11,7 +11,19 @@ INTEREST
 WORK
   interest_id music_id
   name        New York Hustle
+  party_id
+  url
+  start_year
+  stop_year
+  description
+  live
+  official_title
+  summary
+  slug
 
+  status [pre, production, post, released, scrapped]
+
+rails g scaffold Work name interest_id:integer party_id:integer url start_year:integer stop_year:integer description:text summary live:boolean slug
 
 
 work_id

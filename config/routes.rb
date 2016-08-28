@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :works
   resources :awards
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -28,6 +29,8 @@ Rails.application.routes.draw do
   get 'status' => 'admin#status', as: 'status'
   get 'todd-gehman-resume' => 'resume#show', as: :resume
   match 'settings' => 'users#edit', via: [:get, :patch], as: :settings
+
+  get 'artists/:slug' => "parties#show"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

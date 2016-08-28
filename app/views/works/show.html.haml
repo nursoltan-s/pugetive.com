@@ -1,0 +1,38 @@
+- title(@work.name)
+
+%p#notice= notice
+
+%p
+  %b Name:
+  = @work.name
+%p
+  %b Interest:
+  = @work.interest_id
+%p
+  %b Party:
+  = @work.party_id
+%p
+  %b Url:
+  = @work.url
+%p
+  %b Start year:
+  = @work.start_year
+%p
+  %b Stop year:
+  = @work.stop_year
+%p
+  %b Description:
+  = @work.description
+%p
+  %b Summary:
+  = @work.summary
+%p
+  %b Live:
+  = @work.live
+%p
+  %b Slug:
+  = @work.slug
+
+= link_to 'Edit', edit_work_path(@work)
+\|
+= link_to 'Back', works_path

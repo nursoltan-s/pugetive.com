@@ -99,6 +99,8 @@ module IconHelper
     case token.to_sym
     when :interest
       return raw(awesome_icon('first-order'))
+    when :work
+      return raw(awesome_icon('list-ul'))
     end
   end
 
