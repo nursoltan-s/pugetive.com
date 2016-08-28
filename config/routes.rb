@@ -8,13 +8,12 @@ Rails.application.routes.draw do
 
 
 
-
   resources :accounts
   resources :addresses
   resources :artists
   resources :companies
   resources :emails
-  resources :interests
+  resources :interests, path: '/'
   resources :notes
   resources :parties
   resources :phones
