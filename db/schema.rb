@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160303213017) do
+ActiveRecord::Schema.define(version: 20160828105838) do
 
   create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "company"
@@ -72,6 +71,20 @@ ActiveRecord::Schema.define(version: 20160303213017) do
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
     t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+  end
+
+  create_table "interests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string   "name",        limit: 32, null: false
+    t.integer  "sort",                   null: false
+    t.string   "token",       limit: 32
+    t.string   "work_name",   limit: 32, null: false
+    t.string   "series_name", limit: 32, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "slug"
+    t.index ["slug"], name: "index_interests_on_slug", using: :btree
+    t.index ["sort"], name: "index_interests_on_sort", using: :btree
+    t.index ["token"], name: "index_interests_on_token", using: :btree
   end
 
   create_table "notes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
@@ -135,6 +148,15 @@ ActiveRecord::Schema.define(version: 20160303213017) do
     t.index ["start_year"], name: "index_projects_on_start_year", using: :btree
     t.index ["stop_year"], name: "index_projects_on_stop_year", using: :btree
     t.index ["type"], name: "index_projects_on_type", using: :btree
+  end
+
+  create_table "pursuits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string   "name",            null: false
+    t.string   "unit_name",       null: false
+    t.string   "collection_name"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["name"], name: "index_pursuits_on_name", using: :btree
   end
 
   create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|

@@ -1,3 +1,37 @@
+rails g scaffold Interest name sort:integer token work_name series_name
+
+
+INTEREST
+  name         Music
+  token        music
+  work_name    Song
+  series_name  Album
+
+
+WORK
+  interest_id music_id
+  name        New York Hustle
+
+
+
+work_id
+series_id
+
+SERIES
+  name
+
+
+
+
+
+VARIANT
+
+GENRE
+
+  
+
+---
+
 ACCOUNTS
   company
   username

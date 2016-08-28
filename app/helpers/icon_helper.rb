@@ -79,10 +79,17 @@ module IconHelper
     foundation_icon('web')
   end
 
+  def model_icon(token)
+    case token.to_sym
+    when :interest
+      return raw(awesome_icon('first-order'))
+    end
+  end
+
   private
 
     def awesome_icon(token, options = {})
-      fa_icon(token, options)
+      raw(fa_icon(token, options))
     end
 
     def foundation_icon(token, options = {})
