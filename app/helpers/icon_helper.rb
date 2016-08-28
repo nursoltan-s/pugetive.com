@@ -4,6 +4,22 @@ module IconHelper
     foundation_icon('x-circle')
   end
 
+  def destroy_icon
+    delete_icon
+  end
+
+  def interest_icon(interest)
+    if interest.icon.blank?
+      return awesome_icon('eye-slash', class: 'subdued')
+    end
+    awesome_icon(interest.icon)
+  end
+
+
+  def edit_icon
+    awesome_icon('edit')
+  end
+
   def new_icon
     foundation_icon('plus')
   end

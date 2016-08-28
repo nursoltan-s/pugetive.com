@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :interests
   resources :awards
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -7,18 +6,17 @@ Rails.application.routes.draw do
   # mount ActionCable.server => '/cable'
 
 
+
+
   resources :accounts
   resources :addresses
   resources :artists
   resources :companies
   resources :emails
+  resources :interests
   resources :notes
   resources :parties
   resources :phones
-
-  [:software, :photography, :music].each do |token|
-    get "projects/#{token}" => "projects#software", as: token
-  end
   resources :projects
   resources :roles
   resources :titles

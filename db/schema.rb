@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160828105838) do
+ActiveRecord::Schema.define(version: 20160828112032) do
 
   create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "company"
@@ -74,14 +74,17 @@ ActiveRecord::Schema.define(version: 20160828105838) do
   end
 
   create_table "interests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string   "name",        limit: 32, null: false
-    t.integer  "sort",                   null: false
+    t.string   "name",        limit: 32,                 null: false
+    t.integer  "sort",                                   null: false
     t.string   "token",       limit: 32
-    t.string   "work_name",   limit: 32, null: false
-    t.string   "series_name", limit: 32, null: false
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "work_name",   limit: 32,                 null: false
+    t.string   "series_name", limit: 32,                 null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.string   "slug"
+    t.string   "icon",        limit: 32
+    t.boolean  "public",                 default: false, null: false
+    t.index ["public"], name: "index_interests_on_public", using: :btree
     t.index ["slug"], name: "index_interests_on_slug", using: :btree
     t.index ["sort"], name: "index_interests_on_sort", using: :btree
     t.index ["token"], name: "index_interests_on_token", using: :btree
