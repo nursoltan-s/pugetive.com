@@ -1,15 +1,15 @@
 %section.work
   .row
-    .small-12.columns
+    .small-12.medium-6.medium-offset-3.columns
       %h3
         = work.name
         %smaller.subdued= link_to(edit_icon, edit_work_path(work), data: {visible_to: 'admin'})
+      %p.subdued= work.date_range
       %p
         %span.subdued Status:
         %b= status(work.status)
         %i.subdued= work.status_message
       %p= work.summary
-      %p.subdued= work.date_range
 
   .row
     .small-12.columns{data: {visible_to: 'admin'}}

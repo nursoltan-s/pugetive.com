@@ -1,11 +1,16 @@
-- title('Photography')
+- title('Photography', false)
 
 .row
-  .small-12.medium-6.columns.text-center
+  .small-12.columns.text-center
+    %h1 Photography
+
+.row
+  .small-12.medium-6.medium-offset-3.columns.text-center
     = link_to(instagram_icon, "https://www.instagram.com/pugetive/", class: 'big-icon')
     %br
     = link_to("Instagram (active)", "https://www.instagram.com/pugetive/")
-  .small-12.medium-6.columns.text-center
+.row
+  .small-12.medium-6.medium-offset-3.columns.text-center
     = link_to(flickr_icon, "https://www.flickr.com/photos/pugetive", class: 'big-icon')
     %br
     = link_to("Flickr (lapsed)", "https://www.flickr.com/photos/pugetive")

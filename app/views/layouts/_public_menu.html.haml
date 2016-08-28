@@ -10,11 +10,11 @@
         - Interest.live.each do |interest|
           %li= link_to(raw("#{interest_icon(interest)} #{interest.name}"), interest)
 
-        / %li
-        /   %a{href: '#'} Web/Software
-        /   %ul.menu.vertical
-        /     %li= link_to("Resume", resume_path)
-        /     %li= link_to("Projects", software_path)
+        -#/ %li
+        -#/   %a{href: '#'} Web/Software
+        -#/   %ul.menu.vertical
+        -#/     %li= link_to("Resume", resume_path)
+        -#/     %li= link_to("Projects", software_path)
 
 
         -# %li{data: {visible_to: 'admin'}}

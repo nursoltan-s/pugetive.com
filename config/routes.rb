@@ -8,7 +8,8 @@ Rails.application.routes.draw do
 
   root 'about#home'
 
-  get 'interests' => 'interests#index'
+  get 'interests' => "interests#index"
+
   get 'code', to: redirect('/software')
 
   resources :accounts
@@ -16,7 +17,6 @@ Rails.application.routes.draw do
   resources :artists
   resources :companies
   resources :emails
-  resources :interests, path: '/'
   resources :notes
   resources :parties
   resources :phones
@@ -34,6 +34,8 @@ Rails.application.routes.draw do
   match 'settings' => 'users#edit', via: [:get, :patch], as: :settings
 
   get 'artists/:slug' => "parties#show"
+
+  resources :interests, path: '/'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
