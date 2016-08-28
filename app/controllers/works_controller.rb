@@ -13,6 +13,7 @@ class WorksController < MetaResourceController
                                    :slug, 
                                    :start_year,
                                    :status,
+                                   :status_message,
                                    :stop_year, 
                                    :summary, 
                                    :url)

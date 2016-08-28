@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160828130058) do
+ActiveRecord::Schema.define(version: 20160828141132) do
 
   create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "company"
@@ -226,19 +226,20 @@ ActiveRecord::Schema.define(version: 20160828130058) do
   end
 
   create_table "works", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string   "name",                                      null: false
-    t.integer  "interest_id",                               null: false
-    t.integer  "party_id",                                  null: false
+    t.string   "name",                                         null: false
+    t.integer  "interest_id",                                  null: false
+    t.integer  "party_id",                                     null: false
     t.string   "url"
-    t.integer  "start_year",                                null: false
+    t.integer  "start_year",                                   null: false
     t.integer  "stop_year"
-    t.text     "description", limit: 65535
+    t.text     "description",    limit: 65535
     t.string   "summary"
-    t.boolean  "live",                      default: true,  null: false
+    t.boolean  "live",                         default: true,  null: false
     t.string   "slug"
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
-    t.string   "status",      limit: 16,    default: "pre", null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+    t.string   "status",         limit: 16,    default: "pre", null: false
+    t.string   "status_message"
     t.index ["interest_id"], name: "index_works_on_interest_id", using: :btree
     t.index ["live"], name: "index_works_on_live", using: :btree
     t.index ["party_id"], name: "index_works_on_party_id", using: :btree

@@ -35,5 +35,9 @@
     = f.label :status
     = f.select :status, options_for_select(Work::STATUSES, selected: @work.status)
 
+  .field
+    = f.label :status_message
+    = f.text_field :status_message
+
   .actions
     = f.submit 'Save'
