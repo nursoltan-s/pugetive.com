@@ -7,8 +7,8 @@ module ApplicationHelper
     current_user and current_user.admin?
   end
 
-  def status(token)
-    case token.to_sym
+  def status(work)
+    case work.status.to_sym
     when :pre
       return "Pre-Production"
     when :production
@@ -19,6 +19,8 @@ module ApplicationHelper
       return "Unfinished"
     when :retired
       return "Retired"
+    when :released
+      return "Released"
     end
   end
 end
