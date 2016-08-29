@@ -44,4 +44,10 @@
         -#       %a{href: '#'} Past & Future Blogs
         -#     %li
         -#       %a{href: '#'} Published/Commercial Work
+    .top-bar-right.subdued
+      - if user_signed_in?
+        = link_to delete_icon, destroy_user_session_path, :method => :delete, class: 'secondary'
+      - else
+        = link_to signin_icon, new_user_session_path, class: 'secondary subdued'
+
 

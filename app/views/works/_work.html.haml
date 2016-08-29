@@ -3,18 +3,17 @@
     .small-4.medium-3.columns.medium-offset-2.text-right.title-box
       %h3
         = work.name
-      [image]
-      %p
-        %smaller.subdued= link_to(edit_icon, edit_work_path(work), data: {visible_to: 'admin'})
+      -#/ [image]
+      %p{data: {visible_to: 'admin'}}
+        %smaller.subdued= link_to(edit_icon, edit_work_path(work))
         %smaller.subdued= link_to(model_icon('role'), new_role_path(work_id: work.id))
     .small-8.medium-5.columns.end.info-box
-      %p.subdued
-        = work.date_range
-        %br
-        = work.titles.map{|t| t.name}.join(', ')
+      %p
+        %span.date-range
+          = work.date_range
+        %span.titles
+          = work.titles.map{|t| t.name}.join(', ')
       %p.status
-        %span.subdued Status:
-        %b= status(work)
-        %i.subdued= work.status_message
+        = combo_status(work)
       %p= work.summary
 

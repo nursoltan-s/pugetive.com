@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import 'mixins';
 
 section.work {
   h3 {
@@ -16,5 +17,10 @@ section.work {
   p.status {
     font-size: 0.8em;
   }
+  .titles {
+    @include subdued;
+    font-size: 0.8em;
+  }
+
 }
 
