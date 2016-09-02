@@ -117,7 +117,7 @@ module IconHelper
   private
 
     def awesome_icon(token, options = {})
-      raw(fa_icon(token, options))
+      raw(fa_icon(token, options.merge(class: 'icon')))
     end
 
     def foundation_icon(token, options = {})
