@@ -15,6 +15,7 @@ class Tool < ActiveRecord::Base
   scope :programs, -> {where(type: 'Program')}
   scope :concepts, -> {where(type: 'Concept')}
   scope :software, -> {where(category: 'Software')}
+  scope :music, -> {where(category: 'Music')}
 
   has_many :wields
   has_many :projects, through: :wields

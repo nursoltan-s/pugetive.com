@@ -13,6 +13,9 @@
           = work.date_range
         %span.titles
           = work.titles.map{|t| t.name}.join(', ')
+      %p
+        %span.tools
+          = work.tools.map{|t| t.name}.join(', ')
       %p.status
         = combo_status(work)
       %p= work.summary

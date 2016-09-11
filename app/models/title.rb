@@ -7,4 +7,6 @@ class Title < ActiveRecord::Base
   has_many :works, through: :roles
 
   scope :sorted, -> {order(:name)}
+
+  scope :music, -> {where(category: 'Music')}
 end

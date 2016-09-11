@@ -7,9 +7,9 @@ class InterestsController < MetaResourceController
     when 'photography'
       render "interests/photography"
       return
-    when 'music'
-      render "interests/music"
-      return
+    # when 'music'
+    #   render "interests/music"
+    #   return
 
     end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160828172223) do
+ActiveRecord::Schema.define(version: 20160908115357) do
 
   create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "company"
@@ -217,12 +217,12 @@ ActiveRecord::Schema.define(version: 20160828172223) do
   end
 
   create_table "wields", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.integer  "project_id", null: false
+    t.integer  "work_id",    null: false
     t.integer  "tool_id",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["project_id"], name: "index_wields_on_project_id", using: :btree
     t.index ["tool_id"], name: "index_wields_on_tool_id", using: :btree
+    t.index ["work_id"], name: "index_wields_on_work_id", using: :btree
   end
 
   create_table "works", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|

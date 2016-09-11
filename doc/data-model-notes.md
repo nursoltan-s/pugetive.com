@@ -20,6 +20,9 @@ WORK
   official_title
   summary
   slug
+  location
+  equipment
+  key?
 
   status [pre, production, post, released, scrapped, retired]
 
