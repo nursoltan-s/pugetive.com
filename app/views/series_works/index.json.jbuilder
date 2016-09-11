@@ -1,0 +1,1 @@
+json.array! @series_works, partial: 'series_works/series_work', as: :series_work

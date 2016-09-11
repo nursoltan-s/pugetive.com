@@ -1,0 +1,2 @@
+class SeriesPolicy < PartyPolicy
+end
