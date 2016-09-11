@@ -32,9 +32,18 @@ rails g scaffold Work name interest_id:integer party_id:integer url start_year:i
 work_id
 series_id
 
+
+rails g scaffold Series name summary description:text
+rails g scaffold SeriesWork series_id:integer work_id:integer
+
 SERIES
   name
+  summary
+  description
 
+SERIES_WORKS
+  series_id
+  work_id
 
 
 

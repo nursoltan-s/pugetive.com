@@ -17,7 +17,7 @@ section.work {
   p.status {
     font-size: 0.8em;
   }
-  .titles {
+  .titles, .programs {
     @include subdued;
     font-size: 0.8em;
   }

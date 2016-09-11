@@ -2,8 +2,11 @@
   .row
     .small-4.medium-3.columns.medium-offset-2.text-right.title-box
       %h3
-        = work.name
+        = link_to(work.name, work)
       -#/ [image]
+      %p
+        %span.programs
+          = work.tools.programs.map{|t| t.name}.join(', ')
       %p{data: {visible_to: 'admin'}}
         %smaller.subdued= link_to(edit_icon, edit_work_path(work))
         %smaller.subdued= link_to(model_icon('role'), new_role_path(work_id: work.id))
@@ -15,7 +18,8 @@
           = work.titles.map{|t| t.name}.join(', ')
       %p
         %span.tools
-          = work.tools.map{|t| t.name}.join(', ')
+          -# FIXME this is music-specific
+          = work.tools.instruments.map{|t| t.name}.join(', ')
       %p.status
         = combo_status(work)
       %p= work.summary
