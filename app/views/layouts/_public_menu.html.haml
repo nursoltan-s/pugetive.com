@@ -8,7 +8,8 @@
       %ul.dropdown.menu{data: {dropdown_menu: true}}
         %li.menu-text= link_to(SITE_TITLE, root_path)
         - Interest.live.each do |interest|
-          %li.interest-item= link_to(raw("#{interest_icon(interest)} #{interest.name}"), interest)
+          - if CONFIG[Rails.env]["#{interest.token}_live"]
+            %li.interest-item= link_to(raw("#{interest_icon(interest)} #{interest.name}"), interest)
 
         -#/ %li
         -#/   %a{href: '#'} Web/Software
