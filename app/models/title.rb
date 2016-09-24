@@ -9,4 +9,5 @@ class Title < ActiveRecord::Base
   scope :sorted, -> {order(:name)}
 
   scope :music, -> {where(category: 'Music')}
+  scope :photography, -> {where(category: 'Photography')}
 end

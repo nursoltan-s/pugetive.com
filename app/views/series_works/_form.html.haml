@@ -8,9 +8,9 @@
 
   .field
     = f.label :series_id
-    = f.number_field :series_id
+    = f.select :series_id, options_from_collection_for_select(Series.all, :id, :name)
   .field
     = f.label :work_id
-    = f.number_field :work_id
+    = f.select :work_id, options_from_collection_for_select(Work.all, :id, :name)
   .actions
     = f.submit 'Save'

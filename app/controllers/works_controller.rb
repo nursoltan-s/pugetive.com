@@ -7,7 +7,8 @@ class WorksController < MetaResourceController
       params.require(:work).permit(
                                    :description, 
                                    :interest_id, 
-                                   :live, 
+                                   :live,
+                                   :location,
                                    :name, 
                                    :party_id, 
                                    :slug, 

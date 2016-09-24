@@ -4,16 +4,14 @@
 
 .row
   .medium-6.columns
-    - Tool.music.sort{|a,b| a.name <=> b.name}.each do |tool|
-      - next if @work.tools.include?(tool)
+    - Tool.send(@work.interest.token).sort{|a,b| a.name <=> b.name}.each do |tool|
       = form_for @work.wields.new(tool_id: tool.id) do |f|
         = f.hidden_field(:work_id)
         = f.hidden_field(:tool_id)
-        = submit(f, tool.name)
+        = submit(f, tool.name, nil, disabled: (@work.tools.include?(tool) ? 'disabled' : nil))
   .medium-6.columns
-    - Title.music.sort{|a,b| a.name <=> b.name}.each do |title|
-      - next if @work.titles.include?(title)
+    - Title.send(@work.interest.token).sort{|a,b| a.name <=> b.name}.each do |title|
       = form_for @work.roles.new(title_id: title.id) do |f|
         = f.hidden_field(:work_id)
         = f.hidden_field(:title_id)
-        = submit(f, title.name)
+        = submit(f, title.name, nil, disabled: (@work.titles.include?(title) ? 'disabled' : nil))

@@ -22,5 +22,21 @@ section.work {
     font-size: 0.8em;
   }
 
+  &.photography {
+    .titles {
+      display: none;
+    }
+    .tools {
+      display: none;
+    }
+    .status {
+      display: none;
+    }
+  }
 }
 
+section.series-works .work {
+  .titles, .tools, .status, .programs {
+    display: none;
+  }
+}

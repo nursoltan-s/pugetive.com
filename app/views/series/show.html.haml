@@ -10,6 +10,6 @@
   %b Description:
   = @series.description
 
-= link_to 'Edit', edit_series_path(@series)
-\|
-= link_to 'Back', series_index_path
+%h2 Works
+%section.series-works
+  = render @series.works

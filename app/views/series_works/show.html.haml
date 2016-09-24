@@ -1,12 +1,7 @@
-%p#notice= notice
-
+- title("#{@work.name} from #{@series.name}", false)
 %p
   %b Series:
-  = @series_work.series_id
+  = link_to(@series.name, @series)
 %p
   %b Work:
-  = @series_work.work_id
-
-= link_to 'Edit', edit_series_work_path(@series_work)
-\|
-= link_to 'Back', series_works_path
+  = link_to(@work.name, @work)

@@ -4,6 +4,11 @@
   .field
     = f.label :name
     = f.text_field :name
+
+  .field
+    = f.label :location
+    = f.text_field :location
+
   .field
     = f.label :interest_id
     = f.select :interest_id, options_from_collection_for_select(Interest.all, :id, :name, selected: @work.interest_id)
@@ -21,6 +26,8 @@
   .field
     = f.label :stop_year
     = f.number_field :stop_year
+
+
   .field
     = f.label :description
     = f.text_area :description

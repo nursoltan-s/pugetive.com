@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  resources :series_works
-  resources :series
-  resources :works
-  resources :awards
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   # Serve websocket cable requests in-process
@@ -10,11 +6,11 @@ Rails.application.routes.draw do
 
   root 'about#home'
 
+  get 'code', to: redirect('/software')
   get 'interests' => "interests#index"
 
-  get 'code', to: redirect('/software')
-
   resources :accounts
+  resources :awards
   resources :addresses
   resources :artists
   resources :companies
@@ -24,9 +20,12 @@ Rails.application.routes.draw do
   resources :phones
   resources :projects
   resources :roles
+  resources :series
+  resources :series_works
   resources :titles
   resources :tools
   resources :wields
+  resources :works
 
 
   devise_for :users

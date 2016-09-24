@@ -5,8 +5,11 @@ class InterestsController < MetaResourceController
 
     case params[:id]
     when 'photography'
-      render "interests/photography"
-      return
+      if true
+      else
+        render "interests/photography"
+        return
+      end
     # when 'music'
     #   render "interests/music"
     #   return
