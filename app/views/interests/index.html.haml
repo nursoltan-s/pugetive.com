@@ -1,0 +1,32 @@
+- title('Listing interests')
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Sort
+      %th Token
+      %th Work name
+      %th Series name
+      %th Icon
+      %th Public?
+      %th
+      %th
+      %th
+
+  %tbody
+    - @interests.each do |interest|
+      %tr
+        %td= link_to(interest.name, interest)
+        %td= interest.sort
+        %td= interest.token
+        %td= interest.work_name
+        %td= interest.series_name
+        %td= interest_icon(interest)
+        %td= interest.public? ? 'Y' : nil
+        %td= link_to edit_icon, edit_interest_path(interest)
+        %td= link_to destroy_icon, interest, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= new_button(:interest)

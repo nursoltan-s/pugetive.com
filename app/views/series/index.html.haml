@@ -1,0 +1,23 @@
+- title('Listing series')
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Summary
+      %th Description
+      %th
+      %th
+
+  %tbody
+    - @series.each do |series|
+      %tr
+        %td= link_to(series.name, series)
+        %td= series.summary
+        %td= series.description
+        %td= link_to 'Edit', edit_series_path(series)
+        %td= link_to 'Destroy', series, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Series', new_series_path

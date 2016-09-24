@@ -7,16 +7,14 @@
       %th Category
       %th
       %th
-      %th
 
   %tbody
     - @titles.each do |title|
       %tr
-        %td= title.name
+        %td= link_to(title.name, title)
         %td= title.category
-        %td= link_to 'Show', title
-        %td= link_to 'Edit', edit_title_path(title)
-        %td= link_to 'Destroy', title, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= link_to edit_icon, edit_title_path(title)
+        %td= link_to destroy_icon, title, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 

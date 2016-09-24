@@ -1,4 +1,4 @@
-%section#public-menu-wrapper{data: {visible_to: 'admin'}}
+%section#public-menu-wrapper
   .title-bar{data: {responsive_toggle: 'public-menu', hide_for: 'medium'}}
     %button.menu-icon{type: 'button', data: {toggle: true}}
     .title-bar-title Menu
@@ -7,11 +7,17 @@
     .top-bar-left
       %ul.dropdown.menu{data: {dropdown_menu: true}}
         %li.menu-text= link_to(SITE_TITLE, root_path)
-        %li
-          %a{href: '#'} Web/Software
-          %ul.menu.vertical
-            %li= link_to("Resume", resume_path)
-            %li= link_to("Projects", software_path)
+        - Interest.live.each do |interest|
+          - if CONFIG[Rails.env]["#{interest.token}_live"]
+            %li.interest-item= link_to(raw("#{interest_icon(interest)} #{interest.name}"), interest)
+
+        -#/ %li
+        -#/   %a{href: '#'} Web/Software
+        -#/   %ul.menu.vertical
+        -#/     %li= link_to("Resume", resume_path)
+        -#/     %li= link_to("Projects", software_path)
+
+
         -# %li{data: {visible_to: 'admin'}}
         -#   %a{href: '#'} Music
         -#   %ul.menu.vertical
@@ -39,4 +45,10 @@
         -#       %a{href: '#'} Past & Future Blogs
         -#     %li
         -#       %a{href: '#'} Published/Commercial Work
+    .top-bar-right.subdued
+      - if user_signed_in?
+        = link_to delete_icon, destroy_user_session_path, :method => :delete, class: 'secondary'
+      - else
+        = link_to signin_icon, new_user_session_path, class: 'secondary subdued'
+
 

@@ -1,3 +1,61 @@
+rails g scaffold Interest name sort:integer token work_name series_name
+
+
+INTEREST
+  name         Music
+  token        music
+  work_name    Song
+  series_name  Album
+
+
+WORK
+  interest_id music_id
+  name        New York Hustle
+  party_id
+  url
+  start_year
+  stop_year
+  description
+  live
+  official_title
+  summary
+  slug
+  location
+  equipment
+  key?
+
+  status [pre, production, post, released, scrapped, retired]
+
+rails g scaffold Work name interest_id:integer party_id:integer url start_year:integer stop_year:integer description:text summary live:boolean slug
+
+
+work_id
+series_id
+
+
+rails g scaffold Series name summary description:text
+rails g scaffold SeriesWork series_id:integer work_id:integer
+
+SERIES
+  name
+  summary
+  description
+
+SERIES_WORKS
+  series_id
+  work_id
+
+
+
+
+VARIANT
+
+GENRE
+
+  
+
+---
+
 ACCOUNTS
   company
   username

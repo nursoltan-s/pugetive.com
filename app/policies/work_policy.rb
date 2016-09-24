@@ -1,0 +1,2 @@
+class WorkPolicy < ApplicationPolicy
+end

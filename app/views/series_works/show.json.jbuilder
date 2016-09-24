@@ -1,0 +1,1 @@
+json.partial! "series_works/series_work", series_work: @series_work

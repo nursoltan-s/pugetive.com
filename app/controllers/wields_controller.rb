@@ -10,11 +10,11 @@ class WieldsController < MetaResourceController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wield_params
-      params.require(:wield).permit(:tool_id, :project_id)
+      params.require(:wield).permit(:tool_id, :work_id)
     end
 
     def post_create_path
-      @wield.project
+      @wield.work
     end
 
     def post_destroy_path

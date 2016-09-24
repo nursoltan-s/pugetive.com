@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby "2.3.1"
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '5.0.0.1'
@@ -34,7 +36,7 @@ gem 'capistrano-rails', group: :development
 gem 'actionview-encoded_mail_to'
 gem 'carmen'
 gem 'dalli'
-gem 'devise', :github => 'plataformatec/devise', :branch => 'master'
+gem 'devise'
 gem 'font-awesome-rails'
 gem 'foundation-icons-sass-rails'
 gem 'foundation-rails'

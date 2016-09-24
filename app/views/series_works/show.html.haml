@@ -1,0 +1,7 @@
+- title("#{@work.name} from #{@series.name}", false)
+%p
+  %b Series:
+  = link_to(@series.name, @series)
+%p
+  %b Work:
+  = link_to(@work.name, @work)

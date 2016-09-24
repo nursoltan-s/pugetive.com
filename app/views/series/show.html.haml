@@ -1,0 +1,15 @@
+- title(@series.name)
+
+%p
+  %b Name:
+  = @series.name
+%p
+  %b Summary:
+  = @series.summary
+%p
+  %b Description:
+  = @series.description
+
+%h2 Works
+%section.series-works
+  = render @series.works

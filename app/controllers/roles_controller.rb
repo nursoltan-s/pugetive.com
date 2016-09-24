@@ -2,7 +2,7 @@ class RolesController < MetaResourceController
 
 
   def new
-    @role = Role.new(project_id: params[:project_id])
+    @role = Role.new(work_id: params[:work_id])
     authorize @role
   end
 
@@ -10,10 +10,10 @@ class RolesController < MetaResourceController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def role_params
-      params.require(:role).permit(:project_id, :title_id)
+      params.require(:role).permit(:work_id, :title_id)
     end
 
     def post_create_path
-      @role.project
+      @role.work
     end
 end

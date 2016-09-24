@@ -1,0 +1,50 @@
+= form_for @work do |f|
+  - handle_errors(@work)
+
+  .field
+    = f.label :name
+    = f.text_field :name
+
+  .field
+    = f.label :location
+    = f.text_field :location
+
+  .field
+    = f.label :interest_id
+    = f.select :interest_id, options_from_collection_for_select(Interest.all, :id, :name, selected: @work.interest_id)
+
+  .field
+    = f.label :party_id
+    = f.select :party_id, options_from_collection_for_select(Party.sorted, :id, :name, selected: @work.party_id)
+
+  .field
+    = f.label :url
+    = f.text_field :url
+  .field
+    = f.label :start_year
+    = f.number_field :start_year
+  .field
+    = f.label :stop_year
+    = f.number_field :stop_year
+
+
+  .field
+    = f.label :description
+    = f.text_area :description
+  .field
+    = f.label :summary
+    = f.text_field :summary
+  .field
+    = f.label :live
+    = f.check_box :live
+
+  .field
+    = f.label :status
+    = f.select :status, options_for_select(Work::STATUSES, selected: @work.status)
+
+  .field
+    = f.label :status_message
+    = f.text_field :status_message
+
+  .actions
+    = f.submit 'Save'

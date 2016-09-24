@@ -1,0 +1,29 @@
+- title('Works')
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Interest
+      %th Party
+      %th Summary
+      %th Live
+      %th Slug
+      %th
+      %th
+
+  %tbody
+    - @works.each do |work|
+      %tr
+        %td.nowrap= link_to(work.name, work)
+        %td= work.interest.name
+        %td= work.party.name
+        %td= work.summary
+        %td= work.live
+        %td= work.slug
+        %td= link_to edit_icon, edit_work_path(work)
+        %td= link_to destroy_icon, work, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= new_button(:work)

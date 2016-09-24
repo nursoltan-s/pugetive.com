@@ -44,6 +44,13 @@ module FormsHelper
     f.submit(text, options.merge(data: {disable_with: disable_text}))
   end
 
+  def new_button(token)
+    link_to("New #{token.to_s.capitalize}", 
+            send("new_#{token}_path"), 
+            class: 'button', 
+            data: {visible_to: 'admin'})
+  end
+
   private
 
     def icon_field_type(field_name)

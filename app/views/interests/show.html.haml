@@ -1,0 +1,7 @@
+- title(@interest.name, false)
+
+.row
+  .medium-7.medium-offset-5.small-8.small-offset-4.columns
+    %h1= @interest.name
+
+= render @interest.works.sorted

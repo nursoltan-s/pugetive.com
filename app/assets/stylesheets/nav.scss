@@ -1,3 +1,5 @@
+@import 'mixins';
+
 #private-menu-wrapper {
   background: black;
   color: white;
@@ -5,4 +7,20 @@
   a {
     color: white;
   }
+}
+
+#public-menu {
+  li.interest-item {
+    width: 10em;
+    text-align: center;
+    border-right: 1px dotted #ccc;
+    .icon {
+      display: inline-block;
+      margin-top: -0.25em;
+    }
+  }
+  li.interest-item:last-child {
+    border-right: none;
+  }
+
 }

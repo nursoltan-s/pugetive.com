@@ -6,6 +6,6 @@
     = f.text_field :name
   .field
     = f.label :category
-    = f.select :category, options_for_select(PURSUITS)
+    = f.select :category, options_for_select(PURSUITS, selected: @title.category)
   .actions
     = f.submit 'Save'

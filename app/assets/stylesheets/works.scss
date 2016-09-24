@@ -1,0 +1,42 @@
+// Place all the styles related to the Works controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'mixins';
+
+section.work {
+  h3 {
+    font-size: 1em;
+    font-weight: bold;
+  }
+  margin-bottom: 3em;
+  .info-box {
+    border-left: 1px dotted #666;
+  }
+
+  p.status {
+    font-size: 0.8em;
+  }
+  .titles, .programs {
+    @include subdued;
+    font-size: 0.8em;
+  }
+
+  &.photography {
+    .titles {
+      display: none;
+    }
+    .tools {
+      display: none;
+    }
+    .status {
+      display: none;
+    }
+  }
+}
+
+section.series-works .work {
+  .titles, .tools, .status, .programs {
+    display: none;
+  }
+}

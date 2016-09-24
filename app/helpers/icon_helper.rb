@@ -4,6 +4,22 @@ module IconHelper
     foundation_icon('x-circle')
   end
 
+  def destroy_icon
+    delete_icon
+  end
+
+  def interest_icon(interest)
+    if interest.icon.blank?
+      return awesome_icon('eye-slash', class: 'subdued')
+    end
+    awesome_icon(interest.icon)
+  end
+
+
+  def edit_icon
+    awesome_icon('edit')
+  end
+
   def new_icon
     foundation_icon('plus')
   end
@@ -79,10 +95,31 @@ module IconHelper
     foundation_icon('web')
   end
 
+  def instagram_icon
+    awesome_icon('instagram')
+  end
+
+  def flickr_icon
+    awesome_icon('flickr')
+  end
+
+  def model_icon(token)
+    case token.to_sym
+    when :interest
+      return raw(awesome_icon('first-order'))
+    when :work
+      return raw(awesome_icon('list-ul'))
+    when :role
+      return raw(foundation_icon('sheriff-badge'))
+    when :series
+      return raw(awesome_icon('object-group'))
+    end
+  end
+
   private
 
     def awesome_icon(token, options = {})
-      fa_icon(token, options)
+      raw(fa_icon(token, options.merge(class: 'icon')))
     end
 
     def foundation_icon(token, options = {})

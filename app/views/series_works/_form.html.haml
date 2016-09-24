@@ -1,0 +1,16 @@
+= form_for @series_work do |f|
+  - if @series_work.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@series_work.errors.count, "error")} prohibited this series_work from being saved:"
+      %ul
+        - @series_work.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :series_id
+    = f.select :series_id, options_from_collection_for_select(Series.all, :id, :name)
+  .field
+    = f.label :work_id
+    = f.select :work_id, options_from_collection_for_select(Work.all, :id, :name)
+  .actions
+    = f.submit 'Save'

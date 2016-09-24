@@ -1,0 +1,27 @@
+= form_for @interest do |f|
+  - handle_errors(@interest)
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :sort
+    = f.number_field :sort
+  .field
+    = f.label :token
+    = f.text_field :token
+  .field
+    = f.label :work_name
+    = f.text_field :work_name
+  .field
+    = f.label :series_name
+    = f.text_field :series_name
+  .field
+    = f.label :public
+    = f.check_box :public
+  .field
+    = f.label :icon
+    = f.text_field :icon
+
+  .actions
+    = f.submit 'Save'

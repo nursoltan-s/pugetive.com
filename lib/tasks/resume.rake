@@ -2,7 +2,7 @@ namespace :resume do
 
   task :fresh do
     # input_url = "http://www.whatismyscreenresolution.com/"
-    input_url = "'http://pugetive.com/resume'"
+    input_url = "'http://pugetive.com/todd-gehman-resume'"
     output_file = 'public/todd-gehman-resume.pdf'
     # kit = PDFKit.new('http://pugetive.com/resume')
 
