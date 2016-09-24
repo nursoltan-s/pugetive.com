@@ -93,8 +93,8 @@ source ~/.bashrc
 
 
 rvm requirements
-rvm install 2.3.0
-rvm use 2.3.0 --default
+rvm install 2.3.1
+rvm use 2.3.1 --default
 
 
 # ---------------------
@@ -127,6 +127,12 @@ gem install rails -v <version> --no-rdoc --no-ri
 # ---------------------
 sudo apt-get install apache2 libcurl4-openssl-dev apache2-prefork-dev libapr1-dev libaprutil1-dev
 gem install passenger --no-rdoc --no-ri
+
+# If building a smaller server than 1G, create swap space first:
+#  sudo dd if=/dev/zero of=/swap bs=1M count=1024
+#  sudo mkswap /swap
+#  sudo swapon /swap
+
 passenger-install-apache2-module
 
 # Contents of this file should be copied from the output from above.
@@ -192,6 +198,7 @@ htpasswd -c /home/deployer/.htpasswd experi
 # ---------------------
 # Deploy DB
 # ---------------------
+cap <env> config:push
 cap <env> db:push
 # or rake db:sync
 
