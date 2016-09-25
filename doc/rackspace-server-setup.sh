@@ -105,7 +105,7 @@ rvm use 2.3.1 --default
 gem install mysql2 --no-rdoc --no-ri
 
 # This seemed to be required upon updating to Rails 4.1.0
-gem install json
+gem install json --no-rdoc --no-ri
 
 # [ If DB is local: create databases and grant permissions to db_user on localhost, remote IP, and remote host name ]
 [create and grant access to DB]
