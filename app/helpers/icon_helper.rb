@@ -32,6 +32,11 @@ module IconHelper
     foundation_icon('mail')
   end
 
+  def home_icon
+    awesome_icon('home')
+  end
+
+
   def experience_icon
     # foundation_icon('target')
     # awesome_icon('bookmark')
