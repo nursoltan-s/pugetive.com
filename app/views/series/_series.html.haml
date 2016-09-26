@@ -1,9 +1,12 @@
 - cache series do
-  %section.series
+  %section.series{class: series.interest}
     .row
       .medium-3.columns.medium-offset-2.medium-text-right.title-box
         %h3
           = link_to(series.name, series)
+        %span.titles
+          = series.titles.map{|t| t.name}.join(', ')
+
         -#/ [image]
         %p.admin{data: {visible_to: 'admin'}}
           %smaller.subdued= link_to(edit_icon, edit_series_path(series))
@@ -17,4 +20,4 @@
             - series.works.each do |work|
               %li= link_to(work.name, work)
         - elsif series.photography?
-          [tiny thumbnails]
+          [tiny thumbnails]  }

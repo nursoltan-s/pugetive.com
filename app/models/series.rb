@@ -20,6 +20,22 @@ class Series < ApplicationRecord
     works.where(interest_id: PHOTOGRAPHY_INTEREST_ID).any?
   end
 
+  def interest
+    works.first.interest.token
+  end
+
+  def titles
+    list = []
+    works.each do |work|
+      work.titles.each do |title|
+        unless list.include?(title.name)
+          list << title
+        end
+      end
+    end
+    list
+  end
+
   def date_range
     start_year = Time.now.year
     stop_year = nil
