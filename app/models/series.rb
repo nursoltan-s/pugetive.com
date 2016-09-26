@@ -55,7 +55,7 @@ class Series < ApplicationRecord
       if work.start_year < start_year
         start_year = work.start_year
       end
-      if stop_year.present? and stop_year > stop_year
+      if work.stop_year.present? and (stop_year.nil? or work.stop_year > stop_year)
         stop_year = work.stop_year
       end
 
