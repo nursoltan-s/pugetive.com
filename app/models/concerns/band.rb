@@ -3,16 +3,35 @@ class Band
             start_year:  1998,
             stop_year:   2001,
             location:    'Seattle, WA',
-            instruments: Tool.where(name: 'Bass')},
+            instruments: Tool.where(name: 'Bass'),
+            summary:     "After a brief stint in complex Seattle pop band Epigene, I went to the other end of the spectrum and got a classic country education by playing with the Shiners.  I used to hate country just as much as you do...but now I know what Grampa knows.  We were a bar band, playing three hour sets and getting drunks to dance in varying degrees of earnestness to old-school country.  To this day I know of no other country band which based a love song on quantum physics.  Band split when the singer/songwriter decided he was too old for the music racket, broke up the band and moved back South.",
+            url:         nil},
             {name:        'An American Starlet',
-            start_year:  2002,
-            stop_year:   2007,
+            start_year:  2001,
+            stop_year:   2006,
             location:    'Seattle, WA',
-            instruments: Tool.where("name = 'Bass' OR name='Keyboards' OR name='Acoustic Guitar'")}
+            instruments: Tool.where("name = 'Bass' OR name='Keyboards' OR name='Acoustic Guitar'"),
+            summary:     "Fulfilled two life-long music dreams by going on tour with a band and recording an album that had a barcode on it.  We were critically well received but rarely ventured out of Ballard.  Eventually the singer/songwriter quit the band and moved to L.A. like a true rock star.  But not before I learned a ton of stuff about recording from him.",
+            url:         nil},
+            {name:        'Downpilot',
+            start_year:  2005,
+            stop_year:   2005,
+            location:    'Seattle, WA',
+            instruments: Tool.where(name: 'Bass'),
+            summary:     "Played bass with Downpilot for a few months before their original bassist decided to rejoin.  Short stint for me and I never got to record with Downpilot, but I'm a huge fan of Paul's songs so I gotta give them props.",
+            url:         "http://downpilot.com"},
+            {name:        'Lushy',
+            start_year:  2010,
+            stop_year:   2010,
+            location:    'Seattle, WA',
+            instruments: Tool.where("name = 'Bass'"),
+            summary:     "Joined these old friends during their stint as a ten-member live act.  Dirty little secret is that I'd never owned a suit before I gigged with this stylish band.",
+            url:         "http://lushy.com"}
+
           ]
 
 
-  attr_accessor :location, :name, :start_year, :stop_year, :summary, :instruments
+  attr_accessor :location, :name, :start_year, :stop_year, :summary, :instruments, :url
 
   def initialize(info)
     @name        = info[:name]
@@ -21,6 +40,7 @@ class Band
     @location    = info[:location]
     @instruments = info[:instruments]
     @summary     = info[:summary]
+    @url         = info[:url]
   end
 
 
@@ -37,7 +57,7 @@ class Band
     BANDS.each do |info|
       list << Band.new(info)
     end
-    list
+    list.sort_by{|b| -b.start_year}
   end
 
 end

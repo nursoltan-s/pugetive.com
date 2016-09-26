@@ -6,17 +6,18 @@
     .row
       .medium-3.columns.medium-offset-2.medium-text-right.title-box
         %h3
-          = link_to(band.name, band.artist)
+          - if band.url.present?
+            = link_to(band.name, band.url)
+          - else
+            = band.name
         %p
           %span.location
             = band.location
       .medium-5.columns.end.info-box
-        %p
-          %span.date-range
-            = band.date_range
-        %p
-          %span.tools
-            -# FIXME this is music-specific
-            = band.instruments.map{|t| t.name}.join(', ')
+        .date-range
+          = band.date_range
+        .titles
+          -# FIXME this is music-specific
+          = band.instruments.map{|t| t.name}.join(', ')
         %p= band.summary
 
