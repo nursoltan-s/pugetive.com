@@ -12,6 +12,9 @@
           %span.date-range
             = series.date_range
         %p= series.summary
-        %ol
-          - series.works.each do |work|
-            %li= link_to(work.name, work)
+        - if series.music?
+          %ol
+            - series.works.each do |work|
+              %li= link_to(work.name, work)
+        - elsif series.photography?
+          [tiny thumbnails]

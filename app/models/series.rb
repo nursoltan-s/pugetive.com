@@ -8,6 +8,18 @@ class Series < ApplicationRecord
     Series.joins(:works).where(works: {interest_id: MUSIC_INTEREST_ID}).uniq
   end
 
+  def self.photography
+    Series.joins(:works).where(works: {interest_id: PHOTOGRAPHY_INTEREST_ID}).uniq
+  end
+
+  def music?
+    works.where(interest_id: MUSIC_INTEREST_ID).any?
+  end
+
+  def photography?
+    works.where(interest_id: PHOTOGRAPHY_INTEREST_ID).any?
+  end
+
   def date_range
     start_year = Time.now.year
     stop_year = nil

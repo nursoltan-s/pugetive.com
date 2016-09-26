@@ -12,6 +12,10 @@ class Interest < ApplicationRecord
     id == MUSIC_INTEREST_ID
   end
 
+  def photography?
+    id == PHOTOGRAPHY_INTEREST_ID
+  end
+
   def should_generate_new_friendly_id?
     slug.blank? || name_changed?
   end

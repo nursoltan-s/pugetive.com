@@ -8,7 +8,7 @@
 
   .field
     = f.label :series_id
-    = f.select :series_id, options_from_collection_for_select(Series.all, :id, :name)
+    = f.select :series_id, options_from_collection_for_select(Series.all, :id, :name, selected: params[:series_id])
   .field
     = f.label :work_id
     = f.select :work_id, options_from_collection_for_select(Work.all, :id, :name)

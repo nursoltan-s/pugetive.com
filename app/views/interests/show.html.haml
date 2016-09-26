@@ -5,7 +5,7 @@
     %h1= @interest.name
 
 
-- if @interest.music?
+- if @interest.music? or @interest.photography?
   = render @series
 - else
   = render @interest.works.sorted
