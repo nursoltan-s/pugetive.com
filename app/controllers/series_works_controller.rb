@@ -10,4 +10,8 @@ class SeriesWorksController < MetaResourceController
     def series_work_params
       params.require(:series_work).permit(:series_id, :work_id)
     end
+
+    def post_create_path
+      item.series
+    end
 end

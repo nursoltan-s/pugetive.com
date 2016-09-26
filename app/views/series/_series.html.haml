@@ -1,0 +1,17 @@
+- cache series do
+  %section.series
+    .row
+      .medium-3.columns.medium-offset-2.medium-text-right.title-box
+        %h3
+          = link_to(series.name, series)
+        -#/ [image]
+        %p.admin{data: {visible_to: 'admin'}}
+          %smaller.subdued= link_to(edit_icon, edit_series_path(series))
+      .medium-5.columns.end.info-box
+        %p
+          %span.date-range
+            = series.date_range
+        %p= series.summary
+        %ol
+          - series.works.each do |work|
+            %li= link_to(work.name, work)

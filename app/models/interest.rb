@@ -8,6 +8,9 @@ class Interest < ApplicationRecord
   scope :live, -> {where(public: true)}
 
 
+  def music?
+    id == MUSIC_INTEREST_ID
+  end
 
   def should_generate_new_friendly_id?
     slug.blank? || name_changed?

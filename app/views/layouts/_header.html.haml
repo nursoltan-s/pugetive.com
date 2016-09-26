@@ -1,18 +1,3 @@
 %header= render "layouts/nav"
 = render 'layouts/flash'
 
--# .row
--#   .large-12.columns
--#     %nav
--#       %div{data: {visible_to: 'admin'}}
--#         = link_to_unless_current("Home",      root_path)
--#         = link_to_unless_current("Resume",    resume_path)
--#         = link_to_unless_current("Projects",  projects_path)
--#         = link_to_unless_current("Titles",    titles_path)
--#         = link_to_unless_current("Tools",     tools_path)
--#         = link_to_unless_current(status_icon, status_path)
--#       - if user_signed_in?
--#         = link_to delete_icon, destroy_user_session_path, :method => :delete, class: 'secondary'
--#       - else
--#         = link_to signin_icon, new_user_session_path, class: 'secondary subdued'
-

@@ -5,7 +5,6 @@
     %tr
       %th Name
       %th Summary
-      %th Description
       %th
       %th
 
@@ -14,9 +13,8 @@
       %tr
         %td= link_to(series.name, series)
         %td= series.summary
-        %td= series.description
-        %td= link_to 'Edit', edit_series_path(series)
-        %td= link_to 'Destroy', series, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= link_to edit_icon, edit_series_path(series)
+        %td= link_to destroy_icon, series, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 

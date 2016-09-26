@@ -10,9 +10,10 @@ class InterestsController < MetaResourceController
         render "interests/photography"
         return
       end
-    # when 'music'
-    #   render "interests/music"
-    #   return
+    when 'music'
+      @series = Series.music
+      # render "interests/music"
+      # return
 
     end
 

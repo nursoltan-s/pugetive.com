@@ -1,7 +1,7 @@
 - cache work do
   %section.work{class: work.interest.token}
     .row
-      .small-4.medium-3.columns.medium-offset-2.text-right.title-box
+      .medium-3.columns.medium-offset-2.medium-text-right.title-box
         %h3
           = link_to(work.name, work)
         -#/ [image]
@@ -14,7 +14,7 @@
         %p.admin{data: {visible_to: 'admin'}}
           %smaller.subdued= link_to(edit_icon, edit_work_path(work))
           %smaller.subdued= link_to(model_icon('role'), new_role_path(work_id: work.id))
-      .small-8.medium-5.columns.end.info-box
+      .medium-5.columns.end.info-box
         %p
           %span.date-range
             = work.date_range

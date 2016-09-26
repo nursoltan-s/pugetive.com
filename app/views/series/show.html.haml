@@ -13,3 +13,5 @@
 %h2 Works
 %section.series-works
   = render @series.works
+
+= link_to(new_icon, new_series_work_path(series_id: @series.id))
