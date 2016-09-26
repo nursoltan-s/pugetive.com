@@ -6,6 +6,8 @@
           = link_to(series.name, series)
         %span.titles
           = series.titles.map{|t| t.name}.join(', ')
+        %span.tools
+          = series.instruments.map{|t| t.name}.join(', ')
 
         -#/ [image]
         %p.admin{data: {visible_to: 'admin'}}

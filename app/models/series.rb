@@ -36,6 +36,18 @@ class Series < ApplicationRecord
     list
   end
 
+  def instruments
+    list = []
+    works.each do |work|
+      work.tools.instruments.each do |title|
+        unless list.include?(title.name)
+          list << title
+        end
+      end
+    end
+    list
+  end
+
   def date_range
     start_year = Time.now.year
     stop_year = nil

@@ -1,9 +1,10 @@
-// Place all the styles related to the Series controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'mixins';
 
 section.series {
   .titles {
+    display: none;
+  }
+  .tools {
     display: none;
   }
 }
@@ -11,5 +12,13 @@ section.series {
 section.series.music {
   .titles {
     display: block;
+    @include subdued(90);
   }
+
+  .tools {
+    display: block;
+    @include subdued(33);
+    font-size: 0.8em;
+  }
+
 }
