@@ -1,6 +1,6 @@
 .row
   .medium-7.medium-offset-5.columns
-    %h2 Performing Live 
+    %h2 Live Music
 - Band.all.each do |band|
   %section.band
     .row
@@ -10,9 +10,8 @@
             = link_to(band.name, band.url)
           - else
             = band.name
-        %p
-          %span.location
-            = band.location
+        .location
+          = band.location
       .medium-5.columns.end.info-box
         .date-range
           = band.date_range

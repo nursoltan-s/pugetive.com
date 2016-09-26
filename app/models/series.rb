@@ -32,7 +32,7 @@ class Series < ApplicationRecord
     list = []
     works.each do |work|
       work.titles.each do |title|
-        unless list.include?(title.name)
+        unless list.include?(title)
           list << title
         end
       end

@@ -17,12 +17,23 @@ section.work, section.series, section.band {
   p.status {
     font-size: 0.8em;
   }
-  .titles, .programs {
+  .titles, .programs, .location {
     @include subdued;
     font-size: 0.8em;
   }
 
+  .date-range {
+    margin-bottom: 0.3em;
+  }
+  &.film, &.software {
+    .artist {
+      display: none;
+    }
+  }
   &.photography {
+    .artist {
+      display: none;
+    }
     .titles {
       display: none;
     }
@@ -34,6 +45,8 @@ section.work, section.series, section.band {
     }
   }
 }
+
+
 
 section.series-works .work {
   .titles, .tools, .status, .programs {

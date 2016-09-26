@@ -15,6 +15,10 @@
           %smaller.subdued= link_to(edit_icon, edit_work_path(work))
           %smaller.subdued= link_to(model_icon('role'), new_role_path(work_id: work.id))
       .medium-5.columns.end.info-box
+        %p.artist
+          %b Artist:
+          = work.party.name
+
         %p
           %span.date-range
             = work.date_range
