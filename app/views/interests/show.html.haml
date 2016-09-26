@@ -1,8 +1,17 @@
 - title(@interest.name, false)
 
-.row
-  .medium-7.medium-offset-5.columns
-    %h1= @interest.name
+- if @interest.music?
+  = render "live_bands"
+
+  .row
+    .medium-7.medium-offset-5.columns
+      %h1 Recordings
+
+
+- else
+  .row
+    .medium-7.medium-offset-5.columns
+      %h1= @interest.name
 
 
 - if @interest.music? or @interest.photography?

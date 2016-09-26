@@ -5,14 +5,17 @@
         %h3
           = link_to(series.name, series)
         %span.titles
-          = series.titles.map{|t| t.name}.join(', ')
+          = raw(series.titles.map{|t| link_to(t.name, t)}.join(', '))
         %span.tools
-          = series.instruments.map{|t| t.name}.join(', ')
+          = raw(series.instruments.map{|t| link_to(t.name, t)}.join(', '))
 
         -#/ [image]
         %p.admin{data: {visible_to: 'admin'}}
           %smaller.subdued= link_to(edit_icon, edit_series_path(series))
       .medium-5.columns.end.info-box
+        %p.artist
+          %b Artist:
+          = series.artist.name
         %p
           %span.date-range
             = series.date_range

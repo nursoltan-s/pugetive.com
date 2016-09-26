@@ -1,3 +1,9 @@
-- title("#{@title.name} Projects")
+- title(@title.name, false)
 
-= render @title.works
+.row
+  .medium-7.medium-offset-5.columns
+    %h1
+      %span.tool-name= @title.name
+
+%section.works
+  = render @title.works

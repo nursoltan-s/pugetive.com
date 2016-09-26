@@ -24,6 +24,10 @@ class Series < ApplicationRecord
     works.first.interest.token
   end
 
+  def artist
+    works.first.party
+  end
+
   def titles
     list = []
     works.each do |work|

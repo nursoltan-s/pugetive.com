@@ -13,12 +13,20 @@ section.series.music {
   .titles {
     display: block;
     @include subdued(90);
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
   }
 
   .tools {
     display: block;
     @include subdued(33);
     font-size: 0.8em;
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
   }
 
 }
