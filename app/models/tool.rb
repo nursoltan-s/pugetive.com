@@ -18,9 +18,11 @@ class Tool < ActiveRecord::Base
 
   scope :music, -> {where(category: 'Music')}
   scope :instruments, -> {where(type: 'Instrument')}
+
   scope :programs, -> {where(type: 'Program')}
 
   scope :photography, -> {where(category: 'Photography')}
+  scope :film,        -> {where(category: 'Film')}
 
   has_many :wields
   has_many :works, through: :wields

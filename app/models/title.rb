@@ -14,7 +14,7 @@ class Title < ActiveRecord::Base
   scope :music,       -> {where(category: 'Music')}
   scope :photography, -> {where(category: 'Photography')}
   scope :software,    -> {where(category: 'Software')} 
-
+  scope :film,        -> {where(category: 'Film')}
 
   def should_generate_new_friendly_id?
     slug.blank? || name_changed?
