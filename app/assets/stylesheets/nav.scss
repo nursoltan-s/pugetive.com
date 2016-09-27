@@ -23,4 +23,7 @@
     border-right: none;
   }
 */
+  ul.auth {
+    @include subdued(20);
+  }
 }

@@ -11,8 +11,8 @@
           - if CONFIG[Rails.env]["#{interest.token}_live"]
             %li.menu-text.interest-item= link_to(raw("#{interest_icon(interest)} #{interest.name}"), interest)
     .top-bar-right
-      %ul.menu
-        %li.menu-text.subdued
+      %ul.menu.auth
+        %li.menu-text
           - if user_signed_in?
             = link_to(raw("#{delete_icon} Sign Out"), destroy_user_session_path, :method => :delete, class: 'secondary')
           - else

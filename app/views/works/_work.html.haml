@@ -8,7 +8,8 @@
         %p
           %span.location
             = work.location
-        %p
+        - if work.demo?
+          .panel.demo-warning NOTE: This project is a home demo, rough draft, or was completed under extreme time constraints. "Enjoy" it at your own peril.
           %span.programs
             = work.tools.programs.map{|t| t.name}.join(', ')
         %p.admin{data: {visible_to: 'admin'}}

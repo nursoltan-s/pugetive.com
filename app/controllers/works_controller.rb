@@ -5,6 +5,7 @@ class WorksController < MetaResourceController
     # Never trust parameters from the scary internet, only allow the white list through.
     def work_params
       params.require(:work).permit(
+                                   :demo,
                                    :description, 
                                    :interest_id, 
                                    :live,
