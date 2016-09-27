@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   root 'about#home'
 
   get 'code', to: redirect('/software')
-  get 'interests' => "interests#index"
+  get 'interests' => 'interests#index'
 
   resources :accounts
   resources :awards
@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   get 'todd-gehman-resume' => 'resume#show', as: :resume
   match 'settings' => 'users#edit', via: [:get, :patch], as: :settings
 
-  get 'artists/:slug' => "parties#show"
+  get 'artists/:slug' => 'parties#show'
 
   resources :interests, path: '/'
 

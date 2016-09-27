@@ -49,6 +49,14 @@ section.work, section.series, section.band {
     color: firebrick;
     font-style: italic;
   }
+  ul.series-list {
+    font-size: 0.8em;
+  }
+
+}
+
+html.series-show ul.series-list {
+  display: none;
 }
 
 

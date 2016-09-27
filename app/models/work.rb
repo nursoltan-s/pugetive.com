@@ -16,6 +16,10 @@ class Work < ApplicationRecord
   has_many :wields
   has_many :tools, through: :wields
 
+  has_many :series_works
+  has_many :series, through: :series_works
+
+
   scope :sorted, -> {order("stop_year IS NULL DESC, stop_year DESC")}
 
   def date_range

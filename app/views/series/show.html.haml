@@ -1,14 +1,20 @@
-- title(@series.name)
+- title(@series.name, false)
 
-%p
-  %b Summary:
-  = @series.summary
-%p
-  %b Description:
-  = @series.description
+- cache @series do
+  %section.series
+    .row
+      .medium-offset-2.medium-7.columns.end
+        %h1= @series.name
+      
+        - if @series.summary.present?
+          %p= @series.summary
+        - if @series.description.present?
+          %p
+            = @series.description
 
-%h2 Works
-%section.series-works
-  = render @series.works
+    %section.series-works
+      = render @series.works
 
-= link_to(new_icon, new_series_work_path(series_id: @series.id))
+    %p{data: {visible_to: 'admin'}}
+      = link_to(new_icon, new_series_work_path(series_id: @series.id))
+      = link_to(edit_icon, edit_series_path(@series))
