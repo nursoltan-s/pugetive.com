@@ -29,11 +29,14 @@ module FormsHelper
   end
 
   def form_label(label)
-    content_tag(:div, label, class: 'small-12 medium-3 large-3 columns form-label')
+    if label.nil?
+      label = raw('&nbsp;')
+    end
+    content_tag(:div, label, class: 'medium-3 columns form-label')
   end
 
   def form_field(field)
-    content_tag(:div, field, class: 'small-12 medium-9 large-9 columns form-field')
+    content_tag(:div, field, class: 'medium-7 columns form-field end')
   end
 
   def submit(f, text = 'Save', disable_text = 'Saving...', options = {})

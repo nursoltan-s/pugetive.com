@@ -1,25 +1,14 @@
 = form_for @tool do |f|
-  - if @tool.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@tool.errors.count, "error")} prohibited this tool from being saved:"
-      %ul
-        - @tool.errors.full_messages.each do |msg|
-          %li= msg
+  - handle_errors(@tool)
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :type
-    = f.select :type, options_for_select(Tool::TYPES, selected: @tool.type)
-  .field
-    = f.label :category
-    = f.select :category, options_for_select(PURSUITS, selected: @tool.category)
-  .field
-    = f.label :front_end
-    = f.check_box :front_end
-  .field
-    = f.label :fluency
-    = f.select(:fluency, options_for_select([0, 1, 2, 3]))
-  .actions
-    = f.submit 'Save'
+  = label_field(f.label(:name), f.text_field(:name))
+  = label_field(f.label(:type), 
+                f.select(:type, options_for_select(Tool::TYPES, selected: @tool.type)))
+
+  = label_field(f.label(:category), 
+                f.select(:category, options_for_select(PURSUITS, selected: @tool.category)))
+
+  = label_field(f.label(:front_end), f.check_box(:front_end))
+  = label_field(f.label(:fluency), 
+                f.select(:fluency, options_for_select([0, 1, 2, 3])))
+  = submit(f)

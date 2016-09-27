@@ -1,19 +1,7 @@
 = form_for @series do |f|
-  - if @series.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@series.errors.count, "error")} prohibited this series from being saved:"
-      %ul
-        - @series.errors.full_messages.each do |msg|
-          %li= msg
+  - handle_errors(@series)
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :summary
-    = f.text_field :summary
-  .field
-    = f.label :description
-    = f.text_area :description
-  .actions
-    = f.submit 'Save'
+  = label_field(f.label(:name), f.text_field(:name))
+  = label_field(f.label(:summary), f.text_field(:summary))
+  = label_field(f.label(:description), f.text_area(:description))
+  = submit(f)

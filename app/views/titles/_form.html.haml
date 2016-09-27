@@ -1,11 +1,8 @@
 = form_for @title do |f|
   - handle_errors(@title)
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :category
-    = f.select :category, options_for_select(PURSUITS, selected: @title.category)
-  .actions
-    = f.submit 'Save'
+  = label_field(f.label(:name), f.text_field(:name))
+  = label_field(f.label(:category), 
+                f.select(:category, options_for_select(PURSUITS, selected: @title.category)))
+  = submit(f)
+
