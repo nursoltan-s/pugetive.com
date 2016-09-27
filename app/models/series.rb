@@ -1,5 +1,8 @@
 class Series < ApplicationRecord
 
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :history]
+
   has_many :series_works
   has_many :works, through: :series_works
 
@@ -66,4 +69,9 @@ class Series < ApplicationRecord
     end
     return DateRange.new(start_year, stop_year).years
   end
+
+  def should_generate_new_friendly_id?
+    slug.blank? || name_changed?
+  end
+
 end

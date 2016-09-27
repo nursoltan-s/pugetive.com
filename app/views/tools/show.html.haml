@@ -7,6 +7,10 @@
 
     %h2.subhead= @tool.type
 
+    %p 
+      Listing works involving #{content_tag(:i, @tool.name)}.
+
+
 %section.works
   = render @tool.works
 

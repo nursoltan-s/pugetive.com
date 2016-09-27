@@ -53,6 +53,16 @@ section.work, section.series, section.band {
     font-size: 0.8em;
   }
 
+
+  .titles a {
+    color: inherit;
+  }
+  .tools {
+    font-size: 0.8em;
+    a {
+      color: inherit;
+    }
+  }
 }
 
 html.series-show ul.series-list {

@@ -4,6 +4,8 @@
   .medium-7.medium-offset-5.columns
     %h1
       %span.tool-name= @title.name
+    %p 
+      Listing works where I operated as a #{content_tag(:i, @title.name)}.
 
 %section.works
   = render @title.works

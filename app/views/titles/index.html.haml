@@ -9,7 +9,7 @@
       %th
 
   %tbody
-    - @titles.each do |title|
+    - @titles.sorted.each do |title|
       %tr
         %td= link_to(title.name, title)
         %td= title.category

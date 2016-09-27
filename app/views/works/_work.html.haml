@@ -24,7 +24,7 @@
           %span.date-range
             = work.date_range
           %span.titles
-            = work.titles.map{|t| t.name}.join(', ')
+            = raw(work.titles.map{|t| link_to(t.name, t)}.join(', '))
         %p
           %span.tools
             -# FIXME this is music-specific
@@ -38,4 +38,8 @@
                 From the album: 
                 = link_to(series.name, series)
         %p= work.summary
+        - if work.tools.any?
+          %p.tools
+            %b Buzzwords:
+            = raw(work.tools.map{|t| link_to(t.name, t)}.join(', '))
 

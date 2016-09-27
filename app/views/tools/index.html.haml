@@ -14,11 +14,10 @@
     - @tools.each do |tool|
       %tr
         %td= star_icon(tool.fluency)
-        %td= tool.name
+        %td= link_to(tool.name, tool)
         %td= tool.type
-        %td= link_to 'Show', tool
-        %td= link_to 'Edit', edit_tool_path(tool)
-        %td= link_to 'Destroy', tool, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= link_to edit_icon, edit_tool_path(tool)
+        %td= link_to destroy_icon, tool, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
