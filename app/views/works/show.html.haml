@@ -9,7 +9,7 @@
     .medium-offset-5.medium-5.end
       = link_to(raw("#{new_icon} Lyric"), new_lyric_path(work_id: @work.id))
 
-.row
+.row{data: {visible_to: 'admin'}}
   .medium-6.columns
     - Tool.send(@work.interest.token).sort{|a,b| a.name <=> b.name}.each do |tool|
       = form_for @work.wields.new(tool_id: tool.id) do |f|
