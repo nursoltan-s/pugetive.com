@@ -21,6 +21,8 @@ class Work < ApplicationRecord
 
 
   scope :sorted, -> {order("stop_year IS NULL DESC, stop_year DESC")}
+  scope :favorite, -> {where(favorite: true)}
+  scope :unfavorite, -> {where(favorite: false)}
 
   def date_range
     DateRange.new(start_year, stop_year).years

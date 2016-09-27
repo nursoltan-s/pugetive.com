@@ -21,4 +21,12 @@
 - if @interest.music? or @interest.photography?
   = render @series
 - else
-  = render @interest.works.sorted
+  .row
+    .medium-7.medium-offset-5.columns
+      %h2 Selected Projects
+  = render @interest.works.favorite.sorted
+    
+  .row
+    .medium-7.medium-offset-5.columns
+      %h2 Other Projects
+  = render @interest.works.unfavorite.sorted

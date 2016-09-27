@@ -3,18 +3,28 @@
 
   = label_field(f.label(:name), f.text_field(:name))
   = label_field(f.label(:location), f.text_field(:location))
+
   = label_field(f.label(:interest_id), 
                 f.select(:interest_id, options_from_collection_for_select(Interest.all, :id, :name, selected: @work.interest_id)))
 
   = label_field(f.label(:party_id), 
                 f.select(:party_id, options_from_collection_for_select(Party.sorted, :id, :name, selected: @work.party_id)))
+
   = label_field(f.label(:url), f.text_field(:url))
-  = label_field(f.label(:start_year), f.number_field(:start_year))
-  = label_field(f.label(:stop_year), f.number_field(:stop_year))
+
+  = label_field(f.label(:start_year), 
+                f.select(:start_year, options_for_select(YEARS_OF_LIFE, selected: @work.start_year), include_blank: true))
+
+  = label_field(f.label(:stop_year),
+                f.select(:stop_year, options_for_select(YEARS_OF_LIFE, selected: @work.stop_year), include_blank: true))
+
   = label_field(f.label(:description), f.text_area(:description))
-  = label_field(f.label(:summary), f.text_field(:summary))
-  = label_field(f.label(:live), f.check_box(:live))
-  = label_field(f.label(:demo), f.check_box(:demo))
+  = label_field(f.label(:summary),     f.text_field(:summary))
+
+  = label_field(f.label(:live),     f.check_box(:live))
+  = label_field(f.label(:demo),     f.check_box(:demo))
+  = label_field(f.label(:favorite), f.check_box(:favorite))
+
   = label_field(f.label(:status), 
                 f.select(:status, options_for_select(Work::STATUSES, selected: @work.status)))
 

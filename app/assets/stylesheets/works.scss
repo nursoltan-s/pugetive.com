@@ -30,6 +30,13 @@ section.work, section.series, section.band {
       display: none;
     }
   }
+
+  &.software {
+    .programs {
+      display: none;
+    }
+  }
+  
   &.photography {
     .artist {
       display: none;
@@ -58,6 +65,7 @@ section.work, section.series, section.band {
     color: inherit;
   }
   .tools {
+    @include subdued();
     font-size: 0.8em;
     a {
       color: inherit;
