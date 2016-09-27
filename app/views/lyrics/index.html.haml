@@ -1,0 +1,23 @@
+- title('Listing lyrics')
+
+%table
+  %thead
+    %tr
+      %th Work
+      %th Content
+      %th
+      %th
+      %th
+
+  %tbody
+    - @lyrics.each do |lyric|
+      %tr
+        %td= lyric.work_id
+        %td= lyric.content
+        %td= link_to 'Show', lyric
+        %td= link_to 'Edit', edit_lyric_path(lyric)
+        %td= link_to 'Destroy', lyric, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= new_button(:lyric)

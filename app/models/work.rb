@@ -19,10 +19,12 @@ class Work < ApplicationRecord
   has_many :series_works
   has_many :series, through: :series_works
 
+  has_one :lyric
 
-  scope :sorted, -> {order("stop_year IS NULL DESC, stop_year DESC")}
-  scope :favorite, -> {where(favorite: true)}
+  scope :sorted,     -> {order("stop_year IS NULL DESC, stop_year DESC")}
+  scope :favorite,   -> {where(favorite: true)}
   scope :unfavorite, -> {where(favorite: false)}
+  scope :music,      -> {where(interest_id: MUSIC_INTEREST_ID)}
 
   def date_range
     DateRange.new(start_year, stop_year).years

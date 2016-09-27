@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Work:
+  = @lyric.work_id
+%p
+  %b Content:
+  = @lyric.content
+
+= link_to 'Edit', edit_lyric_path(@lyric)
+\|
+= link_to 'Back', lyrics_path

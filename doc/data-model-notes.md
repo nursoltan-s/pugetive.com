@@ -1,3 +1,5 @@
+rails g scaffold Lyric work_id:integer content:text
+
 rails g scaffold Interest name sort:integer token work_name series_name
 
 

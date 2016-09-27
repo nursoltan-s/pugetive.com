@@ -1,0 +1,2 @@
+class LyricPolicy < ApplicationPolicy
+end

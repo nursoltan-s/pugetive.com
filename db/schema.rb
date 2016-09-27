@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160927084212) do
+ActiveRecord::Schema.define(version: 20160927092454) do
 
   create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "company"
@@ -88,6 +88,13 @@ ActiveRecord::Schema.define(version: 20160927084212) do
     t.index ["slug"], name: "index_interests_on_slug", using: :btree
     t.index ["sort"], name: "index_interests_on_sort", using: :btree
     t.index ["token"], name: "index_interests_on_token", using: :btree
+  end
+
+  create_table "lyrics", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer  "work_id"
+    t.text     "content",    limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "notes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|

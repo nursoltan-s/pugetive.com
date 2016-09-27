@@ -73,6 +73,12 @@ section.work, section.series, section.band {
   }
 }
 
+html.works-show {
+  .lyric {
+    font-size: 0.8em;
+  }
+}
+
 html.series-show ul.series-list {
   display: none;
 }
