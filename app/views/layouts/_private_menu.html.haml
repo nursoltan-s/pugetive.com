@@ -5,7 +5,9 @@
       -# %li= link_to(raw("#{award_icon} Awards"),     awards_path,   title: 'Awards')
       %li= link_to(raw("#{party_icon} Parties"),    parties_path,  title: 'View Parties')
       -# %li= link_to(raw("#{project_icon} Projects"), projects_path, title: 'Projects')
-      %li= link_to(raw("#{model_icon('work')} Works"), works_path, title: 'View Works')
+      %li
+        = link_to(raw("#{model_icon('work')} Works"), works_path, title: 'View Works')
+      %li= link_to(raw("#{new_icon} Work"), new_work_path)
       %li= link_to(raw("#{model_icon('series')} Series"), series_index_path, title: 'View Series')
       %li= link_to(raw("#{title_icon} Titles"),     titles_path,   title: 'Titles')
       %li= link_to(raw("#{tool_icon} Tools"),       tools_path,    title: 'Tools')

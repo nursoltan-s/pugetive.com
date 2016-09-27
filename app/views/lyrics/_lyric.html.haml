@@ -1,0 +1,7 @@
+- cache lyric do 
+  .row
+    .medium-offset-5.medium-5.end
+      %h2
+        Song Lyric
+        %span.small.subdued{data: {visible_to: 'admin'}}= link_to(edit_icon, edit_lyric_path(lyric))
+      %pre.lyric= lyric.content

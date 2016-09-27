@@ -1,6 +1,6 @@
 = form_for @lyric do |f|
   - handle_errors(@lyric)
   = label_field(f.label(:work_id),
-                f.select(:work_id, options_from_collection_for_select(Work.music.sorted, :id, :name)))
+                f.select(:work_id, options_from_collection_for_select(Work.music.sorted, :id, :name, selected: params[:work_id])))
   = label_field(f.label(:content), f.text_area(:content))
   = submit(f)

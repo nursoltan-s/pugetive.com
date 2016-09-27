@@ -11,7 +11,9 @@
 
         -#/ [image]
         %p.admin{data: {visible_to: 'admin'}}
-          %smaller.subdued= link_to(edit_icon, edit_series_path(series))
+          %smaller.subdued
+            = link_to(new_icon, new_series_work_path(series_id: series.id))
+            = link_to(edit_icon, edit_series_path(series))
       .medium-5.columns.end.info-box
         %p.artist
           %b Artist:

@@ -7,7 +7,7 @@ class LyricsController < MetaResourceController
       params.require(:lyric).permit(:work_id, :content)
     end
 
-    def post_update_path
+    def post_create_path
       @lyric.work
     end
 end

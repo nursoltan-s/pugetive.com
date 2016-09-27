@@ -3,10 +3,11 @@
 = render @work
 
 - if @work.lyric
-  .row
+  = render @work.lyric
+- elsif @work.music?
+  .row{data: {visible_to: 'admin'}}
     .medium-offset-5.medium-5.end
-      %h2 Song Lyric
-      %pre.lyric= @work.lyric.content
+      = link_to(raw("#{new_icon} Lyric"), new_lyric_path(work_id: @work.id))
 
 .row
   .medium-6.columns

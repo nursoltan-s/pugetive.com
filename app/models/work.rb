@@ -25,6 +25,7 @@ class Work < ApplicationRecord
   scope :favorite,   -> {where(favorite: true)}
   scope :unfavorite, -> {where(favorite: false)}
   scope :music,      -> {where(interest_id: MUSIC_INTEREST_ID)}
+  scope :alpha,      -> {order(:name)}
 
   def date_range
     DateRange.new(start_year, stop_year).years
@@ -34,5 +35,8 @@ class Work < ApplicationRecord
     slug.blank? || name_changed?
   end
 
+  def music?
+    interest_id == MUSIC_INTEREST_ID
+  end
 
 end
