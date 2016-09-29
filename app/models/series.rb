@@ -56,18 +56,31 @@ class Series < ApplicationRecord
   end
 
   def date_range
-    start_year = Time.now.year
-    stop_year = nil
-    works.each do |work|
-      if work.start_year < start_year
-        start_year = work.start_year
-      end
-      if work.stop_year.present? and (stop_year.nil? or work.stop_year > stop_year)
-        stop_year = work.stop_year
-      end
+    DateRange.new(start_year, stop_year)
+  end
 
+  def start_year
+    start = Time.now.year
+    works.each do |work|
+      if work.start_year < start
+        start = work.start_year
+      end
     end
-    return DateRange.new(start_year, stop_year).years
+    start
+  end
+
+  def stop_year
+    stop = nil
+    works.each do |work|
+      if work.stop_year.present? and (stop.nil? or work.stop_year > stop)
+        stop = work.stop_year
+      end
+    end
+    stop
+  end
+
+  def years
+    date_range.years
   end
 
   def should_generate_new_friendly_id?

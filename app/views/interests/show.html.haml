@@ -19,7 +19,7 @@
 
 
 - if @interest.music? or @interest.photography?
-  = render @series
+  = render @series.sort{|a, b| b.stop_year <=> a.stop_year}
 - else
   .row
     .medium-7.medium-offset-5.columns
