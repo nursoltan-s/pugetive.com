@@ -1,43 +1,22 @@
 = form_for @party do |f|
   - handle_errors(@party)
 
-  .field
-    = f.label :name
-    = f.text_field :name
+  = label_field(f.label(:name), f.text_field(:name))
 
-  .field
-    = f.label :type
-    = f.select :type, options_for_select(Party::TYPES, selected: @party.type)
+  = label_field(f.label(:type),
+                f.select(:type, options_for_select(Party::TYPES, selected: @party.type)))
 
-  .field
-    = f.label :official_title
-    = f.text_field :official_title
+  = label_field(f.label(:official_title), f.text_field(:official_title))
+  = label_field(f.label(:summary), f.text_field(:summary))
+  = label_field(f.label(:url), f.text_field(:url))
+  = label_field(f.label(:description), f.text_area(:description))
+  = label_field(f.label(:location), f.text_field(:location))
 
-  .field
-    = f.label :summary
-    = f.text_field :summary
+  = label_field(f.label(:start_year),
+                f.select(:start_year, options_for_select(YEARS_OF_LIFE, selected: @party.start_year)))
+  = label_field(f.label(:stop_year),
+                f.select(:stop_year, options_for_select(YEARS_OF_LIFE, selected: @party.stop_year), include_blank: true))
+  = label_field(f.label(:live), f.check_box(:live))
+  = label_field(f.label(:alias), f.check_box(:alias))
 
-  .field
-    = f.label :url
-    = f.text_field :url
-  .field
-    = f.label :description
-    = f.text_area :description
-
-  .field
-    = f.label :location
-    = f.text_field :location
-
-  .field
-    = f.label :start_year
-    = f.select :start_year, options_for_select(YEARS_OF_LIFE, selected: @party.start_year)
-  .field
-    = f.label :stop_year
-    = f.select :stop_year, options_for_select(YEARS_OF_LIFE, selected: @party.stop_year), include_blank: true
-
-  .field
-    = f.label :live
-    = f.check_box :live
-
-  .actions
-    = f.submit 'Save'
+  = submit(f)

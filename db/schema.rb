@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160927135909) do
+ActiveRecord::Schema.define(version: 20160929132702) do
 
   create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "company"
@@ -121,6 +121,8 @@ ActiveRecord::Schema.define(version: 20160927135909) do
     t.string   "summary"
     t.string   "slug"
     t.boolean  "live",                         default: false
+    t.boolean  "alias",                        default: false, null: false
+    t.index ["alias"], name: "index_parties_on_alias", using: :btree
     t.index ["name"], name: "index_parties_on_name", using: :btree
     t.index ["slug"], name: "index_parties_on_slug", using: :btree
     t.index ["start_year"], name: "index_parties_on_start_year", using: :btree

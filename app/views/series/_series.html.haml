@@ -19,6 +19,8 @@
         %p.artist
           %b Artist:
           = series.artist.name
+          - if series.artist.alias?
+            %span.subdued [solo alias]
         %p
           %span.date-range
             = series.date_range
