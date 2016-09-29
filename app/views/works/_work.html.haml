@@ -15,6 +15,7 @@
         %p.admin{data: {visible_to: 'admin'}}
           %smaller.subdued= link_to(edit_icon, edit_work_path(work))
           %smaller.subdued= link_to(model_icon('role'), new_role_path(work_id: work.id))
+          %smaller.subdued= link_to(destroy_icon, work, method: :delete, data: {confirm: 'Are you sure?'})
       .medium-5.columns.end.info-box
         %p.artist
           %b Artist:
@@ -26,9 +27,9 @@
           %span.titles
             = raw(work.titles.map{|t| link_to(t.name, t)}.join(', '))
         %p
-          %span.tools
+          %span.instruments
             -# FIXME this is music-specific
-            = work.tools.instruments.map{|t| t.name}.join(', ')
+            = raw(work.tools.instruments.map{|t| link_to(t.name, t)}.join(', '))
         %p.status
           = combo_status(work)
         - if work.series.any?

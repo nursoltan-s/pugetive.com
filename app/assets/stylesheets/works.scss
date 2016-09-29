@@ -59,12 +59,16 @@ section.work, section.series, section.band {
   ul.series-list {
     font-size: 0.8em;
   }
-
+  &.music {
+    .tools {
+      display: none;
+    }
+  }
 
   .titles a {
     color: inherit;
   }
-  .tools {
+  .tools, .instruments {
     @include subdued();
     font-size: 0.8em;
     a {

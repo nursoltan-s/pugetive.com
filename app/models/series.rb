@@ -3,7 +3,7 @@ class Series < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: [:slugged, :history]
 
-  has_many :series_works
+  has_many :series_works, dependent: :destroy
   has_many :works, through: :series_works
 
 

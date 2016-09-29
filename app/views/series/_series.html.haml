@@ -14,6 +14,7 @@
           %smaller.subdued
             = link_to(new_icon, new_series_work_path(series_id: series.id))
             = link_to(edit_icon, edit_series_path(series))
+            = link_to(destroy_icon, series, :method => :delete, :data => { :confirm => 'Are you sure?' })
       .medium-5.columns.end.info-box
         %p.artist
           %b Artist:
@@ -23,8 +24,8 @@
             = series.date_range
         %p= series.summary
         - if series.music?
-          %ol
+          %ol.works
             - series.works.each do |work|
-              %li= link_to(work.name, work)
+              %li{class: work.favorite? ? 'favorite' : nil}= link_to(work.name, work)
         - elsif series.photography?
           [tiny thumbnails]  }

@@ -18,6 +18,14 @@ section.series.music {
       text-decoration: none;
     }
   }
+  ol.works {
+    li {
+      font-weight: 100;
+    }
+    li.favorite {
+      font-weight: 700;
+    }
+  }
 
   .tools {
     display: block;
