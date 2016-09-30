@@ -12,7 +12,7 @@ class Band
             stop_year:   1994,
             location:    'State College, PA',
             instruments: Tool.where("name = 'Acoustic Guitar'"),
-            summary:     "Acoustic cover band featuring myself on guitar backing two female vocalists. We mostly did songs by the Indigo Girls and folks of that ilk/era.",
+            summary:     "Acoustic cover band featuring myself on guitar backing two female vocalists. We mostly performed songs by folky female acts of the era: Indigo Girls, etc.",
             url:         nil},
             {name:        'The Shiners',
             start_year:  1998,

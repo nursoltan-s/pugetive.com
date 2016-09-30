@@ -4,6 +4,10 @@
       .medium-3.columns.medium-offset-2.medium-text-right.title-box
         %h3
           = link_to(work.name, work)
+        - unless work.mine?
+          .author
+            Written by
+            %b= work.author.name
         -#/ [image]
         %p
           %span.location

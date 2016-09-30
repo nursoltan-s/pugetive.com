@@ -75,6 +75,10 @@ section.work, section.series, section.band {
       color: inherit;
     }
   }
+  .author {
+    @include subdued();
+    font-size: 0.8em;
+  }
 }
 
 html.works-show {

@@ -10,6 +10,9 @@
   = label_field(f.label(:party_id), 
                 f.select(:party_id, options_from_collection_for_select(Party.sorted, :id, :name, selected: @work.party_id)))
 
+  = label_field(f.label(:author_id), 
+                f.select(:author_id, options_from_collection_for_select(Artist.sorted, :id, :name, selected: @work.author_id)))
+
   = label_field(f.label(:url), f.text_field(:url))
 
   = label_field(f.label(:start_year), 

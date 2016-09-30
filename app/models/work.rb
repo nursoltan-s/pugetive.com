@@ -20,6 +20,7 @@ class Work < ApplicationRecord
   has_many :series, through: :series_works
 
   has_one :lyric
+  belongs_to :author, class_name: 'Artist'
 
   scope :sorted,     -> {order("stop_year IS NULL DESC, stop_year DESC")}
   scope :alpha,      -> {order(:name)}
@@ -40,6 +41,10 @@ class Work < ApplicationRecord
 
   def music?
     interest_id == MUSIC_INTEREST_ID
+  end
+
+  def mine?
+    author_id == 1
   end
 
 end
