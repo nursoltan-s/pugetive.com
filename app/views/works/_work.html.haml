@@ -4,6 +4,13 @@
       .medium-3.columns.medium-offset-2.medium-text-right.title-box
         %h3
           = link_to(work.name, work)
+          - if work.demo?
+            .demo-warning 
+              - if work.music?
+                [home demo]
+              - else
+                [prototype or rough draft]
+
         - unless work.mine?
           .author
             Written by
@@ -14,8 +21,6 @@
             = work.location
           %span.programs
             = work.tools.programs.map{|t| t.name}.join(', ')
-        - if work.demo?
-          .panel.demo-warning NOTE: This project is a home demo, rough draft, or was completed under extreme time constraints. "Enjoy" it at your own peril.
         %p.admin{data: {visible_to: 'admin'}}
           %smaller.subdued= link_to(edit_icon, edit_work_path(work), rel: 'nofollow')
           %smaller.subdued= link_to(model_icon('role'), new_role_path(work_id: work.id), rel: 'nofollow')

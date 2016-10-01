@@ -28,6 +28,14 @@
         - if series.music?
           %ol.works
             - series.works.each do |work|
-              %li{class: work.favorite? ? 'favorite' : nil}= link_to(work.name, work)
+              %li{class: work.favorite? ? 'favorite' : nil}
+                = link_to(work.name, work)
+                - if work.demo?
+                  %span.demo-warning 
+                    - if work.music?
+                      [home demo]
+                    - else
+                      [prototype or rough draft]
+
         - elsif series.photography?
           [tiny thumbnails]
