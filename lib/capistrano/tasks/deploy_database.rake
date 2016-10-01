@@ -1,3 +1,5 @@
+production_protected = true
+
 namespace :db do
 
   db_config = YAML::load_file('config/database.yml')
@@ -44,7 +46,7 @@ namespace :db do
   end
 
   task :push_db do
-    if fetch(:rails_env) == 'production'
+    if production_protected and fetch(:rails_env) == 'production'
       raise "Sorry, I refuse to push the local database to production."
     end
     run_locally do
@@ -57,7 +59,7 @@ namespace :db do
   end
 
   task :load_remote_db do
-    if fetch(:rails_env) == 'production'
+    if production_protected and fetch(:rails_env) == 'production'
       raise "Sorry, I won't load the remote database on production."
     end
     on roles(:db) do

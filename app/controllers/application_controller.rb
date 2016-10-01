@@ -11,7 +11,15 @@ class ApplicationController < ActionController::Base
   after_action :verify_policy_scoped, only: :index
 
 
+  rescue_from Pundit::NotAuthorizedError, with: :unauthorized
+
+
+
   private
+
+    def unauthorized
+      render :file => 'public/401.html', :status => :not_authorized, :layout => false
+    end
 
     def remember_location
       if ['show', 'index'].include?(params[:action])
