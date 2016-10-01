@@ -46,6 +46,7 @@ gem 'haml-rails'
 gem "nilify_blanks"
 gem 'pdfkit'
 gem 'pundit'
+gem 'rack-mini-profiler', require: false
 gem 'whenever', require: false
 gem 'wicked_pdf'
 # gem 'wkhtmltopdf-binary'
