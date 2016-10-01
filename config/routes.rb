@@ -19,7 +19,6 @@ Rails.application.routes.draw do
   resources :notes
   resources :parties
   resources :phones
-  resources :projects
   resources :roles
   resources :series
   resources :series_works

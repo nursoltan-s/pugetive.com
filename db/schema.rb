@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161001110211) do
+ActiveRecord::Schema.define(version: 20161001200848) do
 
   create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "company"
@@ -138,29 +138,6 @@ ActiveRecord::Schema.define(version: 20161001110211) do
     t.string   "central_office_number", limit: 3
     t.string   "subscriber_number",     limit: 4
     t.index ["category"], name: "index_phones_on_category", using: :btree
-  end
-
-  create_table "projects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.string   "name",                         null: false
-    t.string   "type",           limit: 32,    null: false
-    t.integer  "party_id",                     null: false
-    t.string   "url"
-    t.integer  "start_year",                   null: false
-    t.integer  "stop_year"
-    t.text     "description",    limit: 65535
-    t.boolean  "live",                         null: false
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.string   "official_title"
-    t.string   "summary"
-    t.string   "slug"
-    t.index ["live"], name: "index_projects_on_live", using: :btree
-    t.index ["name"], name: "index_projects_on_name", using: :btree
-    t.index ["party_id"], name: "index_projects_on_party_id", using: :btree
-    t.index ["slug"], name: "index_projects_on_slug", using: :btree
-    t.index ["start_year"], name: "index_projects_on_start_year", using: :btree
-    t.index ["stop_year"], name: "index_projects_on_stop_year", using: :btree
-    t.index ["type"], name: "index_projects_on_type", using: :btree
   end
 
   create_table "pursuits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
