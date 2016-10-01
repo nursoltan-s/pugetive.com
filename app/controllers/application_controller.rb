@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   private
 
     def unauthorized
-      render :file => 'public/401.html', :status => :not_authorized, :layout => false
+      render :file => 'public/401.html', :status => :unauthorized, :layout => false
     end
 
     def remember_location
