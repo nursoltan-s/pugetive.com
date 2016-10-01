@@ -4,7 +4,6 @@
       %li= link_to(raw("#{model_icon('interest')} Interests"), interests_path, title: 'View Interests', rel: 'nofollow')
       -# %li= link_to(raw("#{award_icon} Awards"),     awards_path,   title: 'Awards')
       %li= link_to(raw("#{party_icon} Parties"),    parties_path,  title: 'View Parties', rel: 'nofollow')
-      -# %li= link_to(raw("#{project_icon} Projects"), projects_path, title: 'Projects')
       %li
         = link_to(raw("#{model_icon('work')} Works"), works_path, title: 'View Works', rel: 'nofollow')
       %li= link_to(raw("#{new_icon} Work"), new_work_path, rel: 'nofollow')
@@ -12,4 +11,5 @@
       %li= link_to(raw("#{title_icon} Titles"),     titles_path,   title: 'Titles', rel: 'nofollow')
       %li= link_to(raw("#{tool_icon} Tools"),       tools_path,    title: 'Tools', rel: 'nofollow')
       -# %li= link_to(raw(settings_icon),              settings_path, title: 'Settings')
-      -# %li= link_to(raw(status_icon),                status_path,   title: 'Status')
+      %li= link_to(raw(status_icon),                status_path,   title: 'Status')
+

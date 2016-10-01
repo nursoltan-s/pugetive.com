@@ -1,8 +1,12 @@
 - title('Tools')
 
+- Tool.types.each do |type|
+  = link_to(type, type: type)
+
 %table
   %thead
     %tr
+      %th Sort
       %th
       %th Name
       %th Type
@@ -13,6 +17,10 @@
   %tbody
     - @tools.each do |tool|
       %tr
+        %td
+          = form_for tool do |f|
+            = f.select(:sort, options_for_select(1..@tools.count, selected: tool.sort))
+            = submit(f)
         %td= star_icon(tool.fluency)
         %td= link_to(tool.name, tool)
         %td= tool.type

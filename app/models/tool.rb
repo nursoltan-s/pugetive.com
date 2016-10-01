@@ -24,9 +24,14 @@ class Tool < ActiveRecord::Base
   scope :photography, -> {where(category: 'Photography')}
   scope :film,        -> {where(category: 'Film')}
 
+
   has_many :wields
   has_many :works, through: :wields
 
+  def self.types
+    #FIXME make direct SQL call
+    all.each.map{|t| t.type}.uniq
+  end
 
   def num_projects
     @num_projects ||= projects.count

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161001100318) do
+ActiveRecord::Schema.define(version: 20161001110211) do
 
   create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "company"
@@ -222,9 +222,12 @@ ActiveRecord::Schema.define(version: 20161001100318) do
     t.datetime "updated_at",                            null: false
     t.integer  "fluency",    limit: 1,  default: 0,     null: false
     t.string   "slug"
+    t.integer  "sort"
     t.index ["fluency"], name: "index_tools_on_fluency", using: :btree
     t.index ["name"], name: "index_tools_on_name", using: :btree
     t.index ["slug"], name: "index_tools_on_slug", using: :btree
+    t.index ["sort"], name: "index_tools_on_sort", using: :btree
+    t.index ["type", "category", "sort"], name: "index_tools_on_type_and_category_and_sort", unique: true, using: :btree
     t.index ["type"], name: "index_tools_on_type", using: :btree
   end
 
