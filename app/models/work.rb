@@ -22,7 +22,7 @@ class Work < ApplicationRecord
   has_one :lyric
   belongs_to :author, class_name: 'Artist'
 
-  scope :sorted,     -> {order("stop_year IS NULL DESC, stop_year DESC")}
+  scope :sorted,     -> {order("stop_year IS NULL DESC, stop_year DESC, start_year DESC")}
   scope :alpha,      -> {order(:name)}
 
   scope :favorite,   -> {where(favorite: true)}

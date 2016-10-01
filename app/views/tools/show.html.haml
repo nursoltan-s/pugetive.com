@@ -12,7 +12,7 @@
 
 
 %section.works
-  = render @tool.works
+  = render @tool.works.sorted
 
 = link_to 'Edit', edit_tool_path(@tool)
 \|
