@@ -1,0 +1,99 @@
+
+
+
+
+
+/*
+     FILE ARCHIVED ON 0:08:04 Mar 14, 2005 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 6:57:27 Oct 1, 2016.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+body {
+background: #000000;
+font-family: arial, helvetica, sans-serif;
+color: #cccccc; 
+font-size: 9pt; 
+}
+
+a { color: #cd661d; text-decoration:none;}
+a:hover {color: #ffffff; }
+
+td {
+font-size: 9pt;
+vertical-align:top;
+}
+
+img{
+	border:0;
+}
+
+.press{
+	font-family:sans-serif;
+	width:500;
+}	
+
+.frame{
+border: 1px solid #666666;
+}
+
+.nav{
+font-size: 10pt;
+font-weight: bold;
+}
+
+.heading{
+color: #ffffff;
+font-size: 10pt;
+margin-top: .75em;
+font-weight: bold;
+}
+
+.subhead{
+color: #cccccc;
+font-size: 9pt;
+margin-top: .75em;
+}
+
+.boxhead{
+color: #cccccc;
+font-size: 8pt;
+font-weight: bold;
+border-bottom: 1px dotted #555555;
+margin-bottom: .25em;
+margin-top: .5em;
+
+}
+
+
+.seemore{
+font-size: 7pt;
+}
+
+
+/* styles for gallery classes */
+.title{
+color: #cccccc;
+font-size: 9pt;
+font-weight: bold;
+}
+
+.head{
+color: #ffffff;
+font-size: 10pt;
+font-weight: bold;
+}
+
+.caption{
+color: #ffffff;
+font-size: 8pt;
+font-weight: bold;
+}
+
+.small{
+font-size: 8pt;
+}
+
+

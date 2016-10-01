@@ -1,3 +1,25 @@
+TAGS
+  MUSIC
+    funny
+    melancholy
+    home demo
+    time constrained
+
+    country
+    rock
+    folk
+    pop
+
+  PHOTOGRAPHY
+    graphic
+    minimalist
+    negative space
+    street photography
+    photojournalism
+    travel
+    nature/urban
+    
+
 rails g scaffold Lyric work_id:integer content:text
 
 rails g scaffold Interest name sort:integer token work_name series_name

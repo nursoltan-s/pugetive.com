@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
     end
 
     def canonize_domain
-      return unless request.subdomains.any?
+      # return unless request.subdomains.any?
       if request.host_with_port != CONFIG[Rails.env][:host_with_port]
         permanent_redirect("#{CONFIG[Rails.env][:host_protocol]}://#{CONFIG[Rails.env][:host_with_port]}#{request.path}")
       end

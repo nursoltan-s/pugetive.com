@@ -14,7 +14,7 @@
         %li= render @todd.phone
         %li
           = web_icon
-          = link_to("pugetive.com", "http://pugetive.com")
+          = link_to(CONFIG[Rails.env][:host_with_port], "http://#{CONFIG[Rails.env][:host_with_port]}")
       -# = render @todd.address
     .medium-2.columns
       %p= link_to(raw("#{print_icon} Printable PDF"), "/todd-gehman-resume.pdf", class: 'button')

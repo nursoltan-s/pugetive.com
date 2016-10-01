@@ -16,4 +16,8 @@ class RolesController < MetaResourceController
     def post_create_path
       @role.work
     end
+
+    def post_delete_path
+      work
+    end
 end
