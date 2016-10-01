@@ -2,7 +2,7 @@
 
 = render @work
 
-- if @work.lyric
+- if @work.has_lyric?
   = render @work.lyric
 - elsif @work.music?
   .row{data: {visible_to: 'admin'}}

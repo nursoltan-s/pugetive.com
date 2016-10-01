@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160929143543) do
+ActiveRecord::Schema.define(version: 20161001100318) do
 
   create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "company"
@@ -205,9 +205,12 @@ ActiveRecord::Schema.define(version: 20160929143543) do
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
     t.string   "slug"
+    t.integer  "sort"
+    t.index ["category", "sort"], name: "index_titles_on_category_and_sort", unique: true, using: :btree
     t.index ["category"], name: "index_titles_on_category", using: :btree
     t.index ["name"], name: "index_titles_on_name", using: :btree
     t.index ["slug"], name: "index_titles_on_slug", using: :btree
+    t.index ["sort"], name: "index_titles_on_sort", using: :btree
   end
 
   create_table "tools", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|

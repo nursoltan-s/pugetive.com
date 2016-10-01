@@ -47,4 +47,8 @@ class Work < ApplicationRecord
     author_id == 1
   end
 
+  def has_lyric?
+    return false unless interest_id == MUSIC_INTEREST_ID
+    lyric.present?
+  end
 end

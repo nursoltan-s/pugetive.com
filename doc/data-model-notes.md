@@ -1,14 +1,27 @@
+Songwriter
+Performer
+Producer
+Audio Mixer
+Mastering
+Audio Engineer
+
+
 TAGS
   MUSIC
     funny
     melancholy
     home demo
     time constrained
+    acoustic
+    electric
 
     country
     rock
     folk
     pop
+    folk pop
+    folk rock
+
 
   PHOTOGRAPHY
     graphic
