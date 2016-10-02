@@ -35,9 +35,9 @@ class Todd
       NonProfit.all.sort_by{|c| c.start_year}.reverse
     end
 
-    def side_projects
-      Project.amateur.sort_by{|p| p.num_years}.reverse
-    end
+    # def side_projects
+    #   Project.amateur.sort_by{|p| p.num_years}.reverse
+    # end
 
     def languages(fluency_cutoff = 0, years_of_recency = 20)
       recency_cutoff = Time.now.year - years_of_recency
