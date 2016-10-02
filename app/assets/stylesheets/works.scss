@@ -13,17 +13,20 @@ section.work, section.series, section.band {
   }
 
   .titles {
+    @include subdued();
+  }
+
+  .titles, .artist {
     font-style: italic;
     margin-bottom: 0.3em;
-    @include subdued();
   }
 
   .years {
     font-weight: bold;
+    margin-bottom: 0.3em;
   }
 
   .demo-warning {
-    @include subdued();
     color: $red_text_color;
     font-weight: 100;
     font-size: 0.8em;
@@ -33,7 +36,7 @@ section.work, section.series, section.band {
     margin-top: 0;
   }
   p.status {
-    font-size: 0.66em;
+    font-size: 0.8em;
   }
 
   .info-box {

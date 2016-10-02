@@ -20,8 +20,8 @@
             = link_to(destroy_icon, series, :method => :delete, :data => { :confirm => 'Are you sure?' }, rel: 'nofollow')
       .medium-5.columns.end.info-box
         %p.artist
-          %b Artist:
-          = series.artist.name
+          by
+          %b= series.artist.name
           - if series.artist.alias?
             %span.subdued [solo alias]
         %p= series.summary

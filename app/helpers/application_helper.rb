@@ -25,7 +25,7 @@ module ApplicationHelper
   end
 
   def combo_status(work)
-    content_tag(:b, status(work) + (work.status_message.blank? ? '' : ': ')) +
+    content_tag(:b, status(work) + (work.status_message.blank? ? '' : ' ~ ')) +
     content_tag(:i, work.status_message, class: 'subdued')
   end
 end

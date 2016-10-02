@@ -5,7 +5,7 @@
         %h3
           = link_to(work.name, work)
           - if work.demo?
-            .demo-warning 
+            %apan.demo-warning 
               - if work.music?
                 [home demo]
               - else
@@ -19,27 +19,28 @@
             Written by
             %b= work.author.name
         -#/ [image]
-        %p
-          %span.location
-            = work.location
-          %span.programs
-            = work.tools.programs.map{|t| t.name}.join(', ')
+        - if work.location.present?
+          %p
+            %span.location
+              = work.location
+            / %span.programs
+            /   = work.tools.programs.map{|t| t.name}.join(', ')
+        - if work.tools.instruments.any?
+          %p
+            %span.instruments
+              -# FIXME this is music-specific
+              = raw(work.tools.instruments.map{|t| link_to(t.name, t)}.join(', '))
         %p.admin{data: {visible_to: 'admin'}}
           %smaller.subdued= link_to(edit_icon, edit_work_path(work), rel: 'nofollow')
           %smaller.subdued= link_to(model_icon('role'), new_role_path(work_id: work.id), rel: 'nofollow')
           %smaller.subdued= link_to(destroy_icon, work, method: :delete, data: {confirm: 'Are you sure?'}, rel: 'nofollow')
       .medium-5.columns.end.info-box
         %p.artist
-          %b Artist:
-          = work.party.name
+          by
+          %b= work.party.name
 
         %p.titles
           = raw(work.titles.map{|t| link_to(t.name, t)}.join(', '))
-        - if work.tools.instruments.any?
-          %p
-            %span.instruments
-              -# FIXME this is music-specific
-              = raw(work.tools.instruments.map{|t| link_to(t.name, t)}.join(', '))
         - if work.series.any?
           %ul.series-list      
             - work.series.each do |series|
