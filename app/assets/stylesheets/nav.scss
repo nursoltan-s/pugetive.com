@@ -15,6 +15,12 @@
   .top-bar, .top-bar ul {
     background: $alt_background;
   }
+
+  li.home a {
+    display: inline-block;
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 

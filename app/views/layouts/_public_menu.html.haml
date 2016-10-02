@@ -17,7 +17,13 @@
     /           = link_to(signin_icon, new_user_session_path)
     .top-bar-right
       %ul.dropdown.menu.vertical.medium-horizontal{data: {dropdown_menu: true}}
-        %li.menu-text= link_to(raw("#{home_icon} Todd Gehman"), root_path)
+        %li.menu-text.home
+          - if user_signed_in?
+            = link_to(delete_icon, destroy_user_session_path, :method => :delete)
+          - else
+            = link_to(signin_icon, new_user_session_path)
+
+          = link_to(raw("Todd Gehman"), root_path)
         - Interest.live.each do |interest|
           - if CONFIG[Rails.env]["#{interest.token}_live"]
             %li.menu-text.interest-item= link_to(raw("#{interest_icon(interest)} #{interest.name}"), interest)
