@@ -63,8 +63,12 @@ class Band
     Party.where(name: name).first
   end
 
+  def years
+    date_range.years
+  end
+
   def date_range
-    DateRange.new(start_year, stop_year).years
+    DateRange.new(start_year, stop_year)
   end
 
   def self.all

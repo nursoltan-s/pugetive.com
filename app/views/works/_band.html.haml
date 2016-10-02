@@ -1,0 +1,17 @@
+%section.band
+  .row
+    .medium-3.columns.medium-offset-2.medium-text-right.title-box
+      %h3
+        - if band.url.present?
+          = link_to(band.name, band.url)
+        - else
+          = band.name
+      .years
+        = band.years
+      .location
+        = band.location
+    .medium-5.columns.end.info-box
+      .titles
+        -# FIXME this is music-specific
+        = band.instruments.map{|t| t.name}.join(', ')
+      %p= band.summary

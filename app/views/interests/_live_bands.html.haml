@@ -2,21 +2,5 @@
   .medium-7.medium-offset-5.columns
     %h2 Live Music
 - Band.all.each do |band|
-  %section.band
-    .row
-      .medium-3.columns.medium-offset-2.medium-text-right.title-box
-        %h3
-          - if band.url.present?
-            = link_to(band.name, band.url)
-          - else
-            = band.name
-        .location
-          = band.location
-      .medium-5.columns.end.info-box
-        .date-range
-          = band.date_range
-        .titles
-          -# FIXME this is music-specific
-          = band.instruments.map{|t| t.name}.join(', ')
-        %p= band.summary
+  = render "works/band", band: band
 

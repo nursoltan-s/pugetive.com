@@ -11,6 +11,9 @@
               - else
                 [prototype or rough draft]
 
+        %span.years
+          = work.years
+
         - unless work.mine?
           .author
             Written by
@@ -31,8 +34,6 @@
           = work.party.name
 
         %p
-          %span.date-range
-            = work.date_range
           %span.titles
             = raw(work.titles.map{|t| link_to(t.name, t)}.join(', '))
         %p

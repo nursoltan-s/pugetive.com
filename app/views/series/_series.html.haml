@@ -4,6 +4,9 @@
       .medium-3.columns.medium-offset-2.medium-text-right.title-box
         %h3
           = link_to(series.name, series)
+        %p
+          %span.date-range
+            = series.years
         %span.titles
           = raw(series.titles.map{|t| link_to(t.name, t)}.join(', '))
         %span.tools
@@ -21,9 +24,6 @@
           = series.artist.name
           - if series.artist.alias?
             %span.subdued [solo alias]
-        %p
-          %span.date-range
-            = series.years
         %p= series.summary
         - if series.music?
           %ol.works
