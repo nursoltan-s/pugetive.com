@@ -5,9 +5,12 @@ $body_color: #a59c9a;
 $header_color: #fbf4f4;
 $border_color: #766f6f;
 
-$side_border_color: #766f6f;
+$side_border_color: #18a;
 
 $link_color: #b87220;
+
+$red_text_color: #f66;
+
 
 a, a:visited {
   color: $link_color;
@@ -22,7 +25,13 @@ form label {
 }
 
 .flash-message .alert {
-  color: firebrick;
+  background: $red_text_color;
+  color: #ffc;
+}
+
+.flash-message .success {
+  background: #6a9;
+  color: #fff;
 }
 
 

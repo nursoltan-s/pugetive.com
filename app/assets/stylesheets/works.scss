@@ -15,6 +15,18 @@ section.work, section.series, section.band {
   .titles {
     font-style: italic;
     margin-bottom: 0.3em;
+    @include subdued();
+  }
+
+  .years {
+    font-weight: bold;
+  }
+
+  .demo-warning {
+    @include subdued();
+    color: $red_text_color;
+    font-weight: 100;
+    font-size: 0.8em;
   }
 
   p.summary {
@@ -76,6 +88,7 @@ section.work, section.series, section.band {
     @include subdued();
     font-size: 0.8em;
   }
+
 }
 
 html.works-show {
