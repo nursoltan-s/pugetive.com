@@ -1,9 +1,2 @@
-
 %li{class: work.favorite? ? 'favorite' : nil}
-  %span.work-name= link_to(work.name, work)
-  - if work.demo?
-    %span.demo-warning 
-      - if work.music?
-        [home demo]
-      - else
-        [prototype or rough draft]
+  %span.work-name= work.decorate.title

@@ -2,14 +2,7 @@
   %section.work{class: work.interest.token}
     .row
       .medium-3.columns.medium-offset-2.medium-text-right.title-box
-        %h3
-          = link_to(work.name, work)
-          - if work.demo?
-            %apan.demo-warning 
-              - if work.music?
-                [home demo]
-              - else
-                [prototype or rough draft]
+        %h3= work.decorate.title
 
         %p.years
           = work.years
