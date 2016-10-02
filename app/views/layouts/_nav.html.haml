@@ -1,2 +1,4 @@
-= render "layouts/private_menu"
+-# We test this in ruby instead of JS to prevent FOUC on each page load
+- if @user and @user.admin?
+  = render "layouts/private_menu"
 = render "layouts/public_menu"
