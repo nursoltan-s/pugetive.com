@@ -5,26 +5,29 @@
 @import 'mixins';
 
 section.work, section.series, section.band {
+  margin-bottom: 3em;
+
   h3 {
     font-size: 1em;
     font-weight: bold;
   }
-  margin-bottom: 3em;
+
+  .titles {
+    font-style: italic;
+    margin-bottom: 0.3em;
+  }
+
+  p.summary {
+    margin-top: 0;
+  }
+  p.status {
+    font-size: 0.66em;
+  }
+
   .info-box {
     border-left: 1px solid $side_border_color;
   }
 
-  p.status {
-    font-size: 0.8em;
-  }
-  .titles, .programs, .location {
-    @include subdued;
-    font-size: 0.8em;
-  }
-
-  .years {
-    margin-bottom: 0.3em;
-  }
   &.film, &.software {
     .artist {
       display: none;
@@ -51,14 +54,7 @@ section.work, section.series, section.band {
       display: none;
     }
   }
-  .demo-warning {
-    font-size: 0.75em;
-    color: firebrick;
-    font-style: italic;
-  }
-  ul.series-list {
-    font-size: 0.8em;
-  }
+
   &.music {
     .tools {
       display: none;
@@ -68,6 +64,7 @@ section.work, section.series, section.band {
   .titles a {
     color: inherit;
   }
+
   .tools, .instruments {
     @include subdued();
     font-size: 0.8em;

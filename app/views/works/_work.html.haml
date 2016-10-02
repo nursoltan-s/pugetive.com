@@ -11,7 +11,7 @@
               - else
                 [prototype or rough draft]
 
-        %span.years
+        %p.years
           = work.years
 
         - unless work.mine?
@@ -33,22 +33,23 @@
           %b Artist:
           = work.party.name
 
-        %p
-          %span.titles
-            = raw(work.titles.map{|t| link_to(t.name, t)}.join(', '))
-        %p
-          %span.instruments
-            -# FIXME this is music-specific
-            = raw(work.tools.instruments.map{|t| link_to(t.name, t)}.join(', '))
-        %p.status
-          = combo_status(work)
+        %p.titles
+          = raw(work.titles.map{|t| link_to(t.name, t)}.join(', '))
+        - if work.tools.instruments.any?
+          %p
+            %span.instruments
+              -# FIXME this is music-specific
+              = raw(work.tools.instruments.map{|t| link_to(t.name, t)}.join(', '))
         - if work.series.any?
           %ul.series-list      
             - work.series.each do |series|
               %li
                 From the album: 
                 = link_to(series.name, series)
-        %p= work.summary
+        %p.summary= work.summary
+        %p.status
+          Status: 
+          = combo_status(work)
         - if work.tools.any?
           %p.tools
             %b Buzzwords:
