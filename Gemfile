@@ -39,7 +39,9 @@ gem 'activemodel-serializers-xml', git: 'https://github.com/rails/activemodel-se
 gem 'carmen'
 gem 'dalli'
 gem 'devise'
-gem 'draper'
+
+# Had to specify repo due to problems with Rails 5
+gem 'draper', github: 'audionerd/draper', branch: 'rails5'
 gem 'font-awesome-rails'
 gem 'foundation-icons-sass-rails'
 gem 'foundation-rails'
