@@ -1,17 +1,23 @@
 @import 'mixins';
 
 #private-menu-wrapper {
-  background: black;
-  color: white;
+  background: $link_color;
   font: normal 12px Verdana;
   a {
-    color: white;
+    color: $alt_background;
   }
 }
 
 #public-menu-wrapper {
   border-top: 2px solid $link_color;
+  background: $alt_background;
+
+  .top-bar, .top-bar ul {
+    background: $alt_background;
+  }
 }
+
+
 
 #public-menu {
 /*  li.interest-item {
