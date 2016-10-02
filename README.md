@@ -7,8 +7,7 @@ I've never worked at a company where testing was prioritized over shipping, so I
 
 *How am I doing, Code Climate?*
 
-[![Code Climate](https://codeclimate.com/repos/562917c0e30ba0431f00012e/badges/cf7290c5be0fd3b44211/gpa.svg)](https://codeclimate.com/repos/562917c0e30ba0431f00012e/feed)
-
+[![Code Climate](https://codeclimate.com/github/pugetive/pugetive.com/badges/gpa.svg)](https://codeclimate.com/github/pugetive/pugetive.com)
 
 Server Setup
 ------------
