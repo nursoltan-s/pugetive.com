@@ -1,4 +1,4 @@
-%ul.tabs#example-tabs{data: {tabs: true}}
+%ul#music-tabs.tabs{data: {tabs: true}}
   %li.tabs-title.is-active
     %a{href: '#live-music-panel', aria: {selected: 'true'}} Live Bands
 
@@ -11,7 +11,7 @@
   %li.tabs-title
     %a{href: '#solo-recordings-panel'} Solo Recordings
 
-.tabs-content{data: {tabs_content: 'example-tabs'}}
+.tabs-content{data: {tabs_content: 'music-tabs'}}
   .tabs-panel.is-active#live-music-panel
     = render "live_bands"
   .tabs-panel#band-recordings-panel

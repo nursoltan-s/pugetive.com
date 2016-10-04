@@ -8,6 +8,8 @@ PURSUITS = ['Software', 'Music', 'Photography', 'Writing', 'Film']
 
 TODD_PARTY_ID = 1
 
+FILM_INTEREST_ID        = 4
 MUSIC_INTEREST_ID       = 2
 PHOTOGRAPHY_INTEREST_ID = 3
 SOFTWARE_INTEREST_ID    = 1
+WRITING_INTEREST_ID     = 5
