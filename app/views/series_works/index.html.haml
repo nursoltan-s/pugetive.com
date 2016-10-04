@@ -12,8 +12,8 @@
   %tbody
     - @series_works.each do |series_work|
       %tr
-        %td= series_work.series_id
-        %td= series_work.work_id
+        %td= link_to(series_work.series.name, series_work.series)
+        %td= link_to(series_work.work.name, series_work.work)
         %td= link_to 'Show', series_work
         %td= link_to 'Edit', edit_series_work_path(series_work)
         %td= link_to 'Destroy', series_work, :method => :delete, :data => { :confirm => 'Are you sure?' }

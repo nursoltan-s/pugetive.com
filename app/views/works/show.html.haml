@@ -10,6 +10,18 @@
       = link_to(raw("#{new_icon} Lyric"), new_lyric_path(work_id: @work.id))
 
 .row{data: {visible_to: 'admin'}}
+
+
+.row{data: {visible_to: 'admin'}}
+  .medium-5.columns.medium-text-right
+    Add to series:
+  .medium-7.columns.end
+    = form_for SeriesWork.new(work_id: @work.id) do |f|
+      = f.hidden_field(:work_id)
+      = f.select(:series_id, options_from_collection_for_select(Series.all, :id, :name, selected: params[:series_id]))
+      = submit(f)
+
+
   .medium-6.columns
     - Tool.send(@work.interest.token).sort{|a,b| a.name <=> b.name}.each do |tool|
       - if @work.tools.include?(tool)
