@@ -22,11 +22,13 @@ class Work < ApplicationRecord
   has_one :lyric
   belongs_to :author, class_name: 'Artist'
 
-  scope :sorted,     -> {order("stop_year IS NULL DESC, stop_year DESC, start_year DESC")}
+  scope :sorted,     -> {order("works.stop_year IS NULL DESC, works.stop_year DESC, start_year ASC, name ASC")}
   scope :alpha,      -> {order(:name)}
 
   scope :favorite,   -> {where(favorite: true)}
   scope :unfavorite, -> {where(favorite: false)}
+  scope :solo,       -> {joins(:party).where("parties.id = #{TODD_PARTY_ID} OR parties.alias = 1")}
+  scope :pro,       -> {joins(:party).where("parties.id != #{TODD_PARTY_ID} AND parties.alias != 1")}
 
   scope :music,      -> {where(interest_id: MUSIC_INTEREST_ID)}
   scope :film,       -> {where(interest_id: FILM_INTEREST_ID)}

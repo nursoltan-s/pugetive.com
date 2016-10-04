@@ -6,15 +6,17 @@
 
   = render "music"
 
+- elsif @interest.software?
+  = render "software"
+
+- elsif @interest.photography?
+  = render "photography"
+
 - else
   .row
     .medium-7.medium-offset-5.columns
       %h1= @interest.name
 
-
-  - if @interest.photography?
-    = render @series.sort{|a, b| b.stop_year <=> a.stop_year}
-  - else
     %ul.tabs#interest-works-tabs{data: {tabs: true}}
       %li.tabs-title.is-active
         %a{href: '#featured-works', aria: {selected: 'true'}} Featured Projects

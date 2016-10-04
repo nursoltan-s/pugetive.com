@@ -20,7 +20,15 @@ class Series < ApplicationRecord
   end
 
   def self.solo
-    music.joins(works: :party).where("works.party_id = 1 OR parties.alias = 1")
+    joins(works: :party).where("works.party_id = 1 OR parties.alias = 1")
+  end
+
+  def self.portfolio
+    where('series.name LIKE "%portfolio%"')
+  end
+
+  def self.non_portfolio
+    where('series.name NOT LIKE "%portfolio%"')
   end
 
   def music?
