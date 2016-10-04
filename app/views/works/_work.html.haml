@@ -18,6 +18,9 @@
               = work.location
             / %span.programs
             /   = work.tools.programs.map{|t| t.name}.join(', ')
+        - if work.soundcloud_id.present?
+          = render "soundcloud_player", soundcloud_id: work.soundcloud_id
+
         %p.admin{data: {visible_to: 'admin'}}
           %smaller.subdued= link_to(edit_icon, edit_work_path(work), rel: 'nofollow')
           %smaller.subdued= link_to(model_icon('role'), new_role_path(work_id: work.id), rel: 'nofollow')
@@ -38,6 +41,8 @@
         %p.status
           Status: 
           = combo_status(work)
+
+
         - if work.tools.any?
           %p.tools
             %b Buzzwords:

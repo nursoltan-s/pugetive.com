@@ -22,7 +22,8 @@ class WorksController < MetaResourceController
                                    :start_year,
                                    :status,
                                    :status_message,
-                                   :stop_year, 
+                                   :stop_year,
+                                   :soundcloud_id,
                                    :summary, 
                                    :url)
     end

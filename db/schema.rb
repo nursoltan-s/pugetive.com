@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161004134324) do
+ActiveRecord::Schema.define(version: 20161004175504) do
 
   create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "company"
@@ -258,12 +258,14 @@ ActiveRecord::Schema.define(version: 20161004134324) do
     t.boolean  "demo",                         default: false, null: false
     t.boolean  "favorite",                     default: false, null: false
     t.integer  "author_id",                    default: 1,     null: false
+    t.integer  "soundcloud_id"
     t.index ["author_id"], name: "index_works_on_author_id", using: :btree
     t.index ["favorite"], name: "index_works_on_favorite", using: :btree
     t.index ["interest_id"], name: "index_works_on_interest_id", using: :btree
     t.index ["live"], name: "index_works_on_live", using: :btree
     t.index ["party_id"], name: "index_works_on_party_id", using: :btree
     t.index ["slug"], name: "index_works_on_slug", using: :btree
+    t.index ["soundcloud_id"], name: "index_works_on_soundcloud_id", using: :btree
     t.index ["start_year"], name: "index_works_on_start_year", using: :btree
     t.index ["status"], name: "index_works_on_status", using: :btree
     t.index ["stop_year"], name: "index_works_on_stop_year", using: :btree

@@ -32,4 +32,6 @@
                 f.select(:status, options_for_select(Work::STATUSES, selected: @work.status)))
 
   = label_field(f.label(:status_message), f.text_field(:status_message))
+
+  = label_field(f.label(:soundcloud_id), f.number_field(:soundcloud_id))
   = submit(f)
