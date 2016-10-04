@@ -15,6 +15,14 @@ class Series < ApplicationRecord
     Series.joins(:works).where(works: {interest_id: PHOTOGRAPHY_INTEREST_ID}).uniq
   end
 
+  def self.band
+    music - music.solo
+  end
+
+  def self.solo
+    music.joins(works: :party).where("works.party_id = 1 OR parties.alias = 1")
+  end
+
   def music?
     works.where(interest_id: MUSIC_INTEREST_ID).any?
   end

@@ -13,8 +13,6 @@ class InterestsController < MetaResourceController
       end
     when 'music'
       @series = Series.music
-      # render "interests/music"
-      # return
     end
 
   end

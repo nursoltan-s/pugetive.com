@@ -6,5 +6,6 @@ US_STATES = Carmen::Country.coded('US').subregions.map{|subregion| [subregion.co
 YEARS_OF_LIFE = Time.now.year.downto(1970)
 PURSUITS = ['Software', 'Music', 'Photography', 'Writing', 'Film']
 
+TODD_PARTY_ID = 1
 MUSIC_INTEREST_ID = 2
 PHOTOGRAPHY_INTEREST_ID = 3

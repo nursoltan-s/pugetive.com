@@ -31,6 +31,7 @@ class Work < ApplicationRecord
   scope :music,      -> {where(interest_id: MUSIC_INTEREST_ID)}
   scope :film,       -> {where(interest_id: FILM_INTEREST_ID)}
 
+
   def years
     date_range.years
   end
