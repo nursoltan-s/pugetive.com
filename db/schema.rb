@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161001200848) do
+ActiveRecord::Schema.define(version: 20161004134324) do
 
   create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "company"
@@ -160,12 +160,14 @@ ActiveRecord::Schema.define(version: 20161001200848) do
   end
 
   create_table "series", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string   "name",                      null: false
+    t.string   "name",                                      null: false
     t.string   "summary"
     t.text     "description", limit: 65535
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
     t.string   "slug"
+    t.boolean  "audience",                  default: false, null: false
+    t.index ["audience"], name: "index_series_on_audience", using: :btree
     t.index ["slug"], name: "index_series_on_slug", using: :btree
   end
 

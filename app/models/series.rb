@@ -16,11 +16,19 @@ class Series < ApplicationRecord
   end
 
   def self.band
-    music - music.solo
+    joins(works: :party).where("works.party_id != 1 AND parties.alias != 1")
   end
 
   def self.solo
     joins(works: :party).where("works.party_id = 1 OR parties.alias = 1")
+  end
+
+  def self.live
+    where(audience: true)
+  end
+
+  def self.studio
+    where(audience: false)
   end
 
   def self.portfolio

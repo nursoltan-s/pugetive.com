@@ -1,9 +1,12 @@
 %ul.tabs#example-tabs{data: {tabs: true}}
   %li.tabs-title.is-active
-    %a{href: '#live-music-panel', aria: {selected: 'true'}} Live Music
+    %a{href: '#live-music-panel', aria: {selected: 'true'}} Live Bands
 
   %li.tabs-title
     %a{href: '#band-recordings-panel'} Band Recordings
+
+  %li.tabs-title
+    %a{href: '#live-recordings-panel'} Live Band Recordings
 
   %li.tabs-title
     %a{href: '#solo-recordings-panel'} Solo Recordings
@@ -12,7 +15,9 @@
   .tabs-panel.is-active#live-music-panel
     = render "live_bands"
   .tabs-panel#band-recordings-panel
-    = render @series.band.sort{|a, b| b.stop_year <=> a.stop_year}
+    = render @series.band.studio.sort{|a, b| b.stop_year <=> a.stop_year}
+  .tabs-panel#live-recordings-panel
+    = render @series.band.live.sort{|a, b| b.stop_year <=> a.stop_year}
   .tabs-panel#solo-recordings-panel
     = render @series.solo.sort{|a, b| b.stop_year <=> a.stop_year}
 
