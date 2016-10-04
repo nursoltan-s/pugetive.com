@@ -12,13 +12,21 @@
 .row{data: {visible_to: 'admin'}}
   .medium-6.columns
     - Tool.send(@work.interest.token).sort{|a,b| a.name <=> b.name}.each do |tool|
-      = form_for @work.wields.new(tool_id: tool.id) do |f|
-        = f.hidden_field(:work_id)
-        = f.hidden_field(:tool_id)
-        = submit(f, tool.name, nil, disabled: (@work.tools.include?(tool) ? 'disabled' : nil))
+      - if @work.tools.include?(tool)
+        .medium-offset-3.columns
+          = link_to(raw("#{raw(destroy_icon)} #{tool.name}"), @work.wields.find_by_tool_id(tool.id), method: :delete, class: 'button remove-button', data: {confirm: 'Are you sure?'})
+      - else
+        = form_for @work.wields.new(tool_id: tool.id) do |f|
+          = f.hidden_field(:work_id)
+          = f.hidden_field(:tool_id)
+          = submit(f, tool.name)
   .medium-6.columns
     - Title.send(@work.interest.token).sort{|a,b| a.name <=> b.name}.each do |title|
-      = form_for @work.roles.new(title_id: title.id) do |f|
-        = f.hidden_field(:work_id)
-        = f.hidden_field(:title_id)
-        = submit(f, title.name, nil, disabled: (@work.titles.include?(title) ? 'disabled' : nil))
+      - if @work.titles.include?(title)
+        .medium-offset-3.columns
+          = link_to(raw("#{raw(destroy_icon)} #{title.name}"), @work.roles.find_by_title_id(title.id), method: :delete, class: 'button remove-button', data: {confirm: 'Are you sure?'})
+      - else 
+        = form_for @work.roles.new(title_id: title.id) do |f|
+          = f.hidden_field(:work_id)
+          = f.hidden_field(:title_id)
+          = submit(f, title.name, nil, disabled: (@work.titles.include?(title) ? 'disabled' : nil))

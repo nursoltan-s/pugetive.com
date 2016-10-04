@@ -12,6 +12,7 @@ class Title < ActiveRecord::Base
   default_scope {order(:sort)}
 
   scope :alpha,       -> {order(:name)}
+  scope :sorted,      -> {order(:sort)}
 
   scope :music,       -> {where(category: 'Music')}
   scope :photography, -> {where(category: 'Photography')}

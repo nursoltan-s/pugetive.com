@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   get 'code', to: redirect('/software')
   get 'interests' => 'interests#index'
 
+  get 'about/home' => 'about#home'
+  get 'about' => 'about#about'
+
   resources :accounts
   resources :awards
   resources :addresses
@@ -29,7 +32,6 @@ Rails.application.routes.draw do
 
 
   devise_for :users
-  get 'about/home'
   get 'status' => 'admin#status', as: 'status'
   get 'todd-gehman-resume' => 'resume#show', as: :resume
   match 'settings' => 'users#edit', via: [:get, :patch], as: :settings

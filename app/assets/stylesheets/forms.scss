@@ -46,3 +46,9 @@ label[for=user_remember_me] {
   }
 }
 
+a.remove-button {
+  color: $red_text_color;
+  background: $red_text_color;
+  @include subdued();
+  margin-left: 0;
+}

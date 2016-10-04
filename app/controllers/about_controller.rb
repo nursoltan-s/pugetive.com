@@ -4,4 +4,8 @@ class AboutController < ApplicationController
     authorize :about, :home?
   end
 
+  def about
+    authorize :about, :about?
+  end
+
 end

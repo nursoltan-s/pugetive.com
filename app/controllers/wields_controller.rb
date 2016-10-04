@@ -18,6 +18,6 @@ class WieldsController < MetaResourceController
     end
 
     def post_destroy_path
-      projects_path
+      works_path
     end
 end

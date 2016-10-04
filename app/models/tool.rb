@@ -9,17 +9,19 @@ class Tool < ActiveRecord::Base
   validates :category, inclusion: {in: PURSUITS}
   validates :front_end, inclusion: {in: BOOLEAN_OPTIONS}
 
-  scope :sorted, -> {order(:name)}
-  scope :systems, -> {where(type: 'System')}
-  scope :languages, -> {where(type: 'Language')}
-  scope :programs, -> {where(type: 'Program')}
-  scope :concepts, -> {where(type: 'Concept')}
-  scope :software, -> {where(category: 'Software')}
+  scope :alpha,       -> {order(:name)}
+  scope :sorted,      -> {order(:sort)}
 
-  scope :music, -> {where(category: 'Music')}
+  scope :systems,     -> {where(type: 'System')}
+  scope :languages,   -> {where(type: 'Language')}
+  scope :programs,    -> {where(type: 'Program')}
+  scope :concepts,    -> {where(type: 'Concept')}
+  scope :software,    -> {where(category: 'Software')}
+
+  scope :music,       -> {where(category: 'Music')}
   scope :instruments, -> {where(type: 'Instrument')}
 
-  scope :programs, -> {where(type: 'Program')}
+  scope :programs,    -> {where(type: 'Program')}
 
   scope :photography, -> {where(category: 'Photography')}
   scope :film,        -> {where(category: 'Film')}

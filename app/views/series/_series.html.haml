@@ -5,7 +5,7 @@
         %h3
           = link_to(series.name, series)
         %p
-          %span.date-range
+          %span.years
             = series.years
         %span.titles
           = raw(series.titles.map{|t| link_to(t.name, t)}.join(', '))
