@@ -40,10 +40,12 @@ class Series < ApplicationRecord
   end
 
   def interest
+    return nil unless works.any?
     works.first.interest.token
   end
 
   def artist
+    return nil unless works.any?
     works.first.party
   end
 

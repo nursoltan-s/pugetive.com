@@ -7,7 +7,7 @@ class Party < ActiveRecord::Base
   validates :name, presence: true
   validates :type, inclusion: {in: TYPES}
   # validates :url
-  validates :start_year, inclusion: {in: YEARS_OF_LIFE}
+  validates :start_year, inclusion: {in: YEARS_OF_LIFE, allow_nil: true}
   validates :stop_year, inclusion: {in: YEARS_OF_LIFE, allow_nil: true}
   validate :stop_is_after_start
 

@@ -19,12 +19,7 @@
             = link_to(edit_icon, edit_series_path(series), rel: 'nofollow')
             = link_to(destroy_icon, series, :method => :delete, :data => { :confirm => 'Are you sure?' }, rel: 'nofollow')
       .medium-5.columns.end.info-box
-        %p.artist
-          by
-          %b= series.artist.name
-          - if series.artist.alias?
-            %span.subdued [solo alias]
-        %p= series.summary
+        = series.decorate.artist_name
         - if series.music?
           %ol.works
             - series.works.each do |work|
