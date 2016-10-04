@@ -1,0 +1,26 @@
+%ul.tabs#example-tabs{data: {tabs: true}}
+  %li.tabs-title.is-active
+    %a{href: '#panel1', aria: {selected: 'true'}} Live Music
+
+  %li.tabs-title
+    %a{href: '#panel2'} Recordings
+
+
+.tabs-content{data: {tabs_content: 'example-tabs'}}
+  .tabs-panel.is-active#panel1
+    = render "live_bands"
+  .tabs-panel#panel2
+    = render @series.sort{|a, b| b.stop_year <=> a.stop_year}
+
+
+/ .row
+/   .medium-7.medium-offset-5.columns
+/     %h1 Music
+
+/ = render "live_bands"
+
+/ .row
+/   .medium-7.medium-offset-5.columns
+/     %h2 Recordings
+
+/ = render @series.sort{|a, b| b.stop_year <=> a.stop_year}

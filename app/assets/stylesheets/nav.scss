@@ -23,7 +23,9 @@
   }
 }
 
-
+.no-js .title-bar-left {
+  display: none;
+}
 
 #public-menu {
 /*  li.interest-item {
@@ -42,4 +44,23 @@
   ul.auth {
     @include subdued(20);
   }
+}
+
+.tabs {
+  background-color: lighten($alt_background, 10%);
+  border: none;
+}
+
+.tabs-title {
+  > a[aria-selected='true'] {
+    background-color: $alt_background;
+  }
+  a:hover {
+    background: $link_color;
+    color: $alt_background;
+  }
+}
+.tabs-content {
+  background-color: $alt_background;
+  border: none;
 }

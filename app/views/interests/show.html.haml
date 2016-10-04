@@ -1,16 +1,10 @@
 - title(@interest.name, false)
 
+/ = render "tab_two"
+
 - if @interest.music?
-  .row
-    .medium-7.medium-offset-5.columns
-      %h1 Music
 
-  = render "live_bands"
-
-  .row
-    .medium-7.medium-offset-5.columns
-      %h2 Recordings
-
+  = render "music"
 
 - else
   .row
@@ -18,15 +12,20 @@
       %h1= @interest.name
 
 
-- if @interest.music? or @interest.photography?
-  = render @series.sort{|a, b| b.stop_year <=> a.stop_year}
-- else
-  .row
-    .medium-7.medium-offset-5.columns
-      %h2 Selected Projects
-  = render @interest.works.favorite.sorted
-    
-  .row
-    .medium-7.medium-offset-5.columns
-      %h2 Other Projects
-  = render @interest.works.unfavorite.sorted
+  - if @interest.photography?
+    = render @series.sort{|a, b| b.stop_year <=> a.stop_year}
+  - else
+    %ul.tabs#interest-works-tabs{data: {tabs: true}}
+      %li.tabs-title.is-active
+        %a{href: '#featured-works', aria: {selected: 'true'}} Featured Projects
+
+      %li.tabs-title
+        %a{href: '#other-works'} Other Projects
+
+
+    .tabs-content{data: {tabs_content: 'interest-works-tabs'}}
+      .tabs-panel.is-active#featured-works
+        = render @interest.works.favorite.sorted
+      .tabs-panel#other-works
+        = render @interest.works.unfavorite.sorted
+
