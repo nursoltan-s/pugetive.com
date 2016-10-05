@@ -2,10 +2,15 @@
 
 = render @work
 
+- if @work.soundcloud_id.present?
+  .row
+    .medium-offset-5.medium-5.end
+      = render "soundcloud_player", soundcloud_id: @work.soundcloud_id
+
 - if @work.has_lyric?
   = render @work.lyric
 - elsif @work.music?
-  .row{data: {visible_to: 'admin'}}
+  .row
     .medium-offset-5.medium-5.end
       = link_to(raw("#{new_icon} Lyric"), new_lyric_path(work_id: @work.id))
 

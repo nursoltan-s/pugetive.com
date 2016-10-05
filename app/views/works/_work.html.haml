@@ -18,8 +18,6 @@
               = work.location
             / %span.programs
             /   = work.tools.programs.map{|t| t.name}.join(', ')
-        - if work.soundcloud_id.present?
-          = render "soundcloud_player", soundcloud_id: work.soundcloud_id
 
         %p.admin{data: {visible_to: 'admin'}}
           %smaller.subdued= link_to(edit_icon, edit_work_path(work), rel: 'nofollow')
