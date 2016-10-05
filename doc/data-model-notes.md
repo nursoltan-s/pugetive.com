@@ -1,9 +1,6 @@
-Songwriter
-Performer
-Producer
-Audio Mixer
-Mastering
-Audio Engineer
+MOTTOS
+  Keeping the channel intermittently open since 1970.
+  The only absolute truth is that there is no such thing.
 
 
 TAGS
