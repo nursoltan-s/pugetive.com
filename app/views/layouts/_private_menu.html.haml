@@ -11,5 +11,11 @@
       %li= link_to(raw("#{title_icon} Titles"),     titles_path,   title: 'Titles', rel: 'nofollow')
       %li= link_to(raw("#{tool_icon} Tools"),       tools_path,    title: 'Tools', rel: 'nofollow')
       -# %li= link_to(raw(settings_icon),              settings_path, title: 'Settings')
-      %li= link_to(raw(status_icon),                status_path,   title: 'Status')
-
+      %li
+        %ul.dropdown.menu{data: {dropdown_menu: true}}
+          %li
+            %a{href: '#'}= admin_icon
+            %ul.menu
+              %li= link_to(raw("#{status_icon} Status"), status_path,   title: 'Status')
+              - [:development, :staging, :production].each do |token|
+                %li= environment_link(token)

@@ -1,11 +1,29 @@
 module IconHelper
 
+
+  def admin_icon
+    awesome_icon('user-md')
+  end
+
   def delete_icon
     foundation_icon('x-circle')
   end
 
   def destroy_icon
     delete_icon
+  end
+
+  def env_icon(token = '')
+    case token.to_sym
+    when :development
+      return awesome_icon('laptop')
+    when :staging
+      return awesome_icon('cloud')
+    when :production
+      return awesome_icon('cloud')
+    else
+      return awesome_icon('code-fork')
+    end
   end
 
   def interest_icon(interest)
