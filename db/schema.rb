@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161004134324) do
+ActiveRecord::Schema.define(version: 20161006105541) do
 
   create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "company"
@@ -71,6 +71,23 @@ ActiveRecord::Schema.define(version: 20161004134324) do
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
     t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+  end
+
+  create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string   "name"
+    t.integer  "imageable_id",      null: false
+    t.string   "imageable_type",    null: false
+    t.string   "data_file_name",    null: false
+    t.string   "data_content_type", null: false
+    t.integer  "data_file_size",    null: false
+    t.datetime "data_uploaded_at"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["data_content_type"], name: "index_images_on_data_content_type", using: :btree
+    t.index ["data_file_name"], name: "index_images_on_data_file_name", using: :btree
+    t.index ["data_file_size"], name: "index_images_on_data_file_size", using: :btree
+    t.index ["data_uploaded_at"], name: "index_images_on_data_uploaded_at", using: :btree
+    t.index ["imageable_id", "imageable_type"], name: "index_images_on_imageable_id_and_imageable_type", using: :btree
   end
 
   create_table "interests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -240,30 +257,36 @@ ActiveRecord::Schema.define(version: 20161004134324) do
   end
 
   create_table "works", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string   "name",                                         null: false
-    t.integer  "interest_id",                                  null: false
-    t.integer  "party_id",                                     null: false
+    t.string   "name",                                             null: false
+    t.integer  "interest_id",                                      null: false
+    t.integer  "party_id",                                         null: false
     t.string   "url"
-    t.integer  "start_year",                                   null: false
+    t.integer  "start_year",                                       null: false
     t.integer  "stop_year"
-    t.text     "description",    limit: 65535
+    t.text     "description",        limit: 65535
     t.string   "summary"
-    t.boolean  "live",                         default: true,  null: false
+    t.boolean  "live",                             default: true,  null: false
     t.string   "slug"
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
-    t.string   "status",         limit: 16,    default: "pre", null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
+    t.string   "status",             limit: 16,    default: "pre", null: false
     t.string   "status_message"
     t.string   "location"
-    t.boolean  "demo",                         default: false, null: false
-    t.boolean  "favorite",                     default: false, null: false
-    t.integer  "author_id",                    default: 1,     null: false
+    t.boolean  "demo",                             default: false, null: false
+    t.boolean  "favorite",                         default: false, null: false
+    t.integer  "author_id",                        default: 1,     null: false
+    t.integer  "soundcloud_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
     t.index ["author_id"], name: "index_works_on_author_id", using: :btree
     t.index ["favorite"], name: "index_works_on_favorite", using: :btree
     t.index ["interest_id"], name: "index_works_on_interest_id", using: :btree
     t.index ["live"], name: "index_works_on_live", using: :btree
     t.index ["party_id"], name: "index_works_on_party_id", using: :btree
     t.index ["slug"], name: "index_works_on_slug", using: :btree
+    t.index ["soundcloud_id"], name: "index_works_on_soundcloud_id", using: :btree
     t.index ["start_year"], name: "index_works_on_start_year", using: :btree
     t.index ["status"], name: "index_works_on_status", using: :btree
     t.index ["stop_year"], name: "index_works_on_stop_year", using: :btree

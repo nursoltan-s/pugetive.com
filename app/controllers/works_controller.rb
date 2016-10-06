@@ -13,6 +13,7 @@ class WorksController < MetaResourceController
                                    :demo,
                                    :description, 
                                    :favorite,
+                                   :image,
                                    :interest_id, 
                                    :live,
                                    :location,

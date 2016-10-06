@@ -2,6 +2,11 @@
 
 = render @work
 
+= image_tag @work.image.url
+= image_tag @work.image.url(:medium)
+= image_tag @work.image.url(:thumb)
+
+
 - if @work.has_lyric?
   = render @work.lyric
 - elsif @work.music?

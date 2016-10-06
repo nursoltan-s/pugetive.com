@@ -49,6 +49,7 @@ gem 'friendly_id'
 gem 'haml'
 gem 'haml-rails'
 gem "nilify_blanks"
+gem "paperclip", "~> 5.0.0"
 gem 'pdfkit'
 gem 'pundit'
 gem 'rack-mini-profiler', require: false
