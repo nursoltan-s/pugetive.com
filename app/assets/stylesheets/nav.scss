@@ -49,6 +49,10 @@
 .tabs {
   background-color: lighten($alt_background, 10%);
   border: none;
+/*  > li > a {
+    @include rounded_top();
+  }
+*/
 }
 
 .tabs-title {
@@ -56,11 +60,43 @@
     background-color: $alt_background;
   }
   a:hover {
-    background: $link_color;
+    background-color: $link_color;
     color: $alt_background;
   }
+
 }
+
+
 .tabs-content {
   background-color: $alt_background;
   border: none;
+}
+
+.tabs-content, .tabs-title > a[aria-selected='true'], .tabs-title a:hover {
+  background-image: image-url('tiles/debut_dark.png');
+}
+
+$tab_outline: darken($border_color, 20%);
+
+.tabs-title > a[aria-selected='true'] {
+  margin-bottom: -1px;
+  border-top: 1px solid $tab_outline;
+  border-left: 1px solid $tab_outline;
+  border-right: 1px solid $tab_outline;
+  /*@include rounded_top();*/
+}
+
+.tabs-content {
+  border-left: 1px solid $tab_outline;
+  border-right: 1px solid $tab_outline;
+  border-bottom: 1px solid $tab_outline;
+}
+
+ul.tabs {
+  /*@include rounded_top();*/
+  border-bottom: 1px solid $tab_outline;
+}
+
+.top-bar-section .has-dropdown > a:after {
+    border-color: $body_color rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
 }
