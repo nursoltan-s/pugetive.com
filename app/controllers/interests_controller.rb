@@ -15,6 +15,7 @@ class InterestsController < MetaResourceController
       @series = Series.music
     when 'writing'
       @blogs = Work.where('name LIKE "%typepad%" OR name LIKE "%medium%"')
+
       @haiku = Series.where('name LIKE "%haiku%"')
     end
 

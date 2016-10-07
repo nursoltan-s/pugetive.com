@@ -6,7 +6,7 @@
     %a{href: '#haiku-panel'} Bad Rock Haiku
 
 .tabs-content{data: {tabs_content: 'example-tabs'}}
-  .tabs-panel.is-active#portfolio-pane
-    = render @blogs
+  .tabs-panel.is-active#blogs-panel
+    = render @blogs.sorted
   .tabs-panel#haiku-panel
     = render @haiku

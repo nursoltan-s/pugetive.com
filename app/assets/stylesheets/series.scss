@@ -9,7 +9,7 @@ section.series {
   }
 }
 
-section.series.music {
+section.series.music, section.series.writing {
   .titles {
     display: block;
     @include subdued(90);
@@ -20,8 +20,9 @@ section.series.music {
   }
   ol.works {
     padding-left: 0;
-    li {
+    li:not(.favorite) {
       font-weight: 100;
+      @include subdued(66);
     }
     li.favorite span.work-name {
       font-weight: 700;

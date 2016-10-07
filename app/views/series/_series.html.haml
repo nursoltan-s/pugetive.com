@@ -20,7 +20,7 @@
             = link_to(destroy_icon, series, :method => :delete, :data => { :confirm => 'Are you sure?' }, rel: 'nofollow')
       .medium-5.columns.end.info-box
         = series.decorate.artist_name
-        - if series.music?
+        - if series.music? or series.writing?
           %ol.works
             - series.works.each do |work|
               = render 'works/work_line_item', work: work
