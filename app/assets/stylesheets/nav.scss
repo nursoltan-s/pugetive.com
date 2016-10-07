@@ -28,19 +28,9 @@
 }
 
 #public-menu {
-/*  li.interest-item {
-    width: 10em;
-    text-align: center;
-    border-right: 1px dotted #ccc;
-    .icon {
-      display: inline-block;
-      margin-top: -0.25em;
-    }
+  .icon {
+    @include subdued(50);
   }
-  li.interest-item:last-child {
-    border-right: none;
-  }
-*/
   ul.auth {
     @include subdued(20);
   }
@@ -64,6 +54,9 @@
     color: $alt_background;
   }
 
+}
+.dropdown.menu > li.is-dropdown-submenu-parent > a::after {
+  border-color: $body_background transparent transparent;
 }
 
 
