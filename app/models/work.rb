@@ -37,13 +37,15 @@ class Work < ApplicationRecord
   scope :sorted,     -> {order("works.stop_year IS NULL DESC, works.stop_year DESC, start_year ASC, name ASC")}
   scope :alpha,      -> {order(:name)}
 
-  scope :favorite,   -> {where(favorite: true)}
-  scope :unfavorite, -> {where(favorite: false)}
-  scope :solo,       -> {joins(:party).where("parties.id = #{TODD_PARTY_ID} OR parties.alias = 1")}
-  scope :pro,       -> {joins(:party).where("parties.id != #{TODD_PARTY_ID} AND parties.alias != 1")}
+  scope :favorite,    -> {where(favorite: true)}
+  scope :unfavorite,  -> {where(favorite: false)}
+  scope :solo,        -> {joins(:party).where("parties.id = #{TODD_PARTY_ID} OR parties.alias = 1")}
+  scope :pro,         -> {joins(:party).where("parties.id != #{TODD_PARTY_ID} AND parties.alias != 1")}
+  scope :websites,    -> {where('name LIKE "%flickr%" OR name LIKE "%instagram%"')}
 
-  scope :music,      -> {where(interest_id: MUSIC_INTEREST_ID)}
-  scope :film,       -> {where(interest_id: FILM_INTEREST_ID)}
+  scope :music,       -> {where(interest_id: MUSIC_INTEREST_ID)}
+  scope :film,        -> {where(interest_id: FILM_INTEREST_ID)}
+  scope :photography, -> {where(interest_id: PHOTOGRAPHY_INTEREST_ID)}
 
 
   def years

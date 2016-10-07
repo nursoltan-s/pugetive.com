@@ -8,11 +8,16 @@
   %li.tabs-title
     %a{href: '#non-portfolio-panel'} Series & Exhibits
 
+  %li.tabs-title
+    %a{href: '#websites-panel'} Online Profiles
+
 .tabs-content{data: {tabs_content: 'example-tabs'}}
   .tabs-panel.is-active#portfolio-panel
     = render @series.portfolio
   .tabs-panel#non-portfolio-panel
     = render @series.non_portfolio.sort{|a, b| b.stop_year <=> a.stop_year}
+  .tabs-panel#websites-panel
+    = render Work.photography.websites.sorted
 
 / .row
 /   .small-12.columns.text-center

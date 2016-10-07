@@ -18,6 +18,7 @@ class Title < ActiveRecord::Base
   scope :photography, -> {where(category: 'Photography')}
   scope :software,    -> {where(category: 'Software')} 
   scope :film,        -> {where(category: 'Film')}
+  scope :writing,     -> {where(category: 'Writing')}
 
   def self.categories
     #FIXME make direct SQL call

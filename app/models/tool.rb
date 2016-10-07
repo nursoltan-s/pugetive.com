@@ -16,15 +16,17 @@ class Tool < ActiveRecord::Base
   scope :languages,   -> {where(type: 'Language')}
   scope :programs,    -> {where(type: 'Program')}
   scope :concepts,    -> {where(type: 'Concept')}
-  scope :software,    -> {where(category: 'Software')}
 
+  scope :software,    -> {where(category: 'Software')}
   scope :music,       -> {where(category: 'Music')}
+  scope :photography, -> {where(category: 'Photography')}
+  scope :film,        -> {where(category: 'Film')}
+  scope :writing,     -> {where(category: 'Writing')}
+
   scope :instruments, -> {where(type: 'Instrument')}
 
   scope :programs,    -> {where(type: 'Program')}
 
-  scope :photography, -> {where(category: 'Photography')}
-  scope :film,        -> {where(category: 'Film')}
 
 
   has_many :wields
