@@ -18,6 +18,8 @@
               = work.location
             / %span.programs
             /   = work.tools.programs.map{|t| t.name}.join(', ')
+        - if work.url.present? and work.live?
+          = link_to(raw("Link #{external_icon}"), work.url)
         %p.admin{data: {visible_to: 'admin'}}
           %smaller.subdued= link_to(edit_icon, edit_work_path(work), rel: 'nofollow')
           %smaller.subdued= link_to(model_icon('role'), new_role_path(work_id: work.id), rel: 'nofollow')
@@ -32,7 +34,8 @@
           %ul.series-list      
             - work.series.each do |series|
               %li
-                From the album: 
+                From the 
+                = work.interest.series_name.downcase
                 = link_to(series.name, series)
         %p.summary= work.summary
         %p.status

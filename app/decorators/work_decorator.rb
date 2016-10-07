@@ -11,7 +11,11 @@ class WorkDecorator < Draper::Decorator
   #   end
 
   def title
-    rv = h.link_to(model.name, model)
+    if model.blog?
+      rv = model.name
+    else
+      rv = h.link_to(model.name, model)
+    end
     if model.demo?
       text = work.music? ? ' [home demo]' : ' [prototype / rough draft]'
       rv += h.content_tag(:span, text, class: 'demo-warning')

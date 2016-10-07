@@ -38,6 +38,10 @@ module IconHelper
     awesome_icon('edit')
   end
 
+  def external_icon
+    awesome_icon('external-link-square')
+  end
+
   def new_icon
     foundation_icon('plus')
   end

@@ -74,6 +74,10 @@ class Work < ApplicationRecord
     author_id == 1
   end
 
+  def blog?
+    name =~ /blog/i
+  end
+
   def has_lyric?
     unless interest_id == MUSIC_INTEREST_ID or
       interest_id == WRITING_INTEREST_ID
