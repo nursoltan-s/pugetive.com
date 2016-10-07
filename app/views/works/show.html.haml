@@ -2,14 +2,9 @@
 
 = render @work
 
-= image_tag @work.image.url
-= image_tag @work.image.url(:medium)
-= image_tag @work.image.url(:thumb)
-
-
 - if @work.has_lyric?
   = render @work.lyric
-- elsif @work.music?
+- elsif @work.music? or @work.writing?
   .row{data: {visible_to: 'admin'}}
     .medium-offset-5.medium-5.end
       = link_to(raw("#{new_icon} Lyric"), new_lyric_path(work_id: @work.id))

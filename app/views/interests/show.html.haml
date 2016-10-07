@@ -14,6 +14,9 @@
 - elsif @interest.photography?
   = render "photography"
 
+- elsif @interest.writing?
+  = render "writing"
+
 - else
   %ul.tabs#interest-works-tabs{data: {tabs: true}}
     %li.tabs-title.is-active

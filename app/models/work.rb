@@ -47,6 +47,8 @@ class Work < ApplicationRecord
   scope :film,        -> {where(interest_id: FILM_INTEREST_ID)}
   scope :photography, -> {where(interest_id: PHOTOGRAPHY_INTEREST_ID)}
 
+  scope :lyrical,     -> {where("interest_id IN (#{MUSIC_INTEREST_ID},#{WRITING_INTEREST_ID})")}
+
 
   def years
     date_range.years
@@ -64,12 +66,19 @@ class Work < ApplicationRecord
     interest_id == MUSIC_INTEREST_ID
   end
 
+  def writing?
+    interest_id == WRITING_INTEREST_ID
+  end
+
   def mine?
     author_id == 1
   end
 
   def has_lyric?
-    return false unless interest_id == MUSIC_INTEREST_ID
+    unless interest_id == MUSIC_INTEREST_ID or
+      interest_id == WRITING_INTEREST_ID
+      return false
+    end
     lyric.present?
   end
 end
