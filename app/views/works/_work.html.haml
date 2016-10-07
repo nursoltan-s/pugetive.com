@@ -11,7 +11,7 @@
           .author
             Written by
             %b= work.author.name
-        -#/ [image]
+        = work.decorate.thumbnail
         - if work.location.present?
           %p
             %span.location

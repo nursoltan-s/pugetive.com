@@ -23,6 +23,24 @@ class WorkDecorator < Draper::Decorator
     rv
   end
 
+  def has_image?
+    model.image.url.present? and 
+      not model.image.url(:thumb).match(/missing/)
+  end
+
+  def thumbnail
+    return nil unless has_image?
+    rv = ''
+    image_html = h.image_tag(model.image.url(:thumb))
+    if model.url.present? and model.live?
+      contents = h.link_to(image_html, model.url)
+    else
+      contents = image_html
+    end
+    h.content_tag(:div, contents, class: 'screenshot')
+  end
+
+
   def titles_and_instruments
     list = []
     titles.each do |title|

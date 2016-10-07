@@ -8,10 +8,19 @@ class Work < ApplicationRecord
   validates :status, inclusion: {in: STATUSES}
 
   has_attached_file(:image,
-                    styles: { medium: "300x300>", 
-                              thumb:  "100x100>" }, 
-                              default_url: "/images/:style/missing.png"
+                    styles: { tiny: "40x40>",
+                              thumb: "100x100>", 
+                              small:  "300x300>",
+                              medium: "600x600>",
+                              large:  "1200x1200>" },
+                    convert_options: "-quality 100 -strip"
                     )
+
+  # has_attached_file :photo,
+  #   :styles => {
+  #     :thumb => "100x100#" },
+  #   :convert_options => {
+  #     :thumb => "-quality 75 -strip" }
 
 
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/

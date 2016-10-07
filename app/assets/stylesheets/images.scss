@@ -1,0 +1,6 @@
+@import 'mixins';
+
+.screenshot img {
+  margin-bottom: 0.5em;
+  outline: 1px solid $border_color;
+}

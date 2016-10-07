@@ -1,3 +1,17 @@
+tiny
+thumb
+small
+medium
+large
+
+? original ?
+
+
+PLACES
+  place_id
+  parent_id
+  category [Continent, Country, Region, City, Neighborhood, Location]
+
 MOTTOS
   Keeping the channel intermittently open since 1970.
   The only absolute truth is that there is no such thing.
