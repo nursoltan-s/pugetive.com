@@ -21,9 +21,6 @@
       .medium-5.columns.end.info-box
         = series.decorate.artist_name
         - if series.music? or series.writing?
-          %ol.works
-            - series.works.each do |work|
-              = render 'works/work_line_item', work: work
-
+          = render 'works/list', works: series.works
         - elsif series.photography?
           [images coming soon]

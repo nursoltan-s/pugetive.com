@@ -8,7 +8,5 @@
     %p 
       Listing works in the genre #{content_tag(:i, @genre.name)}.
 
-
-%section.works
-  = render @genre.works.sorted
+= render "works/stacked", works: @genre.works
 

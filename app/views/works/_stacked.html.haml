@@ -1,0 +1,14 @@
+- if works.favorite.any?
+  .row
+    .medium-7.medium-offset-5.columns
+      %section.works
+        %h2 Featured
+        = render 'works/list', works: works.favorite
+
+- if works.unfavorite.any?
+  .row
+    .medium-7.medium-offset-5.columns
+      %section.works
+        %h2 Others
+        = render 'works/list', works: works.unfavorite
+
