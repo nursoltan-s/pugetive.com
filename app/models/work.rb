@@ -28,7 +28,7 @@ class Work < ApplicationRecord
 
   belongs_to :interest
   belongs_to :party
-
+  belongs_to :genre
 
 
   has_many :roles, dependent: :destroy
@@ -67,10 +67,6 @@ class Work < ApplicationRecord
     DateRange.new(start_year, stop_year)
   end
 
-  def should_generate_new_friendly_id?
-    slug.blank? || name_changed?
-  end
-
   def music?
     interest_id == MUSIC_INTEREST_ID
   end
@@ -94,4 +90,10 @@ class Work < ApplicationRecord
     end
     lyric.present?
   end
+
+  def should_generate_new_friendly_id?
+    slug.blank? || name_changed?
+  end
+
+
 end

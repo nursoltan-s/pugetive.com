@@ -8,6 +8,9 @@
   = label_field(f.label(:interest_id), 
                 f.select(:interest_id, options_from_collection_for_select(Interest.all, :id, :name, selected: @work.interest_id)))
 
+  = label_field(f.label(:genre_id),
+                f.select(:genre_id, options_from_collection_for_select(Genre.send(@work.interest.token), :id, :name, selected: @work.genre_id), include_blank: true))
+
   = label_field(f.label(:party_id), 
                 f.select(:party_id, options_from_collection_for_select(Party.sorted, :id, :name, selected: @work.party_id)))
 

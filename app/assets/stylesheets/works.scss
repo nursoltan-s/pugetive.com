@@ -80,7 +80,7 @@ section.work, section.series, section.band {
     color: inherit;
   }
 
-  .tools, .instruments {
+  .tools, .instruments, .genre {
     @include subdued();
     font-size: 0.8em;
     a {

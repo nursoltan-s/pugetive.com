@@ -4,8 +4,11 @@
       .medium-3.columns.medium-offset-2.medium-text-right.title-box
         %h3= work.decorate.title
 
-        %p.years
-          = work.years
+        %p
+          - if work.genre
+            %span.genre= link_to(work.genre.name, work.genre)
+          %span.years
+            = work.years
 
         - unless work.mine?
           .author

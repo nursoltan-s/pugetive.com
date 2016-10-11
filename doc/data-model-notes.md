@@ -1,3 +1,11 @@
+GENRE
+  interest_id
+  name
+
+  rails g scaffold Genre interest_id:integer name
+
+
+
 tiny
 thumb
 small
