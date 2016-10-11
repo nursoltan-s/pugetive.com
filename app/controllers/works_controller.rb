@@ -20,6 +20,7 @@ class WorksController < MetaResourceController
                                    :location,
                                    :name, 
                                    :party_id, 
+                                   :place_id,
                                    :slug, 
                                    :start_year,
                                    :status,

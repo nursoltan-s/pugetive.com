@@ -4,8 +4,12 @@ class Place < ApplicationRecord
 
   acts_as_nested_set
 
-  default_scope {order(:name)}
+  has_many :works
 
+  scope :alpha, -> {order(:name)}
+
+
+  
   def compound_name
     ancestors.map{|p| p.name}.join('-') + name
   end

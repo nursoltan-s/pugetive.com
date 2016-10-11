@@ -24,3 +24,10 @@
       %p None.
     %p{data: {visible_to: 'admin'}}
       = link_to(new_icon, new_place_path(parent_id: @place.id))
+
+
+- if @place.works.any?
+  .row
+    .medium-7.medium-offset-5.columns
+      %h3 Works associated with #{@place.name}
+  = render @place.works

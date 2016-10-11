@@ -4,6 +4,7 @@
 
   = label_field(f.label(:name), f.text_field(:name))
   = label_field(f.label(:location), f.text_field(:location))
+  = label_field(f.label(:place_id), f.select(:place_id, options_for_select(nested_set_options(Place) {|i| "#{'-' * i.level} #{i.name}"}), include_blank: true ))
 
   = label_field(f.label(:interest_id), 
                 f.select(:interest_id, options_from_collection_for_select(Interest.all, :id, :name, selected: @work.interest_id)))
