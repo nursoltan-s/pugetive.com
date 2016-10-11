@@ -10,7 +10,8 @@
       %li= link_to(raw("#{model_icon('series')} Series"), series_index_path, title: 'View Series', rel: 'nofollow')
       %li= link_to(raw("#{title_icon} Titles"),           titles_path,   title: 'Titles', rel: 'nofollow')
       %li= link_to(raw("#{tool_icon} Tools"),             tools_path,    title: 'Tools', rel: 'nofollow')
-      %li= link_to(raw("Genres"),                         genres_path,    title: 'Genres', rel: 'nofollow')
+      %li= link_to(raw("#{model_icon('genre')} Genres"),                         genres_path,    title: 'Genres', rel: 'nofollow')
+      %li= link_to(raw("#{model_icon('place')} Places"),                         places_path,    title: 'Places', rel: 'nofollow')
       -# %li= link_to(raw(settings_icon),              settings_path, title: 'Settings')
       %li
         %ul.dropdown.menu{data: {dropdown_menu: true}}

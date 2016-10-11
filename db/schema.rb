@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161010105521) do
+ActiveRecord::Schema.define(version: 20161011164442) do
 
   create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "company"
@@ -166,6 +166,22 @@ ActiveRecord::Schema.define(version: 20161010105521) do
     t.string   "central_office_number", limit: 3
     t.string   "subscriber_number",     limit: 4
     t.index ["category"], name: "index_phones_on_category", using: :btree
+  end
+
+  create_table "places", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string   "name",                       null: false
+    t.integer  "parent_id"
+    t.integer  "lft",                        null: false
+    t.integer  "rgt",                        null: false
+    t.integer  "depth",          default: 0, null: false
+    t.integer  "children_count", default: 0, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "slug"
+    t.index ["lft"], name: "index_places_on_lft", using: :btree
+    t.index ["parent_id"], name: "index_places_on_parent_id", using: :btree
+    t.index ["rgt"], name: "index_places_on_rgt", using: :btree
+    t.index ["slug"], name: "index_places_on_slug", using: :btree
   end
 
   create_table "pursuits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|

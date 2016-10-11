@@ -15,8 +15,10 @@ large
 ? original ?
 
 
-PLACES
-  place_id
+PLACE
+rails g scaffold Place name parent_id:integer lft:integer rgt:integer depth:integer children_count:integer
+
+  name
   parent_id
   category [Continent, Country, Region, City, Neighborhood, Location]
 

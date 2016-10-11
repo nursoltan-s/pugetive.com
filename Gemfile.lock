@@ -64,6 +64,8 @@ GEM
     airbrussh (1.1.1)
       sshkit (>= 1.6.1, != 1.7.0)
     arel (7.1.2)
+    awesome_nested_set (3.1.1)
+      activerecord (>= 4.0.0, < 5.1)
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
@@ -285,6 +287,7 @@ PLATFORMS
 DEPENDENCIES
   actionview-encoded_mail_to
   activemodel-serializers-xml!
+  awesome_nested_set
   better_errors
   byebug
   capistrano

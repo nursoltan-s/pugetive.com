@@ -132,14 +132,18 @@ module IconHelper
 
   def model_icon(token)
     case token.to_sym
+    when :genre
+      return raw(foundation_icon('pricetag-multiple'))
     when :interest
       return raw(awesome_icon('first-order'))
-    when :work
-      return raw(awesome_icon('list-ul'))
+    when :place
+      return raw(foundation_icon('map'))
     when :role
       return raw(foundation_icon('sheriff-badge'))
     when :series
       return raw(awesome_icon('object-group'))
+    when :work
+      return raw(awesome_icon('list-ul'))
     end
   end
 
