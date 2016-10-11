@@ -1,3 +1,14 @@
+- show_year ||= false
+- show_meta ||= false
+- show_genre ||= false
+
 %ol.works
   - works.each do |work|
-    = render 'works/work_line_item', work: work
+    %li{class: work.favorite? ? 'favorite' : nil}
+      %span.work-name= work.decorate.title
+      - if show_meta
+        %span.meta
+          %span.years= work.years
+          - if show_genre
+            = work.decorate.genre_info
+          = work.decorate.series_info

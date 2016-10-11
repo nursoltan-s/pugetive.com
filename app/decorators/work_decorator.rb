@@ -58,4 +58,21 @@ class WorkDecorator < Draper::Decorator
 
   end
 
+  def series_info
+    return nil unless work.series.any?
+    list = ''
+    work.series.each do |series|
+      line = 'From the '
+      line += work.interest.series_name.downcase + ' '
+      line += h.link_to(series.name, series)
+      line_item = h.content_tag(:li, h.raw(line))
+      list += line_item
+    end
+    h.raw(h.content_tag(:ul, h.raw(list), class: 'series-list'))
+  end
+
+  def genre_info
+    return nil unless work.genre
+    return h.link_to(model.genre.name, model.genre) + (model.music? ? ' song' : nil)
+  end    
 end
