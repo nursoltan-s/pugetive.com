@@ -11,6 +11,9 @@
   %li.tabs-title
     %a{href: '#websites-panel'} Online Profiles
 
+  %li.tabs-title{data: {visible_to: 'admin'}}
+    %a{href: '#all-panel'} All Photos
+
 .tabs-content{data: {tabs_content: 'example-tabs'}}
   .tabs-panel.is-active#portfolio-panel
     = render @series.portfolio
@@ -18,6 +21,9 @@
     = render @series.non_portfolio.sort{|a, b| b.stop_year <=> a.stop_year}
   .tabs-panel#websites-panel
     = render Work.photography.websites.sorted
+  .tabs-panel#all-panel
+    - Work.photography.all.each do |work|
+      = link_to(thumbnail(work), work)
 
 / .row
 /   .small-12.columns.text-center
