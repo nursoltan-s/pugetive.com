@@ -15,6 +15,7 @@ class WorksController < MetaResourceController
                                    :favorite,
                                    :genre_id,
                                    :image,
+                                   :instagram_id,
                                    :interest_id, 
                                    :live,
                                    :location,

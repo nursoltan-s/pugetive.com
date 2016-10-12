@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161011172441) do
+ActiveRecord::Schema.define(version: 20161012091224) do
 
   create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "company"
@@ -309,9 +309,11 @@ ActiveRecord::Schema.define(version: 20161011172441) do
     t.datetime "image_updated_at"
     t.integer  "genre_id"
     t.integer  "place_id"
+    t.string   "instagram_id"
     t.index ["author_id"], name: "index_works_on_author_id", using: :btree
     t.index ["favorite"], name: "index_works_on_favorite", using: :btree
     t.index ["genre_id"], name: "index_works_on_genre_id", using: :btree
+    t.index ["instagram_id"], name: "index_works_on_instagram_id", using: :btree
     t.index ["interest_id"], name: "index_works_on_interest_id", using: :btree
     t.index ["live"], name: "index_works_on_live", using: :btree
     t.index ["party_id"], name: "index_works_on_party_id", using: :btree
