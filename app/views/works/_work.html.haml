@@ -28,8 +28,8 @@
           %smaller.subdued= link_to(model_icon('role'), new_role_path(work_id: work.id), rel: 'nofollow')
           %smaller.subdued= link_to(destroy_icon, work, method: :delete, data: {confirm: 'Are you sure?'}, rel: 'nofollow')
       .medium-5.columns.end.info-box
-        - if work.instagram_id.present?
-          = instagram_thumbnail(work.instagram_id)
+        - if work.has_thumbnail?
+          = thumbnail(work)
         %p.artist
           by
           %b= work.party.name

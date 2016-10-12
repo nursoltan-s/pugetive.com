@@ -13,6 +13,7 @@ class WorksController < MetaResourceController
                                    :demo,
                                    :description, 
                                    :favorite,
+                                   :flickr_id,
                                    :genre_id,
                                    :image,
                                    :instagram_id,

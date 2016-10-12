@@ -91,6 +91,10 @@ class Work < ApplicationRecord
     lyric.present?
   end
 
+  def has_thumbnail?
+    instagram_id.present? or flickr_id.present?
+  end
+
   def should_generate_new_friendly_id?
     slug.blank? || name_changed?
   end

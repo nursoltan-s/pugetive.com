@@ -43,6 +43,7 @@ gem 'devise'
 
 # Had to specify repo due to problems with Rails 5
 gem 'draper', github: 'audionerd/draper', branch: 'rails5'
+gem 'flickraw'
 gem 'font-awesome-rails'
 gem 'foundation-icons-sass-rails'
 gem 'foundation-rails'

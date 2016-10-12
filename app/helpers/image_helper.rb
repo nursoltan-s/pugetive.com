@@ -1,13 +1,23 @@
 module ImageHelper
 
+
   def thumbnail(work)
     if work.instagram_id.present?
-      return image_tag(instagram_url(work.instagram_id, 't'))
+      return instagram_thumbnail(work.instagram_id)
+    elsif work.flickr_id.present?
+      return flickr_thumbnail(work.flickr_id)
     end
   end
 
   def instagram_thumbnail(instagram_id)
     image_tag(instagram_url(instagram_id, 't'))
+  end
+
+  def flickr_thumbnail(flickr_id)
+    FlickRaw.api_key= CONFIG[Rails.env][:flickr_api_key]
+    FlickRaw.shared_secret=CONFIG[Rails.env][:flickr_secret]
+    info = flickr.photos.getInfo(photo_id: flickr_id)
+    image_tag(FlickRaw.url_s(info))
   end
 
   private
