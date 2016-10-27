@@ -63,7 +63,7 @@ module MetaHelper
       rv << title_text
       rv << ' :::'
     end
-    rv << " Todd Gehman @ #{CONFIG[Rails.env][:host_with_port]}"
+    rv << " " + CONFIG[Rails.env][:host_with_port]
 
     raw(rv)
   end
