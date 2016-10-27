@@ -10,7 +10,7 @@ section#main {
 }
 
 
-body {
+body, #footer {
   /*background: $body_background;*/
   background: transparent;
   color: $body_color;
@@ -38,11 +38,6 @@ html.mini #main {
   padding-top: 5em;
 }
 
-%footer {
-  width: 100%;
-  text-align: center;
-  outline: 1px solid red;
-}
 
 nav {
   text-align: right;
@@ -61,4 +56,18 @@ nav {
 
 a:hover {
   @include subdued();
+}
+
+#footer {
+  border-top: 1px solid $border_color;
+  border-bottom: 1px solid $border_color;
+  background-color: $body_background;
+  ul.social-icons li {
+    float: left;
+    margin-right: 1em;
+    line-height: 2em;
+  }
+  a {
+    background-color: $body_background;
+  }
 }

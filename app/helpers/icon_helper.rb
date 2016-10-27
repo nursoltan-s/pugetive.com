@@ -66,6 +66,21 @@ module IconHelper
     awesome_icon('home')
   end
 
+  def social_icon(token)
+    case token.to_sym
+    when :facebook
+      awesome_icon('facebook-square')
+    when :github
+      awesome_icon('github')
+    when :instagram
+      awesome_icon('instagram')
+    when :twitter
+      awesome_icon('twitter-square')
+    when :soundcloud
+      awesome_icon('soundcloud')
+    end
+  end
+
 
   def experience_icon
     # foundation_icon('target')
