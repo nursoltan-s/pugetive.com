@@ -37,7 +37,7 @@ class Work < ApplicationRecord
   has_many :wields, dependent: :destroy
   has_many :tools, through: :wields
 
-  has_many :series_works, dependent: :destroy
+  has_many :series_works, dependent: :destroy, touch: true
   has_many :series, through: :series_works
 
   has_one :lyric
