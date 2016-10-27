@@ -16,6 +16,9 @@ class WorkDecorator < Draper::Decorator
     else
       rv = h.link_to(model.name, model)
     end
+    if model.has_audio?
+      rv += h.raw('&nbsp;') + h.audio_icon
+    end
     if model.demo?
       text = work.music? ? ' [home demo]' : ' [prototype / rough draft]'
       rv += h.content_tag(:span, text, class: 'demo-warning')

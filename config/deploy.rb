@@ -2,6 +2,8 @@
 lock '>=3.5.0'
 set :user, 'deployer'
 
+set :format, :pretty
+
 set :application, 'pugetive'
 set :repo_url, 'git@github.com:pugetive/pugetive.com.git'
 

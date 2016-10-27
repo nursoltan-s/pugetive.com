@@ -5,6 +5,10 @@ module IconHelper
     awesome_icon('user-md')
   end
 
+  def audio_icon
+    foundation_icon('volume')
+  end
+
   def delete_icon
     foundation_icon('x-circle')
   end
