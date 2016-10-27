@@ -74,6 +74,8 @@ module IconHelper
       awesome_icon('github')
     when :instagram
       awesome_icon('instagram')
+    when :medium
+      awesome_icon('medium')
     when :twitter
       awesome_icon('twitter-square')
     when :soundcloud
