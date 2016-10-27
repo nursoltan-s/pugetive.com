@@ -1,29 +1,28 @@
 - title('Photography', false)
 
-
 %ul.tabs#example-tabs{data: {tabs: true}}
-  %li.tabs-title.is-active
-    %a{href: '#portfolio-panel', aria: {selected: 'true'}} Portfolio
+  / %li.tabs-title.is-active
+  /   %a{href: '#portfolio-panel', aria: {selected: 'true'}} Portfolio
 
-  %li.tabs-title
-    %a{href: '#non-portfolio-panel'} Series & Exhibits
+  / %li.tabs-title
+  /   %a{href: '#non-portfolio-panel'} Series & Exhibits
+
+  %li.tabs-title.is-active
+    %a{href: '#websites-panel'} Online Profiles
+
+  / %li.tabs-title{data: {visible_to: 'admin'}}
+  /   %a{href: '#all-panel'} All Photos
 
 .tabs-content{data: {tabs_content: 'example-tabs'}}
-  .tabs-panel.is-active#portfolio-panel
-    = render @series.portfolio
-  .tabs-panel#non-portfolio-panel
-    = render @series.non_portfolio.sort{|a, b| b.stop_year <=> a.stop_year}
+  / .tabs-panel.is-active#portfolio-panel
+  /   = render Series.portfolio
+  / .tabs-panel#non-portfolio-panel
+  /   = render Series.photography.non_portfolio
 
-/ .row
-/   .small-12.columns.text-center
-/     %h1 Photography
+  .tabs-panel#websites-panel
+    = render Work.photography.websites.sorted
 
-/ .row
-/   .medium-4.medium-offset-2.columns.text-center
-/     = link_to(instagram_icon, "https://www.instagram.com/pugetive/", class: 'big-icon')
-/     %br
-/     = link_to("Instagram (active)", "https://www.instagram.com/pugetive/")
-/   .medium-4.end.columns.text-center
-/     = link_to(flickr_icon, "https://www.flickr.com/photos/pugetive", class: 'big-icon')
-/     %br
-/     = link_to("Flickr (lapsed)", "https://www.flickr.com/photos/pugetive")
+  / .tabs-panel#all-panel
+  /   - Work.photography.all.each do |work|
+  /     = link_to(thumbnail(work), work)
+

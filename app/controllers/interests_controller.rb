@@ -5,7 +5,7 @@ class InterestsController < MetaResourceController
 
     case params[:id]
     when 'photography'
-      if true
+      if false
         @series = Series.photography
       else
         render "interests/photography"
@@ -13,7 +13,12 @@ class InterestsController < MetaResourceController
       end
     when 'music'
       @series = Series.music
+    when 'writing'
+      @blogs = Work.where('name LIKE "%typepad%" OR name LIKE "%medium%"')
+
+      @haiku = Series.where('name LIKE "%haiku%"')
     end
+
 
   end
 

@@ -4,7 +4,7 @@
 
 @import 'mixins';
 
-section.work, section.series, section.band {
+section.work, section.series, section.band, section.works {
   margin-bottom: 3em;
 
   h3 {
@@ -80,7 +80,7 @@ section.work, section.series, section.band {
     color: inherit;
   }
 
-  .tools, .instruments {
+  .tools, .instruments, .genre {
     @include subdued();
     font-size: 0.8em;
     a {
@@ -98,6 +98,10 @@ html.works-show {
   .lyric {
     font-size: 0.8em;
   }
+
+  .soundcloud {
+    margin-bottom: 2em;
+  }
 }
 
 html.series-show ul.series-list {
@@ -109,5 +113,17 @@ html.series-show ul.series-list {
 section.series-works .work {
   .titles, .tools, .status, .programs {
     display: none;
+  }
+}
+
+section.works {
+  span.meta {
+    display: block;
+    font-size: 0.8em;
+    @include subdued();
+    ul {
+      padding: 0;
+      margin: 0;
+    }
   }
 }

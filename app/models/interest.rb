@@ -24,6 +24,10 @@ class Interest < ApplicationRecord
     id == FILM_INTEREST_ID
   end
 
+  def writing?
+    id == WRITING_INTEREST_ID
+  end
+
   def should_generate_new_friendly_id?
     slug.blank? || name_changed?
   end

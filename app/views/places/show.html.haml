@@ -1,0 +1,33 @@
+- title(@place.name, false)
+
+.row
+  .medium-7.medium-offset-5.columns
+    .eyebrow
+      = link_to('World', places_path)
+      >
+      - if @place.ancestors.any?
+        = raw(@place.ancestors.map{|p| link_to(p.name, p)}.join(' > '))
+        >
+    %h1= @place.name
+
+.row
+  .medium-7.medium-offset-5.columns
+
+    %h2 
+      Places in
+      = @place.name
+    - if @place.children.any?
+      %ul
+        - @place.children.each do |child|
+          %li= link_to(child.name, child)
+    - else
+      %p None.
+    %p{data: {visible_to: 'admin'}}
+      = link_to(new_icon, new_place_path(parent_id: @place.id))
+
+
+- if @place.works.any?
+  .row
+    .medium-7.medium-offset-5.columns
+      %h3 Works associated with #{@place.name}
+  = render @place.works

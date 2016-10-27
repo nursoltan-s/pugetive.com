@@ -1,9 +1,18 @@
 @import 'mixins';
 @import 'typography';
 
+section#main {
+  background-color: $body_background;
+/*  background-size: 100%;
+  background-image: image-url('old-town-walkers-brn.jpg');
+  background-repeat: no-repeat;
+*/
+}
+
 
 body {
-  background: $body_background;
+  /*background: $body_background;*/
+  background: transparent;
   color: $body_color;
   font-family: $body_font_family;
 }
@@ -19,11 +28,9 @@ h1 {
   text-transform: uppercase;
 }
 
-#header {
-  margin-bottom: 2em;
-}
 
 #main {
+  padding-top: 2em;
   min-height: 800px;
 }
 
@@ -50,4 +57,8 @@ nav {
 
 .nowrap {
   white-space: nowrap;
+}
+
+a:hover {
+  @include subdued();
 }

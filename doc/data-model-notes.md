@@ -1,9 +1,30 @@
-Songwriter
-Performer
-Producer
-Audio Mixer
-Mastering
-Audio Engineer
+GENRE
+  interest_id
+  name
+
+  rails g scaffold Genre interest_id:integer name
+
+
+
+tiny
+thumb
+small
+medium
+large
+
+? original ?
+
+
+PLACE
+rails g scaffold Place name parent_id:integer lft:integer rgt:integer depth:integer children_count:integer
+
+  name
+  parent_id
+  category [Continent, Country, Region, City, Neighborhood, Location]
+
+MOTTOS
+  Keeping the channel intermittently open since 1970.
+  The only absolute truth is that there is no such thing.
 
 
 TAGS

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161004175504) do
+ActiveRecord::Schema.define(version: 20161012135226) do
 
   create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "company"
@@ -71,6 +71,34 @@ ActiveRecord::Schema.define(version: 20161004175504) do
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
     t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+  end
+
+  create_table "genres", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer  "interest_id"
+    t.string   "name"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "slug"
+    t.index ["interest_id"], name: "index_genres_on_interest_id", using: :btree
+    t.index ["name"], name: "index_genres_on_name", using: :btree
+    t.index ["slug"], name: "index_genres_on_slug", using: :btree
+  end
+
+  create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string   "name"
+    t.integer  "imageable_id",      null: false
+    t.string   "imageable_type",    null: false
+    t.string   "data_file_name",    null: false
+    t.string   "data_content_type", null: false
+    t.integer  "data_file_size",    null: false
+    t.datetime "data_uploaded_at"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["data_content_type"], name: "index_images_on_data_content_type", using: :btree
+    t.index ["data_file_name"], name: "index_images_on_data_file_name", using: :btree
+    t.index ["data_file_size"], name: "index_images_on_data_file_size", using: :btree
+    t.index ["data_uploaded_at"], name: "index_images_on_data_uploaded_at", using: :btree
+    t.index ["imageable_id", "imageable_type"], name: "index_images_on_imageable_id_and_imageable_type", using: :btree
   end
 
   create_table "interests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -138,6 +166,22 @@ ActiveRecord::Schema.define(version: 20161004175504) do
     t.string   "central_office_number", limit: 3
     t.string   "subscriber_number",     limit: 4
     t.index ["category"], name: "index_phones_on_category", using: :btree
+  end
+
+  create_table "places", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string   "name",                       null: false
+    t.integer  "parent_id"
+    t.integer  "lft",                        null: false
+    t.integer  "rgt",                        null: false
+    t.integer  "depth",          default: 0, null: false
+    t.integer  "children_count", default: 0, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "slug"
+    t.index ["lft"], name: "index_places_on_lft", using: :btree
+    t.index ["parent_id"], name: "index_places_on_parent_id", using: :btree
+    t.index ["rgt"], name: "index_places_on_rgt", using: :btree
+    t.index ["slug"], name: "index_places_on_slug", using: :btree
   end
 
   create_table "pursuits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -240,27 +284,38 @@ ActiveRecord::Schema.define(version: 20161004175504) do
   end
 
   create_table "works", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string   "name",                                         null: false
-    t.integer  "interest_id",                                  null: false
-    t.integer  "party_id",                                     null: false
+    t.string   "name",                                             null: false
+    t.integer  "interest_id",                                      null: false
+    t.integer  "party_id",                                         null: false
     t.string   "url"
-    t.integer  "start_year",                                   null: false
+    t.integer  "start_year",                                       null: false
     t.integer  "stop_year"
-    t.text     "description",    limit: 65535
+    t.text     "description",        limit: 65535
     t.string   "summary"
-    t.boolean  "live",                         default: true,  null: false
+    t.boolean  "live",                             default: true,  null: false
     t.string   "slug"
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
-    t.string   "status",         limit: 16,    default: "pre", null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
+    t.string   "status",             limit: 16,    default: "pre", null: false
     t.string   "status_message"
     t.string   "location"
-    t.boolean  "demo",                         default: false, null: false
-    t.boolean  "favorite",                     default: false, null: false
-    t.integer  "author_id",                    default: 1,     null: false
+    t.boolean  "demo",                             default: false, null: false
+    t.boolean  "favorite",                         default: false, null: false
+    t.integer  "author_id",                        default: 1,     null: false
     t.integer  "soundcloud_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer  "genre_id"
+    t.integer  "place_id"
+    t.string   "instagram_id"
+    t.bigint   "flickr_id"
     t.index ["author_id"], name: "index_works_on_author_id", using: :btree
     t.index ["favorite"], name: "index_works_on_favorite", using: :btree
+    t.index ["flickr_id"], name: "index_works_on_flickr_id", using: :btree
+    t.index ["genre_id"], name: "index_works_on_genre_id", using: :btree
+    t.index ["instagram_id"], name: "index_works_on_instagram_id", using: :btree
     t.index ["interest_id"], name: "index_works_on_interest_id", using: :btree
     t.index ["live"], name: "index_works_on_live", using: :btree
     t.index ["party_id"], name: "index_works_on_party_id", using: :btree

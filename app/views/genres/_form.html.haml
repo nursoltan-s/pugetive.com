@@ -1,0 +1,7 @@
+= form_for @genre do |f|
+  - handle_errors(@genre)
+
+  = label_field(f.label(:interest_id),
+                f.select(:interest_id, options_from_collection_for_select(Interest.all, :id, :name, selected: @genre.interest_id)))
+  = label_field(f.label(:name), f.text_field(:name))
+  = submit(f)

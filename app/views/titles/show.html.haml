@@ -7,5 +7,4 @@
     %p 
       Listing works where I operated as a #{content_tag(:i, @title.name)}.
 
-%section.works
-  = render @title.works
+= render 'works/stacked', works: @title.works, show_meta: true, show_genre: true

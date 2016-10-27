@@ -2,7 +2,7 @@ set :stage, :production
 set :rails_env, "production"
 set :branch, "master"
 
-set :domain, 'pugetive.com'
+set :domain, 'toddgehman.com'
 
 # Simple Role Syntax
 # ==================

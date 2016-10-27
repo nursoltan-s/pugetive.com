@@ -11,13 +11,35 @@ class WorkDecorator < Draper::Decorator
   #   end
 
   def title
-    rv = h.link_to(model.name, model)
+    if model.blog?
+      rv = model.name
+    else
+      rv = h.link_to(model.name, model)
+    end
     if model.demo?
       text = work.music? ? ' [home demo]' : ' [prototype / rough draft]'
       rv += h.content_tag(:span, text, class: 'demo-warning')
     end
     rv
   end
+
+  def has_image?
+    model.image.url.present? and 
+      not model.image.url(:thumb).match(/missing/)
+  end
+
+  def thumbnail
+    return nil unless has_image?
+    rv = ''
+    image_html = h.image_tag(model.image.url(:thumb))
+    if model.url.present? and model.live?
+      contents = h.link_to(image_html, model.url)
+    else
+      contents = image_html
+    end
+    h.content_tag(:div, contents, class: 'screenshot')
+  end
+
 
   def titles_and_instruments
     list = []
@@ -36,4 +58,21 @@ class WorkDecorator < Draper::Decorator
 
   end
 
+  def series_info
+    return nil unless work.series.any?
+    list = ''
+    work.series.each do |series|
+      line = 'From the '
+      line += work.interest.series_name.downcase + ' '
+      line += h.link_to(series.name, series)
+      line_item = h.content_tag(:li, h.raw(line))
+      list += line_item
+    end
+    h.raw(h.content_tag(:ul, h.raw(list), class: 'series-list'))
+  end
+
+  def genre_info
+    return nil unless work.genre
+    return h.link_to(model.genre.name, model.genre) + (model.music? ? ' song' : nil)
+  end    
 end

@@ -1,11 +1,18 @@
-= form_for @work do |f|
+- @work.party_id ||= 1
+- @work.interest_id ||= params[:interest_id]
+
+= form_for @work, html: {multipart: true} do |f|
   - handle_errors(@work)
 
   = label_field(f.label(:name), f.text_field(:name))
   = label_field(f.label(:location), f.text_field(:location))
+  = label_field(f.label(:place_id), f.select(:place_id, options_for_select(nested_set_options(Place) {|i| "#{'-' * i.level} #{i.name}"}), include_blank: true ))
 
   = label_field(f.label(:interest_id), 
                 f.select(:interest_id, options_from_collection_for_select(Interest.all, :id, :name, selected: @work.interest_id)))
+
+  = label_field(f.label(:genre_id),
+                f.select(:genre_id, options_from_collection_for_select(Genre.send(@work.interest.token), :id, :name, selected: @work.genre_id), include_blank: true))
 
   = label_field(f.label(:party_id), 
                 f.select(:party_id, options_from_collection_for_select(Party.sorted, :id, :name, selected: @work.party_id)))
@@ -34,4 +41,8 @@
   = label_field(f.label(:status_message), f.text_field(:status_message))
 
   = label_field(f.label(:soundcloud_id), f.number_field(:soundcloud_id))
+  = label_field(f.label(:instagram_id), f.text_field(:instagram_id))
+  = label_field(f.label(:flickr_id), f.text_field(:flickr_id))
+
+  = f.file_field :image
   = submit(f)

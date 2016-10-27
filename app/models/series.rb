@@ -6,6 +6,7 @@ class Series < ApplicationRecord
   has_many :series_works, dependent: :destroy
   has_many :works, through: :series_works
 
+  scope :alpha, -> {order(:name)}
 
   def self.music
     Series.joins(:works).where(works: {interest_id: MUSIC_INTEREST_ID}).uniq
@@ -41,6 +42,10 @@ class Series < ApplicationRecord
 
   def music?
     works.where(interest_id: MUSIC_INTEREST_ID).any?
+  end
+
+  def writing?
+    works.where(interest_id: WRITING_INTEREST_ID).any?
   end
 
   def photography?

@@ -8,12 +8,7 @@
     %h2.subhead= @tool.type
 
     %p 
-      Listing works involving #{content_tag(:i, @tool.name)}.
+      Listing works with #{content_tag(:i, @tool.name)}.
 
 
-%section.works
-  = render @tool.works.sorted
-
-= link_to 'Edit', edit_tool_path(@tool)
-\|
-= link_to 'Back', tools_path
+= render "works/stacked", works: @tool.works, show_meta: true, show_genre: true

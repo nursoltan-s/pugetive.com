@@ -1,11 +1,29 @@
 module IconHelper
 
+
+  def admin_icon
+    awesome_icon('user-md')
+  end
+
   def delete_icon
     foundation_icon('x-circle')
   end
 
   def destroy_icon
     delete_icon
+  end
+
+  def env_icon(token = '')
+    case token.to_sym
+    when :development
+      return awesome_icon('laptop')
+    when :staging
+      return awesome_icon('cloud')
+    when :production
+      return awesome_icon('cloud')
+    else
+      return awesome_icon('code-fork')
+    end
   end
 
   def interest_icon(interest)
@@ -18,6 +36,10 @@ module IconHelper
 
   def edit_icon
     awesome_icon('edit')
+  end
+
+  def external_icon
+    awesome_icon('external-link-square')
   end
 
   def new_icon
@@ -110,14 +132,18 @@ module IconHelper
 
   def model_icon(token)
     case token.to_sym
+    when :genre
+      return raw(foundation_icon('pricetag-multiple'))
     when :interest
       return raw(awesome_icon('first-order'))
-    when :work
-      return raw(awesome_icon('list-ul'))
+    when :place
+      return raw(foundation_icon('map'))
     when :role
       return raw(foundation_icon('sheriff-badge'))
     when :series
       return raw(awesome_icon('object-group'))
+    when :work
+      return raw(awesome_icon('list-ul'))
     end
   end
 

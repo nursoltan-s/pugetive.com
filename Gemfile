@@ -36,12 +36,14 @@ gem 'capistrano-rails', group: :development
 gem 'actionview-encoded_mail_to'
 # This was required to use Draper under Rails 5
 gem 'activemodel-serializers-xml', git: 'https://github.com/rails/activemodel-serializers-xml'
+gem 'awesome_nested_set'
 gem 'carmen'
 gem 'dalli'
 gem 'devise'
 
 # Had to specify repo due to problems with Rails 5
 gem 'draper', github: 'audionerd/draper', branch: 'rails5'
+gem 'flickraw'
 gem 'font-awesome-rails'
 gem 'foundation-icons-sass-rails'
 gem 'foundation-rails'
@@ -49,6 +51,7 @@ gem 'friendly_id'
 gem 'haml'
 gem 'haml-rails'
 gem "nilify_blanks"
+gem "paperclip", "~> 5.0.0"
 gem 'pdfkit'
 gem 'pundit'
 gem 'rack-mini-profiler', require: false

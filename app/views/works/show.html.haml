@@ -2,48 +2,48 @@
 
 = render @work
 
-- if @work.soundcloud_id.present?
-  .row
-    .medium-offset-5.medium-5.end
-      = render "soundcloud_player", soundcloud_id: @work.soundcloud_id
+/ - if @work.soundcloud_id.present?
+/   .row
+/     .medium-offset-5.medium-5.end
+/       = render "soundcloud_player", soundcloud_id: @work.soundcloud_id
 
 - if @work.has_lyric?
   = render @work.lyric
-- elsif @work.music?
-  .row
+- elsif @work.music? or @work.writing?
+  .row{data: {visible_to: 'admin'}}
     .medium-offset-5.medium-5.end
       = link_to(raw("#{new_icon} Lyric"), new_lyric_path(work_id: @work.id))
 
-.row{data: {visible_to: 'admin'}}
-
 
 .row{data: {visible_to: 'admin'}}
-  .medium-5.columns.medium-text-right
+  .medium-3.medium-offset-2.columns.medium-text-right
     Add to series:
-  .medium-7.columns.end
+    %br
     = form_for SeriesWork.new(work_id: @work.id) do |f|
       = f.hidden_field(:work_id)
-      = f.select(:series_id, options_from_collection_for_select(Series.all, :id, :name, selected: params[:series_id]))
+      = f.select(:series_id, options_from_collection_for_select(Series.all.alpha, :id, :name, selected: params[:series_id]))
       = submit(f)
 
 
-  .medium-6.columns
-    - Tool.send(@work.interest.token).sort{|a,b| a.name <=> b.name}.each do |tool|
-      - if @work.tools.include?(tool)
-        .medium-offset-3.columns
-          = link_to(raw("#{raw(destroy_icon)} #{tool.name}"), @work.wields.find_by_tool_id(tool.id), method: :delete, class: 'button remove-button', data: {confirm: 'Are you sure?'})
-      - else
-        = form_for @work.wields.new(tool_id: tool.id) do |f|
-          = f.hidden_field(:work_id)
-          = f.hidden_field(:tool_id)
-          = submit(f, tool.name)
-  .medium-6.columns
+  .medium-3.columns
+    - tools = Tool.send(@work.interest.token).sort{|a,b| a.name <=> b.name}
+    - if tools.any?
+      %h3 Tools
+      - tools.each do |tool|
+        - if @work.tools.include?(tool)
+          %div= link_to(raw("#{raw(destroy_icon)} #{tool.name}"), @work.wields.find_by_tool_id(tool.id), method: :delete, class: 'button remove-button', data: {confirm: 'Are you sure?'})
+        - else
+          = form_for @work.wields.new(tool_id: tool.id) do |f|
+            = f.hidden_field(:work_id)
+            = f.hidden_field(:tool_id)
+            = f.submit(tool.name)
+  .medium-3.columns
+    %h3 Titles
     - Title.send(@work.interest.token).sort{|a,b| a.name <=> b.name}.each do |title|
       - if @work.titles.include?(title)
-        .medium-offset-3.columns
-          = link_to(raw("#{raw(destroy_icon)} #{title.name}"), @work.roles.find_by_title_id(title.id), method: :delete, class: 'button remove-button', data: {confirm: 'Are you sure?'})
+        %div= link_to(raw("#{raw(destroy_icon)} #{title.name}"), @work.roles.find_by_title_id(title.id), method: :delete, class: 'button remove-button', data: {confirm: 'Are you sure?'})
       - else 
         = form_for @work.roles.new(title_id: title.id) do |f|
           = f.hidden_field(:work_id)
           = f.hidden_field(:title_id)
-          = submit(f, title.name, nil, disabled: (@work.titles.include?(title) ? 'disabled' : nil))
+          = f.submit(title.name, disabled: (@work.titles.include?(title) ? 'disabled' : nil))

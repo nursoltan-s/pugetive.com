@@ -1,0 +1,12 @@
+%ul.tabs#example-tabs{data: {tabs: true}}
+  %li.tabs-title.is-active
+    %a{href: '#blogs-panel'} Blogs
+
+  %li.tabs-title
+    %a{href: '#haiku-panel'} Bad Rock Haiku
+
+.tabs-content{data: {tabs_content: 'example-tabs'}}
+  .tabs-panel.is-active#blogs-panel
+    = render @blogs.sorted
+  .tabs-panel#haiku-panel
+    = render @haiku

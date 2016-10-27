@@ -1,0 +1,17 @@
+- show_meta ||= false
+- show_genre ||= false
+
+- if works.favorite.any?
+  .row
+    .medium-7.medium-offset-5.columns
+      %section.works
+        %h2 Featured
+        = render 'works/list', works: works.favorite, show_meta: show_meta, show_genre: show_genre
+
+- if works.unfavorite.any?
+  .row
+    .medium-7.medium-offset-5.columns
+      %section.works
+        %h2 Others
+        = render 'works/list', works: works.unfavorite, show_meta: show_meta, show_genre: show_genre
+

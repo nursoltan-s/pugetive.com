@@ -1,0 +1,7 @@
+- @place.parent_id ||= params[:parent_id]
+= form_for @place do |f|
+  - handle_errors(@place)
+  = label_field(f.label(:name), f.text_field(:name))
+  - if @place.new_record?
+    = label_field(f.label(:parent_id), f.select(:parent_id, options_for_select(nested_set_options(Place) {|i| "#{'-' * i.level} #{i.name}"}, selected: @place.parent_id )))
+  = submit(f)

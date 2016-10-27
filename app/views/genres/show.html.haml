@@ -1,0 +1,12 @@
+- title(@genre.name, false)
+
+.row
+  .medium-7.medium-offset-5.columns
+    %h1
+      %span.tool-name= @genre.name
+
+    %p 
+      Listing works in the genre #{content_tag(:i, @genre.name)}.
+
+= render "works/stacked", works: @genre.works, show_meta: true
+

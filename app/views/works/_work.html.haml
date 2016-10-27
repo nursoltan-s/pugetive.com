@@ -4,14 +4,17 @@
       .medium-3.columns.medium-offset-2.medium-text-right.title-box
         %h3= work.decorate.title
 
-        %p.years
-          = work.years
+        %p
+          - if work.genre
+            %span.genre= link_to(work.genre.name, work.genre)
+          %span.years
+            = work.years
 
         - unless work.mine?
           .author
             Written by
             %b= work.author.name
-        -#/ [image]
+        = work.decorate.thumbnail
         - if work.location.present?
           %p
             %span.location
@@ -19,22 +22,26 @@
             / %span.programs
             /   = work.tools.programs.map{|t| t.name}.join(', ')
 
+        - if work.url.present? and work.live?
+          = link_to(raw("Link #{external_icon}"), work.url)
+
+        - if @work.soundcloud_id.present?
+          = render "soundcloud_player", soundcloud_id: @work.soundcloud_id
+
+
         %p.admin{data: {visible_to: 'admin'}}
           %smaller.subdued= link_to(edit_icon, edit_work_path(work), rel: 'nofollow')
           %smaller.subdued= link_to(model_icon('role'), new_role_path(work_id: work.id), rel: 'nofollow')
           %smaller.subdued= link_to(destroy_icon, work, method: :delete, data: {confirm: 'Are you sure?'}, rel: 'nofollow')
       .medium-5.columns.end.info-box
+        - if work.has_thumbnail?
+          = thumbnail(work)
         %p.artist
           by
           %b= work.party.name
 
         = work.decorate.titles_and_instruments
-        - if work.series.any?
-          %ul.series-list      
-            - work.series.each do |series|
-              %li
-                From the album: 
-                = link_to(series.name, series)
+        = work.decorate.series_info
         %p.summary= work.summary
         %p.status
           Status: 
