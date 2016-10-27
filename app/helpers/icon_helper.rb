@@ -5,6 +5,10 @@ module IconHelper
     awesome_icon('user-md')
   end
 
+  def audio_icon
+    foundation_icon('volume')
+  end
+
   def delete_icon
     foundation_icon('x-circle')
   end
@@ -50,12 +54,37 @@ module IconHelper
     foundation_icon('torso')
   end
 
+  def touch_icon
+    awesome_icon('hand-pointer-o')
+  end
+
   def email_icon
     foundation_icon('mail')
   end
 
   def home_icon
     awesome_icon('home')
+  end
+
+  def social_icon(token)
+    case token.to_sym
+    when :facebook
+      awesome_icon('facebook-square')
+    when :flickr
+      awesome_icon('flickr')
+    when :github
+      awesome_icon('github')
+    when :instagram
+      awesome_icon('instagram')
+    when :linkedin
+      awesome_icon('linkedin')
+    when :medium
+      awesome_icon('medium')
+    when :twitter
+      awesome_icon('twitter-square')
+    when :soundcloud
+      awesome_icon('soundcloud')
+    end
   end
 
 

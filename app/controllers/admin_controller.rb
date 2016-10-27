@@ -22,7 +22,7 @@ class AdminController < ApplicationController
 
   def touch
     authorize :about, :touch?
-    object = Experi::DynamicItem.new(params[:object_type], params[:object_id]).item
+    object = DynamicItem.new(params[:object_type], params[:object_id]).item
     object.touch
     redirect_to :back, notice: "#{object.class.name} ##{object.id} has been touched."
   rescue ActionController::RedirectBackError

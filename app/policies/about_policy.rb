@@ -8,6 +8,10 @@ class AboutPolicy < Struct.new(:user, :about)
     user and user.admin?
   end
 
+  def touch?
+    user and user.admin?
+  end
+
   def status?
     user and user.admin?
   end

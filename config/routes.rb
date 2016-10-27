@@ -35,6 +35,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   get 'status' => 'admin#status', as: 'status'
+  get 'touch/:object_type/:object_id' => 'admin#touch', as: 'touch'
   get 'todd-gehman-resume' => 'resume#show', as: :resume
   match 'settings' => 'users#edit', via: [:get, :patch], as: :settings
 

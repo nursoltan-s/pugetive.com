@@ -7,10 +7,10 @@ class DynamicItem
 
     # Must recognize this class as mapping to a table name
     #  (or in the case of STI, the parent's table name)
-    unless database_tables.include? @token.tableize or
-      database_tables.include? item_class.base_class.name.tableize
-      raise Error, "Cannot instantiate DynamicItem with unrecognized token"
-    end
+    # unless database_tables.include? @token.tableize or
+    #   database_tables.include? item_class.base_class.name.tableize
+    #   raise Error, "Cannot instantiate DynamicItem with unrecognized token"
+    # end
   end
 
   def item
