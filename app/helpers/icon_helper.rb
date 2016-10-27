@@ -70,10 +70,14 @@ module IconHelper
     case token.to_sym
     when :facebook
       awesome_icon('facebook-square')
+    when :flickr
+      awesome_icon('flickr')
     when :github
       awesome_icon('github')
     when :instagram
       awesome_icon('instagram')
+    when :linkedin
+      awesome_icon('linkedin')
     when :medium
       awesome_icon('medium')
     when :twitter
