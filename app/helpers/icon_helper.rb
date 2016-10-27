@@ -54,6 +54,10 @@ module IconHelper
     foundation_icon('torso')
   end
 
+  def touch_icon
+    awesome_icon('hand-pointer-o')
+  end
+
   def email_icon
     foundation_icon('mail')
   end
