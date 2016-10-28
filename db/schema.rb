@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161012135226) do
+ActiveRecord::Schema.define(version: 20161028105058) do
 
   create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "company"
@@ -59,6 +59,17 @@ ActiveRecord::Schema.define(version: 20161012135226) do
     t.datetime "updated_at",            null: false
     t.index ["address"], name: "index_emails_on_address", unique: true, using: :btree
     t.index ["category"], name: "index_emails_on_category", using: :btree
+  end
+
+  create_table "flickr_urls", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer  "work_id",        null: false
+    t.string   "flickraw_token", null: false
+    t.string   "url",            null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["flickraw_token"], name: "index_flickr_urls_on_flickraw_token", using: :btree
+    t.index ["work_id", "flickraw_token"], name: "index_flickr_urls_on_work_id_and_flickraw_token", unique: true, using: :btree
+    t.index ["work_id"], name: "index_flickr_urls_on_work_id", using: :btree
   end
 
   create_table "friendly_id_slugs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|

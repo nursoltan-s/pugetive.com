@@ -1,0 +1,2 @@
+class FlickrUrl < ApplicationRecord
+end

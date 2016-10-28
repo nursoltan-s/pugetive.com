@@ -124,8 +124,17 @@ class Work < ApplicationRecord
 
     info = flickr.photos.getInfo(photo_id: flickr_id)
     [:url_q, :url, :url_b, :url_o].each do |token|
-       raise FlickRaw.url_q(info).inspect
-     end
+      if url = FlickRaw.send(token, info)
+        existing_row = FlickrUrl.find_by_work_id_and_flickraw_token(self.id, token)
+        if existing_row
+          existing_row.update!(url: url)
+        else
+          FlickrUrl.create!(work_id: self.id, flickraw_token: token, url: url)
+        end
+      else
+        raise 'failed'
+      end
+    end
 
   end
 
