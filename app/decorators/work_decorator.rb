@@ -64,10 +64,12 @@ class WorkDecorator < Draper::Decorator
   def series_info
     return nil unless work.series.any?
     list = ''
-    work.series.each do |series|
+    work.series_works.each do |series_work|
+      series = series_work.series
       line = 'From the '
       line += work.interest.series_name.downcase + ' '
       line += h.link_to(series.name, series)
+      line += h.link_to(h.raw(h.destroy_icon), series_work, method: :delete, class: 'subdued', data: {visible_to: 'admin', confirm: 'Are you sure?'})
       line_item = h.content_tag(:li, h.raw(line))
       list += line_item
     end
