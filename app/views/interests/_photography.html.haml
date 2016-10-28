@@ -10,8 +10,8 @@
   %li.tabs-title
     %a{href: '#websites-panel'} Online Profiles
 
-  / %li.tabs-title{data: {visible_to: 'admin'}}
-  /   %a{href: '#all-panel'} All Photos
+  %li.tabs-title{data: {visible_to: 'admin'}}
+    %a{href: '#all-panel'} All Photos
 
 .tabs-content{data: {tabs_content: 'example-tabs'}}
   .tabs-panel.is-active#portfolio-panel
@@ -22,7 +22,7 @@
   .tabs-panel#websites-panel
     = render Work.photography.websites.sorted
 
-  / .tabs-panel#all-panel
-  /   - Work.photography.all.each do |work|
-  /     = link_to(thumbnail(work), work)
+  .tabs-panel#all-panel
+    - Work.photography.all.each do |work|
+      = link_to(thumbnail(work), work)
 

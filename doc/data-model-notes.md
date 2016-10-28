@@ -1,3 +1,10 @@
+FLICKR_URL
+  work_id
+  flickraw_token 
+  url
+
+rails g model FlickrUrl work_id:integer flickraw_token url
+
 GENRE
   interest_id
   name

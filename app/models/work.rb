@@ -56,6 +56,8 @@ class Work < ApplicationRecord
   scope :film,        -> {where(interest_id: FILM_INTEREST_ID)}
   scope :photography, -> {where(interest_id: PHOTOGRAPHY_INTEREST_ID)}
 
+  scope :flickr,      -> {where("flickr_id IS NOT NULL AND flickr_id != ''")}
+
   scope :lyrical,     -> {where("interest_id IN (#{MUSIC_INTEREST_ID},#{WRITING_INTEREST_ID})")}
 
 
@@ -103,5 +105,28 @@ class Work < ApplicationRecord
     slug.blank? || name_changed?
   end
 
+
+  def refresh_flickr_urls
+    return unless flickr_id.present?
+    # url_s : Square
+    # url_q : Large Square
+    # url_t : Thumbnail
+    # url_m : Small
+    # url_n : Small 320
+    # url   : Medium
+    # url_z : Medium 640
+    # url_c : Medium 800
+    # url_b : Large
+    # url_o : Original
+
+    FlickRaw.api_key= CONFIG[Rails.env][:flickr_api_key]
+    FlickRaw.shared_secret=CONFIG[Rails.env][:flickr_secret]
+
+    info = flickr.photos.getInfo(photo_id: flickr_id)
+    [:url_q, :url, :url_b, :url_o].each do |token|
+       raise FlickRaw.url_q(info).inspect
+     end
+
+  end
 
 end
