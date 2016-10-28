@@ -51,4 +51,23 @@ html.series-show {
   .instruments {
     display: none;
   }
+  section.series.photography {
+    img {
+      margin-right: 1em;
+      margin-bottom: 1em;      
+    }    
+  }
 }
+
+html.interests-show {
+  section.series.photography {
+    img {
+      width: 4em;
+      height: 4em;
+      margin-right: 0.5em;
+      margin-bottom: 0.5em;
+    }
+
+  }
+}
+

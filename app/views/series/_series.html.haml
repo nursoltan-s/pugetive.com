@@ -24,4 +24,4 @@
         - if series.music? or series.writing?
           = render 'works/list', works: series.works
         - elsif series.photography?
-          [images coming soon]
+          = render 'works/thumbnails', works: series.works

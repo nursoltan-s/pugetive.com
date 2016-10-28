@@ -1,18 +1,18 @@
 module ImageHelper
 
-  def thumbnail(work)
+  def thumbnail(work, options = {})
     if work.instagram_id.present?
-      return instagram_thumbnail(work)
+      return instagram_thumbnail(work, options)
     elsif work.flickr_id.present?
-      return flickr_thumbnail(work)
+      return flickr_thumbnail(work, options)
     end
   end
 
-  def instagram_thumbnail(work)
-    image_tag(instagram_url(work.instagram_id, 't'))
+  def instagram_thumbnail(work, options = {})
+    image_tag(instagram_url(work.instagram_id, 't'), options)
   end
 
-  def flickr_thumbnail(work)
+  def flickr_thumbnail(work, options = {})
     # url_s : Square
     # url_q : Large Square
     # url_t : Thumbnail
@@ -28,10 +28,10 @@ module ImageHelper
     # info = JSON.parse(info_string)
     cached_info = FlickrUrl.find_by_work_id_and_flickraw_token(work.id, :url_q)
     if cached_info
-      return image_tag(cached_info.url)
+      return image_tag(cached_info.url, options)
     else
       work.refresh_flickr_urls
-      return flickr_thumbnail(work)
+      return flickr_thumbnail(work, options)
     end
 
   end
