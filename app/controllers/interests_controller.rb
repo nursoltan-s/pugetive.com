@@ -5,12 +5,7 @@ class InterestsController < MetaResourceController
 
     case params[:id]
     when 'photography'
-      if true
-        @series = Series.photography
-      else
-        render "interests/photography"
-        return
-      end
+      @series = Series.photography
     when 'music'
       @series = Series.music
     when 'writing'
