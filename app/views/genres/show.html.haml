@@ -6,7 +6,7 @@
       %span.tool-name= @genre.name
 
     %p 
-      Listing works in the genre #{content_tag(:i, @genre.name)}.
+      Listing works in the #{@genre.interest.name.downcase} genre #{content_tag(:i, @genre.name)}.
 
 = render "works/stacked", works: @genre.works, show_meta: true
 

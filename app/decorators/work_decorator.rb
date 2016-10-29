@@ -85,14 +85,14 @@ class WorkDecorator < Draper::Decorator
     label = h.content_tag(:b, 'Photo License "CC BY-NC"')
     license_text = h.content_tag(:div, h.awesome_icon('creative-commons') + ' Attribution-NonCommercial')
     prints_teaser = h.mail_to('toddgehman@gmail.com', 'Contact me') + ' for prints or originals.'
-    license = h.content_tag(:div, label + license_text + h.content_tag(:div, prints_teaser), class: 'small subdued')
+    license = h.content_tag(:div, label + license_text + h.content_tag(:div, prints_teaser), class: 'photo-license')
 
     source = nil
     if model.flickr_id.present?
-      source = h.flickr_link(model.flickr_id)
+      source = 'Originally posted to ' + h.flickr_link(model.flickr_id)
     elsif model.instagram_id.present?
-      source = h.instagram_link(model.instagram_id)
+      source = 'Originally posted to ' + h.instagram_link(model.instagram_id)
     end
-    return license + source
+    return h.content_tag(:div, h.raw(source) + license, class: 'small subdued')
   end  
 end

@@ -111,6 +111,11 @@ class Work < ApplicationRecord
   end
 
 
+  def camera
+    return nil unless photography?
+    return tools.first
+  end
+
   def refresh_flickr_urls
     return unless flickr_id.present?
     # url_s : Square

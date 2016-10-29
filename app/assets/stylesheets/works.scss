@@ -101,10 +101,18 @@ html.works-show {
 
   .soundcloud {
     margin-bottom: 2em;
+    background-color: transparent;
+    opacity: 0.7;
   }
   section.work .thumbnail {
     display: none;
   }
+  iframe.soundcloud {
+    /*outline: 1px dotted $border_color;*/
+    background-color: $alt_background;
+    @include rounded()
+  }
+
 }
 
 html.series-show ul.series-list {
@@ -117,6 +125,10 @@ section.series-works .work {
   .titles, .tools, .status, .programs {
     display: none;
   }
+}
+
+.photo-license {
+  margin-top: 1em;
 }
 
 section.works {
