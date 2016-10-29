@@ -60,6 +60,7 @@ class Work < ApplicationRecord
 
   scope :lyrical,     -> {where("interest_id IN (#{MUSIC_INTEREST_ID},#{WRITING_INTEREST_ID})")}
 
+  scope :photo_sorted, -> {order("stop_year DESC, instagram_id DESC, flickr_id DESC")}
 
   def years
     date_range.years
@@ -75,6 +76,10 @@ class Work < ApplicationRecord
 
   def writing?
     interest_id == WRITING_INTEREST_ID
+  end
+
+  def photography?
+    interest_id == PHOTOGRAPHY_INTEREST_ID
   end
 
   def mine?
@@ -123,7 +128,7 @@ class Work < ApplicationRecord
     FlickRaw.shared_secret=CONFIG[Rails.env][:flickr_secret]
 
     info = flickr.photos.getInfo(photo_id: flickr_id)
-    [:url_q, :url, :url_b, :url_o].each do |token|
+    [:url_q, :url, :url_b, :url_o, :url_z].each do |token|
       if url = FlickRaw.send(token, info)
         existing_row = FlickrUrl.find_by_work_id_and_flickraw_token(self.id, token)
         if existing_row

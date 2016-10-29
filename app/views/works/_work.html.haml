@@ -3,6 +3,10 @@
     .row
       .medium-3.columns.medium-offset-2.medium-text-right.title-box
         %h3= work.decorate.title
+        - if work.location.present?
+          %p
+            %span.location
+              = work.location
 
         %p
           - if work.genre
@@ -15,19 +19,14 @@
             Written by
             %b= work.author.name
         = work.decorate.thumbnail
-        - if work.location.present?
-          %p
-            %span.location
-              = work.location
-            / %span.programs
-            /   = work.tools.programs.map{|t| t.name}.join(', ')
 
         - if work.url.present? and work.live?
           = link_to(raw("Link #{external_icon}"), work.url)
 
         - if work.soundcloud_id.present?
           = render "soundcloud_player", soundcloud_id: @work.soundcloud_id
-
+        - if work.photography?
+          = work.decorate.photo_meta
 
         %p.admin{data: {visible_to: 'admin'}}
           %smaller.subdued= link_to(edit_icon, edit_work_path(work), rel: 'nofollow')
@@ -36,6 +35,8 @@
       .medium-5.columns.end.info-box
         - if work.has_thumbnail?
           = thumbnail(work)
+        - if work.photography?
+          = large_image(work)
         %p.artist
           by
           %b= work.party.name

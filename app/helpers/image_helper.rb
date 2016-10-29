@@ -2,9 +2,17 @@ module ImageHelper
 
   def thumbnail(work, options = {})
     if work.instagram_id.present?
-      return instagram_thumbnail(work, options)
+      return instagram_thumbnail(work, options.merge(class: 'thumbnail'))
     elsif work.flickr_id.present?
-      return flickr_thumbnail(work, options)
+      return flickr_thumbnail(work, options.merge(class: 'thumbnail'))
+    end
+  end
+
+  def large_image(work, options = {})
+    if work.instagram_id.present?
+      return instagram_large(work, options.merge(class: 'photograph'))
+    elsif work.flickr_id.present?
+      return flickr_large(work, options.merge(class: 'photograph'))
     end
   end
 
@@ -34,6 +42,21 @@ module ImageHelper
       return flickr_thumbnail(work, options)
     end
 
+  end
+
+  def flickr_large(work, options = {})
+    cached_info = FlickrUrl.find_by_work_id_and_flickraw_token(work.id, :url_z)
+    if cached_info
+      return image_tag(cached_info.url, options)
+    else
+      work.refresh_flickr_urls
+      return flickr_thumbnail(work, options)
+    end
+  end
+
+
+  def instagram_large(work, options = {})
+    image_tag(instagram_url(work.instagram_id), options)
   end
 
   private

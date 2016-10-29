@@ -102,6 +102,9 @@ html.works-show {
   .soundcloud {
     margin-bottom: 2em;
   }
+  section.work .thumbnail {
+    display: none;
+  }
 }
 
 html.series-show ul.series-list {

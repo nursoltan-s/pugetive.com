@@ -73,11 +73,26 @@ class WorkDecorator < Draper::Decorator
       line_item = h.content_tag(:li, h.raw(line))
       list += line_item
     end
-    h.raw(h.content_tag(:ul, h.raw(list), class: 'series-list'))
+    h.raw(h.content_tag(:ul, h.raw(list), class: 'series-list small'))
   end
 
   def genre_info
     return nil unless work.genre
     return h.link_to(model.genre.name, model.genre) + (model.music? ? ' song' : nil)
-  end    
+  end
+
+  def photo_meta
+    label = h.content_tag(:b, 'Photo License "CC BY-NC"')
+    license_text = h.content_tag(:div, h.awesome_icon('creative-commons') + ' Attribution-NonCommercial')
+    prints_teaser = h.mail_to('toddgehman@gmail.com', 'Contact me') + ' for prints or originals.'
+    license = h.content_tag(:div, label + license_text + h.content_tag(:div, prints_teaser), class: 'small subdued')
+
+    source = nil
+    if model.flickr_id.present?
+      source = h.flickr_link(model.flickr_id)
+    elsif model.instagram_id.present?
+      source = h.instagram_link(model.instagram_id)
+    end
+    return license + source
+  end  
 end

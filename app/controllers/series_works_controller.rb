@@ -14,4 +14,8 @@ class SeriesWorksController < MetaResourceController
     def post_create_path
       item.series
     end
+
+    def post_destroy_path
+      item.series
+    end
 end

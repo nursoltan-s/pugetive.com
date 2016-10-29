@@ -1,3 +1,4 @@
 - cache ["works/thumbnails", works.map{|w| w.id}.sort] do
   - works.each do |work|
-    = link_to(thumbnail(work), work)
+    - cache ["thumbnail", work] do
+      = link_to(thumbnail(work), work)

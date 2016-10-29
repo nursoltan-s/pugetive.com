@@ -4,3 +4,11 @@
   margin-bottom: 0.5em;
   outline: 1px solid $border_color;
 }
+
+.thumbnail, .photograph {
+  border: 1px solid $border_color;
+}
+
+.photograph {
+  margin-bottom: 1em;
+}
