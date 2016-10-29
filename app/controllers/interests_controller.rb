@@ -7,7 +7,7 @@ class InterestsController < MetaResourceController
     when 'photography'
       @series = Series.photography
     when 'music'
-      @series = Series.music
+      @series = Series.music.includes(works: [:titles, :tools])
     when 'writing'
       @blogs = Work.where('name LIKE "%typepad%" OR name LIKE "%medium%"')
 

@@ -77,7 +77,7 @@ class Series < ApplicationRecord
   def instruments
     list = []
     works.each do |work|
-      work.tools.instruments.each do |title|
+      work.tools.reject{|t| t.category != 'Instrument'}.each do |title|
         unless list.include?(title)
           list << title
         end
