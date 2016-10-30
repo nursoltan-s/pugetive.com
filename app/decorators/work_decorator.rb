@@ -86,7 +86,7 @@ class WorkDecorator < Draper::Decorator
   end
 
   def camera_info
-    return nil unless work.camera
+    return '' unless work.camera
     text = h.content_tag(:i, h.raw("Shot with #{work.camera.iphone? ? 'an' : 'a'} #{h.link_to(work.tools.first.name, work.tools.first)}"))
     h.content_tag(:div, text, class: 'camera')
   end
