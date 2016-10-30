@@ -1,0 +1,5 @@
+ErrorDocument 503 /system/maintenance.html
+RewriteCond %{REQUEST_URI} !.(css|gif|ico|jpg|png|txt)$
+RewriteCond %{DOCUMENT_ROOT}/system/maintenance.html -f
+RewriteCond %{SCRIPT_FILENAME} !maintenance.html
+RewriteRule ^.*$  -  [redirect=503,last]
