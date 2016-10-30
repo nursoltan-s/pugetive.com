@@ -51,6 +51,9 @@ gem 'friendly_id'
 gem 'haml'
 gem 'haml-rails'
 gem "nilify_blanks"
+# Dependencies on this gem broke deployment after a bundler update, 
+# so pinning the gem to an earlier version.
+gem "nokogiri", "1.6.8"
 gem "paperclip", "~> 5.0.0"
 gem 'pdfkit'
 gem 'pundit'

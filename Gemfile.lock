@@ -179,8 +179,9 @@ GEM
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
     nio4r (1.2.1)
-    nokogiri (1.6.8.1)
+    nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
+      pkg-config (~> 1.1.7)
     orm_adapter (0.5.0)
     paperclip (5.0.0)
       activemodel (>= 4.2.0)
@@ -189,6 +190,7 @@ GEM
       mime-types
       mimemagic (~> 0.3.0)
     pdfkit (0.8.2)
+    pkg-config (1.1.7)
     puma (3.6.0)
     pundit (1.1.0)
       activesupport (>= 3.0.0)
@@ -312,6 +314,7 @@ DEPENDENCIES
   listen (~> 3.0.5)
   mysql2
   nilify_blanks
+  nokogiri (= 1.6.8)
   paperclip (~> 5.0.0)
   pdfkit
   puma
