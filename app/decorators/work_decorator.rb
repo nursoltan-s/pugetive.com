@@ -94,5 +94,6 @@ class WorkDecorator < Draper::Decorator
       source = 'Originally posted to ' + h.instagram_link(model.instagram_id)
     end
     return h.content_tag(:div, h.raw(source) + license, class: 'small subdued')
-  end  
+  end
+
 end

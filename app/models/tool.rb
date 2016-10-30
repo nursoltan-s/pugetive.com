@@ -41,6 +41,10 @@ class Tool < ActiveRecord::Base
     @num_projects ||= projects.count
   end
 
+  # FIXME this column should use interest_id
+  def interest
+    Interest.find_by_name(category)
+  end
 
   def score
     fluency * recency

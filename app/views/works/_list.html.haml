@@ -6,9 +6,13 @@
   - works.each do |work|
     %li{class: work.favorite? ? 'favorite' : nil}
       %span.work-name= work.decorate.title
-      - if show_meta
-        %span.meta
-          %span.years= work.years
-          - if show_genre
-            = work.decorate.genre_info
-          = work.decorate.series_info
+      - if work.photography?
+        .row
+          .small-2.columns= link_to(thumbnail(work), work)
+          .small-6.columns.end
+            - if show_meta
+              %span.meta
+                %span.years= work.years
+                - if show_genre
+                  = work.decorate.genre_info
+                = work.decorate.series_info

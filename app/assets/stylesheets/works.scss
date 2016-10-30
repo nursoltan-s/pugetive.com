@@ -119,7 +119,14 @@ html.series-show ul.series-list {
   display: none;
 }
 
-
+ol.works {
+  li {
+    clear: left;
+    .thumbnail {
+      float: left;
+    }
+  }
+}
 
 section.series-works .work {
   .titles, .tools, .status, .programs {
