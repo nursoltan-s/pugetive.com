@@ -43,6 +43,8 @@ class Work < ApplicationRecord
   has_one :lyric
   belongs_to :author, class_name: 'Artist'
 
+  has_many :flickr_urls
+
   scope :sorted,     -> {order("works.stop_year IS NULL DESC, works.stop_year DESC, start_year ASC, name ASC")}
   scope :alpha,      -> {order(:name)}
 
@@ -135,7 +137,7 @@ class Work < ApplicationRecord
     info = flickr.photos.getInfo(photo_id: flickr_id)
     [:url_q, :url, :url_b, :url_o, :url_z].each do |token|
       if url = FlickRaw.send(token, info)
-        existing_row = FlickrUrl.find_by_work_id_and_flickraw_token(self.id, token)
+        existing_row = flickr_urls.find_by_flickraw_token(token)
         if existing_row
           existing_row.update!(url: url)
         else

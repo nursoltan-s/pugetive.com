@@ -5,7 +5,7 @@ class InterestsController < MetaResourceController
 
     case params[:id]
     when 'photography'
-      @series = Series.photography
+      @series = Series.photography.includes(works: [:titles, :tools, :interest, :flickr_urls])
     when 'music'
       @series = Series.music.includes(works: [:titles, :tools])
     when 'writing'
