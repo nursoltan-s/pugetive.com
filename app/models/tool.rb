@@ -62,6 +62,11 @@ class Tool < ActiveRecord::Base
   #   ((num_projects.to_f/ max_project_count(type)) * 3).round
   # end
 
+
+  def iphone?
+    name.match(/iphone/i)
+  end
+
   def should_generate_new_friendly_id?
     slug.blank? || name_changed?
   end

@@ -22,14 +22,6 @@
   = render "soundcloud_player", soundcloud_id: @work.soundcloud_id
 
 - if work.photography?
-  - if work.camera
-    .small.subdued.camera
-      Shot with 
-      - if work.camera.name.match(/iphone/i)
-        an
-      - else
-        a
-      = link_to(work.tools.first.name, work.tools.first)
   .small.subdued
     = work.decorate.photo_meta
 
