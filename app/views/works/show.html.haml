@@ -14,36 +14,10 @@
     .medium-offset-5.medium-5.end
       = link_to(raw("#{new_icon} Lyric"), new_lyric_path(work_id: @work.id))
 
-
 .row{data: {visible_to: 'admin'}}
   .medium-3.medium-offset-2.columns.medium-text-right
-    Add to series:
-    %br
-    = form_for SeriesWork.new(work_id: @work.id) do |f|
-      = f.hidden_field(:work_id)
-      = f.select(:series_id, options_from_collection_for_select(Series.all.alpha, :id, :name, selected: params[:series_id]))
-      = submit(f)
-
-
+    = render "works/series_teaser", work: @work
   .medium-3.columns
-    - tools = Tool.send(@work.interest.token).sort{|a,b| a.name <=> b.name}
-    - if tools.any?
-      %h3 Tools
-      - tools.each do |tool|
-        - if @work.tools.include?(tool)
-          %div= link_to(raw("#{raw(destroy_icon)} #{tool.name}"), @work.wields.find_by_tool_id(tool.id), method: :delete, class: 'button remove-button', data: {confirm: 'Are you sure?'})
-        - else
-          = form_for @work.wields.new(tool_id: tool.id) do |f|
-            = f.hidden_field(:work_id)
-            = f.hidden_field(:tool_id)
-            = f.submit(tool.name)
+    = render "works/tools_teaser", work: @work
   .medium-3.columns
-    %h3 Titles
-    - Title.send(@work.interest.token).sort{|a,b| a.name <=> b.name}.each do |title|
-      - if @work.titles.include?(title)
-        %div= link_to(raw("#{raw(destroy_icon)} #{title.name}"), @work.roles.find_by_title_id(title.id), method: :delete, class: 'button remove-button', data: {confirm: 'Are you sure?'})
-      - else 
-        = form_for @work.roles.new(title_id: title.id) do |f|
-          = f.hidden_field(:work_id)
-          = f.hidden_field(:title_id)
-          = f.submit(title.name, disabled: (@work.titles.include?(title) ? 'disabled' : nil))
+    = render "works/titles_teaser", work: @work

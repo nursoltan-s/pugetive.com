@@ -1,0 +1,6 @@
+Add to series:
+%br
+= form_for SeriesWork.new(work_id: @work.id) do |f|
+  = f.hidden_field(:work_id)
+  = f.select(:series_id, options_from_collection_for_select(Series.all.alpha, :id, :name, selected: params[:series_id]))
+  = submit(f)

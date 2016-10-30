@@ -93,7 +93,7 @@ class WorkDecorator < Draper::Decorator
     elsif model.instagram_id.present?
       source = 'Originally posted to ' + h.instagram_link(model.instagram_id)
     end
-    return h.content_tag(:div, h.raw(source) + license, class: 'small subdued')
+    return h.content_tag(:div, h.raw(source) + license)
   end
 
 end
