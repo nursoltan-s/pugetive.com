@@ -1,5 +1,5 @@
-set :stage, :awsproduction
-set :rails_env, "awsproduction"
+set :stage, :aws
+set :rails_env, "aws"
 set :branch, "master"
 
 set :domain, '54.172.158.166'
