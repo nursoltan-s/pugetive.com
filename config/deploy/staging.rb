@@ -2,7 +2,7 @@ set :stage, :staging
 set :rails_env, "staging"
 set :branch, "development"
 
-set :domain, 'pugetive.net'
+set :domain, '52.23.238.46'
 
 
 # Simple Role Syntax
