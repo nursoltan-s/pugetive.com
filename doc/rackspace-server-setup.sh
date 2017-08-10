@@ -72,7 +72,7 @@ sudo apt-get install imagemagick libmagickcore-dev libmagickwand-dev
 # # Git
 # # ---------------------
 sudo apt-get install git-core
-ssh-keygen -t dsa
+ssh-keygen -t rsa
 # Then install the generated one as a deploy key on GitHub
 
 # ---------------------
