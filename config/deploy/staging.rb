@@ -2,7 +2,7 @@ set :stage, :staging
 set :rails_env, "staging"
 set :branch, "development"
 
-set :domain, '52.23.238.46'
+set :domain, 'pugetive.net'
 
 set :aws_key_pair, '/Users/todd/.ssh/deployer-key-pair-us-east.pem'
 
