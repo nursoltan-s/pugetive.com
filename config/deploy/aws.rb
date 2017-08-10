@@ -2,7 +2,7 @@ set :stage, :aws
 set :rails_env, "production"
 set :branch, "master"
 
-set :domain, 'toddgehman.com'
+set :domain, '54.172.158.166'
 
 set :aws_key_pair, '/Users/todd/.ssh/deployer-key-pair-us-east.pem'
 
