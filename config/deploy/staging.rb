@@ -4,6 +4,7 @@ set :branch, "development"
 
 set :domain, '52.23.238.46'
 
+set :aws_key_pair, '/Users/todd/.ssh/deployer-key-pair-us-east.pem'
 
 # Simple Role Syntax
 # ==================

@@ -13,6 +13,13 @@ set :repo_url, 'git@github.com:pugetive/pugetive.com.git'
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, "/home/deployer/apps/pugetive"
 
+set :ssh_options, {
+  forward_agent: true,
+  user: fetch(:user),
+  auth_methods: ["publickey"],
+  keys: ["/Users/todd/.ssh/deployer-key-pair-us-east.pem"]
+}
+
 # Default value for :scm is :git
 # set :scm, :git
 
