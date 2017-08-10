@@ -4,6 +4,9 @@ set :branch, "master"
 
 set :domain, '54.172.158.166'
 
+set :aws_key_pair, '/Users/todd/.ssh/deployer-key-pair-us-east.pem'
+
+
 # Simple Role Syntax
 # ==================
 # Supports bulk-adding hosts to roles, the primary server in each group
