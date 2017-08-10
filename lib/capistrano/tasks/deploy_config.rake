@@ -12,8 +12,9 @@ namespace :config do
       execute("mkdir -p #{shared_path}/config")
       fetch(:linked_files).each do |file|
         run_locally do
-          execute("rsync -avz #{file} #{fetch(:user)}@#{fetch(:domain)}:#{shared_path}/#{file}")
-          # execute("scp #{file} #{fetch(:user)}@#{fetch(:domain)}:#{shared_path}/#{file}")
+          # execute("rsync -avz #{file} ")
+          execute("rsync -avz -rave 'ssh -i #{fetch(:aws_key_pair)}' #{file} #{fetch(:user)}@#{fetch(:domain)}:#{shared_path}/#{file}")
+# rsync -rave "ssh -i PEMKEYFILE.pem" /path/to/local/files/* ec2-user@EC2_INSTANCE_HOSTNAME:/path/to/remote/files
         end
         execute("chmod 600 #{shared_path}/#{file}")
       end
