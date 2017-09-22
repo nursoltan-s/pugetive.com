@@ -58,7 +58,7 @@ nav {
 }
 
 a:hover {
-  @include subdued();
+  @include subdued(80);
 }
 
 #footer {
