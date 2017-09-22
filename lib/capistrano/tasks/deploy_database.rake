@@ -50,7 +50,7 @@ namespace :db do
       raise "Sorry, I refuse to push the local database to production."
     end
     run_locally do
-      execute("scp #{dump_file}.gz #{fetch(:user)}@#{db_config[fetch(:rails_env)]['host'].nil? ? fetch(:domain) : db_config[fetch(:rails_env)]['host']}:~")
+      execute("scp -i #{fetch(:aws_key_pair)} #{dump_file}.gz #{fetch(:user)}@#{db_config[fetch(:rails_env)]['host'].nil? ? fetch(:domain) : db_config[fetch(:rails_env)]['host']}:~")
       execute("rm #{dump_file}.gz")
     end
     on roles(:db) do
