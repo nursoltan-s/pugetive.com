@@ -23,7 +23,7 @@ namespace :db do
         else
           domain = db_config[fetch(:rails_env)]['host']
         end
-        execute("scp #{fetch(:user)}@#{domain}:~/#{dump_file}.gz .")
+        execute("scp -i #{fetch(:aws_key_pair)} #{fetch(:user)}@#{domain}:~/#{dump_file}.gz .")
       end
       execute("rm #{dump_file}.gz")
       run_locally do

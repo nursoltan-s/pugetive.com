@@ -23,7 +23,7 @@
 
 - if work.photography?
   .small.subdued
-    = work.decorate.photo_meta
+    = raw(work.decorate.photo_meta)
 
 %p.admin{data: {visible_to: 'admin'}}
   %smaller.subdued= link_to(edit_icon, edit_work_path(work), rel: 'nofollow')
