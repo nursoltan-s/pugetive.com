@@ -13,11 +13,11 @@ module LinksHelper
   end
 
   def flickr_link(flickr_id, content = "Flickr #{flickr_icon}")
-    link_to(raw(content), "https://www.flickr.com/photos/pugetive/#{flickr_id}/", target: "_blank")
+    link_to(raw(content), "https://www.flickr.com/photos/pugetive/#{flickr_id}/", title: "View photograph on Flickr", target: "_blank")
   end
 
   def instagram_link(instagram_id, content = "Instagram #{instagram_icon}")
-    link_to(raw(content), "https://www.instagram.com/p/#{instagram_id}", target: "_blank")
+    link_to(raw(content), "https://www.instagram.com/p/#{instagram_id}", title: "View photograph on Instagram", target: "_blank")
   end
 
 
