@@ -10,7 +10,7 @@
         - if work.has_thumbnail?
           = thumbnail(work)
         - if work.photography?
-          = large_image(work)
+          = photo_link(work, large_image(work))
         %p.artist
           by
           %b= work.party.name
