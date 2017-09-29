@@ -1,7 +1,5 @@
-- if work.location.present?
-  %p
-    %span.location
-      = work.location
+%h3.show-for-small-only= work.decorate.title
+
 
 %table.compact
 
@@ -26,15 +24,20 @@
         .genre= link_to(work.genre.name, work.genre)
 
 
-  -# %tr
-  -#   %th Status
-  -#   %td= combo_status(work)
-
-
-  %tr
-    %th Roles
+  %tr.show-for-small-only
+    %th Artist
     %td
-      = render "works/song_roles", work: work
+      %b= work.party.name
+      - if work.party.alias?
+        %i.subdued [solo alias]
+
+  - if work.series.any?
+    %tr.show-for-small-only
+      %th
+      %td= work.decorate.series_info
+
+
+  = render "works/roles_table_row", work: work, visibility_class: 'hide-for-small-only'
 
 
 = render "works/admin_links", work: work
