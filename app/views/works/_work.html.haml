@@ -14,6 +14,8 @@
         %p.artist
           by
           %b= work.party.name
+          - if work.party.alias?
+            %i.subdued [solo alias]
 
         = work.decorate.titles_and_instruments
         = work.decorate.series_info
