@@ -10,6 +10,12 @@
 
         .medium-5.columns.end.info-box
           %h3= work.decorate.title
+          - if work.writing?
+            - if work.location.present?
+              %p
+                %span.location
+                  = work.location
+
           - if work.has_thumbnail?
             = thumbnail(work)
           - if work.photography?

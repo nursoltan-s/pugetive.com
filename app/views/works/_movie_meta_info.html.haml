@@ -1,12 +1,7 @@
-- if work.location.present?
-  %p
-    %span.location
-      = work.location
-
 %p
   - if work.genre
     %span.genre= link_to(work.genre.name, work.genre)
-  %span.years
+  .years
     = work.years
 
 
@@ -16,7 +11,7 @@
     %b= work.author.name
 
 %p.status
-  Status: 
+  Status:
   = combo_status(work)
 
 = work.decorate.thumbnail

@@ -1,8 +1,3 @@
-- if work.location.present?
-  %p
-    %span.location
-      = work.location
-
 %p
   - if work.genre
     %span.genre= link_to(work.genre.name, work.genre)
@@ -14,12 +9,6 @@
   .author
     Written by
     %b= work.author.name
-
-%p.status
-  Status: 
-  = combo_status(work)
-
-= work.decorate.thumbnail
 
 - if work.url.present? and work.live?
   = link_to(raw("Link #{external_icon}"), work.url)
