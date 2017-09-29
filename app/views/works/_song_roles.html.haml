@@ -1,0 +1,8 @@
+%ul.titles
+  - work.titles.each do |title|
+    %li.title
+      = link_to(title.name, title)
+      - if title.name == 'Performer' and work.tools.instruments.any?
+        %ul.instruments
+          - work.tools.instruments.sorted.each do |instrument|
+            %li= link_to(instrument.name, instrument)

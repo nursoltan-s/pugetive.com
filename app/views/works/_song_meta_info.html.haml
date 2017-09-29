@@ -1,0 +1,40 @@
+- if work.location.present?
+  %p
+    %span.location
+      = work.location
+
+%table.compact
+
+  - if work.soundcloud_id.present?
+    %tr
+      %th Audio
+      %td= render "soundcloud_player", soundcloud_id: work.soundcloud_id
+
+  %tr
+    %th Year
+    %td.years= work.years
+
+  - unless work.mine?
+    %tr
+      %th Written by
+      %td= work.author.name
+
+  - if work.genre
+    %tr
+      %th Genre
+      %td
+        .genre= link_to(work.genre.name, work.genre)
+
+
+  -# %tr
+  -#   %th Status
+  -#   %td= combo_status(work)
+
+
+  %tr
+    %th Roles
+    %td
+      = render "works/song_roles", work: work
+
+
+= render "works/admin_links", work: work

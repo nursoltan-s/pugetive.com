@@ -1,6 +1,23 @@
+@import 'mixins';
+
 table.compact {
+  background: $alt_background;
+  tbody {
+    border-color: $body_background;
+  }
+  tr {
+    background: $alt_background;
+  }
   th, td {
     font-family: Verdana;
     font-size: .75em;
+    background: $body_background;
+    vertical-align: top;
+  }
+  th {
+    font-weight: normal;
+  }
+  td {
+    text-align: left;
   }
 }

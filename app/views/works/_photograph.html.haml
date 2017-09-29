@@ -1,0 +1,73 @@
+%section.work{class: work.interest.token, itemscope: true}
+
+  .row
+
+    .medium-3.columns.medium-offset-2.medium-text-right.title-box
+      %h3= work.decorate.title
+      - if work.location.present?
+        %p
+          %span.location
+            = work.location
+
+      %p
+        - if work.genre
+          %span.genre= link_to(work.genre.name, work.genre)
+        %span.years
+          = work.years
+
+
+      - unless work.mine?
+        .author
+          Written by
+          %b= work.author.name
+
+      %p.status
+        Status: 
+        = combo_status(work)
+
+      = work.decorate.thumbnail
+
+      - if work.url.present? and work.live?
+        = link_to(raw("Link #{external_icon}"), work.url)
+
+
+      = work.decorate.titles_and_instruments
+
+      - if work.photography?
+        .small.subdued
+          = raw(work.decorate.photo_meta)
+
+      %p.admin{data: {visible_to: 'admin'}}
+        %smaller.subdued= link_to(edit_icon, edit_work_path(work), rel: 'nofollow')
+        %smaller.subdued= link_to(model_icon('role'), new_role_path(work_id: work.id), rel: 'nofollow')
+        %smaller.subdued= link_to(destroy_icon, work, method: :delete, data: {confirm: 'Are you sure?'}, rel: 'nofollow')
+
+
+    .medium-5.columns.end.info-box
+      - if work.has_thumbnail?
+        = thumbnail(work)
+      - if work.photography?
+        = photo_link(work, large_image(work))
+      %p.artist
+        by
+        %b= work.party.name
+        - if work.party.alias?
+          %i.subdued [solo alias]
+
+      = work.decorate.series_info
+      - if work.summary.present?
+        %p.summary
+          = work.summary
+
+      - if work.has_lyric?
+        = render work.lyric
+      - elsif work.music? or work.writing?
+        %div{data: {visible_to: 'admin'}}
+          = link_to(raw("#{new_icon} Lyric"), new_lyric_path(work_id: work.id))
+
+
+      - if work.tools.any?
+        %p.tools
+          %b Buzzwords:
+          = raw(work.tools.map{|t| link_to(t.name, t)}.join(', '))
+

@@ -1,34 +1,39 @@
 - cache work do
-  %section.work{class: work.interest.token, itemscope: true}
-    .row
+  - if work.photography?
+    = render "works/photograph", work: work
+  - else
+    %section.work{class: work.interest.token, itemscope: true}
+      .row
 
-      .medium-3.columns.medium-offset-2.medium-text-right.title-box
-        %h3= work.decorate.title
-        = render "works/work_meta_info", work: work
+        .medium-3.columns.medium-offset-2.medium-text-right.title-box
+          = render "works/#{work.interest.work_name.downcase}_meta_info", work: work
 
-      .medium-5.columns.end.info-box
-        - if work.has_thumbnail?
-          = thumbnail(work)
-        - if work.photography?
-          = photo_link(work, large_image(work))
-        %p.artist
-          by
-          %b= work.party.name
-          - if work.party.alias?
-            %i.subdued [solo alias]
+        .medium-5.columns.end.info-box
+          %h3= work.decorate.title
+          - if work.has_thumbnail?
+            = thumbnail(work)
+          - if work.photography?
+            = photo_link(work, large_image(work))
+          %p.artist
+            by
+            %b= work.party.name
+            - if work.party.alias?
+              %i.subdued [solo alias]
 
-        = work.decorate.titles_and_instruments
-        = work.decorate.series_info
-        - if work.summary.present?
-          %p.summary
-            = work.summary
-        %p.status
-          Status: 
-          = combo_status(work)
+          = work.decorate.series_info
+          - if work.summary.present?
+            %p.summary
+              = work.summary
+
+          - if work.has_lyric?
+            = render work.lyric
+          - elsif work.music? or work.writing?
+            %div{data: {visible_to: 'admin'}}
+              = link_to(raw("#{new_icon} Lyric"), new_lyric_path(work_id: work.id))
 
 
-        - if work.tools.any?
-          %p.tools
-            %b Buzzwords:
-            = raw(work.tools.map{|t| link_to(t.name, t)}.join(', '))
+          - if work.tools.any?
+            %p.tools
+              %b Buzzwords:
+              = raw(work.tools.map{|t| link_to(t.name, t)}.join(', '))
 

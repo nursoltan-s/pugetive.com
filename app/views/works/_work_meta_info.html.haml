@@ -1,3 +1,6 @@
+- if work.soundcloud_id.present?
+  = render "soundcloud_player", soundcloud_id: @work.soundcloud_id
+
 - if work.location.present?
   %p
     %span.location
@@ -9,17 +12,23 @@
   %span.years
     = work.years
 
+
 - unless work.mine?
   .author
     Written by
     %b= work.author.name
+
+%p.status
+  Status: 
+  = combo_status(work)
+
 = work.decorate.thumbnail
 
 - if work.url.present? and work.live?
   = link_to(raw("Link #{external_icon}"), work.url)
 
-- if work.soundcloud_id.present?
-  = render "soundcloud_player", soundcloud_id: @work.soundcloud_id
+
+= work.decorate.titles_and_instruments
 
 - if work.photography?
   .small.subdued
