@@ -29,10 +29,4 @@ module ApplicationHelper
     content_tag(:i, work.status_message, class: 'subdued')
   end
 
-  def environment_link(token)
-    link_to(raw("#{env_icon(token)} #{token}"), 
-                only_path: false, 
-                host: CONFIG[token][:host_with_port],
-                params: params.except(:controller, :action, :id))
-  end
 end

@@ -15,11 +15,11 @@
   .tabs-panel.is-active#live-music-panel
     = render "live_bands"
   .tabs-panel#band-recordings-panel
-    = render @series.band.studio.sort{|a, b| b.stop_year <=> a.stop_year}
+    = render Series.band.studio.sort{|a, b| b.stop_year <=> a.stop_year}
   .tabs-panel#live-recordings-panel
-    = render @series.band.live.sort{|a, b| b.stop_year <=> a.stop_year}
+    = render Series.band.live.sort{|a, b| b.stop_year <=> a.stop_year}
   .tabs-panel#solo-recordings-panel
-    = render @series.solo.sort{|a, b| b.stop_year <=> a.stop_year}
+    = render Series.solo.music.sort{|a, b| b.stop_year <=> a.stop_year}
 
 
 / .row

@@ -4,7 +4,7 @@ ruby "2.3.1"
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.0.0.1'
+gem 'rails', '5.1.4'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 gem 'mysql2'
@@ -42,16 +42,16 @@ gem 'dalli'
 gem 'devise'
 
 # Had to specify repo due to problems with Rails 5
-gem 'draper', github: 'audionerd/draper', branch: 'rails5'
+gem 'draper'
 gem 'flickraw'
 gem 'font-awesome-rails'
 gem 'foundation-icons-sass-rails'
-gem 'foundation-rails'
+gem 'foundation-rails', '6.2.4'
 gem 'friendly_id'
 gem 'haml'
 gem 'haml-rails'
 gem "nilify_blanks"
-# Dependencies on this gem broke deployment after a bundler update, 
+# Dependencies on this gem broke deployment after a bundler update,
 # so pinning the gem to an earlier version.
 gem "nokogiri", "1.6.8"
 gem "paperclip", "~> 5.0.0"

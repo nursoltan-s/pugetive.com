@@ -5,9 +5,9 @@ class InterestsController < MetaResourceController
 
     case params[:id]
     when 'photography'
-      @series = Series.photography.includes(works: [:titles, :tools, :interest, :flickr_urls])
+      @series = Series.includes(works: [:titles, :tools, :interest, :flickr_urls]).photography
     when 'music'
-      @series = Series.music.includes(works: [:titles, :tools])
+      @series = Series.includes(works: [:titles, :tools, :interest, :flickr_urls]).music
     when 'writing'
       @blogs = Work.where('name LIKE "%typepad%" OR name LIKE "%medium%"')
 

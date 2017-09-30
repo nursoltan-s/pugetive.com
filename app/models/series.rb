@@ -9,11 +9,11 @@ class Series < ApplicationRecord
   scope :alpha, -> {order(:name)}
 
   def self.music
-    Series.joins(:works).where(works: {interest_id: MUSIC_INTEREST_ID}).uniq
+    joins(:works).where(works: {interest_id: MUSIC_INTEREST_ID}).uniq
   end
 
   def self.photography
-    Series.joins(:works).where(works: {interest_id: PHOTOGRAPHY_INTEREST_ID}).uniq
+    joins(:works).where(works: {interest_id: PHOTOGRAPHY_INTEREST_ID}).uniq
   end
 
   def self.band

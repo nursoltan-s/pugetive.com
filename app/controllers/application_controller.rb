@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_filter :remember_location, :canonize_domain, :set_mini_profiler
+  before_action :remember_location, :canonize_domain, :set_mini_profiler
 
   after_action :verify_authorized, unless: :devise_controller?
   after_action :verify_policy_scoped, only: :index

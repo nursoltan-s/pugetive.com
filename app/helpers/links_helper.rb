@@ -20,5 +20,14 @@ module LinksHelper
     link_to(raw(content), "https://www.instagram.com/p/#{instagram_id}", title: "View photograph on Instagram", target: "_blank")
   end
 
+  def environment_link(token)
+    link_to(raw("#{env_icon(token)} #{token}"),
+            request.parameters.except(:controller, :action, :id)
+                   .merge(only_path: false,
+                          protocol:  CONFIG[token][:host_protocol],
+                          host:      CONFIG[token][:host_with_port],
+                          port:      CONFIG[token][:port]))
+  end
+
 
 end
