@@ -26,7 +26,7 @@ module LinksHelper
                    .merge(only_path: false,
                           protocol:  CONFIG[token][:host_protocol],
                           host:      CONFIG[token][:host_with_port],
-                          port:      CONFIG[token][:port]))
+                          port:      CONFIG[token][:port].to_i == 80 ? nil : CONFIG[token][:port]))
   end
 
 
