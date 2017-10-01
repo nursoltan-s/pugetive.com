@@ -10,331 +10,355 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161028105058) do
+ActiveRecord::Schema.define(version: 20171001213239) do
 
-  create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string   "company"
-    t.string   "username"
-    t.string   "url"
+  create_table "accounts", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "company"
+    t.string "username"
+    t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.string   "street",     limit: 64, null: false
-    t.string   "unit",       limit: 32
-    t.string   "city",       limit: 64, null: false
-    t.string   "state",      limit: 2,  null: false
-    t.string   "zip",        limit: 12, null: false
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
-    t.index ["city"], name: "index_addresses_on_city", using: :btree
-    t.index ["state"], name: "index_addresses_on_state", using: :btree
-    t.index ["zip"], name: "index_addresses_on_zip", using: :btree
+  create_table "addresses", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.string "street", limit: 64, null: false
+    t.string "unit", limit: 32
+    t.string "city", limit: 64, null: false
+    t.string "state", limit: 2, null: false
+    t.string "zip", limit: 12, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city"], name: "index_addresses_on_city"
+    t.index ["state"], name: "index_addresses_on_state"
+    t.index ["zip"], name: "index_addresses_on_zip"
   end
 
-  create_table "awards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string   "name"
-    t.string   "official_title"
-    t.string   "summary"
-    t.string   "url"
-    t.boolean  "live"
-    t.integer  "start_year"
-    t.integer  "stop_year"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-  end
-
-  create_table "companies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.string   "username"
-    t.string   "url"
+  create_table "awards", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "name"
+    t.string "official_title"
+    t.string "summary"
+    t.string "url"
+    t.boolean "live"
+    t.integer "start_year"
+    t.integer "stop_year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "emails", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.string   "address",    limit: 64, null: false
-    t.string   "category",   limit: 8
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
-    t.index ["address"], name: "index_emails_on_address", unique: true, using: :btree
-    t.index ["category"], name: "index_emails_on_category", using: :btree
+  create_table "companies", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.string "username"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "flickr_urls", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.integer  "work_id",        null: false
-    t.string   "flickraw_token", null: false
-    t.string   "url",            null: false
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.index ["flickraw_token"], name: "index_flickr_urls_on_flickraw_token", using: :btree
-    t.index ["work_id", "flickraw_token"], name: "index_flickr_urls_on_work_id_and_flickraw_token", unique: true, using: :btree
-    t.index ["work_id"], name: "index_flickr_urls_on_work_id", using: :btree
+  create_table "emails", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.string "address", limit: 64, null: false
+    t.string "category", limit: 8
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["address"], name: "index_emails_on_address", unique: true
+    t.index ["category"], name: "index_emails_on_category"
   end
 
-  create_table "friendly_id_slugs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string   "slug",                      null: false
-    t.integer  "sluggable_id",              null: false
-    t.string   "sluggable_type", limit: 50
-    t.string   "scope"
+  create_table "flickr_urls", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "work_id", null: false
+    t.string "flickraw_token", null: false
+    t.string "url", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["flickraw_token"], name: "index_flickr_urls_on_flickraw_token"
+    t.index ["work_id", "flickraw_token"], name: "index_flickr_urls_on_work_id_and_flickraw_token", unique: true
+    t.index ["work_id"], name: "index_flickr_urls_on_work_id"
+  end
+
+  create_table "friendly_id_slugs", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "slug", null: false
+    t.integer "sluggable_id", null: false
+    t.string "sluggable_type", limit: 50
+    t.string "scope"
     t.datetime "created_at"
-    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
-    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
-    t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
-    t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+    t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
+    t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
   end
 
-  create_table "genres", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.integer  "interest_id"
-    t.string   "name"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.string   "slug"
-    t.index ["interest_id"], name: "index_genres_on_interest_id", using: :btree
-    t.index ["name"], name: "index_genres_on_name", using: :btree
-    t.index ["slug"], name: "index_genres_on_slug", using: :btree
+  create_table "genres", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "interest_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "slug"
+    t.index ["interest_id"], name: "index_genres_on_interest_id"
+    t.index ["name"], name: "index_genres_on_name"
+    t.index ["slug"], name: "index_genres_on_slug"
   end
 
-  create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string   "name"
-    t.integer  "imageable_id",      null: false
-    t.string   "imageable_type",    null: false
-    t.string   "data_file_name",    null: false
-    t.string   "data_content_type", null: false
-    t.integer  "data_file_size",    null: false
+  create_table "images", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "name"
+    t.integer "imageable_id", null: false
+    t.string "imageable_type", null: false
+    t.string "data_file_name", null: false
+    t.string "data_content_type", null: false
+    t.integer "data_file_size", null: false
     t.datetime "data_uploaded_at"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-    t.index ["data_content_type"], name: "index_images_on_data_content_type", using: :btree
-    t.index ["data_file_name"], name: "index_images_on_data_file_name", using: :btree
-    t.index ["data_file_size"], name: "index_images_on_data_file_size", using: :btree
-    t.index ["data_uploaded_at"], name: "index_images_on_data_uploaded_at", using: :btree
-    t.index ["imageable_id", "imageable_type"], name: "index_images_on_imageable_id_and_imageable_type", using: :btree
-  end
-
-  create_table "interests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string   "name",        limit: 32,                 null: false
-    t.integer  "sort",                                   null: false
-    t.string   "token",       limit: 32
-    t.string   "work_name",   limit: 32,                 null: false
-    t.string   "series_name", limit: 32,                 null: false
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
-    t.string   "slug"
-    t.string   "icon",        limit: 32
-    t.boolean  "public",                 default: false, null: false
-    t.index ["public"], name: "index_interests_on_public", using: :btree
-    t.index ["slug"], name: "index_interests_on_slug", using: :btree
-    t.index ["sort"], name: "index_interests_on_sort", using: :btree
-    t.index ["token"], name: "index_interests_on_token", using: :btree
-  end
-
-  create_table "lyrics", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.integer  "work_id"
-    t.text     "content",    limit: 65535
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-    t.index ["work_id"], name: "index_lyrics_on_work_id", unique: true, using: :btree
-  end
-
-  create_table "notes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.string   "noteable_type", limit: 32, null: false
-    t.integer  "noteable_id",              null: false
-    t.string   "contents"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-    t.index ["noteable_type", "noteable_id"], name: "index_notes_on_noteable_type_and_noteable_id", using: :btree
-  end
-
-  create_table "parties", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.string   "name",                                         null: false
-    t.string   "type",                                         null: false
-    t.string   "url"
-    t.text     "description",    limit: 65535
-    t.integer  "start_year",                                   null: false
-    t.integer  "stop_year"
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
-    t.string   "location",       limit: 32
-    t.string   "official_title"
-    t.string   "summary"
-    t.string   "slug"
-    t.boolean  "live",                         default: false
-    t.boolean  "alias",                        default: false, null: false
-    t.index ["alias"], name: "index_parties_on_alias", using: :btree
-    t.index ["name"], name: "index_parties_on_name", using: :btree
-    t.index ["slug"], name: "index_parties_on_slug", using: :btree
-    t.index ["start_year"], name: "index_parties_on_start_year", using: :btree
-    t.index ["stop_year"], name: "index_parties_on_stop_year", using: :btree
-    t.index ["type"], name: "index_parties_on_type", using: :btree
-  end
-
-  create_table "phones", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.string   "category",              limit: 8
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-    t.string   "area_code",             limit: 3
-    t.string   "central_office_number", limit: 3
-    t.string   "subscriber_number",     limit: 4
-    t.index ["category"], name: "index_phones_on_category", using: :btree
-  end
-
-  create_table "places", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string   "name",                       null: false
-    t.integer  "parent_id"
-    t.integer  "lft",                        null: false
-    t.integer  "rgt",                        null: false
-    t.integer  "depth",          default: 0, null: false
-    t.integer  "children_count", default: 0, null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.string   "slug"
-    t.index ["lft"], name: "index_places_on_lft", using: :btree
-    t.index ["parent_id"], name: "index_places_on_parent_id", using: :btree
-    t.index ["rgt"], name: "index_places_on_rgt", using: :btree
-    t.index ["slug"], name: "index_places_on_slug", using: :btree
-  end
-
-  create_table "pursuits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string   "name",            null: false
-    t.string   "unit_name",       null: false
-    t.string   "collection_name"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.index ["name"], name: "index_pursuits_on_name", using: :btree
-  end
-
-  create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.integer  "work_id",    null: false
-    t.integer  "title_id",   null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["title_id"], name: "index_roles_on_title_id", using: :btree
-    t.index ["work_id", "title_id"], name: "index_roles_on_work_id_and_title_id", unique: true, using: :btree
-    t.index ["work_id"], name: "index_roles_on_work_id", using: :btree
+    t.index ["data_content_type"], name: "index_images_on_data_content_type"
+    t.index ["data_file_name"], name: "index_images_on_data_file_name"
+    t.index ["data_file_size"], name: "index_images_on_data_file_size"
+    t.index ["data_uploaded_at"], name: "index_images_on_data_uploaded_at"
+    t.index ["imageable_id", "imageable_type"], name: "index_images_on_imageable_id_and_imageable_type"
   end
 
-  create_table "series", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string   "name",                                      null: false
-    t.string   "summary"
-    t.text     "description", limit: 65535
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
-    t.string   "slug"
-    t.boolean  "audience",                  default: false, null: false
-    t.index ["audience"], name: "index_series_on_audience", using: :btree
-    t.index ["slug"], name: "index_series_on_slug", using: :btree
+  create_table "interests", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "name", limit: 32, null: false
+    t.integer "sort", null: false
+    t.string "token", limit: 32
+    t.string "work_name", limit: 32, null: false
+    t.string "series_name", limit: 32, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "slug"
+    t.string "icon", limit: 32
+    t.boolean "public", default: false, null: false
+    t.index ["public"], name: "index_interests_on_public"
+    t.index ["slug"], name: "index_interests_on_slug"
+    t.index ["sort"], name: "index_interests_on_sort"
+    t.index ["token"], name: "index_interests_on_token"
   end
 
-  create_table "series_works", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.integer  "series_id",  null: false
-    t.integer  "work_id",    null: false
+  create_table "lyrics", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "work_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["work_id"], name: "index_lyrics_on_work_id", unique: true
+  end
+
+  create_table "notes", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.string "noteable_type", limit: 32, null: false
+    t.integer "noteable_id", null: false
+    t.string "contents"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["noteable_type", "noteable_id"], name: "index_notes_on_noteable_type_and_noteable_id"
+  end
+
+  create_table "parties", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.string "name", null: false
+    t.string "type", null: false
+    t.string "url"
+    t.text "description"
+    t.integer "start_year", null: false
+    t.integer "stop_year"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "location", limit: 32
+    t.string "official_title"
+    t.string "summary"
+    t.string "slug"
+    t.boolean "live", default: false
+    t.boolean "alias", default: false, null: false
+    t.index ["alias"], name: "index_parties_on_alias"
+    t.index ["name"], name: "index_parties_on_name"
+    t.index ["slug"], name: "index_parties_on_slug"
+    t.index ["start_year"], name: "index_parties_on_start_year"
+    t.index ["stop_year"], name: "index_parties_on_stop_year"
+    t.index ["type"], name: "index_parties_on_type"
+  end
+
+  create_table "phones", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.string "category", limit: 8
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "area_code", limit: 3
+    t.string "central_office_number", limit: 3
+    t.string "subscriber_number", limit: 4
+    t.index ["category"], name: "index_phones_on_category"
+  end
+
+  create_table "places", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "name", null: false
+    t.integer "parent_id"
+    t.integer "lft", null: false
+    t.integer "rgt", null: false
+    t.integer "depth", default: 0, null: false
+    t.integer "children_count", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "slug"
+    t.index ["lft"], name: "index_places_on_lft"
+    t.index ["parent_id"], name: "index_places_on_parent_id"
+    t.index ["rgt"], name: "index_places_on_rgt"
+    t.index ["slug"], name: "index_places_on_slug"
+  end
+
+  create_table "projects", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.string "name", null: false
+    t.string "type", limit: 32, null: false
+    t.integer "party_id", null: false
+    t.string "url"
+    t.integer "start_year", null: false
+    t.integer "stop_year"
+    t.text "description"
+    t.boolean "live", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "official_title"
+    t.string "summary"
+    t.string "slug"
+    t.index ["live"], name: "index_projects_on_live"
+    t.index ["name"], name: "index_projects_on_name"
+    t.index ["party_id"], name: "index_projects_on_party_id"
+    t.index ["slug"], name: "index_projects_on_slug"
+    t.index ["start_year"], name: "index_projects_on_start_year"
+    t.index ["stop_year"], name: "index_projects_on_stop_year"
+    t.index ["type"], name: "index_projects_on_type"
+  end
+
+  create_table "pursuits", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "name", null: false
+    t.string "unit_name", null: false
+    t.string "collection_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_pursuits_on_name"
+  end
+
+  create_table "roles", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.integer "work_id", null: false
+    t.integer "title_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["title_id"], name: "index_roles_on_title_id"
+    t.index ["work_id", "title_id"], name: "index_roles_on_work_id_and_title_id", unique: true
+    t.index ["work_id"], name: "index_roles_on_work_id"
+  end
+
+  create_table "series", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "name", null: false
+    t.string "summary"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "slug"
+    t.boolean "audience", default: false, null: false
+    t.index ["audience"], name: "index_series_on_audience"
+    t.index ["slug"], name: "index_series_on_slug"
+  end
+
+  create_table "series_works", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "series_id", null: false
+    t.integer "work_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "titles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.string   "name",                  null: false
-    t.string   "category",   limit: 16, null: false
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
-    t.string   "slug"
-    t.integer  "sort"
-    t.index ["category", "sort"], name: "index_titles_on_category_and_sort", unique: true, using: :btree
-    t.index ["category"], name: "index_titles_on_category", using: :btree
-    t.index ["name"], name: "index_titles_on_name", using: :btree
-    t.index ["slug"], name: "index_titles_on_slug", using: :btree
-    t.index ["sort"], name: "index_titles_on_sort", using: :btree
+  create_table "titles", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.string "name", null: false
+    t.string "category", limit: 16, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "slug"
+    t.integer "sort"
+    t.index ["category", "sort"], name: "index_titles_on_category_and_sort", unique: true
+    t.index ["category"], name: "index_titles_on_category"
+    t.index ["name"], name: "index_titles_on_name"
+    t.index ["slug"], name: "index_titles_on_slug"
+    t.index ["sort"], name: "index_titles_on_sort"
   end
 
-  create_table "tools", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.string   "name",                                  null: false
-    t.string   "type",       limit: 16,                 null: false
-    t.string   "category",   limit: 16,                 null: false
-    t.boolean  "front_end",             default: false, null: false
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
-    t.integer  "fluency",    limit: 1,  default: 0,     null: false
-    t.string   "slug"
-    t.integer  "sort"
-    t.index ["fluency"], name: "index_tools_on_fluency", using: :btree
-    t.index ["name"], name: "index_tools_on_name", using: :btree
-    t.index ["slug"], name: "index_tools_on_slug", using: :btree
-    t.index ["sort"], name: "index_tools_on_sort", using: :btree
-    t.index ["type", "category", "sort"], name: "index_tools_on_type_and_category_and_sort", unique: true, using: :btree
-    t.index ["type"], name: "index_tools_on_type", using: :btree
+  create_table "tools", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.string "name", null: false
+    t.string "type", limit: 16, null: false
+    t.string "category", limit: 16, null: false
+    t.boolean "front_end", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "fluency", limit: 1, default: 0, null: false
+    t.string "slug"
+    t.integer "sort"
+    t.index ["fluency"], name: "index_tools_on_fluency"
+    t.index ["name"], name: "index_tools_on_name"
+    t.index ["slug"], name: "index_tools_on_slug"
+    t.index ["sort"], name: "index_tools_on_sort"
+    t.index ["type", "category", "sort"], name: "index_tools_on_type_and_category_and_sort", unique: true
+    t.index ["type"], name: "index_tools_on_type"
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.string   "email",                                default: "", null: false
-    t.string   "encrypted_password",                   default: "", null: false
-    t.string   "reset_password_token"
+  create_table "users", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                        default: 0,  null: false
+    t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "one_liner"
-    t.text     "objective",              limit: 65535
-    t.text     "summary",                limit: 65535
-    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+    t.string "one_liner"
+    t.text "objective"
+    t.text "summary"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "wields", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.integer  "work_id",    null: false
-    t.integer  "tool_id",    null: false
+  create_table "wields", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.integer "work_id", null: false
+    t.integer "tool_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["tool_id"], name: "index_wields_on_tool_id", using: :btree
-    t.index ["work_id"], name: "index_wields_on_work_id", using: :btree
+    t.boolean "legacy", default: false, null: false
+    t.index ["tool_id"], name: "index_wields_on_tool_id"
+    t.index ["work_id"], name: "index_wields_on_work_id"
   end
 
-  create_table "works", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string   "name",                                             null: false
-    t.integer  "interest_id",                                      null: false
-    t.integer  "party_id",                                         null: false
-    t.string   "url"
-    t.integer  "start_year",                                       null: false
-    t.integer  "stop_year"
-    t.text     "description",        limit: 65535
-    t.string   "summary"
-    t.boolean  "live",                             default: true,  null: false
-    t.string   "slug"
-    t.datetime "created_at",                                       null: false
-    t.datetime "updated_at",                                       null: false
-    t.string   "status",             limit: 16,    default: "pre", null: false
-    t.string   "status_message"
-    t.string   "location"
-    t.boolean  "demo",                             default: false, null: false
-    t.boolean  "favorite",                         default: false, null: false
-    t.integer  "author_id",                        default: 1,     null: false
-    t.integer  "soundcloud_id"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
+  create_table "works", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "name", null: false
+    t.integer "interest_id", null: false
+    t.integer "party_id", null: false
+    t.string "url"
+    t.integer "start_year", null: false
+    t.integer "stop_year"
+    t.text "description"
+    t.string "summary"
+    t.boolean "live", default: true, null: false
+    t.string "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "status", limit: 16, default: "pre", null: false
+    t.string "status_message"
+    t.string "location"
+    t.boolean "demo", default: false, null: false
+    t.boolean "favorite", default: false, null: false
+    t.integer "author_id", default: 1, null: false
+    t.integer "soundcloud_id"
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
     t.datetime "image_updated_at"
-    t.integer  "genre_id"
-    t.integer  "place_id"
-    t.string   "instagram_id"
-    t.bigint   "flickr_id"
-    t.index ["author_id"], name: "index_works_on_author_id", using: :btree
-    t.index ["favorite"], name: "index_works_on_favorite", using: :btree
-    t.index ["flickr_id"], name: "index_works_on_flickr_id", using: :btree
-    t.index ["genre_id"], name: "index_works_on_genre_id", using: :btree
-    t.index ["instagram_id"], name: "index_works_on_instagram_id", using: :btree
-    t.index ["interest_id"], name: "index_works_on_interest_id", using: :btree
-    t.index ["live"], name: "index_works_on_live", using: :btree
-    t.index ["party_id"], name: "index_works_on_party_id", using: :btree
-    t.index ["slug"], name: "index_works_on_slug", using: :btree
-    t.index ["soundcloud_id"], name: "index_works_on_soundcloud_id", using: :btree
-    t.index ["start_year"], name: "index_works_on_start_year", using: :btree
-    t.index ["status"], name: "index_works_on_status", using: :btree
-    t.index ["stop_year"], name: "index_works_on_stop_year", using: :btree
+    t.integer "genre_id"
+    t.integer "place_id"
+    t.string "instagram_id"
+    t.bigint "flickr_id"
+    t.index ["author_id"], name: "index_works_on_author_id"
+    t.index ["favorite"], name: "index_works_on_favorite"
+    t.index ["flickr_id"], name: "index_works_on_flickr_id"
+    t.index ["genre_id"], name: "index_works_on_genre_id"
+    t.index ["instagram_id"], name: "index_works_on_instagram_id"
+    t.index ["interest_id"], name: "index_works_on_interest_id"
+    t.index ["live"], name: "index_works_on_live"
+    t.index ["party_id"], name: "index_works_on_party_id"
+    t.index ["slug"], name: "index_works_on_slug"
+    t.index ["soundcloud_id"], name: "index_works_on_soundcloud_id"
+    t.index ["start_year"], name: "index_works_on_start_year"
+    t.index ["status"], name: "index_works_on_status"
+    t.index ["stop_year"], name: "index_works_on_stop_year"
   end
 
 end

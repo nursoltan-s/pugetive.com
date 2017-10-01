@@ -116,6 +116,14 @@ class Work < ApplicationRecord
     slug.blank? || name_changed?
   end
 
+  def active_tools
+    wields.where(legacy: false).map{|w| w.tool}
+  end
+
+  def legacy_tools
+    wields.where(legacy: true).map{|w| w.tool}
+  end
+
 
   def camera
     return nil unless photography?

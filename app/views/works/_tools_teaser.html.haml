@@ -3,7 +3,13 @@
   %h3 Tools
   - tools.each do |tool|
     - if work.tools.include?(tool)
-      %div= link_to(raw("#{raw(destroy_icon)} #{tool.name}"), work.wields.find_by_tool_id(tool.id), method: :delete, class: 'button remove-button', data: {confirm: 'Are you sure?'})
+      - wield = work.wields.find_by_tool_id(tool.id)
+      %div
+        = link_to(raw("#{raw(destroy_icon)} #{tool.name}"), wield, method: :delete, class: 'button remove-button', data: {confirm: 'Are you sure?'})
+        = form_for wield do |f|
+          = f.check_box(:legacy)
+          = f.submit('Update Legacy Flag', class: 'tiny')
+
     - else
       = form_for work.wields.new(tool_id: tool.id) do |f|
         = f.hidden_field(:work_id)

@@ -33,14 +33,15 @@
             %p.summary
               = work.summary
 
-          - if work.has_lyric?
-            = render work.lyric
           - elsif work.music? or work.writing?
             %div{data: {visible_to: 'admin'}}
               = link_to(raw("#{new_icon} Lyric"), new_lyric_path(work_id: work.id))
 
-          - if work.tools.any?
+          - if work.active_tools.any?
             %p.tools
               %b Buzzwords:
-              = raw(work.tools.map{|t| link_to(t.name, t)}.join(', '))
-
+              = raw(work.active_tools.map{|t| link_to(t.name, t)}.join(', '))
+          - if work.legacy_tools.any?
+            %p.tools
+              %b Legacy:
+              = raw(work.legacy_tools.map{|t| link_to(t.name, t)}.join(', '))
