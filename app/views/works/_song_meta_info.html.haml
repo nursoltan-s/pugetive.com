@@ -3,10 +3,10 @@
 
 %table.compact
 
-  - if work.soundcloud_id.present?
+  - if work.has_audio?
     %tr
       %th Audio
-      %td= render "soundcloud_player", soundcloud_id: work.soundcloud_id
+      %td= audio_player(work)
 
   %tr
     %th Year
@@ -23,6 +23,10 @@
       %td
         .genre= link_to(work.genre.name, work.genre)
 
+  - if work.daw.present?
+    %tr
+      %th Recording
+      %td= work.daw.name
 
   %tr.show-for-small-only
     %th Artist

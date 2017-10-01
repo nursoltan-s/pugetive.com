@@ -30,4 +30,10 @@ module LinksHelper
   end
 
 
+  def audio_player(work)
+    if work.soundcloud_id
+      return render "soundcloud_player", soundcloud_id: work.soundcloud_id
+    end
+  end
+
 end

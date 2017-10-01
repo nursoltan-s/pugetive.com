@@ -9,7 +9,7 @@ class Work < ApplicationRecord
 
   has_attached_file(:image,
                     styles: { tiny: "40x40>",
-                              thumb: "100x100>", 
+                              thumb: "100x100>",
                               small:  "300x300>",
                               medium: "600x600>",
                               large:  "1200x1200>" },
@@ -106,6 +106,10 @@ class Work < ApplicationRecord
 
   def has_audio?
     soundcloud_id.present?
+  end
+
+  def daw
+    self.tools.where("name like 'garageband' or name like 'protools'").first
   end
 
   def should_generate_new_friendly_id?
