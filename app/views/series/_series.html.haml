@@ -24,4 +24,4 @@
         - if series.music? or series.writing?
           = render 'works/list', works: series.works
         - elsif series.photography?
-          = render 'works/thumbnails', works: series.works.photo_sorted
+          = render 'works/thumbnails', works: series.works.sorted, series_id: series.id

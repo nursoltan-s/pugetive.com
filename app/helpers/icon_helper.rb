@@ -46,6 +46,14 @@ module IconHelper
     awesome_icon('external-link-square')
   end
 
+  def left_icon(options = {})
+    awesome_icon('chevron-circle-left', options)
+  end
+
+  def right_icon(options = {})
+    awesome_icon('chevron-circle-right', options)
+  end
+
   def new_icon
     foundation_icon('plus')
   end

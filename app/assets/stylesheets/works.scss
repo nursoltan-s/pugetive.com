@@ -29,7 +29,7 @@ section.work, section.series, section.band, section.works {
   .demo-warning {
     color: $red_text_color;
     font-weight: 100;
-    font-size: 0.8em;
+    font-size: 66%;
   }
 
   p.summary {
@@ -38,6 +38,7 @@ section.work, section.series, section.band, section.works {
   }
   p.status {
     font-size: 0.8em;
+    @include subdued();
   }
 
   .info-box {
@@ -55,7 +56,7 @@ section.work, section.series, section.band, section.works {
       display: none;
     }
   }
-  
+
   &.photography {
     .artist {
       display: none;
@@ -112,6 +113,30 @@ html.works-show {
     /*outline: 1px dotted $border_color;*/
     background-color: $alt_background;
     @include rounded()
+  }
+
+  section.work {
+    table.series-info {
+      .series-link {
+        font-size: .75em;
+      }
+      .thumbnail {
+        @include subdued(33);
+        display: block;
+        width: 50px;
+        height: 50px;
+        margin: 0;
+      }
+      .thumb-nav-icon a {
+        display: block;
+        line-height: 50px;
+        font-size: 36px;
+        width: 50px;
+        position: relative;
+        top: -50px;
+        left: 10px;
+      }
+    }
   }
 
 }

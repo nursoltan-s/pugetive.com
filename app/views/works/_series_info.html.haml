@@ -1,0 +1,31 @@
+%table.series-info
+  %tbody
+    - work.series_works.each do |series_work|
+      - series = series_work.series
+      %tr
+        %td.left-nav
+          = thumbnail(work.prev_in_series(series))
+          %span.thumb-nav-icon
+            = link_to(left_icon, work.prev_in_series(series))
+        %td.series-link
+          From the series
+          = link_to(series.name, series)
+        %td.right-nav
+          = thumbnail(work.next_in_series(series))
+          %span.thumb-nav-icon
+            = link_to(right_icon, work.next_in_series(series))
+
+
+    -# return nil unless work.series.any?
+    -# list = ''
+    -# work.series_works.each do |series_work|
+    -#   series = series_work.series
+    -#   line = 'From the '
+    -#   line += work.interest.series_name.downcase + ' '
+    -#   line += h.link_to(series.name, series)
+    -#   line += h.link_to(h.raw(h.destroy_icon), series_work, method: :delete, class: 'subdued', data: {visible_to: 'admin', confirm: 'Are you sure?'})
+    -#   line_item = h.content_tag(:li, h.raw(line))
+    -#   list += line_item
+    -# end
+    -# h.raw(h.content_tag(:ul, h.raw(list), class: 'series-list small'))
+
