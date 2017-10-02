@@ -2,18 +2,19 @@
   %tbody
     - work.series_works.each do |series_work|
       - series = series_work.series
+      - next if params[:series_id] and params[:series_id].to_i != series.id
       %tr
-        %td.left-nav
+        %td.left-nav.nav
           = thumbnail(work.prev_in_series(series))
           %span.thumb-nav-icon
-            = link_to(left_icon, work.prev_in_series(series))
+            = link_to(left_icon, work_path(work.prev_in_series(series), series_id: params[:series_id]))
         %td.series-link
           From the series
           = link_to(series.name, series)
-        %td.right-nav
+        %td.right-nav.nav
           = thumbnail(work.next_in_series(series))
           %span.thumb-nav-icon
-            = link_to(right_icon, work.next_in_series(series))
+            = link_to(right_icon, work_path(work.next_in_series(series), series_id: params[:series_id]))
 
 
     -# return nil unless work.series.any?
