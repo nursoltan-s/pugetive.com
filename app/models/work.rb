@@ -151,7 +151,6 @@ class Work < ApplicationRecord
   end
 
 
-
   def refresh_flickr_urls
     return unless flickr_id.present?
     # url_s : Square
