@@ -76,6 +76,9 @@ group :development, :test do
 end
 
 group :development do
+  # gem 'capistrano-shortcuts', path: '/Users/todd/Sites/capistrano-shortcuts'
+  gem 'capistrano-shortcuts'
+
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 3.0'
   gem 'listen', '~> 3.0.5'
