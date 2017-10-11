@@ -20,6 +20,9 @@ set :ssh_options, {
   keys: ["/Users/todd/.ssh/deployer-key-pair-us-east.pem"]
 }
 
+set :aws_key_pair, '/Users/todd/.ssh/deployer-key-pair-us-east.pem'
+
+
 # Default value for :scm is :git
 # set :scm, :git
 
@@ -50,14 +53,14 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
-after :deploy, "config:symlink"
+# after :deploy, "config:symlink"
 set :passenger_restart_with_touch, true
 
 
 namespace :deploy do
 
-  before :deploy, "config:push"
-  after :deploy, "config:symlink"
+  # before :deploy, "config:push"
+  # after :deploy, "config:symlink"
   # after "deploy:updated", "newrelic:notice_deployment"
 
   after :publishing, :restart

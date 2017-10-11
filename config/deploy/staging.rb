@@ -4,7 +4,6 @@ set :branch, "development"
 
 set :domain, 'pugetive.net'
 
-set :aws_key_pair, '/Users/todd/.ssh/deployer-key-pair-us-east.pem'
 
 # Simple Role Syntax
 # ==================
