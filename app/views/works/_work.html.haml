@@ -1,9 +1,11 @@
-- cache work do
-  - if work.photography?
+- if work.photography?
+  - cache [work, params[:series_id]] do
     = render "works/photograph", work: work
-  - elsif work.music?
+- elsif work.music?
+  - cache work do
     = render "works/song", work: work
-  - else
+- else
+  - cache work do
     %section.work{class: work.interest.token, itemscope: true}
       .row
 
