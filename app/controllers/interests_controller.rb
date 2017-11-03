@@ -10,8 +10,8 @@ class InterestsController < MetaResourceController
       @series = Series.includes(works: [:titles, :tools, :interest, :flickr_urls]).music
     when 'writing'
       @blogs = Work.where('name LIKE "%typepad%" OR name LIKE "%medium%"')
-
       @haiku = Series.where('name LIKE "%haiku%"')
+      @projects = Work.writing - @blogs - @haiku.map{|s| s.works}.flatten
     end
 
 

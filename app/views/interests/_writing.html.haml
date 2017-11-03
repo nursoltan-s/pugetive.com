@@ -5,8 +5,13 @@
   %li.tabs-title
     %a{href: '#haiku-panel'} Bad Rock Haiku
 
+  %li.tabs-title
+    %a{href: '#other-panel'} Other Projects
+
 .tabs-content{data: {tabs_content: 'example-tabs'}}
   .tabs-panel.is-active#blogs-panel
     = render @blogs.sorted
   .tabs-panel#haiku-panel
     = render @haiku
+  .tabs-panel#other-panel
+    = render @projects

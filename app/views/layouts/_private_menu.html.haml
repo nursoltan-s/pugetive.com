@@ -15,6 +15,7 @@
             %ul.menu
               %li= link_to("Photograph", new_work_path(interest_id: PHOTOGRAPHY_INTEREST_ID), title: 'New Photo')
               %li= link_to("Software App", new_work_path(interest_id: SOFTWARE_INTEREST_ID), title: 'New App')
+              %li= link_to("Writing Piece", new_work_path(interest_id: WRITING_INTEREST_ID), title: 'New Piece')
 
       / %li= link_to(raw("#{new_icon} Work"),               new_work_path, rel: 'nofollow')
       %li= link_to(raw("#{model_icon('series')} Series"), series_index_path, title: 'View Series', rel: 'nofollow')
