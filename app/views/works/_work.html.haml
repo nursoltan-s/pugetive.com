@@ -1,9 +1,15 @@
 - if work.photography?
   - cache [work, params[:series_id]] do
     = render "works/photograph", work: work
+
 - elsif work.music?
   - cache work do
     = render "works/song", work: work
+
+- elsif work.writing?
+  - cache work do
+    = render "works/piece", work: work
+
 - else
   - cache work do
     %section.work{class: work.interest.token, itemscope: true}
@@ -34,7 +40,11 @@
             %p.summary
               = work.summary
 
+          - if work.has_lyric?
+            = render work.lyric
+
           - elsif work.music? or work.writing?
+
             %div{data: {visible_to: 'admin'}}
               = link_to(raw("#{new_icon} Lyric"), new_lyric_path(work_id: work.id))
 

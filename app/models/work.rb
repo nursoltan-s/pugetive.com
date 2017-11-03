@@ -59,6 +59,8 @@ class Work < ApplicationRecord
   scope :photography, -> {where(interest_id: PHOTOGRAPHY_INTEREST_ID)}
   scope :writing,     -> {where(interest_id: WRITING_INTEREST_ID)}
 
+  scope :reviews,     -> {where(genre_id: 11)}
+
   scope :flickr,      -> {where("flickr_id IS NOT NULL AND flickr_id != ''")}
 
   scope :lyrical,     -> {where("interest_id IN (#{MUSIC_INTEREST_ID},#{WRITING_INTEREST_ID})")}
