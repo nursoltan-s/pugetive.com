@@ -1,3 +1,4 @@
+$text_color: #333;
 $highlight_color: #009688;
 $sidebar_width: 20%;
 $code_font: "Lucida Console", Monaco, monospace;
@@ -11,6 +12,13 @@ html.pdf {
 
   body {
     padding-top: 3em;
+  }
+
+  .contents {
+    color: lighten($text_color, 20%);
+    .title {
+      color: $text_color;
+    }
   }
 
   section.divider {
@@ -98,6 +106,9 @@ html.pdf {
 
   .contents.pro {
     padding-bottom: 0;
+    .postfix-title {
+      display: none;
+    }
   }
 
   ul.contacts, ul.contacts li {
@@ -127,6 +138,16 @@ html.pdf {
     }
     .party {
       margin-bottom: 1em;
+    }
+  }
+
+  .tools {
+    h3 {
+      color: $text_color;
+      margin-bottom: 0;
+    }
+    p {
+      margin-top: 0.25em;
     }
   }
 }

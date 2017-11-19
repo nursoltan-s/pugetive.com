@@ -11,6 +11,7 @@ class Tool < ActiveRecord::Base
 
   scope :alpha,       -> {order(:name)}
   scope :sorted,      -> {order(:sort)}
+  scope :resume,      -> {where(resume: true)}
 
   scope :systems,     -> {where(type: 'System')}
   scope :languages,   -> {where(type: 'Language')}
