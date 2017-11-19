@@ -10,6 +10,6 @@
 
   = label_field(f.label(:front_end), f.check_box(:front_end))
   = label_field(f.label(:fluency),
-                f.select(:fluency, options_for_select([0, 1, 2, 3])))
+                f.select(:fluency, options_for_select([0, 1, 2, 3], selected: @tool.fluency)))
   = label_field(f.label(:resume), f.check_box(:resume))
   = submit(f)
