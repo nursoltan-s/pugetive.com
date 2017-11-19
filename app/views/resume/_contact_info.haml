@@ -1,4 +1,4 @@
-%section.label Info
+%section.label &nbsp;
 %section.contents
   %h1 Todd Gehman
   %h2 Software Humanist
@@ -12,7 +12,7 @@
       = render @todd.phone
     %li
       %span.label w:
-      = link_to("https://#{CONFIG[Rails.env][:host_with_port]}", "https://#{CONFIG[Rails.env][:host_with_port]}")
+      = link_to("#{CONFIG[Rails.env][:host_protocol]}://#{CONFIG[Rails.env][:host_with_port]}", "#{CONFIG[Rails.env][:host_protocol]}://#{CONFIG[Rails.env][:host_with_port]}")
 
 
 -# %section#contact-info.resume-section

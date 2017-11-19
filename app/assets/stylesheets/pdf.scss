@@ -1,5 +1,6 @@
 $highlight_color: #009688;
 $sidebar_width: 20%;
+$code_font: "Lucida Console", Monaco, monospace;
 
 html.pdf {
 
@@ -14,7 +15,7 @@ html.pdf {
 
   section.divider {
     clear: both;
-    padding-bottom: 2em;
+    padding-bottom: 3em;
   }
 
   .page-break {
@@ -32,18 +33,21 @@ html.pdf {
     font-family: Tahoma, Geneva, sans-serif;
     text-transform: uppercase;
     margin-bottom: 0.25em;
-    font-size: 1.25em;
+    font-size: 1.5em;
   }
   h2 {
     font-size: 0.75em;
     margin-top: 0;
   }
+
   section.label {
     float: left;
     width: $sidebar_width;
     text-align: right;
     margin-right: 1em;
+    text-transform: uppercase;
   }
+
   section.contents {
     float: left;
     width: 90% - $sidebar_width;
@@ -60,19 +64,29 @@ html.pdf {
     .url {
       color: $highlight_color;
       clear: left;
+      font-size: 6px;
+      font-family: $code_font;
+      text-align: right;
     }
     .dates {
       float: right;
       white-space: nowrap;
+      font-weight: bold;
     }
-    .summary {
+    .description {
       clear: both;
+      font-size: 6px;
+      margin-top: 1em;
     }
+  }
+
+  .party {
+    margin-bottom: 2em;
   }
 
 
   ul.contacts, ul.contacts li {
-    font-family: "Lucida Console", Monaco, monospace;
+    font-family: $code_font;
     font-size: 0.8em;
     margin: 0.25em 0;
     padding: 0;
