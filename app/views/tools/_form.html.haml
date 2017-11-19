@@ -2,13 +2,14 @@
   - handle_errors(@tool)
 
   = label_field(f.label(:name), f.text_field(:name))
-  = label_field(f.label(:type), 
+  = label_field(f.label(:type),
                 f.select(:type, options_for_select(Tool::TYPES, selected: @tool.type)))
 
-  = label_field(f.label(:category), 
+  = label_field(f.label(:category),
                 f.select(:category, options_for_select(PURSUITS, selected: @tool.category)))
 
   = label_field(f.label(:front_end), f.check_box(:front_end))
-  = label_field(f.label(:fluency), 
+  = label_field(f.label(:fluency),
                 f.select(:fluency, options_for_select([0, 1, 2, 3])))
+  = label_field(f.label(:resume), f.check_box(:resume))
   = submit(f)

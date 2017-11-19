@@ -16,9 +16,10 @@ class ToolsController < MetaResourceController
     def tool_params
       params.require(:tool).permit(:category,
                                    :fluency,
-                                   :front_end, 
+                                   :front_end,
                                    :name,
-                                   :sort, 
+                                   :resume,
+                                   :sort,
                                    :type)
     end
 end
