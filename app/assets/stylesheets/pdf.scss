@@ -1,6 +1,64 @@
-/*
- *= require foundation_and_overrides
-*/
+$highlight_color: #009688;
+$sidebar_width: 25%;
 
-#resume {
+html.pdf {
+
+  body, h1, h2, h3, h3, h4, h5, .left, .right {
+    font-family: "Lucida Sans", "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 9.5px;
+  }
+
+  body {
+    padding-top: 5em;
+  }
+
+  section.divider {
+    clear: both;
+    padding-bottom: 2em;
+  }
+
+  h1, h2, h3, h4, h5, h6, .label {
+    color: $highlight_color;
+    margin-top: 0;
+  }
+
+  h1 {
+    font-family: Tahoma, Geneva, sans-serif;
+    text-transform: uppercase;
+    margin-bottom: 0.25em;
+    font-size: 1.25em;
+  }
+  h2 {
+    font-size: 0.75em;
+    margin-top: 0;
+  }
+  section.label {
+    float: left;
+    width: $sidebar_width;
+    text-align: right;
+  }
+  section.contents {
+    float: right;
+    width: 90% - $sidebar_width;
+    border-left: 1px solid $highlight_color;
+    padding: 0 1em 2em;
+  }
+
+
+  ul.contacts, ul.contacts li {
+    font-family: "Lucida Console", Monaco, monospace;
+    font-size: 0.8em;
+    margin: 0.25em 0;
+    padding: 0;
+    list-style: none;
+    a {
+      text-decoration: none;
+      color: #666;
+    }
+  }
+  .company {
+    .name {
+      font-weight: bold;
+    }
+  }
 }
