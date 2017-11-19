@@ -2,6 +2,7 @@ $text_color: #333;
 $highlight_color: #009688;
 $sidebar_width: 20%;
 $code_font: "Lucida Console", Monaco, monospace;
+$portrait_size: 50px;
 
 html.pdf {
 
@@ -15,15 +16,19 @@ html.pdf {
   }
 
   .contents {
-    color: lighten($text_color, 20%);
-    .title {
+    color: lighten($text_color, 15%);
+    .title, .dates {
       color: $text_color;
     }
   }
 
+  .contact .contents {
+    padding-left: 20px;
+  }
+
   section.divider {
     clear: both;
-    padding-bottom: 3em;
+    padding-bottom: 2em;
   }
 
   .page-break {
@@ -54,16 +59,27 @@ html.pdf {
     text-align: right;
     margin-right: 1em;
     text-transform: uppercase;
+    .bullet {
+      display: block;
+      position: relative;
+      margin-right: -10px;
+      font-size: 60px;
+      line-height: 1em;
+      float: right;
+    }
   }
+
 
   section.contents {
     float: left;
     width: 90% - $sidebar_width;
     border-left: 1px solid $highlight_color;
-    padding: 0 1em 2em;
+    padding: 0 1em 1.5em;
+    z-index: 1;
 
     section {
       clear: both;
+      margin-bottom: 1.5em;
     }
     .title {
       font-weight: bold;
@@ -86,9 +102,19 @@ html.pdf {
     }
     .description {
       clear: both;
-      font-size: 6px;
-      margin-top: 0.5em;
+      font-size: 6.5px;
+      margin-top: 0.25em;
     }
+  }
+
+  .portrait {
+    border-radius: 50%;
+    border-color: $highlight_color;
+    border-size: 1px;
+    margin-right: -20px;
+    margin-top: -10px;
+    z-index: 100;
+    position: relative;
   }
 
   .party {
