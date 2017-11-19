@@ -1,0 +1,7 @@
+%section.work
+  .title= work.name
+  .dates= work.years
+  .url
+    - if work.url.present? and work.live?
+      = work.url
+  %p.description= work.description

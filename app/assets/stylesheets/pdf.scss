@@ -1,6 +1,183 @@
-/*
- *= require foundation_and_overrides
-*/
+$text_color: #222;
+$highlight_color: #009688;
+$sidebar_width: 20%;
+$code_font: "Lucida Console", Monaco, monospace;
+$portrait_size: 63px;
 
-#resume {
+html.pdf {
+
+  body, h1, h2, h3, h3, h4, h5, .left, .right {
+    font-family: "Lucida Sans", "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 7px;
+  }
+
+  body {
+    padding-top: 3em;
+  }
+
+  .contents {
+    color: lighten($text_color, 15%);
+    .title, .dates {
+      color: $text_color;
+    }
+  }
+
+
+  .contact .contents {
+    padding-left: 20px;
+    color: $text_color;
+    font-size: 9px;
+    ul.contacts li, ul.contacts li a {
+      color: $text_color;
+    }
+  }
+
+  section.divider {
+    clear: both;
+    padding-bottom: 2em;
+  }
+
+  .page-break {
+    display: block;
+    clear:both;
+    page-break-after: always;
+  }
+
+  h1, h2, h3, h4, h5, h6, .label {
+    color: $highlight_color;
+    margin-top: 0;
+  }
+
+  h1 {
+    font-family: Tahoma, Geneva, sans-serif;
+    text-transform: uppercase;
+    margin-bottom: 0.25em;
+    font-size: 1.5em;
+  }
+  h2 {
+    font-size: 0.75em;
+    margin-top: 0;
+  }
+
+  section.label {
+    float: left;
+    width: $sidebar_width;
+    text-align: right;
+    margin-right: 1em;
+    text-transform: uppercase;
+    .bullet {
+      display: block;
+      position: relative;
+      margin-right: -10px;
+      font-size: 60px;
+      float: right;
+    }
+  }
+
+
+  section.contents {
+    float: left;
+    width: 90% - $sidebar_width;
+    border-left: 1px solid $highlight_color;
+    padding: 0 1em 1.5em;
+    z-index: 1;
+
+    section {
+      clear: both;
+      margin-bottom: 1.5em;
+    }
+    .title {
+      font-weight: bold;
+      float: left;
+      .post-fix-title {
+        display: none;
+      }
+    }
+    .url, .subject {
+      color: $highlight_color;
+      clear: left;
+      font-size: 6px;
+      font-family: $code_font;
+      text-align: right;
+    }
+    .dates {
+      float: right;
+      white-space: nowrap;
+      font-weight: bold;
+    }
+    .description {
+      clear: both;
+      font-size: 6.5px;
+      margin-top: 0.25em;
+    }
+  }
+
+  .portrait {
+    width: $portrait_size;
+    height: $portrait_size;
+    border-radius: 50%;
+    margin-right: -20px;
+    margin-top: -10px;
+    z-index: 10;
+    position: relative;
+  }
+
+  .party {
+    margin-bottom: 2.5em;
+  }
+
+  .school {
+    margin-bottom: 1em;
+  }
+
+  section.contents .party:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  .contents.pro {
+    padding-bottom: 0;
+    .postfix-title {
+      display: none;
+    }
+  }
+
+  ul.contacts, ul.contacts li {
+    font-family: $code_font;
+    font-size: 0.8em;
+    margin: 0.25em 0;
+    padding: 0;
+    list-style: none;
+    a {
+      text-decoration: none;
+    }
+  }
+  .company {
+    .name {
+      font-weight: bold;
+    }
+  }
+
+  .associations {
+    .prefix-title {
+      display: none;
+    }
+    .postfix-title {
+      display: inline;
+      font-weight: normal;
+    }
+    .party {
+      margin-bottom: 1em;
+    }
+  }
+
+  .tools {
+    h3 {
+      color: $text_color;
+      margin-bottom: 0;
+    }
+    p {
+      margin-top: 0.25em;
+    }
+  }
 }

@@ -20,11 +20,15 @@ class Party < ActiveRecord::Base
   end
 
   def date_range
-    DateRange.new(start_year, stop_year).years
+    DateRange.new(start_year, stop_year)
   end
 
   def should_generate_new_friendly_id?
     slug.blank? || name_changed?
+  end
+
+  def years
+    date_range.years
   end
 
   private

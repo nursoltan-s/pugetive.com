@@ -1,0 +1,8 @@
+%section.label Experience
+%section.contents
+  %h3 5+ Years
+  %p= Tool.software.resume.where(fluency: 3).map{|t| t.name}.join(', ')
+  %h3 1-5 Years
+  %p= Tool.software.resume.where(fluency: 2).map{|t| t.name}.join(', ')
+  %h3 < 1 Year
+  %p= Tool.software.resume.where(fluency: 1).map{|t| t.name}.join(', ')

@@ -6,6 +6,7 @@ class Interest < ApplicationRecord
   has_many :works
 
   scope :live, -> {where(public: true)}
+  scope :software, -> {where(id: SOFTWARE_INTEREST_ID)}
 
 
   def music?

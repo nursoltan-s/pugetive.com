@@ -1,0 +1,10 @@
+%section.party
+  .title
+    %span.prefix-title #{party.official_title} at
+    %span.party-name #{party.name}
+    %span.postfix-title #{party.official_title}
+  .dates= party.years
+  .url
+    - if party.url.present? and party.live?
+      = party.url
+  %p.description= party.description

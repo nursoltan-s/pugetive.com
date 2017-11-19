@@ -1,22 +1,40 @@
-%section#contact-info.resume-section
-  -# .row
-  -#   .medium-4.columns.medium-offset-4
-  -#     [logo art?]
-  .row
-    .small-12.columns
-      %h1 Todd Gehman
-  .row
-    .medium-7.columns
-      = render "resume/statement"
-    .medium-3.columns
-      %ul.contacts
-        %li= render @todd.email
-        %li= render @todd.phone
-        %li
-          = web_icon
-          = link_to(CONFIG[Rails.env][:host_with_port], "http://#{CONFIG[Rails.env][:host_with_port]}")
-      -# = render @todd.address
-    .medium-2.columns
-      %p= link_to(raw("#{print_icon} Printable PDF"), "/todd-gehman-resume.pdf", class: 'button')
+
+%section.label
+  .portrait-frame
+    = wicked_pdf_image_tag('profile-pic-bw.jpg', size: '50x50', class: 'portrait')
+
+%section.contents
+  %h1 Todd Gehman
+  %h2 Software Humanist
+
+  %ul.contacts
+    %li
+      %span.label e:
+      = render @todd.email
+    %li
+      %span.label p:
+      = render @todd.phone
+    %li
+      %span.label w:
+      = link_to("#{CONFIG[Rails.env][:host_protocol]}://#{CONFIG[Rails.env][:host_with_port]}", "#{CONFIG[Rails.env][:host_protocol]}://#{CONFIG[Rails.env][:host_with_port]}")
+
+
+-# %section#contact-info.resume-section
+-#   .row
+-#     .small-12.columns
+-#       %h1 Todd Gehman
+-#   .row
+-#     .medium-7.columns
+-#       = render "resume/statement"
+-#     .medium-3.columns
+-#       %ul.contacts
+-#         %li= render @todd.email
+-#         %li= render @todd.phone
+-#         %li
+-#           = web_icon
+-#           = link_to(CONFIG[Rails.env][:host_with_port], "http://#{CONFIG[Rails.env][:host_with_port]}")
+-#       -# = render @todd.address
+-#     .medium-2.columns
+-#       %p= link_to(raw("#{print_icon} Printable PDF"), "/todd-gehman-resume.pdf", class: 'button')
 
 
