@@ -3,4 +3,6 @@
   %section.award
     .title #{award.official_title} #{award.name}
     .dates= award.year
+    -# - if award.url.present?
+    -#   .url= award.url
     %p.description= award.summary

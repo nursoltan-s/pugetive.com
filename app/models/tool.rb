@@ -56,7 +56,7 @@ class Tool < ActiveRecord::Base
   end
 
   def last_used_year
-    projects.map{|p| p.last_active_year}.max.to_i
+    works.map{|p| p.last_active_year}.max.to_i
   end
 
   # def frequency
