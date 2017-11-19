@@ -2,6 +2,7 @@ class Todd
 
   def initialize
     @software = Interest.find(SOFTWARE_INTEREST_ID)
+    @fair = NonProfit.find(27)
   end
   # @emails = Email.all
   # @phones = Phone.all
@@ -23,7 +24,7 @@ class Todd
   end
 
   def jobs
-    Company.all.sort_by{|c| c.stop_year}.reverse + non_profits
+    [@fair] + Company.all.sort_by{|c| c.stop_year}.reverse
   end
 
   def side_projects

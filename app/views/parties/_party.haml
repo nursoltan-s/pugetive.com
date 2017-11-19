@@ -1,0 +1,6 @@
+%section.party
+  .title= party.name
+  .dates= party.years
+  - if party.url.present? and party.live?
+    .url= party.url
+  %p.summary= party.summary

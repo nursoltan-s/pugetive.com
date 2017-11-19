@@ -1,20 +1,26 @@
 $highlight_color: #009688;
-$sidebar_width: 25%;
+$sidebar_width: 20%;
 
 html.pdf {
 
   body, h1, h2, h3, h3, h4, h5, .left, .right {
     font-family: "Lucida Sans", "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-    font-size: 9.5px;
+    font-size: 7px;
   }
 
   body {
-    padding-top: 5em;
+    padding-top: 3em;
   }
 
   section.divider {
     clear: both;
     padding-bottom: 2em;
+  }
+
+  .page-break {
+    display: block;
+    clear:both;
+    page-break-after: always;
   }
 
   h1, h2, h3, h4, h5, h6, .label {
@@ -36,12 +42,32 @@ html.pdf {
     float: left;
     width: $sidebar_width;
     text-align: right;
+    margin-right: 1em;
   }
   section.contents {
-    float: right;
+    float: left;
     width: 90% - $sidebar_width;
     border-left: 1px solid $highlight_color;
     padding: 0 1em 2em;
+
+    section {
+      clear: both;
+    }
+    .title {
+      font-weight: bold;
+      float: left;
+    }
+    .url {
+      color: $highlight_color;
+      clear: left;
+    }
+    .dates {
+      float: right;
+      white-space: nowrap;
+    }
+    .summary {
+      clear: both;
+    }
   }
 
 
