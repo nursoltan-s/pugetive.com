@@ -11,7 +11,8 @@ class ResumeController < ApplicationController
         if params[:download]
           handle_pdf_download(options[:pdf])
         else
-          render pdf: "show"
+          render(pdf:      "todd-gehman-resume",
+                 template: "resume/show.pdf.haml")
         end
       end
     end
