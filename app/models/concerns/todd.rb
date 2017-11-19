@@ -40,7 +40,7 @@ class Todd
   end
 
   def non_profits
-    NonProfit.all.sort_by{|c| c.start_year}.reverse
+    NonProfit.all.where("id != 23").sort_by{|c| c.start_year}.reverse
   end
 
   def languages(fluency_cutoff = 0, years_of_recency = 20)

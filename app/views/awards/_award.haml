@@ -1,3 +1,6 @@
 - cache award do
-  %section.timeline.award
-    = timeline_row(award, experience_icon)
+
+  %section.award
+    .title #{award.official_title} #{award.name}
+    .dates= award.year
+    %p.description= award.summary
