@@ -31,14 +31,14 @@ class WorkDecorator < Draper::Decorator
       not model.image.url(:thumb).match(/missing/)
   end
 
-  def thumbnail(linK_to_original = false)
+  def thumbnail(link_to_original = false)
     return nil unless has_image?
     rv = ''
     image_html = h.image_tag(model.image.url(:thumb))
-    if model.url.present? and model.live?
-      contents = h.link_to(image_html, model.url)
-    elsif linK_to_original
+    if link_to_original
       contents = h.link_to(image_html, model.image.url(:original), target: "_blank")
+    elsif model.url.present? and model.live?
+      contents = h.link_to(image_html, model.url)
     else
       contents = image_html
     end
