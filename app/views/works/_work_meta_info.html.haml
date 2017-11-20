@@ -1,3 +1,5 @@
+= work.decorate.thumbnail(true)
+
 - if work.location.present?
   %p
     %span.location
@@ -15,17 +17,18 @@
     Written by
     %b= work.author.name
 
-%p.status
-  Status:
-  = combo_status(work)
 
-= work.decorate.thumbnail
 
 - if work.url.present? and work.live?
   = link_to(raw("Link #{external_icon}"), work.url)
 
 
 = work.decorate.titles_and_instruments
+
+%p.status
+  Status:
+  = combo_status(work)
+
 
 - if work.photography?
   .small.subdued

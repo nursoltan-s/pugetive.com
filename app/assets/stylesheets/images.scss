@@ -12,3 +12,6 @@
 .photograph {
   margin-bottom: 1em;
 }
+a > img {
+  border: 1px solid $link_color;
+}

@@ -1,0 +1,28 @@
+%section.work{class: work.interest.token, itemscope: true}
+  .row
+
+    .medium-3.columns.medium-offset-2.medium-text-right.title-box
+      = render "works/app_meta_info", work: work
+
+    .medium-5.columns.end.info-box
+      %h3= work.decorate.title
+      - if work.has_thumbnail?
+        = thumbnail(work)
+      %p.artist
+        by
+        %b= work.party.name
+        - if work.party.alias?
+          %i.subdued [solo alias]
+
+      - if work.summary.present?
+        %p.summary
+          = work.summary
+
+      - if work.active_tools.any?
+        %p.tools
+          %b Buzzwords:
+          = raw(work.active_tools.map{|t| link_to(t.name, t)}.join(', '))
+      - if work.legacy_tools.any?
+        %p.tools
+          %b Legacy:
+          = raw(work.legacy_tools.map{|t| link_to(t.name, t)}.join(', '))

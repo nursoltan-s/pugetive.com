@@ -27,16 +27,18 @@ class WorkDecorator < Draper::Decorator
   end
 
   def has_image?
-    model.image.url.present? and 
+    model.image.url.present? and
       not model.image.url(:thumb).match(/missing/)
   end
 
-  def thumbnail
+  def thumbnail(linK_to_original = false)
     return nil unless has_image?
     rv = ''
     image_html = h.image_tag(model.image.url(:thumb))
     if model.url.present? and model.live?
       contents = h.link_to(image_html, model.url)
+    elsif linK_to_original
+      contents = h.link_to(image_html, model.image.url(:original), target: "_blank")
     else
       contents = image_html
     end

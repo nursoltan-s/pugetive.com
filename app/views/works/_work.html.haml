@@ -10,6 +10,10 @@
   - cache work do
     = render "works/piece", work: work
 
+- elsif work.software?
+  - cache work do
+    = render "works/app", work: work
+
 - else
   - cache work do
     %section.work{class: work.interest.token, itemscope: true}

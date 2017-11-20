@@ -37,6 +37,7 @@ gem 'actionview-encoded_mail_to'
 # This was required to use Draper under Rails 5
 gem 'activemodel-serializers-xml', git: 'https://github.com/rails/activemodel-serializers-xml'
 gem 'awesome_nested_set'
+gem 'aws-sdk', '~> 2'
 gem 'carmen'
 gem 'dalli'
 gem 'devise'
@@ -54,7 +55,7 @@ gem "nilify_blanks"
 # Dependencies on this gem broke deployment after a bundler update,
 # so pinning the gem to an earlier version.
 gem "nokogiri", "1.6.8"
-gem "paperclip", "~> 5.0.0"
+gem "paperclip", "~> 5.1.0"
 gem 'pdfkit'
 gem 'pundit'
 gem 'rack-mini-profiler', require: false

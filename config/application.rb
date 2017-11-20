@@ -8,7 +8,7 @@ Bundler.require(*Rails.groups)
 
 CONFIG = YAML.load_file("config/pugetive.yml").with_indifferent_access
 
-module PugetiveCom
+module Pugetive
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

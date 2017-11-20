@@ -3,25 +3,27 @@ class Work < ApplicationRecord
   STATUSES = ['pre', 'production', 'post', 'released', 'scrapped', 'retired']
 
   extend FriendlyId
+
   friendly_id :name, use: [:slugged, :history]
 
   validates :status, inclusion: {in: STATUSES}
 
   has_attached_file(:image,
-                    styles: { tiny: "40x40>",
-                              thumb: "100x100>",
-                              small:  "300x300>",
-                              medium: "600x600>",
-                              large:  "1200x1200>" },
-                    convert_options: "-quality 100 -strip"
-                    )
-
-  # has_attached_file :photo,
-  #   :styles => {
-  #     :thumb => "100x100#" },
-  #   :convert_options => {
-  #     :thumb => "-quality 75 -strip" }
-
+                    styles: { large:  "1200x800>",
+                              medium: "600x400>",
+                              small:  "300x200>",
+                              thumb:  "100x100#" },
+                    convert_options: { :all => "-quality 100 -strip" },
+                    storage:         :s3,
+                    s3_region:       'us-east-1',
+                    s3_host_alias:   CONFIG[Rails.env][:s3_images_host],
+                    s3_credentials:  {access_key_id:     CONFIG[Rails.env][:s3_access_key_id],
+                                      secret_access_key: CONFIG[Rails.env][:s3_secret_access_key],
+                                      bucket:            CONFIG[Rails.env][:s3_images_bucket]},
+                    s3_headers:      { 'Cache-Control' => 'max-age=315576000',
+                                        'Expires' => 1.year.from_now.httpdate },
+                    s3_protocol:     CONFIG[Rails.env][:host_protocol],
+                    default_url: "/images/default/missing.png")
 
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
@@ -73,6 +75,10 @@ class Work < ApplicationRecord
 
   def date_range
     DateRange.new(start_year, stop_year)
+  end
+
+  def software?
+    interest_id == SOFTWARE_INTEREST_ID
   end
 
   def music?
