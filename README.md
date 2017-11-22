@@ -1,7 +1,7 @@
 Pugetive.com
 ============
 
-My personal site has moved from pugetive.com to toddgehman.com, but the repo stays the same.
+I've migrated the site to toddgehman.com, but serving the repo named after the previous location.
 
 *How am I doing, Code Climate?*
 
@@ -17,17 +17,17 @@ Steps to upgrade the Ruby version:
 
     rvm get head
     gem uninstall bundler
+    gem uninstall passenger
     rvm install 2.4.1
     rvm use 2.4.1 --default
     rvm uninstall 2.3.1
-    gem uninstall passenger
+    gem install bundler
     gem install passenger
 
     passenger-install-apache2-module
     # Copy the settings output after validating paths
     sudo emacs /etc/apache2/mods-available/passenger.load
 
-    gem install bundler
 
     # From localhost
     cap <environment> deploy
@@ -37,17 +37,16 @@ Steps to upgrade the Ruby version:
 
 Capistrano Shortcuts
 --------------------
-Through a gem I made called [capistrano-shortcuts](https://github.com/pugetive/capistrano-shortcuts) the maintenance commands are available.
+Through a gem I made called [capistrano-shortcuts](https://github.com/pugetive/capistrano-shortcuts) the following common maintenance commands are available.
 
 
-## Apache
-
+### Apache
 Apache configuration files are stored in the repository under the [config/apache](config/apache) directory. Note that these include separate configurations for asset servers.  Assuming the appropriate passwordless sudo commands have been added, apache config installation is simple:
 
     cap <env> apache:install
 
 
-## Database
+### Database
 To copy the production database down to your development box:
 
     cap production db:pull
@@ -61,8 +60,8 @@ Or you can just pull down the production DB and run migrations locally, not both
     rake db:fresh
 
 
-## Memcache
-To clear the entire cache (fair warning that the site will incur a major performance hit):
+### Memcache
+To clear the entire cache (fair warning that the site may incur a performance hit):
 
     cap production memcache:flush
 
