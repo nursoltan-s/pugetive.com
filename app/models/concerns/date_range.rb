@@ -20,7 +20,7 @@ class DateRange
       return nil if date_string.blank?
 
       case date_string.class.name
-      when 'Fixnum'
+      when 'Fixnum', 'Integer'
         return Date.new(date_string)
       else
         raise "Unknown date_string class #{date_string.class}"
