@@ -57,8 +57,9 @@ sudo emacs ~/.bashrc
 # [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 sudo emacs ~/.profile
-# Add this line, un-commented-out
-# alias ct='cd ~/apps/toddgehman.com/current'
+# Add these lines, un-commented-out
+# alias ct='cd ~/apps/pugetive/current'
+# export RAILS_ENV=<stage-name>
 
 source ~/.bashrc
 
