@@ -23,8 +23,10 @@
 # every 1.day, at: '4:30 am' do
 
 # Times are adjusted +7 hours for UTC:  6pm, 4am, 11am, 2pm
+
+
+# This assumes teh RAILS_ENV environment variable has already been set.
 every 1.day, at: ['11:00 am'] do
-  command "RAILS_ENV=production"
   rake "db:backup"
 end
 
