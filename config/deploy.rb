@@ -22,6 +22,8 @@ set :ssh_options, {
 
 set :aws_key_pair, '/Users/todd/.ssh/deployer-key-pair-us-east.pem'
 
+set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
+
 
 # Default value for :scm is :git
 # set :scm, :git
