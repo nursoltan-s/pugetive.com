@@ -1,9 +1,7 @@
 Pugetive.com
 ============
 
-The word "pugetive" is a portmanteau of fugitive and "Puget" as in Puget Sound, the body of water between Seattle and the Olympic Peninsula. I continue to use it even though I don't live in Seattle anymore, because as an invented word it gives me a nice open namespace for projects and user accounts.
-
-I've never worked at a company where testing was prioritized over shipping, so I'm a bit of a cowboy coder. Still, I like to write clean and well-factored code.
+My personal site has moved from pugetive.com to toddgehman.com, but the repo stays the same.
 
 *How am I doing, Code Climate?*
 
@@ -11,15 +9,7 @@ I've never worked at a company where testing was prioritized over shipping, so I
 
 Server Setup
 ------------
-The repository includes [step-by-step instruction](doc/rackspace-server-setup.sh) for setting up a cloud server.
-
-Apache
-------------
-
-Apache configuration files are stored in the repository under the [config/apache](config/apache) directory. Note that these include separate configurations for asset servers.  Assuming the appropriate passwordless sudo commands have been added, apache config installation is simple:
-
-    cap <env> apache:install
-
+The repository includes [step-by-step instructions](doc/aws-server-setup.sh) for setting up a cloud server via AWS.
 
 Ruby
 ----
@@ -27,10 +17,9 @@ Steps to upgrade the Ruby version:
 
     rvm get head
     gem uninstall bundler
-    gem install bundler
-    rvm install 2.3.0
-    rvm use 2.3.0 --default
-    rvm uninstall 2.2.1
+    rvm install 2.4.1
+    rvm use 2.4.1 --default
+    rvm uninstall 2.3.1
     gem uninstall passenger
     gem install passenger
 
@@ -38,13 +27,27 @@ Steps to upgrade the Ruby version:
     # Copy the settings output after validating paths
     sudo emacs /etc/apache2/mods-available/passenger.load
 
+    gem install bundler
+
     # From localhost
     cap <environment> deploy
 
     cap <environment> apache:restart
 
-Database
----------
+
+Capistrano Shortcuts
+--------------------
+Through a gem I made called [capistrano-shortcuts](https://github.com/pugetive/capistrano-shortcuts) the maintenance commands are available.
+
+
+## Apache
+
+Apache configuration files are stored in the repository under the [config/apache](config/apache) directory. Note that these include separate configurations for asset servers.  Assuming the appropriate passwordless sudo commands have been added, apache config installation is simple:
+
+    cap <env> apache:install
+
+
+## Database
 To copy the production database down to your development box:
 
     cap production db:pull
@@ -58,15 +61,14 @@ Or you can just pull down the production DB and run migrations locally, not both
     rake db:fresh
 
 
-Memcache
---------
+## Memcache
 To clear the entire cache (fair warning that the site will incur a major performance hit):
 
     cap production memcache:flush
 
-Backups
+<!-- Backups
 ---------------------
 A [cronjob](config/schedule.rb) executes a database dump several times per day. Since these backups are stored on disk in the log directory, they in turn are backed up via the Rackspace nightly backup of the ~deployer file system.
-
+ -->
 
 
