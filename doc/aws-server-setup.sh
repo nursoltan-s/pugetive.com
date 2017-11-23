@@ -169,7 +169,7 @@ sudo EDITOR=emacs visudo
 cap <env> apache:install
 
 # [ If this server is non-public you might need to create a passwords file: ]
-htpasswd -c /home/deployer/.htpasswd experi
+htpasswd -c /home/deployer/.htpasswd todd
 
 # ---------------------
 # Deploy DB

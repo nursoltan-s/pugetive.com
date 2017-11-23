@@ -36,6 +36,13 @@ class ApplicationController < ActionController::Base
       if request.host_with_port != CONFIG[Rails.env][:host_with_port]
         permanent_redirect("#{CONFIG[Rails.env][:host_protocol]}://#{CONFIG[Rails.env][:host_with_port]}#{request.path}")
       end
+
+      if Rails.env == 'staging'
+        authenticate_or_request_with_http_basic do |username, password|
+          md5_of_password = Digest::MD5.hexdigest(password)
+          username == 'todd' && md5_of_password == 'a14ca2dc7e22456086d980ad819bfe85'
+        end
+      end
     end
 
     def permanent_redirect(url_options)
