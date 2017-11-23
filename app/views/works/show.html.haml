@@ -1,5 +1,10 @@
 - title("#{@work.name} ~ #{@work.interest.work_name}", false)
 
+
+.row
+  .medium-offset-5.medium-7.columns.eyebrow
+    %h1= link_to(@work.interest.name, @work.interest)
+
 = render @work
 
 / - if @work.soundcloud_id.present?
@@ -8,10 +13,20 @@
 /       = render "soundcloud_player", soundcloud_id: @work.soundcloud_id
 
 
-.row{data: {visible_to: 'admin'}}
-  .medium-3.medium-offset-2.columns.medium-text-right
-    = render "works/series_teaser", work: @work
-  .medium-3.columns
-    = render "works/tools_teaser", work: @work
-  .medium-3.columns
-    = render "works/titles_teaser", work: @work
+
+.row
+  .medium-offset-5.medium-7.columns
+    %ul.accordion{data: {'accordion': true, 'allow-all-closed': 'true'}}
+
+      %li.accordion-item{data: {'accordion-item': true}}
+        %a.accordion-title{href: '#'} Show Meta Info
+
+        .accordion-content{data: {'tab-content': true}}
+
+          .row{data: {visible_to: 'admin'}}
+            .small-12.columns
+              = render "works/series_teaser", work: @work
+            .medium-6.columns
+              = render "works/tools_teaser", work: @work
+            .medium-6.columns
+              = render "works/titles_teaser", work: @work

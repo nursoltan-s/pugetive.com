@@ -1,0 +1,35 @@
+- tab_id = "tabs-" + SecureRandom.hex(8)
+
+%ul.tabs{id: tab_id, data: {'responsive-accordion-tabs': 'tabs small-accordion medium-tabs', "deep-link": "true", "update-history": "true"}}
+  - tabs.each_with_index do |tab, index|
+    %li.tabs-title{class: (index == 0 ? 'is-active' : nil)}
+      %a{href: '#' + tab[:title].parameterize, aria: {selected: 'true'}}= tab[:title]
+
+.tabs-content{data: {tabs_content: tab_id}}
+  - tabs.each_with_index do |tab, index|
+    .tabs-panel{id: tab[:title].parameterize, class: (index == 0 ? 'is-active' : nil)}
+      - if tab[:comment].present?
+        .row
+          .medium-5.columns.end.info-box.medium-offset-5
+            %p= tab[:comment]
+
+      = tab[:content]
+
+
+
+-# %ul.accordion{data: {'responsive-accordion-tabs': 'accordian medium-tabs'}}
+-#   %li.accordion-item.is-active{data: {'accordion-item': true}}
+-#     %a.accordion-title{href: '#'} Accordion 1
+
+-#     .accordion-content{data: {'tab-content': true}}
+-#       %p Panel 1. Lorem ipsum dolor
+-#       %a{href: '#'}
+
+-#   %li.accordion-item{data: {'accordion-item': true}}
+-#     %a.accordion-title{href: '#'} Accordion 2
+
+-#     .accordion-content{data: {'tab-content': true}}
+-#       %p Panel 2. Lorem ipsum dolor
+-#       %a{href: '#'}
+
+

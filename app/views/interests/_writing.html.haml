@@ -1,35 +1,12 @@
-%ul.tabs#example-tabs{data: {tabs: true}}
-  %li.tabs-title.is-active
-    %a{href: '#blogs-panel'} Blogs
+= render "layouts/tabs", tabs: [{title: 'Blogs',
+                                 content: render(@blogs.sorted),
+                                 comment: "I'm an intermittent blogger, at best."},
+                                {title: 'Amazon.com Reviews',
+                                 content: render(@reviews),
+                                 comment: "Although I worked on the website, Amazon was a scrappy company populated by Liberal Arts majors, and they let no talent lie unexploited. So I was also tasked with writing Amazon's official book and music reviews for some items in my areas of interest."},
+                                {title: 'Bad Rock Haiku',
+                                 content: render(@haiku),
+                                 comment: "For some time, I made a promise to myself to produce a Haiku documenting every rock show I saw in Seattle. Sometimes I think I should reboot this project for the countless events I attend in New York City."},
+                                {title: 'Other Projects', content: render(@projects)}]
 
-  %li.tabs-title
-    %a{href: '#amzn-panel'} Amazon.com Reviews
 
-  %li.tabs-title
-    %a{href: '#haiku-panel'} Bad Rock Haiku
-
-  %li.tabs-title
-    %a{href: '#other-panel'} Other Projects
-
-.tabs-content{data: {tabs_content: 'example-tabs'}}
-
-  .tabs-panel.is-active#blogs-panel
-    .row
-      .medium-5.columns.end.info-box.medium-offset-5
-        %p I'm an intermittent blogger, at best.
-    = render @blogs.sorted
-
-  .tabs-panel#amzn-panel
-    .row
-      .medium-5.columns.end.info-box.medium-offset-5
-        %p Although I worked on the website, Amazon was a scrappy company populated by Liberal Arts majors, and they let no talent lie unexploited. So I was also tasked with writing Amazon's official book and music reviews for some items in my areas of interest.
-    = render @reviews
-
-  .tabs-panel#haiku-panel
-    .row
-      .medium-5.columns.end.info-box.medium-offset-5
-        %p For some time, I made a promise to myself to produce a Haiku documenting every rock show I saw in Seattle. Sometimes I think I should reboot this project for the countless events I attend in New York City.
-    = render @haiku
-
-  .tabs-panel#other-panel
-    = render @projects

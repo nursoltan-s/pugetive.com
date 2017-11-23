@@ -1,25 +1,26 @@
 /* BROWN THEME */
-$body_background: #352f2f;
-$alt_background: #2c2223;
-$link_color: #b87220;
-$header_color: #8b98ab;
+// $body_background: #352f2f;
+// $alt_background: #2c2223;
+// $link_color: #b87220;
+// $header_color: #8b98ab;
+// $link_color: #ca780a;
+// $header_color: #fbf4f4;
+// $body_color: #b5acaa;
+// $border_color: #766f6f;
 
+/* DARK GREY THEME */
+// $body_background: #161616;
+// $alt_background: #1F1F1F;
+$body_background: #191919;
+$alt_background: #000;
+$header_color: #000;
 
-/* blue theme */
-// $body_background: #020e24;
-// $alt_background: #010814;
-// $body_background: #010814;
-// $alt_background: darken($body_background, 10%);
+$border_color: #595959;
 
+$body_color: #BBBBBB;
+// $link_color: #C16A14;
+$link_color: #a63;
 
-
-$link_color: #ca780a;
-$header_color: #fbf4f4;
-
-
-
-$body_color: #b5acaa;
-$border_color: #766f6f;
 
 $side_border_color: $border_color;
 
@@ -31,8 +32,8 @@ a, a:visited {
   color: $link_color;
 }
 
-h2, h2.subhead {
-  color: lighten($header_color, 10%);
+h1, h2, h2.subhead {
+  color: darken($body_color, 10%);
 }
 
 form label {
@@ -47,6 +48,10 @@ form label {
 .flash-message .success {
   background: #6a9;
   color: #fff;
+}
+
+.button, .button.custom, .button.secondary {
+  background-color: $link_color;
 }
 
 

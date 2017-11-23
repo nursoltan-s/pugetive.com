@@ -2,22 +2,12 @@
   .medium-7.columns.medium-offset-5
     = render "resume/button"
 
+.row
+  .small-12.medium-offset-3-medium-6.columns
+    = render "layouts/tabs", tabs: [{title: 'Featured Projects',
+                                     content: render(@interest.works.favorite.sorted)},
+                                    {title: 'All Professional Projects',
+                                     content: render(@interest.works.pro.sorted)},
+                                    {title: 'Side Projects',
+                                     content: render(@interest.works.solo.sorted)}]
 
-%ul.tabs#interest-works-tabs{data: {tabs: true}}
-  %li.tabs-title.is-active
-    %a{href: '#featured-works-panel', aria: {selected: 'true'}} Featured Projects
-
-  %li.tabs-title
-    %a{href: '#professional-works-panel', aria: {selected: 'true'}} All Professional Projects
-
-  %li.tabs-title
-    %a{href: '#side-projects-panel'} Side Projects
-
-
-.tabs-content{data: {tabs_content: 'interest-works-tabs'}}
-  .tabs-panel.is-active#featured-works-panel
-    = render @interest.works.favorite.sorted
-  .tabs-panel#professional-works-panel
-    = render @interest.works.pro.sorted
-  .tabs-panel#side-projects-panel
-    = render @interest.works.solo.sorted

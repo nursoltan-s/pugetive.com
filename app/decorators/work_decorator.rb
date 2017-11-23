@@ -20,19 +20,14 @@ class WorkDecorator < Draper::Decorator
       rv += h.raw('&nbsp;') + h.audio_icon
     end
     if model.demo?
-      text = work.music? ? ' [home demo]' : ' [prototype / rough draft]'
-      rv += h.content_tag(:span, text, class: 'demo-warning')
+      text = work.music? ? ' [home demo]' : ' [prototype&nbsp;/&nbsp;rough&nbsp;draft]'
+      rv += h.content_tag(:span, h.raw(text), class: 'demo-warning')
     end
-    rv
-  end
-
-  def has_image?
-    model.image.url.present? and
-      not model.image.url(:thumb).match(/missing/)
+    h.raw(rv)
   end
 
   def thumbnail(link_to_original = false)
-    return nil unless has_image?
+    return nil unless model.has_image?
     rv = ''
     image_html = h.image_tag(model.image.url(:thumb))
     if link_to_original
