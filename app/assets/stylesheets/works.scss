@@ -7,7 +7,7 @@
 section.work, section.series, section.band, section.works {
   margin-bottom: 3em;
 
-  h3 {
+  h3, .years {
     font-size: 1.25em;
     font-weight: bold;
   }
@@ -23,6 +23,7 @@ section.work, section.series, section.band, section.works {
 
   .years {
     font-weight: bold;
+    @include subdued(50);
   }
 
   .demo-warning {
