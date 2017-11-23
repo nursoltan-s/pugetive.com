@@ -6,12 +6,26 @@
       %p
         %span.years
           = work.years
+      = work.decorate.thumbnail(true)
+
     .small-12.medium-7.columns
       %h3= work.decorate.title
+      .hide-for-small-only
+        - if work.summary.present?
+          %p.summary
+            = work.summary
+        %p= work.decorate.titles_and_instruments
+
     .small-12.columns.show-for-small-only
       %p
         %span.years
           = work.years
+      = work.decorate.thumbnail(true)
+      - if work.summary.present?
+        %p.summary
+          = work.summary
+      %p= work.decorate.titles_and_instruments
+
 
     -# .medium-3.columns.medium-offset-2.medium-text-right
     -#   = work.decorate.thumbnail(true)
