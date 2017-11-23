@@ -1,28 +1,74 @@
 %section.work{class: work.interest.token, itemscope: true}
   .row
 
-    .medium-3.columns.medium-offset-2.medium-text-right.title-box
-      = render "works/app_meta_info", work: work
-
-    .medium-5.columns.end.info-box
+    .small-12.columns
       %h3= work.decorate.title
-      - if work.has_thumbnail?
-        = thumbnail(work)
-      %p.artist
-        by
-        %b= work.party.name
-        - if work.party.alias?
-          %i.subdued [solo alias]
+
+    .small-3.columns
+      = work.decorate.thumbnail(true)
+      - if work.url.present? and work.live?
+        = link_to(raw("Visit #{external_icon}"), work.url)
+
+    .small-9.columns
+      %p
+        %span.years
+          = work.years
 
       - if work.summary.present?
         %p.summary
           = work.summary
 
-      - if work.active_tools.any?
-        %p.tools
-          %b Buzzwords:
-          = raw(work.active_tools.map{|t| link_to(t.name, t)}.join(', '))
-      - if work.legacy_tools.any?
-        %p.tools
-          %b Legacy:
-          = raw(work.legacy_tools.map{|t| link_to(t.name, t)}.join(', '))
+
+      %p= work.decorate.titles_and_instruments
+
+      - if work.active_tools.any? or work.legacy_tools.any?
+        %ul.accordion{data: {'accordion': true, 'allow-all-closed': 'true'}}
+
+          %li.accordion-item{data: {'accordion-item': true}}
+            %a.accordion-title{href: '#'} Buzzwords
+
+            .accordion-content{data: {'tab-content': true}}
+              - if work.active_tools.any?
+                %p.tools
+                  %b Buzzwords:
+                  = raw(work.active_tools.map{|t| link_to(t.name, t)}.join(', '))
+              - if work.legacy_tools.any?
+                %p.tools
+                  %b Legacy:
+                  = raw(work.legacy_tools.map{|t| link_to(t.name, t)}.join(', '))
+
+
+      -# %p.status
+      -#   Status:
+      -#   = combo_status(work)
+
+
+
+      -# = render "works/admin_links", work: work
+
+
+    -# .medium-3.columns.medium-offset-2.medium-text-right.title-box
+    -#   = render "works/app_meta_info", work: work
+
+    -# .medium-5.columns.end.info-box
+    -#   %h3= work.decorate.title
+    -#   - if work.has_thumbnail?
+    -#     = thumbnail(work)
+    -#   %p.artist
+    -#     by
+    -#     %b= work.party.name
+    -#     - if work.party.alias?
+    -#       %i.subdued [solo alias]
+
+    -#   - if work.summary.present?
+    -#     %p.summary
+    -#       = work.summary
+
+    -#   - if work.active_tools.any?
+    -#     %p.tools
+    -#       %b Buzzwords:
+    -#       = raw(work.active_tools.map{|t| link_to(t.name, t)}.join(', '))
+    -#   - if work.legacy_tools.any?
+    -#     %p.tools
+    -#       %b Legacy:
+    -#       = raw(work.legacy_tools.map{|t| link_to(t.name, t)}.join(', '))

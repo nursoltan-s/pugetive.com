@@ -1,3 +1,4 @@
+
 @import 'mixins';
 
 #private-menu-wrapper {
@@ -13,7 +14,7 @@
   background: $alt_background;
 
   .top-bar, .top-bar ul {
-    background: $alt_background;
+    background-image: asset-url($background_tile)
   }
 
   li.home a {
@@ -38,6 +39,7 @@
 
 .tabs {
   background-color: lighten($alt_background, 10%);
+  background-image: asset-url($background_tile);
   border: none;
 /*  > li > a {
     @include rounded_top();
@@ -45,15 +47,19 @@
 */
 }
 
-.tabs-title {
+.tabs-title, .accordion-item {
   > a[aria-selected='true'] {
     background-color: $alt_background;
+    color: $body_color;
   }
   a:hover {
-    background-color: $link_color;
-    color: $alt_background;
+    background-color: $body_background;
+    color: darken($link_color, 15%);
   }
 
+  a {
+    color: $link_color;
+  }
 }
 .dropdown.menu > li.is-dropdown-submenu-parent > a::after {
   border-color: $body_background transparent transparent;
@@ -65,8 +71,18 @@
   border: none;
 }
 
-.tabs-content, .tabs-title > a[aria-selected='true'], .tabs-title a:hover {
+.tabs-content,
+.tabs-title > a[aria-selected='true'],
+.tabs-title a:hover,
+.accordion-content,
+.accordion-title {
+  background-color: #000;
   background-image: image-url('tiles/debut_dark.png');
+  border-color: $border_color;
+}
+
+.accordion :last-child:not(.is-active) > .accordion-title {
+  border-bottom-color: $border_color;
 }
 
 $tab_outline: darken($border_color, 20%);

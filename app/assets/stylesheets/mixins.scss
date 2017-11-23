@@ -1,5 +1,7 @@
 @import 'colors';
 
+$background_tile: 'tiles/felt.png';
+
 @mixin rounded($size: 5px) {
   -moz-border-radius: $size;
   -webkit-border-radius: $size;

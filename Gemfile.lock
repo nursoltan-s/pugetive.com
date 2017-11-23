@@ -129,7 +129,7 @@ GEM
     foundation-icons-sass-rails (3.0.0)
       railties (>= 3.1.1)
       sass-rails (>= 3.1.1)
-    foundation-rails (6.2.4.0)
+    foundation-rails (6.3.0.0)
       railties (>= 3.1.0)
       sass (>= 3.3.0, < 3.5)
       sprockets-es6 (>= 0.9.0)
@@ -204,7 +204,7 @@ GEM
     rack (2.0.3)
     rack-mini-profiler (0.10.6)
       rack (>= 1.2.0)
-    rack-test (0.8.0)
+    rack-test (0.8.2)
       rack (>= 1.0, < 3)
     rails (5.1.4)
       actioncable (= 5.1.4)
@@ -316,7 +316,7 @@ DEPENDENCIES
   flickraw
   font-awesome-rails
   foundation-icons-sass-rails
-  foundation-rails (= 6.2.4)
+  foundation-rails (= 6.3)
   friendly_id
   haml
   haml-rails
