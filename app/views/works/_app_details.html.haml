@@ -1,7 +1,8 @@
 - if work.summary.present?
   %p.summary
     = work.summary
-%p= work.decorate.titles_and_instruments
+
+= work.decorate.titles_and_instruments
 
 - if work.active_tools.any? or work.legacy_tools.any?
   %ul.accordion{data: {'accordion': true, 'allow-all-closed': 'true'}}
