@@ -1,26 +1,3 @@
-%ul.tabs#example-tabs{data: {tabs: true}}
-  %li.tabs-title.is-active
-    %a{href: '#portfolio-panel', aria: {selected: 'true'}} Portfolio
-
-  %li.tabs-title
-    %a{href: '#non-portfolio-panel'} Series & Exhibits
-
-  %li.tabs-title
-    %a{href: '#websites-panel'} Online Profiles
-
-  %li.tabs-title{data: {visible_to: 'admin'}}
-    %a{href: '#all-panel'} All Photos
-
-.tabs-content{data: {tabs_content: 'example-tabs'}}
-  .tabs-panel.is-active#portfolio-panel
-    = render Series.portfolio
-  .tabs-panel#non-portfolio-panel
-    = render Series.non_portfolio.photography
-
-  .tabs-panel#websites-panel
-    = render Work.photography.websites.sorted
-
-  .tabs-panel#all-panel
-    - Work.photography.all.each do |work|
-      = link_to(thumbnail(work), work)
-
+= render "layouts/tabs", tabs: {'Portfolio' => render(Series.portfolio),
+                        'Series & Exhibits' => render(Series.non_portfolio.photography),
+                        'Online Profiles' => render(Work.photography.websites.sorted)}
