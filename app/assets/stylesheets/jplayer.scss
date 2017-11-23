@@ -1,0 +1,13 @@
+@import "mixins";
+
+.jplayer-wrapper {
+  float: left;
+  margin-right: 1em;
+  padding-bottom: 0;
+}
+.jp-audio {
+  button {
+    color: $link_color;
+    font-size: 2em;
+  }
+}

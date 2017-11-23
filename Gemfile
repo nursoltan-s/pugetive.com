@@ -51,6 +51,7 @@ gem 'foundation-rails', '6.3'
 gem 'friendly_id'
 gem 'haml'
 gem 'haml-rails'
+gem 'jplayer-rails'
 gem "nilify_blanks"
 # Dependencies on this gem broke deployment after a bundler update,
 # so pinning the gem to an earlier version.

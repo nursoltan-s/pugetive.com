@@ -9,6 +9,19 @@ module IconHelper
     foundation_icon('volume')
   end
 
+  def play_icon
+    awesome_icon('play-circle')
+  end
+
+  def stop_icon
+    awesome_icon('stop-circle')
+  end
+
+  def pause_icon
+    awesome_icon('pause-circle')
+  end
+
+
   def delete_icon
     foundation_icon('x-circle')
   end

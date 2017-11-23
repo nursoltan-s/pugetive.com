@@ -25,8 +25,10 @@
 
       - if band.has_audio?
         %p
+          = render "layouts/jplayer", audio_name: band.sample_track, audio_file: band.sample_mp3
           %b Sample track:
           %i= band.sample_track
-        %audio{controls: true}
-          %source{src: band.sample_mp3, type: "audio/mpeg"}
-          Your browser does not support the audio element.
+
+        -# %audio{controls: true}
+        -#   %source{src: band.sample_mp3, type: "audio/mpeg"}
+        -#   Your browser does not support the audio element.
