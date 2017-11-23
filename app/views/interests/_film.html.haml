@@ -1,0 +1,2 @@
+= render "layouts/tabs", tabs: {'Featured Projects' => render(@interest.works.favorite.sorted),
+                                'Other Projects'    => render(@interest.works.unfavorite.sorted)}
