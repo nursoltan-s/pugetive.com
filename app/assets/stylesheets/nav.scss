@@ -90,6 +90,11 @@
 html.interests-show .accordion .accordion-title,
 .accordion :last-child:not(.is-active) > .accordion-title,
 .accordion :last-child > .accordion-content:last-child {
+  border-color: transparent;
+}
+
+.tabs-content .accordion-title,
+.accordion-content .accordion-title {
   padding: 0.5em 0;
   border-color: transparent;
 }

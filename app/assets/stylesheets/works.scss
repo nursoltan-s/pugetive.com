@@ -7,11 +7,20 @@
 section.work, section.series, section.band, section.works {
   margin-bottom: 3em;
 
-  h3, .years {
+  h3 {
     font-size: 1.25em;
     font-weight: bold;
+    margin-bottom: 0.5em;
   }
 
+  .years {
+    font-weight: bold;
+    line-height: 1.6;
+  }
+
+  .location {
+    line-height: 1.6;
+  }
   .titles {
     @include subdued();
   }
