@@ -8,6 +8,10 @@
 .tabs-content{data: {tabs_content: tab_id}}
   - tabs.each_with_index do |tab, index|
     .tabs-panel{id: tab[:title].parameterize, class: (index == 0 ? 'is-active' : nil)}
+      .row
+        .medium-7.medium-offset-5.columns.tab-title
+          %h2= tab[:title]
+
       - if tab[:comment].present?
         .row
           .medium-5.columns.end.info-box.medium-offset-5
