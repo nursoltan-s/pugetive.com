@@ -8,7 +8,7 @@
             = work.years
         = work.decorate.thumbnail(true)
         - if work.url.present? and work.live?
-          = link_to(raw("Live link #{external_icon}"), work.url)
+          = link_to(raw("Live link #{external_icon}"), work.url, target: "_blank")
 
 
       .small-12.medium-7.columns
