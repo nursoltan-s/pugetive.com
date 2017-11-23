@@ -1,3 +1,6 @@
-= render "layouts/tabs", tabs: {'Portfolio' => render(Series.portfolio),
-                        'Series & Exhibits' => render(Series.non_portfolio.photography),
-                        'Online Profiles' => render(Work.photography.websites.sorted)}
+= render "layouts/tabs", tabs: [{title: 'Portfolio',
+                                 content: render(Series.portfolio)},
+                                {title: 'Series & Exhibits',
+                                 content: render(Series.non_portfolio.photography)},
+                                {title: 'Online Profiles',
+                                 content: render(Work.photography.websites.sorted)}]

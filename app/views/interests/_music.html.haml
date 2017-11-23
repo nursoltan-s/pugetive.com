@@ -1,4 +1,7 @@
-= render "layouts/tabs", tabs: {'Live Bands' => render("live_bands"),
-                               'Band Recordings' => render(@band_recordings),
-                               'Solo Recordings' => render(@solo_recordings)}
+= render "layouts/tabs", tabs: [{title: 'Live Bands',
+                                 content: render("live_bands")},
+                                {title: 'Band Recordings',
+                                 content: render(@band_recordings)},
+                                {title: 'Solo Recordings',
+                                 content: render(@solo_recordings)}]
 

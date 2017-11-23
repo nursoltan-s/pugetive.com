@@ -1,2 +1,4 @@
-= render "layouts/tabs", tabs: {'Featured Projects' => render(@interest.works.favorite.sorted),
-                                'Other Projects'    => render(@interest.works.unfavorite.sorted)}
+= render "layouts/tabs", tabs: [{title: 'Featured Projects',
+                                 content: render(@interest.works.favorite.sorted)},
+                                {title: 'Other Projects',
+                                 content: render(@interest.works.unfavorite.sorted)}]

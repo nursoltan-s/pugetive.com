@@ -4,7 +4,10 @@
 
 .row
   .small-12.medium-offset-3-medium-6.columns
-    = render "layouts/tabs", tabs: {'Featured Projects' => render(@interest.works.favorite.sorted),
-                                   'All Professional Projects' => render(@interest.works.pro.sorted),
-                                   'Side Projects' => render(@interest.works.solo.sorted)}
+    = render "layouts/tabs", tabs: [{title: 'Featured Projects',
+                                     content: render(@interest.works.favorite.sorted)},
+                                    {title: 'All Professional Projects',
+                                     content: render(@interest.works.pro.sorted)},
+                                    {title: 'Side Projects',
+                                     content: render(@interest.works.solo.sorted)}]
 

@@ -3,13 +3,17 @@
 %ul.tabs{id: tab_id, data: {'responsive-accordion-tabs': 'tabs small-accordion medium-tabs'}}
   - tabs.each_with_index do |tab, index|
     %li.tabs-title{class: (index == 0 ? 'is-active' : nil)}
-      %a{href: '#' + tab[0].parameterize, aria: {selected: 'true'}}= tab[0]
+      %a{href: '#' + tab[:title].parameterize, aria: {selected: 'true'}}= tab[:title]
 
 .tabs-content{data: {tabs_content: tab_id}}
-
   - tabs.each_with_index do |tab, index|
-    .tabs-panel{id: tab[0].parameterize, class: (index == 0 ? 'is-active' : nil)}
-      = tab[1]
+    .tabs-panel{id: tab[:title].parameterize, class: (index == 0 ? 'is-active' : nil)}
+      - if tab[:comment].present?
+        .row
+          .medium-5.columns.end.info-box.medium-offset-5
+            %p= tab[:comment]
+
+      = tab[:content]
 
 
 
