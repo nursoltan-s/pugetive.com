@@ -1,6 +1,6 @@
 .row
   .medium-7.medium-offset-5.columns
     %h2 Live Music
-- Band.all.each do |band|
+- @bands.each do |band|
   = render "works/band", band: band
 
