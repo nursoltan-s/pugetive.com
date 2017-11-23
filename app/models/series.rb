@@ -6,6 +6,10 @@ class Series < ApplicationRecord
   has_many :series_works, dependent: :destroy
   has_many :works, through: :series_works
 
+  has_attached_file(:image, Pugetive::Application.config.paperclip_image_opts)
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+
+
   scope :alpha, -> {order(:name)}
 
   def self.music
@@ -50,6 +54,10 @@ class Series < ApplicationRecord
 
   def photography?
     works.where(interest_id: PHOTOGRAPHY_INTEREST_ID).any?
+  end
+
+  def has_image?
+    image.url.present? and not image.url(:thumb).match(/missing/)
   end
 
   def interest

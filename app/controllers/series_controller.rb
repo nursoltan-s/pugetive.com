@@ -6,7 +6,8 @@ class SeriesController < MetaResourceController
     def series_params
       params.require(:series).permit(:audience,
                                      :description,
-                                     :name, 
+                                     :image,
+                                     :name,
                                      :summary)
     end
 end
