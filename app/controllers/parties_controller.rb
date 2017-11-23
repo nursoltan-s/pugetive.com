@@ -6,14 +6,15 @@ class PartiesController < MetaResourceController
     def party_params
       params.require(:party).permit(:alias,
                                     :description,
+                                    :image,
                                     :live,
-                                    :location, 
-                                    :name, 
-                                    :official_title, 
-                                    :start_year, 
-                                    :stop_year, 
-                                    :summary, 
-                                    :type, 
+                                    :location,
+                                    :name,
+                                    :official_title,
+                                    :start_year,
+                                    :stop_year,
+                                    :summary,
+                                    :type,
                                     :url)
     end
 end

@@ -11,6 +11,9 @@
       .location
         = band.location
 
+      - if band.has_image?
+        = link_to(image_tag(band.image.url(:thumb)), band.image.url(:original), target: "_blank")
+
       %p.admin{data: {visible_to: 'admin'}}
         %smaller.subdued= link_to(edit_icon, edit_party_path(band), rel: 'nofollow')
         %smaller.subdued= link_to(destroy_icon, party_path(band), method: :delete, data: {confirm: 'Are you sure?'}, rel: 'nofollow')

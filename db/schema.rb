@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171123175554) do
+ActiveRecord::Schema.define(version: 20171123191624) do
 
   create_table "accounts", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "company"
@@ -161,6 +161,10 @@ ActiveRecord::Schema.define(version: 20171123175554) do
     t.string "slug"
     t.boolean "live", default: false
     t.boolean "alias", default: false, null: false
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
     t.index ["alias"], name: "index_parties_on_alias"
     t.index ["name"], name: "index_parties_on_name"
     t.index ["slug"], name: "index_parties_on_slug"

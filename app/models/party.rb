@@ -11,10 +11,18 @@ class Party < ActiveRecord::Base
   validates :stop_year, inclusion: {in: YEARS_OF_LIFE, allow_nil: true}
   validate :stop_is_after_start
 
+  has_attached_file(:image, Pugetive::Application.config.paperclip_image_opts)
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+
+
   scope :bands, -> {where(type: 'Band')}
 
   def self.sorted
     all.sort_by{|p| p.alpha_name}
+  end
+
+  def has_image?
+    image.url.present? and not image.url(:thumb).match(/missing/)
   end
 
   def alpha_name

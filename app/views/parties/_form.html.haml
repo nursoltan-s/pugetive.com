@@ -1,4 +1,4 @@
-= form_for @party, as: 'party', url: @party.new_record? ? nil : party_path(@party) do |f|
+= form_for @party, as: 'party', url: @party.new_record? ? @party : party_path(@party) do |f|
   - handle_errors(@party)
 
   = label_field(f.label(:name), f.text_field(:name))
@@ -18,5 +18,8 @@
                 f.select(:stop_year, options_for_select(YEARS_OF_LIFE, selected: @party.stop_year), include_blank: true))
   = label_field(f.label(:live), f.check_box(:live))
   = label_field(f.label(:alias), f.check_box(:alias))
+  -# = label_field(f.label(:flickr_id), f.text_field(:flickr_id))
+
+  = label_field(f.label(:image), f.file_field(:image))
 
   = submit(f)
