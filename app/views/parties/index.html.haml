@@ -24,9 +24,9 @@
         %td= party.description
         %td= party.start_year
         %td= party.stop_year
-        %td= link_to 'Show', party
+        %td= link_to 'Show', party_path(party)
         %td= link_to 'Edit', edit_party_path(party)
-        %td= link_to 'Destroy', party, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= link_to 'Destroy', party_path(party), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 

@@ -8,6 +8,7 @@ class InterestsController < MetaResourceController
       @series = Series.includes(works: [:titles, :tools, :interest, :flickr_urls]).photography
     when 'music'
       @series = Series.includes(works: [:titles, :tools, :interest, :flickr_urls]).music
+      @bands = Party.bands
       @band_recordings = Series.band.studio.uniq.sort{|a, b| b.stop_year <=> a.stop_year}
       @solo_recordings = Series.solo.music.uniq.sort{|a, b| b.stop_year <=> a.stop_year}
 

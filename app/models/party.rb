@@ -3,13 +3,15 @@ class Party < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: [:slugged, :history]
 
-  TYPES = ['Company', 'Artist', 'School', 'NonProfit']
+  TYPES = ['Company', 'Artist', 'School', 'NonProfit', 'Band']
   validates :name, presence: true
   validates :type, inclusion: {in: TYPES}
   # validates :url
   validates :start_year, inclusion: {in: YEARS_OF_LIFE, allow_nil: true}
   validates :stop_year, inclusion: {in: YEARS_OF_LIFE, allow_nil: true}
   validate :stop_is_after_start
+
+  scope :bands, -> {where(type: 'Band')}
 
   def self.sorted
     all.sort_by{|p| p.alpha_name}
