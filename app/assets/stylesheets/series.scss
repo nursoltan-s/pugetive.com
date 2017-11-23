@@ -12,7 +12,8 @@ section.series {
 section.series.music, section.series.writing {
   .titles {
     display: block;
-    @include subdued(90);
+    @include subdued(50);
+    font-size: 0.8em;
     a {
       color: inherit;
       text-decoration: none;

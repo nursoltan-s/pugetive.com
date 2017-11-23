@@ -26,3 +26,11 @@ form {
   font-size: 1.2em;
   color: darken($header_color, 20%);
 }
+
+#public-menu-wrapper .menu-text {
+  font-weight: 400;
+  font-family: $header_font_family;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  padding: 0.5em;
+}

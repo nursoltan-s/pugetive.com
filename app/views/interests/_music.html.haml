@@ -5,8 +5,8 @@
   %li.tabs-title
     %a{href: '#band-recordings-panel'} Band Recordings
 
-  %li.tabs-title
-    %a{href: '#live-recordings-panel'} Live Band Recordings
+  -# %li.tabs-title
+  -#   %a{href: '#live-recordings-panel'} Live Band Recordings
 
   %li.tabs-title
     %a{href: '#solo-recordings-panel'} Solo Recordings
@@ -16,8 +16,8 @@
     = render "live_bands"
   .tabs-panel#band-recordings-panel
     = render Series.band.studio.uniq.sort{|a, b| b.stop_year <=> a.stop_year}
-  .tabs-panel#live-recordings-panel
-    = render Series.band.live.uniq.sort{|a, b| b.stop_year <=> a.stop_year}
+  -# .tabs-panel#live-recordings-panel
+  -#   = render Series.band.live.uniq.sort{|a, b| b.stop_year <=> a.stop_year}
   .tabs-panel#solo-recordings-panel
     = render Series.solo.music.uniq.sort{|a, b| b.stop_year <=> a.stop_year}
 
