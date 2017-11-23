@@ -1,6 +1,6 @@
 - tab_id = "tabs-" + SecureRandom.hex(8)
 
-%ul.tabs{id: tab_id, data: {'responsive-accordion-tabs': 'tabs small-accordion medium-tabs'}}
+%ul.tabs{id: tab_id, data: {'responsive-accordion-tabs': 'tabs small-accordion medium-tabs', "deep-link": "true", "update-history": "true"}}
   - tabs.each_with_index do |tab, index|
     %li.tabs-title{class: (index == 0 ? 'is-active' : nil)}
       %a{href: '#' + tab[:title].parameterize, aria: {selected: 'true'}}= tab[:title]
