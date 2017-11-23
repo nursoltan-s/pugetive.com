@@ -101,6 +101,10 @@ class Work < ApplicationRecord
     name =~ /blog/i
   end
 
+  def has_image?
+    image.url.present? and not image.url(:thumb).match(/missing/)
+  end
+
   def has_lyric?
     unless interest_id == MUSIC_INTEREST_ID or
       interest_id == WRITING_INTEREST_ID
