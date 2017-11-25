@@ -17,7 +17,8 @@
               = link_to(raw("#{interest_icon(interest)} #{interest.name}"), interest, class: 'callout')
       .medium-4.columns.end
         %ul.photo-grid
-          - Work.random_photos(25).in_groups_of(5) do |group|
+          - Work.random_photos(25).in_groups(5) do |group|
             %li.callout
-              - group.each do |work|
-                = link_to(thumbnail(work), work)
+              - group.each do |photo|
+                - next if photo.nil?
+                = link_to(thumbnail(photo), photo)

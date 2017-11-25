@@ -55,26 +55,21 @@ class Work < ApplicationRecord
 
 
   def self.random_photos(num = 10)
-    photo_hash = {}
-    (num + 2).times do |index|
-      photo_hash[self.random_photo_id] = true
-      if photo_hash.length == num
-        return Work.find(photo_hash.keys)
-      end
-    end
-    nil
+    Work.find(self.random_photo_id(num))
   end
 
-  def self.random_photo_id
+  def self.random_photo_id(num = 1)
     if @photo_ids.nil?
       sql = <<-SQL
-        SELECT id
-        FROM works
-        WHERE interest_id = #{PHOTOGRAPHY_INTEREST_ID}
+        SELECT DISTINCT works.id
+        FROM series, series_works, works
+        WHERE series.name like "%portfolio%"
+        AND series_works.series_id = series.id
+        AND series_works.work_id = works.id
       SQL
       @photo_ids = ActiveRecord::Base.connection.select_values(sql)
     end
-    return @photo_ids[rand(@photo_ids.size)]
+    return @photo_ids.sample(num)
   end
 
   def years
