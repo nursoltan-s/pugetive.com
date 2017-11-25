@@ -8,7 +8,7 @@
 
 
 .row
-  .large-12.columns
+  .large-6.columns
     %ul.social-icons
       %li= mail_to('toddgehman@gmail.com', email_icon, encode: 'hex', title: 'Email Todd')
       %li= link_to(social_icon(:facebook),   'https://www.facebook.com/pugetive',    title: 'Facebook Profile')
@@ -20,6 +20,11 @@
       %li= link_to(social_icon(:medium),     'https://medium.com/@pugetive',         title: 'Medium Blog')
       %li= link_to(social_icon(:linkedin),   'https://www.linkedin.com/in/pugetive', title: 'LinkedIn Profile')
       -# %li= link_to(phone_icon, "tel:#{Phone.first.number}")
+
+  .large-6.columns.text-right
+    .mono.subdued{data: {visible_to: 'admin'}}
+      pugetive.com
+      = link_to(APP_VERSION, "https://github.com/pugetive/pugetive.com/commit/#{APP_VERSION}")
 
     / %footer.panel.subdued
     /   All content, photography, and music is owned by moi.
