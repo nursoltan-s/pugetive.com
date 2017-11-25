@@ -11,14 +11,26 @@ class ApplicationController < ActionController::Base
   after_action :verify_policy_scoped, only: :index
 
 
-  rescue_from Pundit::NotAuthorizedError, with: :unauthorized
+  # rescue_from Unauthorized,                        with: :render_unauthorized
+  # rescue_from NotFound,                            with: :render_not_found
+  # rescue_from BadRequest,                          with: :render_bad_request
+  # rescue_from Conflict,                            with: :render_conflict
+  # rescue_from Pundit::NotAuthorizedError,          with: :unauthorized
+  # rescue_from ActionController::RoutingError,      with: :render_not_found
+  # rescue_from ActionController::UnknownController, with: :render_not_found
+  # rescue_from ActionController::UnknownAction,     with: :render_not_found
 
+  rescue_from ActiveRecord::RecordNotFound,        with: :render_not_found
 
 
   private
 
     def unauthorized
       render :file => 'public/401.html', :status => :unauthorized, :layout => false
+    end
+
+    def render_not_found
+      render :file => 'public/404.html', :status => 404, :layout => false
     end
 
     def remember_location
