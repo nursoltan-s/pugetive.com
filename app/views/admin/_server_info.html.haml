@@ -1,5 +1,5 @@
 - expanded ||= nil
-%table.info{class: expanded}
+%table.status.compact.info{class: expanded}
   - server_env_hash.sort.each do |key, value|
     %tr{class: (['BUNDLE_BIN_PATH', 'DOCUMENT_ROOT', 'GEM_HOME', 'PASSENGER_ENV', 'PWD', 'REMOTE_ADDR', 'REMOTE_HOST', 'SERVER_ADDR', 'SERVER_SOFTWARE', 'USER'].include?(key) ? 'primary' : 'snipe')}
       %th= key

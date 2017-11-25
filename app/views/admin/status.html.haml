@@ -1,57 +1,14 @@
 - title "Status"
 
--# %h3 Colum Size Checker
--# .row
--#   .medium-1.columns One
--#   .medium-11.columns Eleven
--# .row
--#   .medium-2.columns Two
--#   .medium-10.columns Ten
--# .row
--#   .medium-3.columns Three
--#   .medium-9.columns Nine
--# .row
--#   .medium-4.columns Four
--#   .medium-8.columns Eight
--# .row
--#   .medium-5.columns Five  
--#   .medium-7.columns Seven
--# .row
--#   .medium-6.columns Six
--#   .medium-6.columns Six
+= render "layouts/tabs", tabs: [ {title: 'App Info',
+                                 content: render('app_info')},
+                                {title: "Errors",
+                                 content: render('errors')},
+                                 {title: 'Server Info',
+                                 content: render('server_info')},
+                                 {title: "Git",
+                                 content: render('git_info')},
+                                 {title: "Memcache",
+                                 content: render('memcache_info')}]
 
-%p= page_rank_icon
-
-- [401, 404, 422, 500].each do |code|
-  = link_to("Error #{code}", exception_path(code), class: 'button')
-
-%table.status.compact
-  %tr.systems
-    %td
-      %h3 Application
-      = render partial: "app_info"
-  %tr.systems
-    %td
-      %h3 Server
-      = render partial: "server_info"
-  %tr
-    %td
-      %h3 Git
-      = render partial: "git_info"
-  %tr
-    %td
-      %h3 MemCache
-      - stats = Rails.cache.stats rescue nil
-      - if stats
-        - cache_info = stats.first[1]
-        - if cache_info
-          = render partial: "cache_info", locals: {cache_info: cache_info}
-        - else
-          No cache stats available.
-      - else
-        No cache stats available.
-  %tr
-    %td
-      %h3 JavaScript
-      = render partial: "js_info"
-
+-# js_info

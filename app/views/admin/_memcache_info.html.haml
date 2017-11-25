@@ -1,0 +1,9 @@
+- stats = Rails.cache.stats rescue nil
+- if stats
+  - cache_info = stats.first[1]
+  - if cache_info
+    = render partial: "cache_info", locals: {cache_info: cache_info}
+  - else
+    No cache stats available.
+- else
+  No cache stats available.

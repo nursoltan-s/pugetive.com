@@ -1,5 +1,8 @@
 - expanded ||= nil
-%table.info{class: expanded}
+
+%p= page_rank_icon
+
+%table.status.compact.info{class: expanded}
   %tr.primary
     %th Rails Version
     %td= Rails.version
