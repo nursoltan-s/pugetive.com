@@ -24,6 +24,22 @@ $background_tile: 'tiles/felt.png';
 
 }
 
+@mixin rounded_left($size: 5px) {
+
+  -moz-border-radius-topleft: $size;
+  -moz-border-radius-bottomleft: $size;
+
+  -webkit-border-top-left-radius: $size;
+  -webkit-border-bottom-left-radius: $size;
+
+  -khtml-border-top-left-radius: $size;
+  -khtml-border-bottom-left-radius: $size;
+
+  border-top-left-radius: $size;
+  border-bottom-left-radius: $size;
+
+}
+
 @mixin subdued($percentage: 50) {
   @include alpha($percentage);
 }
