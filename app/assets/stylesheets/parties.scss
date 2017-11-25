@@ -1,8 +1,12 @@
 html.interests-show {
-  .titles {
-    font-size: 1.25em;
+
+  &.music {
+    .titles {
+      font-size: 1.25em;
+    }
+    .location {
+      margin-bottom: 0.5em;
+    }
   }
-  .location {
-    margin-bottom: 0.5em;
-  }
+
 }

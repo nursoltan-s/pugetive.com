@@ -5,16 +5,6 @@
 
 
   #public-menu.top-bar
-    / .top-bar-left
-    /   %ul.menu.dropdown
-    /     %li.menu-text
-    /       %span.site-name
-    /         = link_to('Todd Gehman', root_path)
-    /         / .site-domain= CONFIG[Rails.env][:host_with_port]
-    /         - if user_signed_in?
-    /           = link_to(delete_icon, destroy_user_session_path, :method => :delete)
-    /         - else
-    /           = link_to(signin_icon, new_user_session_path)
     .top-bar-right
       %ul.dropdown.menu.vertical.medium-horizontal{data: {dropdown_menu: true}}
         %li.menu-text.home
@@ -27,40 +17,3 @@
         - Interest.live.each do |interest|
           - if CONFIG[Rails.env]["#{interest.token}_live"]
             %li.menu-text.interest-item= link_to(raw("#{interest_icon(interest)} #{interest.name}"), interest)
-
-
-- if false
-  -#/ %li
-  -#/   %a{href: '#'} Web/Software
-  -#/   %ul.menu.vertical
-  -#/     %li= link_to("Resume", resume_path)
-  -#/     %li= link_to("Projects", software_path)
-
-
-  -# %li{data: {visible_to: 'admin'}}
-  -#   %a{href: '#'} Music
-  -#   %ul.menu.vertical
-  -#     %li
-  -#       %a{href: '#'} Active Projects
-  -#     %li
-  -#       %a{href: '#'} Former Bands, Releases, Gigging
-  -#     %li
-  -#       %a{href: '#'} Songwriting/Recording Sprints
-  -#     %li
-  -#       %a{href: '#'} Music Software Projects
-
-  -# %li{data: {visible_to: 'admin'}}
-  -#   %a{href: '#'} Photography
-  -#   %ul.menu.vertical
-  -#     %li
-  -#       %a{href: '#'} Portfolios
-  -#     %li
-  -#       %a{href: '#'} Contests & Experiments
-
-  -# %li{data: {visible_to: 'admin'}}
-  -#   %a{href: '#'} Writing
-  -#   %ul.menu.vertical
-  -#     %li
-  -#       %a{href: '#'} Past & Future Blogs
-  -#     %li
-  -#       %a{href: '#'} Published/Commercial Work

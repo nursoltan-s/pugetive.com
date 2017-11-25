@@ -53,6 +53,30 @@ class Work < ApplicationRecord
 
   scope :photo_sorted, -> {order("stop_year DESC, instagram_id DESC, flickr_id DESC")}
 
+
+  def self.random_photos(num = 10)
+    photo_hash = {}
+    (num + 2).times do |index|
+      photo_hash[self.random_photo_id] = true
+      if photo_hash.length == num
+        return Work.find(photo_hash.keys)
+      end
+    end
+    nil
+  end
+
+  def self.random_photo_id
+    if @photo_ids.nil?
+      sql = <<-SQL
+        SELECT id
+        FROM works
+        WHERE interest_id = #{PHOTOGRAPHY_INTEREST_ID}
+      SQL
+      @photo_ids = ActiveRecord::Base.connection.select_values(sql)
+    end
+    return @photo_ids[rand(@photo_ids.size)]
+  end
+
   def years
     date_range.years
   end

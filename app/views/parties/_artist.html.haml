@@ -1,0 +1,19 @@
+%section.artist
+  .row
+    .medium-3.columns.medium-offset-2.medium-text-right.title-box
+      %h3= artist.name
+      .location
+        = artist.location
+
+      - if artist.has_image?
+        = link_to(image_tag(artist.image.url(:thumb)), artist.image.url(:original), target: "_blank")
+
+      %p.admin{data: {visible_to: 'admin'}}
+        %smaller.subdued= link_to(edit_icon, edit_party_path(artist), rel: 'nofollow')
+        %smaller.subdued= link_to(destroy_icon, party_path(artist), method: :delete, data: {confirm: 'Are you sure?'}, rel: 'nofollow')
+
+    .medium-5.columns.end.info-box
+      .titles
+        = artist.official_title
+      %p= raw(artist.description)
+

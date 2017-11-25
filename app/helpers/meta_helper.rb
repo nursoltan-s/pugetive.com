@@ -43,6 +43,9 @@ module MetaHelper
     if admin?
       add_html_class('admin')
     end
+    if params[:controller] == 'interests'
+      add_html_class(@interest.token)
+    end
     @html_class_list
   end
 

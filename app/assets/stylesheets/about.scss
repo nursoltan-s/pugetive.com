@@ -11,12 +11,40 @@ html.about-about {
 }
 
 html.about-home {
-  // body {
-  //   background-image: asset-url('backgrounds/oxbow-park-dark.png');
-  //   background-size: 100% 100%;
-  //   background-repeat: no-repeat;
+  $thumbnail_size: 70px;
+  body {
+    background-image: asset-url('backgrounds/trees-st-ignatius.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+
+  .callout {
+    font-size: 1.5em;
+    width: 100%;
+    display: block;
+  }
+
+  .thumbnail {
+    margin: 0 -2px;
+    width: $thumbnail_size;
+    height: $thumbnail_size;
+    border: 0;
+    // filter: grayscale(100%);
+    &:hover {
+      filter: none;
+    }
+  }
+
+  ul.photo-grid {
+    li.callout {
+      background-color: transparent;
+      padding: 0;
+      white-space: nowrap;
+    }
+    margin-bottom: 2em;
+  }
+  // #home-wrapper {
+  //   margin-top: -80px;
   // }
-
-
 }
 

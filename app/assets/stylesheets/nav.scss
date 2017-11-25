@@ -24,6 +24,11 @@
   }
 }
 
+
+html.about-home #public-menu-wrapper {
+  display: none;
+}
+
 .no-js .title-bar-left {
   display: none;
 }
@@ -126,4 +131,8 @@ ul.tabs {
 
 .eyebrow {
   font-size: 10pt;
+}
+
+.callout {
+  background-color: $alt_background;
 }

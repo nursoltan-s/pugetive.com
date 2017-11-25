@@ -9,7 +9,7 @@
         = work.decorate.thumbnail(true)
         - if work.url.present? and work.live?
           = link_to(raw("Live link #{external_icon}"), work.url, target: "_blank")
-
+        = render "works/admin_links", work: work
 
       .small-12.medium-7.columns
         %h3= work.decorate.title

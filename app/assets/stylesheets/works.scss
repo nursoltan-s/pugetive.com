@@ -32,7 +32,7 @@ section.work, section.series, section.band, section.works {
 
   .years {
     font-weight: bold;
-    @include subdued(50);
+    // @include subdued(50);
   }
 
   .demo-warning {

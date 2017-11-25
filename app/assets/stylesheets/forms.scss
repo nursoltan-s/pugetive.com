@@ -17,7 +17,7 @@ label[for=user_remember_me] {
 
   &.submit {
     border: 0;
-    background-color: darken($body_background, 10%);
+    background-color: $link_color;
     input {
       padding-left: 1em;
       background-color: transparent;
