@@ -29,4 +29,13 @@ class AdminController < ApplicationController
     redirect_to root_path, notice: "#{object.class.name} ##{object.id} has been touched."
   end
 
+  def exception
+    case params[:id].to_i
+    when 404
+      raise ActionController::RoutingError.new('Not Found')
+    when 500
+      raise "Exception"
+    end
+  end
+
 end

@@ -1,0 +1,127 @@
+body,
+html {
+    width: 100%;
+    height: 100%
+}
+
+body {
+    color: #fff;
+    background-color: #111;
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    display: table;
+    vertical-align: middle;
+    background: url(/errors/space-needle-reflection.png) center center no-repeat fixed;
+    background-size: cover;
+
+}
+
+h1, h2, .title {
+    font-size: 45px;
+    line-height: 1.5em;
+    color: #999;
+    margin-bottom: 0;
+    /*font: 600 45px/1.5em brandon-grotesque, sans-serif;*/
+}
+
+h1, .small {
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 400;
+}
+
+
+body a {
+    color: #a63;
+    text-decoration: none
+}
+
+body a:hover {
+    color: #b52;
+}
+
+.error-message-container {
+    position: relative;
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+    text-align: center
+}
+
+.error-message {
+    max-width: 510px;
+    margin: 0 auto;
+    padding: 100px 20px 30px
+}
+
+h1 {
+    /*font: 600 45px/1.5em brandon-grotesque, sans-serif;*/
+/*    color: #3b4450;
+*/
+    margin-top: -240px;
+    margin-bottom: 5px
+}
+
+.message {
+    font: 300 30px/1.5em "Open Sans", open-sans, sans-serif;
+}
+
+.small {
+    /*font: 600 12px/1.5em brandon-grotesque, sans-serif;*/
+    /*color: #747c83;*/
+    font-size: 12px;
+    line-height: 1.5em;
+}
+
+.small a, .domain {
+    font-weight: 600;
+}
+
+.code {
+    color: #666;
+    margin-top: -20px;
+}
+
+.domain {
+    font-size: 1.5em;
+}
+
+@media(max-width:475px) {
+    h1 {
+        font-size: 35px
+    }
+    .message {
+        font-size: 20px
+    }
+    .small {
+        width: 300px;
+        margin-left: auto;
+        margin-right: auto
+    }
+}
+
+@media(max-height:750px) {
+    h1 {
+        margin-top: -100px
+    }
+}
+
+@media(max-height:580px) {
+    .logo {
+        top: 40px
+    }
+}
+
+@media(max-height:500px) {
+    h1 {
+        margin-top: 0
+    }
+}
+
+@media(max-height:370px) {
+    .logo {
+        top: 20px
+    }
+}*/

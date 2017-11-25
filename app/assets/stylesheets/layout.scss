@@ -19,6 +19,20 @@ body, #footer {
 
 body {
   background-color: $alt_background;
+  $carbon_size: 4px;
+  #main {
+    // background: url(/errors/space-needle-reflection.png) center center no-repeat fixed;
+    // background-size: cover;
+
+    background:
+      radial-gradient(black 15%, transparent 16%) 0 0,
+      radial-gradient(black 15%, transparent 16%) $carbon_size $carbon_size,
+      radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+      radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) $carbon_size ($carbon_size + 1);
+    background-color: $body_background;
+    background-size: ($carbon_size * 2) ($carbon_size * 2);
+  }
+
 }
 
 h1, h2, h3, h4, h5, h6 {

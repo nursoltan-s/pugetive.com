@@ -21,16 +21,25 @@ class ApplicationController < ActionController::Base
   # rescue_from ActionController::UnknownAction,     with: :render_not_found
 
   rescue_from ActiveRecord::RecordNotFound,        with: :render_not_found
-
+  rescue_from ActionController::RoutingError,      with: :render_not_found
+  rescue_from RuntimeError,                        with: :render_system_error
+  rescue_from NoMethodError,                       with: :render_system_error
 
   private
 
     def unauthorized
-      render :file => 'public/401.html', :status => :unauthorized, :layout => false
+      render :file => 'public/errors/401.html', :status => :unauthorized, :layout => false
     end
 
     def render_not_found
-      render :file => 'public/404.html', :status => 404, :layout => false
+      render :file => 'public/errors/404.html', :status => 404, :layout => false
+    end
+
+    def render_system_error
+      if Rails.env == 'production'
+        render :file => 'public/errors/500.html', :status => 500, :layout => false
+      end
+      raise
     end
 
     def remember_location
