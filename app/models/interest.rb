@@ -8,7 +8,6 @@ class Interest < ApplicationRecord
   scope :live, -> {where(public: true)}
   scope :software, -> {where(id: SOFTWARE_INTEREST_ID)}
 
-
   def music?
     id == MUSIC_INTEREST_ID
   end

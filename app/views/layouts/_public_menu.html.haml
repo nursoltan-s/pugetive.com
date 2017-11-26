@@ -15,5 +15,4 @@
 
           = link_to(raw("Todd Gehman"), root_path)
         - Interest.live.each do |interest|
-          - if PUGETIVE_CONFIG[Rails.env]["#{interest.token}_live"]
-            %li.menu-text.interest-item= link_to(raw("#{interest_icon(interest)} #{interest.name}"), interest)
+          %li.menu-text.interest-item= link_to(raw("#{interest_icon(interest)} #{interest.name}"), interest)

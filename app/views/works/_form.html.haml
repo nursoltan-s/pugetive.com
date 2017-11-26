@@ -44,5 +44,5 @@
   = label_field(f.label(:instagram_id), f.text_field(:instagram_id))
   = label_field(f.label(:flickr_id), f.text_field(:flickr_id))
 
-  = f.file_field :image
+  = label_field(f.label(:image), f.file_field(:image))
   = submit(f)
