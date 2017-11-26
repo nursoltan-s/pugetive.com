@@ -29,8 +29,8 @@
               %p
                 %span.location
                   = work.location
-          - if work.has_small_image?
-            = small_image(work)
+          - if work.has_thumbnail?
+            = thumbnail(work)
           - if work.photography?
             = photo_link(work, large_image(work))
           %p.artist
