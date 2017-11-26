@@ -180,8 +180,8 @@ class Work < ApplicationRecord
     # url_b : Large
     # url_o : Original
 
-    FlickRaw.api_key= CONFIG[Rails.env][:flickr_api_key]
-    FlickRaw.shared_secret=CONFIG[Rails.env][:flickr_secret]
+    FlickRaw.api_key = PUGETIVE_CONFIG[Rails.env][:flickr_api_key]
+    FlickRaw.shared_secret = PUGETIVE_CONFIG[Rails.env][:flickr_secret]
 
     info = flickr.photos.getInfo(photo_id: flickr_id)
     [:url_q, :url, :url_b, :url_o, :url_z].each do |token|

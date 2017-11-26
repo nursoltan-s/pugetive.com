@@ -6,7 +6,7 @@ module MetaHelper
       <script type="text/javascript">
 
         var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', '#{CONFIG[Rails.env][:google_analytics_token]}']);
+        _gaq.push(['_setAccount', '#{PUGETIVE_CONFIG[Rails.env][:google_analytics_token]}']);
         _gaq.push(['_trackPageview']);
 
         (function() {
@@ -66,7 +66,7 @@ module MetaHelper
       rv << title_text
       rv << ' :::'
     end
-    rv << " " + CONFIG[Rails.env][:host_with_port]
+    rv << " " + PUGETIVE_CONFIG[Rails.env][:host_with_port]
 
     raw(rv)
   end

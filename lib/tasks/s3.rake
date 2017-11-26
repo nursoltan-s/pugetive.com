@@ -12,7 +12,7 @@ namespace :s3 do
 
   private
     def sync_to(environment_token)
-      unless system("aws s3 sync s3://#{CONFIG[:production][:s3_images_bucket]} s3://#{CONFIG[environment_token][:s3_images_bucket]} --delete")
+      unless system("aws s3 sync s3://#{PUGETIVE_CONFIG[:production][:s3_images_bucket]} s3://#{PUGETIVE_CONFIG[environment_token][:s3_images_bucket]} --delete")
         puts "Error occured while attempting to sync S3 images."
         puts "Make sure you have AWS CLI installed (http://docs.aws.amazon.com/cli/latest/userguide/installing.html)"
       end

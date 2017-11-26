@@ -6,7 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-CONFIG = YAML.load_file("config/pugetive.yml").with_indifferent_access
+PUGETIVE_CONFIG = YAML.load_file("config/pugetive.yml").with_indifferent_access
 
 module Pugetive
   class Application < Rails::Application

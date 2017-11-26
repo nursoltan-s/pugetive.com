@@ -54,8 +54,8 @@ class ApplicationController < ActionController::Base
 
     def canonize_domain
       # return unless request.subdomains.any?
-      if request.host_with_port != CONFIG[Rails.env][:host_with_port]
-        permanent_redirect("#{CONFIG[Rails.env][:host_protocol]}://#{CONFIG[Rails.env][:host_with_port]}#{request.path}")
+      if request.host_with_port != PUGETIVE_CONFIG[Rails.env][:host_with_port]
+        permanent_redirect("#{CONFIG[Rails.env][:host_protocol]}://#{PUGETIVE_CONFIG[Rails.env][:host_with_port]}#{request.path}")
       end
 
       if Rails.env == 'staging'

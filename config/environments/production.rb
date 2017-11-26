@@ -61,12 +61,12 @@ Rails.application.configure do
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
 
-  config.action_controller.asset_host = "#{CONFIG[:production][:host_protocol]}://#{CONFIG[:production][:asset_host]}"
+  config.action_controller.asset_host = "#{PUGETIVE_CONFIG[:production][:host_protocol]}://#{PUGETIVE_CONFIG[:production][:asset_host]}"
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = { host: CONFIG[:production][:domain] }
+  config.action_mailer.default_url_options = { host: PUGETIVE_CONFIG[:production][:domain] }
 
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
