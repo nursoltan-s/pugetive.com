@@ -13,4 +13,5 @@ Pugetive::Application.config.paperclip_image_opts = {
   s3_headers:      { 'Cache-Control' => 'max-age=315576000',
                       'Expires' => 1.year.from_now.httpdate },
   s3_protocol:     CONFIG[Rails.env][:host_protocol],
-  default_url: "/images/default/missing.png"}
+  url:             ':s3_alias_url'
+  default_url:     "/images/default/missing.png"}
