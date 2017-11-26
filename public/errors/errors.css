@@ -124,4 +124,13 @@ h1 {
     .logo {
         top: 20px
     }
-}*/
+}
+
+ul {
+  padding: 0;
+}
+
+ul li {
+  list-style: none;
+  line-height: 36px;
+}
