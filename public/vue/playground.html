@@ -7,7 +7,29 @@
   </head>
   <body>
 
-  <script src="/vue/main.js"></script>
+    <div id="container">
+      <h1>Vue Playground</h1>
+      <div id="workspace">
+
+
+        <div id="root">
+          <input type="text" id="input" v-model="message" />
+
+          <p>The value of the input is {{ message }}</p>
+        </div>
+
+        <script>
+          new Vue({
+            el: '#root',
+            data: {
+              message: 'Hello World'
+            }
+          })
+        </script>
+
+      </div>
+    </div>
+
 
   </body>
 </html>
