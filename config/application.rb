@@ -7,7 +7,6 @@ require 'rails/all'
 Bundler.require(*Rails.groups)
 
 CONFIG = YAML.load_file("config/pugetive.yml").with_indifferent_access
-APP_VERSION = `git describe --always` unless defined? APP_VERSION
 
 module Pugetive
   class Application < Rails::Application

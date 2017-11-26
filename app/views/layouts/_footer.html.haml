@@ -24,7 +24,7 @@
   .large-6.columns.text-right
     .mono.subdued{data: {visible_to: 'admin'}}
       pugetive.com
-      = link_to(APP_VERSION, "https://github.com/pugetive/pugetive.com/commit/#{APP_VERSION}")
+      = link_to(Git::REVISION, "https://github.com/pugetive/pugetive.com/commit/#{Git::REVISION}")
 
     / %footer.panel.subdued
     /   All content, photography, and music is owned by moi.
