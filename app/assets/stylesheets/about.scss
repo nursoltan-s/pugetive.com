@@ -37,6 +37,13 @@ html.about-home {
     font-size: 1.5em;
     width: 100%;
     display: block;
+    &:photography {
+    }
+  }
+
+  .photography .callout {
+    border-right: 1px solid $border_color;
+    margin-right: -1px;
   }
 
   .thumbnail {

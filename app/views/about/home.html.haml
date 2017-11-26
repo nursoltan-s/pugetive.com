@@ -13,8 +13,9 @@
       .medium-4.columns.medium-offset-2
         %ul
           - Interest.live.each do |interest|
-            %li
+            %li{class: interest.token}
               = link_to(raw("#{interest_icon(interest)} #{interest.name}"), interest, class: 'callout')
+
       .medium-4.columns.end
         %ul.photo-grid
           - Work.random_photos(25).in_groups(5) do |group|
