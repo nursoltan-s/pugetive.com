@@ -41,7 +41,8 @@ set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 # set :linked_files, fetch(:linked_files, []).push('config/database.yml')
 set :linked_files, %w{config/database.yml
                       config/pugetive.yml
-                      config/secrets.yml}
+                      config/secrets.yml
+                      config/newrelic.yml}
 
 
 # Default value for linked_dirs is []

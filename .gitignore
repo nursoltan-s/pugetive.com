@@ -25,6 +25,7 @@ vendor/bundle
 config/database.yml
 config/pugetive.yml
 config/secrets.yml
+config/newrelic.yml
 pugetive.sublime-workspace
 pugetive.sublime-project
 test

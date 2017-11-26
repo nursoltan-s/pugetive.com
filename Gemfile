@@ -52,6 +52,7 @@ gem 'friendly_id'
 gem 'haml'
 gem 'haml-rails'
 gem 'jplayer-rails'
+gem 'newrelic_rpm'
 gem "nilify_blanks"
 # Dependencies on this gem broke deployment after a bundler update,
 # so pinning the gem to an earlier version.
