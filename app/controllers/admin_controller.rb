@@ -8,6 +8,7 @@ class AdminController < ApplicationController
       flash.now[:notice] = "This is a hard-coded test notice. How does it look?"
     end
     authorize :about, :status?
+
   end
 
   def random

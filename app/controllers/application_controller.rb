@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from ActiveRecord::RecordNotFound,        with: :render_not_found
   rescue_from ActionController::RoutingError,      with: :render_not_found
-  rescue_from RuntimeError,                        with: :render_system_error
+  rescue_from StandardError,                       with: :render_system_error
   rescue_from NoMethodError,                       with: :render_system_error
 
   private
@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
     end
 
     def render_system_error
-      if Rails.env == 'production'
+      if Rails.env == 'production' or params[:action] == 'exception'
         render :file => 'public/errors/500.html', :status => 500, :layout => false
       end
       raise

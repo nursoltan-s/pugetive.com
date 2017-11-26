@@ -34,7 +34,7 @@ Rails.application.routes.draw do
 
 
   devise_for :users
-  get 'status' => 'admin#status', as: 'status'
+  match 'status' => 'admin#status', via: [:get, :post], as: 'status'
   get 'touch/:object_type/:object_id' => 'admin#touch', as: 'touch'
   get 'exception/:id' => "admin#exception", as: :exception
 

@@ -1,2 +1,31 @@
+%h2 Error Pages
 - [401, 404, 422, 500].each do |code|
   = link_to("Error #{code}", exception_path(code), class: 'button')
+
+%h2 XSS
+- hack = "<script>alert('Hacker reads cookie, adds adds image to page at hacker-site.com?captured=[your-cookie]');</script>"
+
+- if params[:xss]
+  .alert.alert-box.callout= params[:xss]
+
+%form{method: :post}
+  = hidden_field_tag :authenticity_token, form_authenticity_token
+
+  %input{name: 'xss', type: "hidden",  value: hack}
+  %input{type: "submit", value: "XSS"}
+
+
+%h2 SQL Injection
+
+- hack = "or 'mirage' = 'mirage'"
+
+
+- if params[:injection]
+  .alert.alert-box.callout
+    SQL might be created like:
+    %code== SELECT * FROM users WHERE EMAIL = 'devil@example.com' #{hack}
+
+%form{method: :post}
+  = hidden_field_tag :authenticity_token, form_authenticity_token
+  %input{name: 'injection', type: "hidden",  value: hack}
+  %input{type: "submit", value: 'SQL Injection'}
