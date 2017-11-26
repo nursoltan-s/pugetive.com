@@ -29,7 +29,7 @@ class WorkDecorator < Draper::Decorator
   def thumbnail(link_to_original = false)
     return nil unless model.has_image?
     rv = ''
-    image_html = h.image_tag(model.image.url(:small))
+    image_html = h.image_tag(model.image.url(:thumb))
     if link_to_original
       contents = h.link_to(image_html, model.image.url(:large), target: "_blank")
     elsif model.url.present? and model.live?

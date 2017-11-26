@@ -1,8 +1,8 @@
 Pugetive::Application.config.paperclip_image_opts = {
-  styles: { large:     "1200x800>",
-            medium:    "600x400>",
-            small:     "300x200>",
-            thumbnail: "100x100#" },
+  styles: { large:  "1200x800>",
+            medium: "600x400>",
+            small:  "300x200>",
+            thumb:  "100x100#" },
   convert_options: {all: "-quality 100 -strip -sharpen 0x3" },
   storage:         :s3,
   s3_region:       'us-east-1',
