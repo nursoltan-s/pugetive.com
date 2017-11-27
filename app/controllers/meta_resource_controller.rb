@@ -3,8 +3,8 @@ class MetaResourceController < ApplicationController
   before_action :set_item, only: [:show, :new, :create, :edit, :update, :destroy]
   before_action :set_items, only: [:index]
 
-  rescue_from Pundit::NotAuthorizedError,          with: :render_unauthorized
-
+  rescue_from Pundit::NotAuthorizedError,   with: :render_unauthorized
+  rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
 
   attr_reader :meta_resource
   delegate :item, :items, :item_params, :items_url, :set_item, :set_items, to: :meta_resource
