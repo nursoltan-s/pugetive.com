@@ -64,7 +64,7 @@ namespace :deploy do
 
   # before :deploy, "config:push"
   after :deploy, "config:symlink"
-  # after "deploy:updated", "newrelic:notice_deployment"
+  after "deploy:updated", "newrelic:notice_deployment"
 
   after :publishing, :restart
 

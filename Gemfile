@@ -72,6 +72,7 @@ group :development, :test do
   gem 'byebug'
   gem 'capistrano'
   gem 'capistrano-bundler'
+  gem 'capistrano-newrelic'
   gem 'capistrano-passenger'
   gem 'capistrano-rvm', '~> 0.0.3'
 
