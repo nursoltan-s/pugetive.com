@@ -17,22 +17,22 @@
             <li v-for="name in names" v-text="name"></li>
           </ul>
 
-          <input id="input" type="text">
-          <button id="button">Add Name</button>
+          <input id="input" type="text" v-model="newName">
+          <button @click="addName">Add Name</button>
         </div>
 
         <script>
           var app = new Vue({
             el: '#root',
             data: {
-              names: ['Bryan', 'Nancy', 'Charla']
+              names: ['Bryan', 'Nancy', 'Charla'],
+              newName: ''
             },
-            mounted() {
-              document.querySelector('#button').addEventListener('click', () => {
-                var name = document.querySelector('#input');
-                app.names.push(name.value);
-                name.value = '';
-              })
+            methods: {
+              addName() {
+                this.names.push(this.newName);
+                this.newName = '';
+              }
             }
           })
 
