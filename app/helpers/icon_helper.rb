@@ -228,14 +228,14 @@ module IconHelper
        #  [76, 76],
        #  [96, 96],
        #  [114, 114],
-       #  [120, 120],
        #  [144, 144],
-       #  [152, 152],
-       #  [180, 180]].each do |size_pair|
 
        [[16, 16],
         [32, 32],
-        [96, 96]].each do |size_pair|
+        [96, 96],
+        [120, 120],
+        [152, 152],
+        [180, 180]].each do |size_pair|
           real_dimension = size_pair.first
           size_attr = size_pair.last || real_dimension
           links << favicon_link_tag("icons/favicons/apple-touch-icon-#{real_dimension}x#{real_dimension}.png",
