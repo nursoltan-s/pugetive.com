@@ -135,4 +135,9 @@ ul.tabs {
 
 .callout {
   background-color: $alt_background;
+  color: $body_color;
+}
+
+a.callout, a.callout:visited {
+  color: $link_color;
 }
