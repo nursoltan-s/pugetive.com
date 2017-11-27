@@ -7,33 +7,13 @@ I've migrated the site to toddgehman.com, but serving the repo named after the p
 
 [![Code Climate](https://codeclimate.com/github/pugetive/pugetive.com/badges/gpa.svg)](https://codeclimate.com/github/pugetive/pugetive.com)
 
-Server Setup
-------------
-The repository includes [step-by-step instructions](doc/aws-server-setup.sh) for setting up a cloud server via AWS.
+Server Setup/Maintenance
+------------------------
+The repository includes [step-by-step instructions](doc/aws-server-setup.sh) for setting up a cloud server via AWS and for [upgrading ruby](doc/upgrading-ruby.sh).
 
-Ruby
-----
-Steps to upgrade the Ruby version:
-
-    rvm get head
-    gem uninstall bundler
-    gem uninstall passenger
-    rvm install 2.4.1
-    rvm use 2.4.1 --default
-    rvm uninstall 2.3.1
-    gem install bundler
-    gem install passenger
-
-    passenger-install-apache2-module
-    # Copy the settings output after validating paths
-    sudo emacs /etc/apache2/mods-available/passenger.load
-
-
-    # From localhost
-    cap <environment> deploy
-
-    cap <environment> apache:restart
-
+Backups
+---------------------
+A [cronjob](config/schedule.rb) executes a database daily to the logs directory. Another cron clears out backups more than one week old.
 
 Capistrano Shortcuts
 --------------------
@@ -65,9 +45,6 @@ To clear the entire cache (fair warning that the site may incur a performance hi
 
     cap production memcache:flush
 
-<!-- Backups
----------------------
-A [cronjob](config/schedule.rb) executes a database dump several times per day. Since these backups are stored on disk in the log directory, they in turn are backed up via the Rackspace nightly backup of the ~deployer file system.
- -->
+
 
 

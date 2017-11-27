@@ -1,0 +1,37 @@
+
+
+
+
+
+/*
+     FILE ARCHIVED ON 13:26:05 Aug 28, 2016 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 13:26:05 Aug 28, 2016.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+var b_txt = '';
+
+// write the badge
+	
+	
+		 	 		
+	b_txt+= '<td align="center" valign="center" style="padding:0" class="flickr_badge_image" id="flickr_badge_image1"><a href="/save/_embed/http://www.flickr.com/photos/pugetive/2924035946/"><img src="/save/_embed/http://farm4.staticflickr.com/3278/2924035946_894cbf4fd7_s.jpg" alt="A photo on Flickr" title="superimposed" height="75" width="75"></a></td>';
+	
+		 	 		
+	b_txt+= '<td align="center" valign="center" style="padding:0" class="flickr_badge_image" id="flickr_badge_image2"><a href="/save/_embed/http://www.flickr.com/photos/pugetive/2834819094/"><img src="/save/_embed/http://farm4.staticflickr.com/3139/2834819094_7f28a1b163_s.jpg" alt="A photo on Flickr" title="machu picchu" height="75" width="75"></a></td>';
+	
+		 	 		
+	b_txt+= '<td align="center" valign="center" style="padding:0" class="flickr_badge_image" id="flickr_badge_image3"><a href="/save/_embed/http://www.flickr.com/photos/pugetive/71110608/"><img src="/save/_embed/http://farm1.staticflickr.com/18/71110608_d33be4ea6a_s.jpg" alt="A photo on Flickr" title="one record" height="75" width="75"></a></td>';
+	
+		 	 		
+	b_txt+= '<td align="center" valign="center" style="padding:0" class="flickr_badge_image" id="flickr_badge_image4"><a href="/save/_embed/http://www.flickr.com/photos/pugetive/71110606/"><img src="/save/_embed/http://farm1.staticflickr.com/18/71110606_5c439d658d_s.jpg" alt="A photo on Flickr" title="i can hear it now" height="75" width="75"></a></td>';
+	
+		 	 		
+	b_txt+= '<td align="center" valign="center" style="padding:0" class="flickr_badge_image" id="flickr_badge_image5"><a href="/save/_embed/http://www.flickr.com/photos/pugetive/4698331024/"><img src="/save/_embed/http://farm2.staticflickr.com/1301/4698331024_7099f1edac_s.jpg" alt="A photo on Flickr" title="april and john, gussied" height="75" width="75"></a></td>';
+
+
+b_txt += '<span style="position:absolute;left:-999em;top:-999em;visibility:hidden" class="flickr_badge_beacon"><img src="/save/_embed/http://geo.yahoo.com/p?s=792600102&t=52c4347501e3da69d0c9be36ef9ab1d8&r=http%3A%2F%2Fwww.pugetive.com%2Fphotography&fl_ev=0&lang=en&intl=us" width="0" height="0" alt="" /></span>';
+
+document.write(b_txt);
