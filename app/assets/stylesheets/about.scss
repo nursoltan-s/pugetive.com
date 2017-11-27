@@ -37,8 +37,7 @@ html.about-home {
     font-size: 1.5em;
     width: 100%;
     display: block;
-    &:photography {
-    }
+    white-space: nowrap;
   }
 
   .photography .callout {
@@ -65,6 +64,14 @@ html.about-home {
     }
     margin-bottom: 2em;
   }
+  @media screen and (max-width: 39.9375em) {
+    .thumbnail {
+      width: 20%;
+      height: inherit;
+    }
+  }
+
+
   // #home-wrapper {
   //   margin-top: -80px;
   // }
