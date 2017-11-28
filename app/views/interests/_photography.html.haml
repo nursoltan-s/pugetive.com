@@ -1,6 +1,5 @@
-= render "layouts/tabs", tabs: [{title: 'Portfolios',
-                                 content: render(Series.portfolio)},
-                                {title: 'Series & Exhibits',
-                                 content: render(Series.non_portfolio.photography)},
-                                {title: 'Online Profiles',
-                                 content: render(Work.photography.websites.sorted)}]
+- portfolio_tabs = Series.portfolio.map{|series| {title: series.name.gsub(' Portfolio', ''), content: render(series)}}
+= render "layouts/tabs", tabs: portfolio_tabs.concat([{title: 'Series & Exhibits',
+                                                      content: render(Series.non_portfolio.photography)},
+                                                      {title: 'Online Profiles',
+                                                       content: render(Work.photography.websites.sorted)}])
