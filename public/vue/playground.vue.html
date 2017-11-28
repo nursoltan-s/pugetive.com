@@ -4,6 +4,11 @@
     <script src="https://unpkg.com/vue@2.4.4/dist/vue.js"></script>
     <link rel="stylesheet" href="/vue/vue.css" />
 
+    <style type="text/css">
+      .is-loading {
+        background-color: red;
+      }
+    </style>
   </head>
   <body>
 
@@ -13,25 +18,19 @@
 
 
         <div id="root">
-          <ul>
-            <li v-for="name in names" v-text="name"></li>
-          </ul>
-
-          <input id="input" type="text" v-model="newName">
-          <button @click="addName">Add Name</button>
+          <button :class="{ 'is-loading' : isLoading}" @click="toggleClass">Click Me</button>
         </div>
 
         <script>
           var app = new Vue({
             el: '#root',
             data: {
-              names: ['Bryan', 'Nancy', 'Charla'],
-              newName: ''
+              className: "color-red",
+              isLoading: false
             },
             methods: {
-              addName() {
-                this.names.push(this.newName);
-                this.newName = '';
+              toggleClass() {
+                this.isLoading = true
               }
             }
           })
