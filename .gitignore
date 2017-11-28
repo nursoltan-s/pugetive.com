@@ -26,6 +26,7 @@ config/database.yml
 config/pugetive.yml
 config/secrets.yml
 config/newrelic.yml
+config/honeybadger.yml
 pugetive.sublime-workspace
 pugetive.sublime-project
 test

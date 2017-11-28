@@ -51,6 +51,7 @@ gem 'foundation-rails', '6.3'
 gem 'friendly_id'
 gem 'haml'
 gem 'haml-rails'
+gem 'honeybadger', '~> 3.1'
 gem 'jplayer-rails'
 gem 'newrelic_rpm'
 gem "nilify_blanks"
@@ -60,7 +61,7 @@ gem "nokogiri", "1.6.8"
 gem "paperclip", "~> 5.1.0"
 gem 'pdfkit'
 gem 'pundit'
-gem 'rack-cors', require: 'rack/cors'
+# gem 'rack-cors', require: 'rack/cors'
 gem 'rack-mini-profiler', require: false
 gem 'whenever', require: false
 gem 'wicked_pdf'

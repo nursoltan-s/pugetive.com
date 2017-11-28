@@ -4,6 +4,11 @@
     <script src="https://unpkg.com/vue@2.4.4/dist/vue.js"></script>
     <link rel="stylesheet" href="/vue/vue.css" />
 
+    <style type="text/css">
+      .is-loading {
+        background-color: red;
+      }
+    </style>
   </head>
   <body>
 
@@ -13,18 +18,23 @@
 
 
         <div id="root">
-          <input type="text" id="input" v-model="message" />
-
-          <p>The value of the input is {{ message }}</p>
+          <button :class="{ 'is-loading' : isLoading}" @click="toggleClass">Click Me</button>
         </div>
 
         <script>
-          new Vue({
+          var app = new Vue({
             el: '#root',
             data: {
-              message: 'Hello World'
+              className: "color-red",
+              isLoading: false
+            },
+            methods: {
+              toggleClass() {
+                this.isLoading = true
+              }
             }
           })
+
         </script>
 
       </div>
