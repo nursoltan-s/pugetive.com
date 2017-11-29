@@ -7,14 +7,7 @@
 
 = render @work
 
-/ - if @work.soundcloud_id.present?
-/   .row
-/     .medium-offset-5.medium-5.end
-/       = render "soundcloud_player", soundcloud_id: @work.soundcloud_id
-
-
-
-.row
+.row{data: {visible_to: 'admin'}}
   .medium-offset-5.medium-7.columns
     %ul.accordion{data: {'accordion': true, 'allow-all-closed': 'true'}}
 
@@ -30,3 +23,4 @@
               = render "works/tools_teaser", work: @work
             .medium-6.columns
               = render "works/titles_teaser", work: @work
+
