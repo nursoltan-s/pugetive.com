@@ -15,6 +15,8 @@ class Work < ApplicationRecord
   belongs_to :party
   belongs_to :genre
 
+  # Refactor out
+  has_one :lyric
 
   has_many :roles, dependent: :destroy
   has_many :titles, through: :roles
@@ -44,10 +46,31 @@ class Work < ApplicationRecord
     party_id == TODD_PARTY_ID
   end
 
+
+  # Refactor OUT
+  def blog?
+    name =~ /blog/i
+  end
+
+  # Refactor OUT
   def camera
     return nil unless photography?
     return tools.first
   end
+  # Refactor OUT
+  def has_audio?
+    soundcloud_id.present?
+  end
+  # Refactor OUT
+  def has_lyric?
+    unless interest_id == MUSIC_INTEREST_ID or
+      interest_id == WRITING_INTEREST_ID
+      return false
+    end
+    lyric.present?
+  end
+
+
 
   def image_token
     'work'
