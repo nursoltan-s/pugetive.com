@@ -1,5 +1,7 @@
 class AdminController < ApplicationController
 
+  rescue_from Pundit::NotAuthorizedError, with: :render_unauthorized
+
   def status
     unless flash[:alert]
       flash.now[:alert] = "This is a hard-coded test alert. How does it look?"
@@ -26,8 +28,8 @@ class AdminController < ApplicationController
     object = DynamicItem.new(params[:object_type], params[:object_id]).item
     object.touch
     redirect_to :back, notice: "#{object.class.name} ##{object.id} has been touched."
-  rescue ActionController::RedirectBackError
-    redirect_to root_path, notice: "#{object.class.name} ##{object.id} has been touched."
+  # rescue ActionController::RedirectBackError
+  #   redirect_to root_path, notice: "#{object.class.name} ##{object.id} has been touched."
   end
 
   def exception
