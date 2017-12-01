@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
     end
 
     def render_not_found
-      render :file => 'public/errors/404.html', :status => 404, :layout => false
+      render :file => 'public/errors/404.html', :status => :not_found, :layout => false
     end
 
     def render_system_error

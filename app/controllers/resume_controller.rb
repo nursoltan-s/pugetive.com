@@ -1,5 +1,7 @@
 class ResumeController < ApplicationController
 
+  rescue_from Pundit::NotAuthorizedError, with: :render_not_found
+
   def show
     authorize :resume, :show?
 

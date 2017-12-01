@@ -1,7 +1,8 @@
-class ResumePolicy < Struct.new(:user, :statistic)
+# class ResumePolicy < Struct.new(:user, :statistic)
+class ResumePolicy < ApplicationPolicy
 
   def show?
-    true
+    update?
   end
 
 end
