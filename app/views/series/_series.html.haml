@@ -25,6 +25,11 @@
       .medium-5.columns.end.info-box
         = series.decorate.artist_name
         - if series.music? or series.writing?
+          - if series.description.present?
+            %p.description= series.description
+
+          - if series.music?
+            %h4 Track listing:
           = render 'works/list', works: series.works
         - elsif series.photography?
           = render 'works/thumbnails', works: series.works.sorted, series_id: series.id
