@@ -52,6 +52,7 @@ section.series.photography {
     h4 {
     font-size: 1em;
     text-transform: uppercase;
+    @include subdued();
   }
 
 }

@@ -7,7 +7,7 @@
                 f.select(:type, options_for_select(Party::TYPES, selected: @party.type)))
 
   = label_field(f.label(:official_title), f.text_field(:official_title))
-  = label_field(f.label(:summary), f.text_field(:summary))
+  = label_field(f.label(:summary), f.text_field(:summary, maxlength: 255))
   = label_field(f.label(:url), f.text_field(:url))
   = label_field(f.label(:description), f.text_area(:description))
   = label_field(f.label(:location), f.text_field(:location))

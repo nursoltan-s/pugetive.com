@@ -2,7 +2,7 @@
   - handle_errors(@series)
 
   = label_field(f.label(:name), f.text_field(:name))
-  = label_field(f.label(:summary), f.text_field(:summary))
+  = label_field(f.label(:summary), f.text_field(:summary, maxlength: 255))
   = label_field(f.label(:description), f.text_area(:description))
   = label_field(f.label(:audience), f.check_box(:audience))
   = f.file_field :image
