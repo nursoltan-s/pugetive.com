@@ -1,4 +1,5 @@
 class AboutController < ApplicationController
+  rescue_from Pundit::NotAuthorizedError, with: :render_unauthorized
 
   def home
     authorize :about, :home?
