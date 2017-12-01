@@ -20,7 +20,7 @@ Pugetive::Application.config.paperclip_image_opts = {
 
 
 Paperclip.interpolates :subject_class do |attachment, style|
-  attachment.instance.class.name.underscore
+  attachment.instance.image_token.underscore
 end
 
 Paperclip.interpolates :subject_id do |attachment, style|
