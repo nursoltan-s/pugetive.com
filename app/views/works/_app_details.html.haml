@@ -1,10 +1,10 @@
-- if work.summary.present?
-  %p.summary
-    = work.summary
+- cache ['app-details', work] do
+  - if work.summary.present?
+    %p.summary
+      = work.summary
 
-= work.decorate.titles_and_instruments
+  %p.titles= raw(work.titles.map{|title| link_to(title.name, title)}.join(', '))
 
-- if work.tools.any?
   %ul.accordion{data: {'accordion': true, 'allow-all-closed': 'true'}}
 
     %li.accordion-item{data: {'accordion-item': true}}

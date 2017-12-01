@@ -46,7 +46,7 @@ class WorkDecorator < Draper::Decorator
     titles.each do |title|
       if title.name == 'Performer'
         instruments = ''
-        if model.tools.instruments.any? 
+        if model.tools.instruments.any?
           instruments = ' (' + h.raw(model.tools.instruments.sorted.map{|i| h.raw(h.link_to(i.name, i))}.join(', ')) + ')'
         end
         list << (h.link_to(title.name, title) + h.raw(h.content_tag(:span, h.raw(instruments), class: 'small')))

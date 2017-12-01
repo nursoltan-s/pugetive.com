@@ -1,5 +1,5 @@
 class App < Work
-  default_scope { includes(wields: :tool).where(interest_id: SOFTWARE_INTEREST_ID) }
+  default_scope { includes(wields: :tool).includes(:titles).where(interest_id: SOFTWARE_INTEREST_ID) }
 
   belongs_to :author, class_name: 'Developer'
 
