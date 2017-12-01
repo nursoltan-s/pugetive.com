@@ -55,7 +55,7 @@ class Work < ApplicationRecord
 
 
   def self.random_photos(num = 10)
-    Work.find(self.random_photo_id(num))
+    Work.includes(:flickr_urls).find(self.random_photo_id(num))
   end
 
   def self.random_photo_id(num = 1)
