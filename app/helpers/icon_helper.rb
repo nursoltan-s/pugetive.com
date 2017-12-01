@@ -108,6 +108,10 @@ module IconHelper
     end
   end
 
+  def spinner
+    image_tag('icons/spinner.gif')
+  end
+
 
   def experience_icon
     # foundation_icon('target')

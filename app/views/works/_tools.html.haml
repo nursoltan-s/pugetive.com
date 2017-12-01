@@ -1,0 +1,10 @@
+- cache 'work-tools', work do
+
+  - if work.active_tools.any?
+    %p.tools
+      %b Buzzwords:
+      = raw(work.active_tools.map{|t| link_to(t.name, t)}.join(', '))
+  - if work.legacy_tools.any?
+    %p.tools
+      %b Legacy:
+      = raw(work.legacy_tools.map{|t| link_to(t.name, t)}.join(', '))

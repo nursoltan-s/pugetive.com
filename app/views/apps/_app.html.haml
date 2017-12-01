@@ -1,0 +1,25 @@
+- cache app do
+  %section.work{class: app.interest.token, itemscope: true}
+    .row
+
+      .medium-3.columns.medium-offset-2.medium-text-right.hide-for-small-only
+        %p
+          %span.years
+            = app.years
+        = app.decorate.thumbnail(true)
+        - if app.url.present? and app.live?
+          = link_to(raw("Live link #{external_icon}"), app.url, target: "_blank")
+        = render "works/admin_links", work: app
+
+      .small-12.medium-7.columns
+        %h3= app.decorate.title
+        .hide-for-small-only
+          = render "works/app_details", work: app
+
+      .small-12.columns.show-for-small-only
+        %p
+          %span.years
+            = app.years
+        = app.decorate.thumbnail(true)
+
+        = render "works/app_details", work: app

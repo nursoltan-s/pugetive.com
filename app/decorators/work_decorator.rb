@@ -11,12 +11,12 @@ class WorkDecorator < Draper::Decorator
   #   end
 
   def title
-    if model.blog?
+    if model.writing? and model.blog?
       rv = model.name
     else
       rv = h.link_to(model.name, model)
     end
-    if model.has_audio?
+    if model.music? and model.has_audio?
       rv += h.raw('&nbsp;') + h.audio_icon
     end
     if model.demo?

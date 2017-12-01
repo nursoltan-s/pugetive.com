@@ -11,7 +11,6 @@ class Work < ApplicationRecord
   has_attached_file(:image, Pugetive::Application.config.paperclip_image_opts)
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
-
   belongs_to :interest
   belongs_to :party
   belongs_to :genre
@@ -35,17 +34,30 @@ class Work < ApplicationRecord
   scope :unfavorite,  -> {where(favorite: false)}
   scope :solo,        -> {joins(:party).where("parties.id = #{TODD_PARTY_ID} OR parties.alias = 1")}
   scope :pro,         -> {joins(:party).where("parties.id != #{TODD_PARTY_ID} AND parties.alias != 1")}
-  scope :websites,    -> {where('name LIKE "%flickr%" OR name LIKE "%instagram%"')}
 
   scope :music,       -> {where(interest_id: MUSIC_INTEREST_ID)}
   scope :film,        -> {where(interest_id: FILM_INTEREST_ID)}
   scope :photography, -> {where(interest_id: PHOTOGRAPHY_INTEREST_ID)}
   scope :writing,     -> {where(interest_id: WRITING_INTEREST_ID)}
 
-
   scope :lyrical,     -> {where("interest_id IN (#{MUSIC_INTEREST_ID},#{WRITING_INTEREST_ID})")}
 
 
+  def software?
+    false
+  end
+
+  def music?
+    false
+  end
+
+  def writing?
+    false
+  end
+
+  def photography?
+    false
+  end
 
   def years
     date_range.years
@@ -55,28 +67,8 @@ class Work < ApplicationRecord
     DateRange.new(start_year, stop_year)
   end
 
-  # def software?
-  #   interest_id == SOFTWARE_INTEREST_ID
-  # end
-
-  # def music?
-  #   interest_id == MUSIC_INTEREST_ID
-  # end
-
-  # def writing?
-  #   interest_id == WRITING_INTEREST_ID
-  # end
-
-  # def photography?
-  #   interest_id == PHOTOGRAPHY_INTEREST_ID
-  # end
-
   def mine?
     author_id == 1
-  end
-
-  def blog?
-    name =~ /blog/i
   end
 
   def has_image?
@@ -102,7 +94,6 @@ class Work < ApplicationRecord
   def legacy_tools
     wields.where(legacy: true).map{|w| w.tool}
   end
-
 
   # REFACTOR: to Series
   def prev_in_series(series)

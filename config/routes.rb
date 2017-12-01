@@ -38,6 +38,8 @@ Rails.application.routes.draw do
   get 'touch/:object_type/:object_id' => 'admin#touch', as: 'touch'
   get 'exception/:id' => "admin#exception", as: :exception
 
+  get 'works/:work_id/tools' => 'works#tools'
+
   get 'todd-gehman-resume' => 'resume#show', as: :resume
   match 'settings' => 'users#edit', via: [:get, :patch], as: :settings
 

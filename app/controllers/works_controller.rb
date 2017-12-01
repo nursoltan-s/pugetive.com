@@ -1,5 +1,16 @@
 class WorksController < MetaResourceController
 
+
+
+  def tools
+    @work = Work.friendly.find(params[:work_id])
+    authorize(@work, :tools?)
+    render(partial: "works/tools",
+           locals: {work: @work},
+           layout: false)
+    return
+  end
+
   def post_destroy_path
     works_path
   end

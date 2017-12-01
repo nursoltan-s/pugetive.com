@@ -3,8 +3,11 @@ class Photograph < Work
   belongs_to :author, class_name: 'Photographer'
   has_many :flickr_urls, foreign_key: :work_id
 
+  default_scope {where(interest_id: PHOTOGRAPHY_INTEREST_ID)}
+
   scope :flickr,      -> {where("flickr_id IS NOT NULL AND flickr_id != ''")}
   scope :sorted, -> {order("stop_year DESC, instagram_id DESC, flickr_id DESC")}
+  scope :websites,    -> {where('name LIKE "%flickr%" OR name LIKE "%instagram%"')}
 
   def self.model_name
     Work.model_name

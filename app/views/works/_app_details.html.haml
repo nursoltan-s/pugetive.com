@@ -4,18 +4,11 @@
 
 = work.decorate.titles_and_instruments
 
-- if work.active_tools.any? or work.legacy_tools.any?
+- if work.tools.any?
   %ul.accordion{data: {'accordion': true, 'allow-all-closed': 'true'}}
 
     %li.accordion-item{data: {'accordion-item': true}}
-      %a.accordion-title{href: '#'} Technology Stack
+      %a.accordion-title.foundation-remote{href: '/works/toddgehman-com/tools', remote: true} Technology Stack
 
       .accordion-content{data: {'tab-content': true}}
-        - if work.active_tools.any?
-          %p.tools
-            %b Buzzwords:
-            = raw(work.active_tools.map{|t| link_to(t.name, t)}.join(', '))
-        - if work.legacy_tools.any?
-          %p.tools
-            %b Legacy:
-            = raw(work.legacy_tools.map{|t| link_to(t.name, t)}.join(', '))
+        = spinner

@@ -4,4 +4,8 @@ class Piece < Work
 
   scope :reviews,     -> {where(genre_id: 11)}
 
+  def blog?
+    name =~ /blog/i
+  end
+
 end
