@@ -48,6 +48,8 @@ class Work < ApplicationRecord
 
 
   # Refactor OUT
+  has_many :flickr_urls, foreign_key: :work_id
+
   def blog?
     name =~ /blog/i
   end
