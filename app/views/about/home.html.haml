@@ -18,8 +18,8 @@
 
       .medium-4.columns.end
         %ul.photo-grid
-          - Work.random_photos(25).in_groups(5) do |group|
+          - Photograph.random(25).in_groups(5) do |group|
             %li.callout
-              - group.each do |photo|
-                - next if photo.nil?
-                = link_to(thumbnail(photo), photo)
+              - group.each do |photograph|
+                - next if photograph.nil?
+                = link_to(thumbnail(photograph), photograph)

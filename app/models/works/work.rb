@@ -26,10 +26,7 @@ class Work < ApplicationRecord
   has_many :series_works, dependent: :destroy
   has_many :series, through: :series_works
 
-  has_one :lyric
   belongs_to :author, class_name: 'Artist'
-
-  has_many :flickr_urls
 
   scope :sorted,     -> {order("works.stop_year IS NULL DESC, works.stop_year DESC, start_year ASC, name ASC")}
   scope :alpha,      -> {order(:name)}
@@ -45,32 +42,10 @@ class Work < ApplicationRecord
   scope :photography, -> {where(interest_id: PHOTOGRAPHY_INTEREST_ID)}
   scope :writing,     -> {where(interest_id: WRITING_INTEREST_ID)}
 
-  scope :reviews,     -> {where(genre_id: 11)}
-
-  scope :flickr,      -> {where("flickr_id IS NOT NULL AND flickr_id != ''")}
 
   scope :lyrical,     -> {where("interest_id IN (#{MUSIC_INTEREST_ID},#{WRITING_INTEREST_ID})")}
 
-  scope :photo_sorted, -> {order("stop_year DESC, instagram_id DESC, flickr_id DESC")}
 
-
-  def self.random_photos(num = 10)
-    Work.includes(:flickr_urls).find(self.random_photo_id(num))
-  end
-
-  def self.random_photo_id(num = 1)
-    if @photo_ids.nil?
-      sql = <<-SQL
-        SELECT DISTINCT works.id
-        FROM series, series_works, works
-        WHERE series.name like "%portfolio%"
-        AND series_works.series_id = series.id
-        AND series_works.work_id = works.id
-      SQL
-      @photo_ids = ActiveRecord::Base.connection.select_values(sql)
-    end
-    return @photo_ids.sample(num)
-  end
 
   def years
     date_range.years
@@ -80,21 +55,21 @@ class Work < ApplicationRecord
     DateRange.new(start_year, stop_year)
   end
 
-  def software?
-    interest_id == SOFTWARE_INTEREST_ID
-  end
+  # def software?
+  #   interest_id == SOFTWARE_INTEREST_ID
+  # end
 
-  def music?
-    interest_id == MUSIC_INTEREST_ID
-  end
+  # def music?
+  #   interest_id == MUSIC_INTEREST_ID
+  # end
 
-  def writing?
-    interest_id == WRITING_INTEREST_ID
-  end
+  # def writing?
+  #   interest_id == WRITING_INTEREST_ID
+  # end
 
-  def photography?
-    interest_id == PHOTOGRAPHY_INTEREST_ID
-  end
+  # def photography?
+  #   interest_id == PHOTOGRAPHY_INTEREST_ID
+  # end
 
   def mine?
     author_id == 1
@@ -108,20 +83,8 @@ class Work < ApplicationRecord
     image.url.present? and not image.url(:thumb).match(/missing/)
   end
 
-  def has_lyric?
-    unless interest_id == MUSIC_INTEREST_ID or
-      interest_id == WRITING_INTEREST_ID
-      return false
-    end
-    lyric.present?
-  end
-
   def has_thumbnail?
     instagram_id.present? or flickr_id.present?
-  end
-
-  def has_audio?
-    soundcloud_id.present?
   end
 
   def daw
@@ -141,11 +104,7 @@ class Work < ApplicationRecord
   end
 
 
-  def camera
-    return nil unless photography?
-    return tools.first
-  end
-
+  # REFACTOR: to Series
   def prev_in_series(series)
     location = series.works.sorted.index(self)
     if location == 0
@@ -166,37 +125,5 @@ class Work < ApplicationRecord
 
   end
 
-
-  def refresh_flickr_urls
-    return unless flickr_id.present?
-    # url_s : Square
-    # url_q : Large Square
-    # url_t : Thumbnail
-    # url_m : Small
-    # url_n : Small 320
-    # url   : Medium
-    # url_z : Medium 640
-    # url_c : Medium 800
-    # url_b : Large
-    # url_o : Original
-
-    FlickRaw.api_key = PUGETIVE_CONFIG[Rails.env][:flickr_api_key]
-    FlickRaw.shared_secret = PUGETIVE_CONFIG[Rails.env][:flickr_secret]
-
-    info = flickr.photos.getInfo(photo_id: flickr_id)
-    [:url_q, :url, :url_b, :url_o, :url_z].each do |token|
-      if url = FlickRaw.send(token, info)
-        existing_row = flickr_urls.find_by_flickraw_token(token)
-        if existing_row
-          existing_row.update!(url: url)
-        else
-          FlickrUrl.create!(work_id: self.id, flickraw_token: token, url: url)
-        end
-      else
-        raise 'failed'
-      end
-    end
-
-  end
 
 end
