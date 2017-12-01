@@ -1,5 +1,11 @@
 class PartiesController < MetaResourceController
 
+
+
+  def post_update_path
+    party_path(@party)
+  end
+
   private
 
     # Never trust parameters from the scary internet, only allow the white list through.
