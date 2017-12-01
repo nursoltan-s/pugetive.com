@@ -230,10 +230,7 @@ module IconHelper
        #  [114, 114],
        #  [144, 144],
 
-       [[16, 16],
-        [32, 32],
-        [96, 96],
-        [120, 120],
+       [[120, 120],
         [152, 152],
         [180, 180]].each do |size_pair|
           real_dimension = size_pair.first
