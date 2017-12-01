@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  resources :places
-  resources :genres
-  resources :lyrics
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   # Serve websocket cable requests in-process
@@ -21,9 +18,12 @@ Rails.application.routes.draw do
   resources :artists
   resources :companies
   resources :emails
+  resources :genres
+  resources :lyrics
   resources :notes
   resources :parties
   resources :phones
+  resources :places
   resources :roles
   resources :series
   resources :series_works

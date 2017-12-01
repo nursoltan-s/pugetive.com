@@ -17,6 +17,10 @@ class Party < ActiveRecord::Base
 
   scope :bands, -> {where(type: 'Band')}
 
+  def image_token
+    'party'
+  end
+
   def self.sorted
     all.sort_by{|p| p.alpha_name}
   end

@@ -6,9 +6,14 @@ class Series < ApplicationRecord
   has_many :series_works, dependent: :destroy
   has_many :works, through: :series_works
 
+  has_many :photographs, through: :series_works, source: :work, class_name: 'Photograph'
+
   has_attached_file(:image, Pugetive::Application.config.paperclip_image_opts)
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
+  def image_token
+    'series'
+  end
 
   scope :alpha, -> {order(:name)}
 

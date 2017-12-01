@@ -24,6 +24,7 @@
             = link_to(destroy_icon, series, :method => :delete, :data => { :confirm => 'Are you sure?' }, rel: 'nofollow')
       .medium-5.columns.end.info-box
         = series.decorate.artist_name
+        -# Refactor
         - if series.music? or series.writing?
           - if series.description.present?
             %p.description= series.description
@@ -32,4 +33,4 @@
             %h4 Track listing:
           = render 'works/list', works: series.works
         - elsif series.photography?
-          = render 'works/thumbnails', works: series.works.sorted, series_id: series.id
+          = render 'works/thumbnails', works: series.photographs.sorted, series_id: series.id

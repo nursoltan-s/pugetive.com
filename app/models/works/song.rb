@@ -2,6 +2,9 @@ class Song < Work
   has_one :lyric
   belongs_to :author, class_name: 'Artist'
 
+  def solo?
+    party_id == TODD_PARTY_ID or party.alias?
+  end
 
   def has_lyric?
     unless interest_id == MUSIC_INTEREST_ID or
