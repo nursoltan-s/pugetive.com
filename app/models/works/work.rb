@@ -44,24 +44,33 @@ class Work < ApplicationRecord
     party_id == TODD_PARTY_ID
   end
 
+  def camera
+    return nil unless photography?
+    return tools.first
+  end
+
   def image_token
     'work'
   end
 
   def software?
-    false
+    interest_id == SOFTWARE_INTEREST_ID
   end
 
   def music?
-    false
+    interest_id == MUSIC_INTEREST_ID
   end
 
   def writing?
-    false
+    interest_id == WRITING_INTEREST_ID
   end
 
   def photography?
-    false
+    interest_id == PHOTOGRAPHY_INTEREST_ID
+  end
+
+  def film?
+    interest_id == FILM_INTEREST_ID
   end
 
   def years

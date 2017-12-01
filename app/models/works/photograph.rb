@@ -14,8 +14,7 @@ class Photograph < Work
   end
 
   def camera
-    return nil unless photography?
-    return tools.first
+    tools.first
   end
 
 
