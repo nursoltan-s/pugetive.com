@@ -1,4 +1,5 @@
+- title('Film')
 = render "layouts/tabs", tabs: [{title: 'Featured Projects',
-                                 content: render(@interest.works.favorite.sorted)},
+                                 content: render(@featured)},
                                 {title: 'Other Projects',
-                                 content: render(@interest.works.unfavorite.sorted)}]
+                                 content: render(@other_projects)}]

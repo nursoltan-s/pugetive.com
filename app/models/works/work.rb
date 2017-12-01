@@ -40,7 +40,6 @@ class Work < ApplicationRecord
 
   scope :lyrical,     -> {where("interest_id IN (#{MUSIC_INTEREST_ID},#{WRITING_INTEREST_ID})")}
 
-
   def solo?
     party_id == TODD_PARTY_ID
   end

@@ -44,13 +44,21 @@ class InterestsController < MetaResourceController
   end
 
   def film
+    authorize(@interest)
+
+    @featured = @interest.works.favorite.sorted
+    @other_projects = @interest.works.unfavorite.sorted
+
+    render :film
   end
 
   def writing
-    @blogs = Work.where('name LIKE "%typepad%" OR name LIKE "%medium%"')
-    @reviews = Work.reviews
+    authorize(@interest)
+    @blogs = Piece.where('name LIKE "%typepad%" OR name LIKE "%medium%"')
+    @reviews = Piece.reviews
     @haiku = Series.where('name LIKE "%haiku%"')
-    @projects = Work.writing - @blogs - @reviews - @haiku.map{|s| s.works}.flatten
+    @projects = Piece.all   - @blogs - @reviews - @haiku.map{|s| s.works}.flatten
+    render :writing
   end
 
   private

@@ -5,19 +5,11 @@
     = work.years
 
 
-- unless work.mine?
-  .author
-    Written by
-    %b= work.author.name
-
 - if work.url.present? and work.live?
   = link_to(raw("Link #{external_icon}"), work.url)
 
 
-= work.decorate.titles_and_instruments
+-# = work.decorate.titles_and_instruments
 
-- if work.photography?
-  .small.subdued
-    = raw(work.decorate.photo_meta)
 
 = render "works/admin_links", work: work
