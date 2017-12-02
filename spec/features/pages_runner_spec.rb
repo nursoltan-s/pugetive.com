@@ -50,7 +50,7 @@ feature "Visiting sample resource show pages" do
 
   scenario "Music sample track pages" do
     Song.random(5).each do |song|
-      visit work_path(song)
+      visit song_path(song)
       expect(page).to have_content song.name
     end
   end

@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   resources :roles
   resources :series
   resources :series_works
+  resources :songs
   resources :titles
   resources :tools
   resources :wields

@@ -1,0 +1,4 @@
+class SongsController < MetaResourceController
+
+ 
+end
