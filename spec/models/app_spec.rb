@@ -11,3 +11,10 @@ describe App, '#model_name' do
   end
 
 end
+
+describe App, '#random' do
+  it 'returns a random array of apps' do
+    num = rand(10)
+    expect(App.random(num).size).to be(num)
+  end
+end
