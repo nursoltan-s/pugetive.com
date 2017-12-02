@@ -34,7 +34,6 @@ feature "Vitising top level pages" do
   scenario "visiting writing page" do
     visit '/writing'
     expect(page).to have_content 'Haiku'
-
   end
 
 end

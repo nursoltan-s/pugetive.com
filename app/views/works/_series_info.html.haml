@@ -1,5 +1,6 @@
 %table.series-info
   %tbody
+    -# REFACTOR
     - work.series_works.each do |series_work|
       - series = series_work.series
       - next if params[:series_id] and params[:series_id].to_i != series.id

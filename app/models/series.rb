@@ -4,9 +4,10 @@ class Series < ApplicationRecord
   friendly_id :name, use: [:slugged, :history]
 
   has_many :series_works, dependent: :destroy
-  has_many :works, through: :series_works
 
+  has_many :works, through: :series_works
   has_many :photos, through: :series_works, source: :work, class_name: 'Photo'
+  has_many :pieces, through: :series_works, source: :work, class_name: 'Piece'
 
   has_attached_file(:image, Pugetive::Application.config.paperclip_image_opts)
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
@@ -47,6 +48,10 @@ class Series < ApplicationRecord
 
   def self.non_portfolio
     where('series.name NOT LIKE "%portfolio%"')
+  end
+
+  def self.haiku
+    where('name LIKE "%haiku%"').first
   end
 
   def music?

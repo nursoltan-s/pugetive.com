@@ -28,6 +28,8 @@ class InterestsController < MetaResourceController
     @bands = Party.bands.sort{|a, b| b.stop_year <=> a.stop_year}
 
     @series = Series.includes(works: [:titles, :tools, :interest]).music
+
+    # Refactor
     @band_recordings = Series.band.studio.uniq.sort{|a, b| b.stop_year <=> a.stop_year}
     @solo_recordings = Series.solo.music.uniq.sort{|a, b| b.stop_year <=> a.stop_year}
     render :music
@@ -54,10 +56,10 @@ class InterestsController < MetaResourceController
 
   def writing
     authorize(@interest)
-    @blogs = Piece.where('name LIKE "%typepad%" OR name LIKE "%medium%"')
+    @blogs = Piece.blogs
     @reviews = Piece.reviews
-    @haiku = Series.where('name LIKE "%haiku%"')
-    @projects = Piece.all   - @blogs - @reviews - @haiku.map{|s| s.works}.flatten
+    @haiku = Series.haiku
+    @projects = Piece.other_projects
     render :writing
   end
 
