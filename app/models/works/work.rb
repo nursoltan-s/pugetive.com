@@ -134,27 +134,5 @@ class Work < ApplicationRecord
     wields.where(legacy: true).map{|w| w.tool}
   end
 
-  # REFACTOR: to Series
-  def prev_in_series(series)
-    location = series.works.sorted.index(self)
-    if location == 0
-      return series.works.sorted[series.works.length - 1]
-    else
-      return series.works.sorted[location - 1]
-    end
-  end
-
-
-  def next_in_series(series)
-    location = series.works.sorted.index(self)
-    if location == series.works.length - 1
-      return series.works.sorted[0]
-    else
-      return series.works.sorted[location + 1]
-    end
-
-  end
-
-
 
 end

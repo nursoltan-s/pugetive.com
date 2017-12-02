@@ -1,5 +1,0 @@
-- series_id ||= nil
-- cache ["works/thumbnails", works.map{|w| w.id}.sort, "-", series_id] do
-  - works.each do |work|
-    - cache ["thumbnail", work, "-", series_id] do
-      = link_to(thumbnail(work), work_path(work, series_id: series_id))

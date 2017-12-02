@@ -1,44 +1,42 @@
-- work ||= photo
-%section.work{class: work.interest.token, itemscope: true}
+-# REFACTOR: logic to decorator or view model
+%section.work.photo.photography{itemscope: true}
 
   .row
-
     .medium-3.columns.medium-offset-2.medium-text-right.title-box
-      %h3= work.decorate.title
-      - if work.location.present?
+      %h3= photo.decorate.title
+      - if photo.location.present?
         %p
           %span.location
-            = work.location
+            = photo.location
 
       %p
-        - if work.genre
-          %span.genre= link_to(work.genre.name, work.genre)
+        - if photo.genre
+          %span.genre= link_to(photo.genre.name, photo.genre)
         %span.years
-          = work.years
+          = photo.year
 
 
-      = work.decorate.thumbnail
+      = photo.decorate.thumbnail
 
-      - if work.url.present? and work.live?
-        = link_to(raw("Link #{external_icon}"), work.url)
+      - if photo.url.present? and photo.live?
+        = link_to(raw("Link #{external_icon}"), photo.url)
 
-      = work.decorate.titles_and_instruments
+      = photo.decorate.titles_and_instruments
 
       .small.subdued.hide-for-small-only
-        = raw(work.decorate.photo_meta)
+        = raw(photo.decorate.photo_meta)
 
-      = render "works/admin_links", work: work
+      = render "works/admin_links", work: photo
 
     .medium-5.columns.end.info-box
-      - if work.has_thumbnail?
-        = thumbnail(work)
-      - if work.photography?
-        = photo_link(work, large_image(work))
+      - if photo.has_thumbnail?
+        = thumbnail(photo)
+      = photo_link(photo, large_image(photo))
 
-      = render "works/series_info", work: work
-      - if work.summary.present?
+      = render "photos/gallery_info", photo: photo
+      - if photo.summary.present?
         %p.summary
-          = work.summary
+          = photo.summary
 
       .small.subdued.show-for-small-only
-        = raw(work.decorate.photo_meta)
+        = raw(photo.decorate.photo_meta)

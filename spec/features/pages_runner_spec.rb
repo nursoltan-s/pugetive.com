@@ -42,7 +42,7 @@ end
 feature "Visiting sample resource show pages" do
   scenario "Visiting app pages" do
     App.random(5).each do |app|
-      visit work_path(app)
+      visit app_path(app)
       expect(page).to have_content app.name
       # expect(page).to have_content '<h1>Software</h1>'
     end
@@ -56,23 +56,23 @@ feature "Visiting sample resource show pages" do
   end
 
   scenario "Visiting sample photo pages" do
-    Photo.random(5).each do |photograph|
-      visit work_path(photograph)
-      expect(page).to have_content photograph.name
+    Photo.random(5).each do |photo|
+      visit photo_path(photo)
+      expect(page).to have_content photo.name
     end
   end
 
 
   scenario "Visiting sample film pages" do
     Movie.random(5).each do |movie|
-      visit work_path(movie)
+      visit movie_path(movie)
       expect(page).to have_content movie.name
     end
   end
 
   scenario "Visiting sample writing piece pages" do
     Piece.random(5).each do |piece|
-      visit work_path(piece)
+      visit piece_path(piece)
       expect(page).to have_content piece.name
     end
   end

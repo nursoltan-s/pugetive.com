@@ -1,0 +1,2 @@
+class PiecePolicy < WorkPolicy
+end

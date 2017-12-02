@@ -1,0 +1,3 @@
+class GalleryPolicy < ApplicationPolicy
+
+end

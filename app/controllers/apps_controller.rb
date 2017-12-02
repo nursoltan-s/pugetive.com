@@ -1,0 +1,3 @@
+class AppsController < MetaResourceController
+
+end

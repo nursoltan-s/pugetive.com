@@ -1,0 +1,2 @@
+class MoviesController < WorksController
+end

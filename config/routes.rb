@@ -13,16 +13,22 @@ Rails.application.routes.draw do
   get 'about' => 'about#about'
 
   resources :accounts
+  resources :albums
+  resources :apps
   resources :awards
   resources :addresses
   resources :artists
   resources :companies
   resources :emails
+  resources :galleries
   resources :genres
   resources :lyrics
+  resources :movies
   resources :notes
   resources :parties
   resources :phones
+  resources :photos
+  resources :pieces
   resources :places
   resources :roles
   resources :series

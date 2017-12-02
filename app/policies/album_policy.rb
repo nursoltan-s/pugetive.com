@@ -1,0 +1,2 @@
+class AlbumPolicy < SeriesPolicy
+end

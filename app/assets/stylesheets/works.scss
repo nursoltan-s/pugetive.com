@@ -4,7 +4,7 @@
 
 @import 'mixins';
 
-section.work, section.series, section.band, section.works {
+section.work, section.series, , section.gallery, section.band, section.works {
   margin-bottom: 3em;
 
   h3 {
@@ -105,7 +105,7 @@ section.work, section.series, section.band, section.works {
 
 }
 
-html.works-show, html.songs-show {
+html.works-show {
   .lyric {
     font-size: 0.8em;
   }

@@ -8,7 +8,6 @@ class Series < ApplicationRecord
   has_many :works, through: :series_works
 
   has_many :songs,  through: :series_works, source: :work, class_name: 'Song'
-  has_many :photos, through: :series_works, source: :work, class_name: 'Photo'
   has_many :pieces, through: :series_works, source: :work, class_name: 'Piece'
 
   has_attached_file(:image, Pugetive::Application.config.paperclip_image_opts)
@@ -58,14 +57,6 @@ class Series < ApplicationRecord
     where('name LIKE "%haiku%"').first
   end
 
-  def self.band_recordings
-    band.studio.uniq.sort{|a, b| b.stop_year <=> a.stop_year}
-  end
-
-  def self.solo_recordings
-    solo.music.uniq.sort{|a, b| b.stop_year <=> a.stop_year}
-  end
-
 
   def music?
     works.where(interest_id: MUSIC_INTEREST_ID).any?
@@ -87,6 +78,7 @@ class Series < ApplicationRecord
     return nil unless works.any?
     works.first.interest.token
   end
+
 
   def artist
     return nil unless works.any?

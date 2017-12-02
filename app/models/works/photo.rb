@@ -3,6 +3,10 @@ class Photo < Work
   belongs_to :author, class_name: 'Photographer'
   has_many :flickr_urls, foreign_key: :work_id
 
+
+  has_many :galleries, through: :series_works, source: :series, class_name: 'Gallery'
+
+
   default_scope {where(interest_id: PHOTOGRAPHY_INTEREST_ID)}
 
   scope :flickr,      -> {where("flickr_id IS NOT NULL AND flickr_id != ''")}
@@ -18,19 +22,22 @@ class Photo < Work
   end
 
 
-  # Flickr photo sizes
-  # url_s : Square
-  # url_q : Large Square
-  # url_t : Thumbnail
-  # url_m : Small
-  # url_n : Small 320
-  # url   : Medium
-  # url_z : Medium 640
-  # url_c : Medium 800
-  # url_b : Large
-  # url_o : Original
+  def year
+    years
+  end
 
   def refresh_flickr_urls
+    # Flickr photo sizes
+    # url_s : Square
+    # url_q : Large Square
+    # url_t : Thumbnail
+    # url_m : Small
+    # url_n : Small 320
+    # url   : Medium
+    # url_z : Medium 640
+    # url_c : Medium 800
+    # url_b : Large
+    # url_o : Original
     return unless flickr_id.present?
 
     FlickRaw.api_key = PUGETIVE_CONFIG[Rails.env][:flickr_api_key]

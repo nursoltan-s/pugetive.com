@@ -3,11 +3,6 @@ class App < Work
 
   belongs_to :author, class_name: 'Developer'
 
-  def self.model_name
-    Work.model_name
-  end
-
-
   def self.random(num = 10)
     find(self.random_id(num))
   end

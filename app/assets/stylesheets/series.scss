@@ -42,7 +42,7 @@ section.series.music, section.series.writing {
 
 }
 
-section.series.photography {
+section.gallery {
   .artist {
     display: none;
   }
@@ -70,7 +70,7 @@ html.series-show {
 }
 
 html.interests-show {
-  section.series.photography {
+  section.gallery.photography {
     img {
       width: 4em;
       height: 4em;

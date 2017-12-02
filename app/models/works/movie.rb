@@ -1,8 +1,6 @@
 class Movie < Work
 
-  def self.model_name
-    Work.model_name
-  end
+  default_scope {film}
 
   def self.random(num = 10)
     find(self.random_id(num))

@@ -27,10 +27,8 @@ class InterestsController < MetaResourceController
     authorize(@interest)
     @bands = Party.bands.sort{|a, b| b.stop_year <=> a.stop_year}
 
-    @series = Series.music
-
-    @band_recordings = Series.band_recordings
-    @solo_recordings = Series.solo_recordings
+    @band_recordings = Album.band_recordings
+    @solo_recordings = Album.solo_recordings
 
     render :music
   end
@@ -38,23 +36,24 @@ class InterestsController < MetaResourceController
   def photography
     authorize(@interest)
     # @series = Series.includes(photographs: [:titles, :tools, :interest]).photography
-    @portfolios = Series.portfolio
-    @series = Series.non_portfolio.photography
-    @profiles = Photo.websites.sorted
+    @portfolios = Gallery.portfolio
+    @series     = Gallery.non_portfolio.photography
+    @profiles   = Photo.websites.sorted
     render :photography
   end
 
   def film
     authorize(@interest)
 
-    @featured = @interest.works.favorite.sorted
-    @other_projects = @interest.works.unfavorite.sorted
+    @featured = Movie.favorite
+    @other_projects = Movie.unfavorite
 
     render :film
   end
 
   def writing
     authorize(@interest)
+    # Refactor: Pull everything at once and segment in ruby
     @blogs = Piece.blogs
     @reviews = Piece.reviews
     @haiku = Series.haiku
