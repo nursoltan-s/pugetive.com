@@ -10,11 +10,14 @@ class InterestsController < MetaResourceController
 
   def software
     authorize(@interest)
-    @featured = @pro_projects = @side_projects = []
+    @featured = []
+    @pro_projects = []
+    @side_projects = []
     App.sorted.each do |app|
       if app.favorite?
         @featured << app
-      elsif app.solo?
+      end
+      if app.solo?
         @side_projects << app
       else
         @pro_projects << app
