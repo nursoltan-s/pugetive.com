@@ -7,6 +7,8 @@ class AboutController < ApplicationController
     #   instance_variable_set("@#{interest.token}", interest)
     # end
     @todd = Party.find(1)
+    @interests = Interest.live
+    @photos = Photo.random(25)
   end
 
   def about

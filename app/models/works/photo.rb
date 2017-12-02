@@ -1,4 +1,4 @@
-class Photograph < Work
+class Photo < Work
 
   belongs_to :author, class_name: 'Photographer'
   has_many :flickr_urls, foreign_key: :work_id

@@ -39,7 +39,7 @@ class InterestsController < MetaResourceController
     # @series = Series.includes(photographs: [:titles, :tools, :interest]).photography
     @portfolios = Series.portfolio
     @series = Series.non_portfolio.photography
-    @profiles = Photograph.websites.sorted
+    @profiles = Photo.websites.sorted
     render :photography
   end
 

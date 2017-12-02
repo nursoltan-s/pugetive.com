@@ -66,9 +66,13 @@ module MetaHelper
       rv << title_text
       rv << ' :::'
     end
-    rv << " " + PUGETIVE_CONFIG[Rails.env][:host_with_port]
+    rv << " " + web_host
 
     raw(rv)
+  end
+
+  def web_host
+    PUGETIVE_CONFIG[Rails.env][:host_with_port]
   end
 
   def page_rank_icon

@@ -1,6 +1,6 @@
 - if work.photography?
   - cache [work, params[:series_id]] do
-    = render "photographs/photograph", work: work
+    = render "photos/photo", work: work
 
 - elsif work.music?
   - cache work do

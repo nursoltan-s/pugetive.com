@@ -57,7 +57,7 @@ feature "Visiting sample resource show pages" do
   end
 
   scenario "Visiting sample photo pages" do
-    Photograph.random(5).each do |photograph|
+    Photo.random(5).each do |photograph|
       visit work_path(photograph)
       expect(page).to have_content photograph.name
     end
@@ -65,9 +65,10 @@ feature "Visiting sample resource show pages" do
 
 
   scenario "Visiting sample film pages" do
-    # Have to decide on name of movie class
-    # pending
-
+    Movie.random(5).each do |movie|
+      visit work_path(movie)
+      expect(page).to have_content movie.name
+    end
   end
 
   scenario "Visiting sample writing piece pages" do

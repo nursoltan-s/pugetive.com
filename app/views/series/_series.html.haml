@@ -33,4 +33,4 @@
             %h4 Track listing:
           = render 'works/list', works: series.works
         - elsif series.photography?
-          = render 'works/thumbnails', works: series.photographs.sorted, series_id: series.id
+          = render 'works/thumbnails', works: series.photos.sorted, series_id: series.id
