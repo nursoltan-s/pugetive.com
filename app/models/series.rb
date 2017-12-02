@@ -6,6 +6,8 @@ class Series < ApplicationRecord
   has_many :series_works, dependent: :destroy
 
   has_many :works, through: :series_works
+
+  has_many :songs,  through: :series_works, source: :work, class_name: 'Song'
   has_many :photos, through: :series_works, source: :work, class_name: 'Photo'
   has_many :pieces, through: :series_works, source: :work, class_name: 'Piece'
 
@@ -18,8 +20,9 @@ class Series < ApplicationRecord
 
   scope :alpha, -> {order(:name)}
 
+
   def self.music
-    joins(:works).where(works: {interest_id: MUSIC_INTEREST_ID}).uniq
+    includes(works: [:titles, :tools, :interest]).joins(:works).where(works: {interest_id: MUSIC_INTEREST_ID}).uniq
   end
 
   def self.photography
@@ -42,6 +45,7 @@ class Series < ApplicationRecord
     where(audience: false)
   end
 
+  # Refactor move methods into subclasses
   def self.portfolio
     where('series.name LIKE "%portfolio%"')
   end
@@ -53,6 +57,15 @@ class Series < ApplicationRecord
   def self.haiku
     where('name LIKE "%haiku%"').first
   end
+
+  def self.band_recordings
+    band.studio.uniq.sort{|a, b| b.stop_year <=> a.stop_year}
+  end
+
+  def self.solo_recordings
+    solo.music.uniq.sort{|a, b| b.stop_year <=> a.stop_year}
+  end
+
 
   def music?
     works.where(interest_id: MUSIC_INTEREST_ID).any?

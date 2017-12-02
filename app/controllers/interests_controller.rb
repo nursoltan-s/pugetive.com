@@ -27,13 +27,12 @@ class InterestsController < MetaResourceController
     authorize(@interest)
     @bands = Party.bands.sort{|a, b| b.stop_year <=> a.stop_year}
 
-    @series = Series.includes(works: [:titles, :tools, :interest]).music
+    @series = Series.music
 
-    # Refactor
-    @band_recordings = Series.band.studio.uniq.sort{|a, b| b.stop_year <=> a.stop_year}
-    @solo_recordings = Series.solo.music.uniq.sort{|a, b| b.stop_year <=> a.stop_year}
+    @band_recordings = Series.band_recordings
+    @solo_recordings = Series.solo_recordings
+
     render :music
-
   end
 
   def photography
