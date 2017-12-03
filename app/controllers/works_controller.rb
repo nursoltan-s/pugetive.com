@@ -7,7 +7,7 @@ class WorksController < MetaResourceController
     # and this sends any old requests onto the new handlers
     if params[:controller] == 'works' and
       params[:action] == 'show'
-      redirect_to @work.canonical_path
+      redirect_to @work.canonical_path, status: 301
     end
   end
 
