@@ -1,8 +1,9 @@
 Pugetive.com
 ============
 
-I've migrated the site to toddgehman.com, but serving the repo named after the previous location.
+I've migrated the site to toddgehman.com, but still serving the pugetive.com repo.
 
+    I've temporarily disabled code climage because it started analyzing crap I threw into my doc directory, and I suddently when from a near-4.0 grade avg to a failing maintainability grade. Whoops!
 
 Server Setup/Maintenance
 ------------------------
