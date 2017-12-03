@@ -7,4 +7,7 @@
     %p
       Listing works where I operated as #{content_tag(:i, @title.name)}.
 
-= render 'works/stacked', works: @title.works, show_meta: true, show_genre: true
+- if @title.works.size < 6
+  = render("works/list", works: @title.works)
+- else
+  = render 'works/stacked', works: @title.works, show_meta: true, show_genre: true
