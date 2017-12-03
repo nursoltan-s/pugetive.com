@@ -10,7 +10,7 @@
 
         = movie.thumbnail
 
-        = movie.titles_and_instruments
+        = movie.titles_display
 
         = render "works/admin_links", work: movie
 
@@ -19,4 +19,4 @@
 
         = movie.summary
 
-        = movie.tools
+        = movie.tools_display(false)

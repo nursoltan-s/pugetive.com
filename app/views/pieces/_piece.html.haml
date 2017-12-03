@@ -10,7 +10,9 @@
         = render "works/admin_links", work: piece
 
       .medium-5.columns.end.info-box
+
         %h3= piece.decorate.title
+
         = piece.location_display
 
         - if piece.has_thumbnail?

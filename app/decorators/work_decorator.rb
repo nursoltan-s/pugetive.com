@@ -28,6 +28,10 @@ class WorkDecorator < Draper::Decorator
 
   def byline
     text = "by #{h.content_tag(:b, model.party.name)}"
+    if model.party.alias?
+      text += h.content_tag(:i, ' [solo alias]', class: 'subdued')
+    end
+
     h.raw(h.content_tag(:p, h.raw(text), class: 'artist'))
   end
 
@@ -82,7 +86,7 @@ class WorkDecorator < Draper::Decorator
   end
 
 
-  def titles_and_instruments
+  def titles_display
     list = []
     titles.each do |title|
       if title.name == 'Performer'
@@ -114,34 +118,17 @@ class WorkDecorator < Draper::Decorator
     h.content_tag(:div, text, class: 'camera')
   end
 
-  def album_info
-    return nil unless work.series.any?
-    list = ''
-    work.series_works.each do |series_work|
-      series = series_work.series
-      line = 'From the '
-      line += work.interest.series_name.downcase + ' '
-      line += h.link_to(series.name, series)
-      line += h.link_to(h.raw(h.destroy_icon), series_work, method: :delete, class: 'subdued', data: {visible_to: 'admin', confirm: 'Are you sure?'})
-      line_item = h.content_tag(:li, h.raw(line))
-      list += line_item
-    end
-    h.raw(h.content_tag(:ul, h.raw(list), class: 'series-list small'))
-  end
-
-
-  def summary
+  def summary_display
     return if model.summary.blank?
     h.content_tag(:p, model.summary, class: 'summary')
   end
 
-  def tools
+  def tools_display(label = true)
     return unless model.tools.any?
-    # Refactor
     rv = ''
     if model.active_tools.any?
       text = h.raw(model.active_tools.map{|t| h.link_to(t.name, t)}.join(', '))
-      formatted_text = h.content_tag(:b, h.raw("Buzzwords: #{text}"))
+      formatted_text = h.content_tag(:b, h.raw(label ? "Buzzwords: #{text}" : text))
       rv += h.content_tag(:p, formatted_text, class: 'tools')
     end
     if work.legacy_tools.any?

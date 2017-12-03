@@ -1,47 +1,41 @@
-%h3.show-for-small-only= work.decorate.title
-
+%h3.show-for-small-only= song.title
 
 %table.compact
 
-  - if work.has_audio?
-    %tr
-      %th Audio
-      %td= audio_player(work)
-
+  = song.player_row
   %tr
     %th Year
-    %td.years= work.years
+    %td.years= song.years
 
-  - unless work.mine?
+  - unless song.mine?
     %tr
       %th Written by
-      %td= work.author.name
+      %td= song.author.name
 
-  - if work.genre
+  - if song.genre
     %tr
       %th Genre
       %td
-        .genre= link_to(work.genre.name, work.genre)
+        .genre= link_to(song.genre.name, song.genre)
 
-  - if work.daw.present?
+  - if song.daw.present?
     %tr
       %th Recording
-      %td= work.daw.name
+      %td= song.daw.name
 
   %tr.show-for-small-only
     %th Artist
     %td
-      %b= work.party.name
-      - if work.party.alias?
+      %b= song.party.name
+      - if song.party.alias?
         %i.subdued [solo alias]
 
-  - if work.series.any?
+  - if song.albums.any?
     %tr.show-for-small-only
       %th
-      %td= work.decorate.album_info
+      %td= song.album_info
+
+  = render "works/roles_table_row", work: song, visibility_class: 'hide-for-small-only'
 
 
-  = render "works/roles_table_row", work: work, visibility_class: 'hide-for-small-only'
-
-
-= render "works/admin_links", work: work
+= render "works/admin_links", work: song

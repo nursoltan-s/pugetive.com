@@ -1,14 +1,12 @@
-- cache ['app-details', work] do
-  - if work.summary.present?
-    %p.summary
-      = work.summary
+- cache ['app-details', app] do
+  = app.summary_display
 
-  %p.titles= raw(work.titles.map{|title| link_to(title.name, title)}.join(', '))
+  = app.titles_display
 
   %ul.accordion{data: {'accordion': true, 'allow-all-closed': 'true'}}
 
     %li.accordion-item{data: {'accordion-item': true}}
-      %a.accordion-title.foundation-remote{href: work_tools_path(work), remote: true} Technology Stack
+      %a.accordion-title.foundation-remote{href: work_tools_path(app), remote: true} Technology Stack
 
       .accordion-content{data: {'tab-content': true}}
         = spinner

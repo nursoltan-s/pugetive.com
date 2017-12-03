@@ -1,5 +1,7 @@
 class Song < Work
   has_one :lyric, foreign_key: :work_id
+  has_many :albums, through: :series_works, source: :series, class_name: 'Album'
+
   belongs_to :author, class_name: 'Artist'
 
   def solo?

@@ -16,7 +16,7 @@
         = render "series/admin_links", series: album
 
       .medium-5.columns.end.info-box
-        = album.artist_name
+        = album.byline
         - if album.description.present?
           %p.description= album.description
 

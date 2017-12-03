@@ -6,4 +6,8 @@ class SeriesWork < ApplicationRecord
   belongs_to :piece, class_name: 'Work', touch: true
 
   self.table_name = 'series_works'
+
+  def self.for(series, work)
+    self.find_by(series_id: series.id, work_id: work.id)
+  end
 end

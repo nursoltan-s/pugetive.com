@@ -1,0 +1,23 @@
+- cache song do
+  - song = song.decorate
+
+  %section.work.music{itemscope: true}
+    .row
+
+      .medium-3.columns.medium-offset-2.medium-text-right.title-box
+        = render "works/song_meta_info", song: song
+
+      .medium-5.columns.end.info-box
+        %h3.hide-for-small-only= song.title
+
+        .hide-for-small-only
+          = song.byline
+
+          = song.album_info
+
+        = song.summary_display
+
+        = song.lyric_display
+
+        = song.roles_table('show-for-small-only')
+
