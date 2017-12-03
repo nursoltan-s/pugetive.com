@@ -10,6 +10,8 @@ class Party < ActiveRecord::Base
   validates :start_year, inclusion: {in: YEARS_OF_LIFE, allow_nil: true}
   validates :stop_year, inclusion: {in: YEARS_OF_LIFE, allow_nil: true}
   validate :stop_is_after_start
+  validates :live, inclusion: {in: BOOLEAN_OPTIONS}
+  validates :alias, inclusion: {in: BOOLEAN_OPTIONS}
 
   has_attached_file(:image, Pugetive::Application.config.paperclip_image_opts)
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/

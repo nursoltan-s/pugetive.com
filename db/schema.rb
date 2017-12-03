@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171123191624) do
+ActiveRecord::Schema.define(version: 20171203222405) do
 
   create_table "accounts", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "company"
@@ -41,13 +41,6 @@ ActiveRecord::Schema.define(version: 20171123191624) do
     t.boolean "live"
     t.integer "start_year"
     t.integer "stop_year"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "companies", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.string "username"
-    t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -197,38 +190,6 @@ ActiveRecord::Schema.define(version: 20171123191624) do
     t.index ["parent_id"], name: "index_places_on_parent_id"
     t.index ["rgt"], name: "index_places_on_rgt"
     t.index ["slug"], name: "index_places_on_slug"
-  end
-
-  create_table "projects", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.string "name", null: false
-    t.string "type", limit: 32, null: false
-    t.integer "party_id", null: false
-    t.string "url"
-    t.integer "start_year", null: false
-    t.integer "stop_year"
-    t.text "description"
-    t.boolean "live", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "official_title"
-    t.string "summary"
-    t.string "slug"
-    t.index ["live"], name: "index_projects_on_live"
-    t.index ["name"], name: "index_projects_on_name"
-    t.index ["party_id"], name: "index_projects_on_party_id"
-    t.index ["slug"], name: "index_projects_on_slug"
-    t.index ["start_year"], name: "index_projects_on_start_year"
-    t.index ["stop_year"], name: "index_projects_on_stop_year"
-    t.index ["type"], name: "index_projects_on_type"
-  end
-
-  create_table "pursuits", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string "name", null: false
-    t.string "unit_name", null: false
-    t.string "collection_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_pursuits_on_name"
   end
 
   create_table "roles", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|

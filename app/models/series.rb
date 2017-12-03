@@ -3,6 +3,9 @@ class Series < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: [:slugged, :history]
 
+  validates :name, presence: true, uniqueness: true
+  validates :audience, inclusion: {in: BOOLEAN_OPTIONS}
+
   has_many :series_works, dependent: :destroy
 
   has_many :works, through: :series_works
