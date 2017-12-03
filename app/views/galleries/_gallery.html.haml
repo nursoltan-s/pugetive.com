@@ -8,22 +8,13 @@
 
         = gallery.years_display
 
-        %span.titles
-          = raw(gallery.titles.sort_by{|t| t.sort}.map{|t| link_to(t.name, t)}.join(', '))
-        %span.tools
-          = raw(gallery.instruments.map{|t| link_to(t.name, t)}.join(', '))
+        = gallery.titles_and_tools
 
         - if gallery.has_image?
           = link_to(image_tag(gallery.image.url(:thumb)), gallery.image.url(:original), target: "_blank")
 
-        %p.admin{data: {visible_to: 'admin'}}
-          %smaller.subdued
-            = link_to(touch_icon, touch_path(gallery))
-            = link_to(new_icon, new_series_work_path(series_id: gallery.id), rel: 'nofollow')
-            = link_to(edit_icon, edit_gallery_path(gallery), rel: 'nofollow')
-            = link_to(destroy_icon, gallery, :method => :delete, :data => { :confirm => 'Are you sure?' }, rel: 'nofollow')
+        = render "series/admin_links", series: gallery
 
       .medium-5.columns.end.info-box
         = gallery.artist_name
-        -# Refactor
         = render 'galleries/thumbnails', photos: gallery.photos.sorted, gallery_id: gallery.id
