@@ -1,42 +1,25 @@
-- work ||= piece
-%section.work{class: work.interest.token, itemscope: true}
-  .row
+- cache piece do
+  - piece = piece.decorate
+  %section.work.writing{itemscope: true}
+    .row
+      .medium-3.columns.medium-offset-2.medium-text-right.title-box
+        = piece.genre_and_years
 
-    .medium-3.columns.medium-offset-2.medium-text-right.title-box
-      = render "pieces/piece_meta_info", work: work
+        = piece.live_link
 
-    .medium-5.columns.end.info-box
-      %h3= work.decorate.title
-      - if work.location.present?
-        %p
-          %span.location
-            = work.location
-      - if work.has_thumbnail?
-        = thumbnail(work)
+        = render "works/admin_links", work: piece
 
-      %p.artist
-        by
-        %b= work.party.name
-        - if work.party.alias?
-          %i.subdued [solo alias]
+      .medium-5.columns.end.info-box
+        %h3= piece.decorate.title
+        = piece.location_display
 
-      -# = work.decorate.series_info
-      - if work.summary.present?
-        %p.summary
-          = work.summary
+        - if piece.has_thumbnail?
+          = thumbnail(piece)
 
-      - if work.has_lyric?
-        = render work.lyric
+        = piece.byline
 
-      - else
-        %div{data: {visible_to: 'admin'}}
-          = link_to(raw("#{new_icon} Lyric"), new_lyric_path(work_id: work.id))
+        = piece.summary
 
-      - if work.active_tools.any?
-        %p.tools
-          %b Buzzwords:
-          = raw(work.active_tools.map{|t| link_to(t.name, t)}.join(', '))
-      - if work.legacy_tools.any?
-        %p.tools
-          %b Legacy:
-          = raw(work.legacy_tools.map{|t| link_to(t.name, t)}.join(', '))
+        = piece.lyric_display
+
+        = piece.tools

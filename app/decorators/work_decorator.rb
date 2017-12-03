@@ -28,7 +28,26 @@ class WorkDecorator < Draper::Decorator
 
   def byline
     text = "by #{h.content_tag(:b, model.party.name)}"
-    h.raw(h.content_tag(:p, text, class: 'artist'))
+    h.raw(h.content_tag(:p, h.raw(text), class: 'artist'))
+  end
+
+  def live_link
+    return unless model.url.present? and model.live?
+    h.raw(h.link_to(h.raw("Link #{h.external_icon}"), work.url))
+  end
+
+  def location_display
+    return unless model.location.present?
+    contents = h.content_tag(:span, model.location, class: 'location')
+    h.raw(h.content_tag(:p, contents))
+  end
+
+  def lyric_display
+    if model.has_lyric?
+      return h.raw(h.render(model.lyric))
+    end
+    contents = h.link_to(h.raw("#{h.new_icon} Lyric"), h.new_lyric_path(work_id: model.id))
+    h.raw(h.content_tag(:div, h.raw(contents), data: {visible_to: 'admin'}))
   end
 
   def genre_and_years
