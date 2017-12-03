@@ -1,33 +1,32 @@
-- series ||= album
-- cache series do
-  %section.series{class: series.interest}
-    .row
-      .medium-3.columns.medium-offset-2.medium-text-right.title-box
-        %h3
-          = link_to(series.name, series)
-        %p
-          %span.years
-            = series.years
+- cache album do
+  - album = album.decorate
+    %section.series.music
+      .row
+        .medium-3.columns.medium-offset-2.medium-text-right.title-box
+          %h3
+            = link_to(album.name, album)
 
-        %span.titles
-          = raw(series.titles.sort_by{|t| t.sort}.map{|t| link_to(t.name, t)}.join(', '))
-        %span.tools
-          = raw(series.instruments.map{|t| link_to(t.name, t)}.join(', '))
+          = album.years
 
-        - if series.has_image?
-          = link_to(image_tag(series.image.url(:thumb)), series.image.url(:original), target: "_blank")
+          %span.titles
+            = raw(series.titles.sort_by{|t| t.sort}.map{|t| link_to(t.name, t)}.join(', '))
+          %span.tools
+            = raw(series.instruments.map{|t| link_to(t.name, t)}.join(', '))
 
-        %p.admin{data: {visible_to: 'admin'}}
-          %smaller.subdued
-            = link_to(touch_icon, touch_path(series))
-            = link_to(new_icon, new_series_work_path(series_id: series.id), rel: 'nofollow')
-            = link_to(edit_icon, edit_series_path(series), rel: 'nofollow')
-            = link_to(destroy_icon, series, :method => :delete, :data => { :confirm => 'Are you sure?' }, rel: 'nofollow')
-      .medium-5.columns.end.info-box
-        = series.decorate.artist_name
-        -# Refactor
-        - if series.description.present?
-          %p.description= series.description
+          - if series.has_image?
+            = link_to(image_tag(series.image.url(:thumb)), series.image.url(:original), target: "_blank")
 
-        %h4 Track listing:
-        = render 'works/list', works: series.songs, embedded_content: true
+          %p.admin{data: {visible_to: 'admin'}}
+            %smaller.subdued
+              = link_to(touch_icon, touch_path(series))
+              = link_to(new_icon, new_series_work_path(series_id: series.id), rel: 'nofollow')
+              = link_to(edit_icon, edit_series_path(series), rel: 'nofollow')
+              = link_to(destroy_icon, series, :method => :delete, :data => { :confirm => 'Are you sure?' }, rel: 'nofollow')
+        .medium-5.columns.end.info-box
+          = series.decorate.artist_name
+          -# Refactor
+          - if series.description.present?
+            %p.description= series.description
+
+          %h4 Track listing:
+          = render 'works/list', works: series.songs, embedded_content: true

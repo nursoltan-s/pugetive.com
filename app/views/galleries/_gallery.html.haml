@@ -1,12 +1,12 @@
 - cache gallery do
+  - gallery = gallery.decorate
   %section.gallery.photography
     .row
       .medium-3.columns.medium-offset-2.medium-text-right.title-box
         %h3
           = link_to(gallery.name, gallery)
-        %p
-          %span.years
-            = gallery.years
+
+        = gallery.years_display
 
         %span.titles
           = raw(gallery.titles.sort_by{|t| t.sort}.map{|t| link_to(t.name, t)}.join(', '))
@@ -22,7 +22,8 @@
             = link_to(new_icon, new_series_work_path(series_id: gallery.id), rel: 'nofollow')
             = link_to(edit_icon, edit_gallery_path(gallery), rel: 'nofollow')
             = link_to(destroy_icon, gallery, :method => :delete, :data => { :confirm => 'Are you sure?' }, rel: 'nofollow')
+
       .medium-5.columns.end.info-box
-        = gallery.decorate.artist_name
+        = gallery.artist_name
         -# Refactor
         = render 'galleries/thumbnails', photos: gallery.photos.sorted, gallery_id: gallery.id

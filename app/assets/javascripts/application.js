@@ -31,8 +31,8 @@ $(function(){
               });
       });
 
-  $(".thumbnail").on("error", function(){
-    $(this).attr('src', './errors/missing-image.png');
+  $("img.thumbnail").on("error", function(){
+    $(this).attr('src', './errors/missing-image.png').attr('title', 'Error Loading Image');
   });
 
 

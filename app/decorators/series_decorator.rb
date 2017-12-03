@@ -10,6 +10,11 @@ class SeriesDecorator < Draper::Decorator
   #     end
   #   end
 
+  def years_display
+    contents = h.content_tag(:div, model.years, class: 'years')
+    return h.raw(h.content_tag(:p, h.raw(contents)))
+  end
+
   def artist_name
     return 'Unknown' unless series.works.any?
     rv = 'by '

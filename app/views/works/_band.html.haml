@@ -12,7 +12,7 @@
         = band.location
 
       - if band.has_image?
-        = link_to(image_tag(band.image.url(:thumb)), band.image.url(:original), target: "_blank")
+        = link_to(image_tag(band.image.url(:thumb), class: 'thumbnail'), band.image.url(:original), target: "_blank")
 
       %p.admin{data: {visible_to: 'admin'}}
         %smaller.subdued= link_to(edit_icon, edit_party_path(band), rel: 'nofollow')
@@ -28,7 +28,3 @@
           = render "layouts/jplayer", audio_name: band.sample_track, audio_file: band.sample_mp3
           %b Sample track:
           %i= band.sample_track
-
-        -# %audio{controls: true}
-        -#   %source{src: band.sample_mp3, type: "audio/mpeg"}
-        -#   Your browser does not support the audio element.

@@ -1,42 +1,32 @@
--# REFACTOR: logic to decorator or view model
-%section.work.photo.photography{itemscope: true}
+- cache photo do
+  - photo = photo.decorate
 
-  .row
-    .medium-3.columns.medium-offset-2.medium-text-right.title-box
-      %h3= photo.decorate.title
-      - if photo.location.present?
-        %p
-          %span.location
-            = photo.location
+  %section.work.photo.photography{itemscope: true}
+    .row
+      .medium-3.columns.medium-offset-2.medium-text-right.title-box
+        %h3= photo.decorate.title
 
-      %p
-        - if photo.genre
-          %span.genre= link_to(photo.genre.name, photo.genre)
-        %span.years
-          = photo.year
+        = photo.location_display
 
+        = photo.genre_and_years
 
-      = photo.decorate.thumbnail
+        = photo.thumbnail
 
-      - if photo.url.present? and photo.live?
-        = link_to(raw("Link #{external_icon}"), photo.url)
+        = photo.titles_and_instruments
 
-      = photo.decorate.titles_and_instruments
+        .small.subdued.hide-for-small-only
+          = raw(photo.photo_meta)
 
-      .small.subdued.hide-for-small-only
-        = raw(photo.decorate.photo_meta)
+        = render "works/admin_links", work: photo
 
-      = render "works/admin_links", work: photo
+      .medium-5.columns.end.info-box
+        - if photo.has_thumbnail?
+          = thumbnail(photo)
+        = photo_link(photo, large_image(photo))
 
-    .medium-5.columns.end.info-box
-      - if photo.has_thumbnail?
-        = thumbnail(photo)
-      = photo_link(photo, large_image(photo))
+        = render "photos/gallery_info", photo: photo
 
-      = render "photos/gallery_info", photo: photo
-      - if photo.summary.present?
-        %p.summary
-          = photo.summary
+        = photo.summary
 
-      .small.subdued.show-for-small-only
-        = raw(photo.decorate.photo_meta)
+        .small.subdued.show-for-small-only
+          = raw(photo.photo_meta)

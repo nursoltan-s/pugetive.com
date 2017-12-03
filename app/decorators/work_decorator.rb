@@ -50,13 +50,17 @@ class WorkDecorator < Draper::Decorator
     h.raw(h.content_tag(:div, h.raw(contents), data: {visible_to: 'admin'}))
   end
 
-  def genre_and_years
+  def genre_and_years(show_genre = true)
     p_contents = ''
-    if model.genre
-      p_contents += h.content_tag(:span, h.link_to(work.genre.name, work.genre), class: 'genre')
+    if model.genre and show_genre
+      p_contents += h.content_tag(:span, h.link_to(model.genre.name, model.genre), class: 'genre')
     end
-    p_contents += h.content_tag(:div, work.years, class: 'years')
+    p_contents += h.content_tag(:div, model.years, class: 'years')
     return h.raw(h.content_tag(:p, h.raw(p_contents)))
+  end
+
+  def years_display
+    genre_and_years(false)
   end
 
   def status
