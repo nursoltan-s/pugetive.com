@@ -3,6 +3,14 @@ class Interest < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: [:slugged, :history]
 
+  validates :name, presence: true
+  validates :sort, numericality: true
+  validates :token, presence: true, uniqueness: true
+  validates :work_name, presence: true, uniueness: true
+  validates :series_name, presence: true
+  validates :icon, presence: true
+  validates :public, inclusion: {in: BOOLEAN_OPTIONS}
+
   has_many :works
 
   scope :live, -> {where(public: true)}
@@ -10,6 +18,10 @@ class Interest < ApplicationRecord
 
   def self.categories
     all.map(&:name)
+  end
+
+  def self.interest_ids
+    all.map(&:id)
   end
 
   def music?

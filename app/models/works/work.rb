@@ -6,7 +6,14 @@ class Work < ApplicationRecord
 
   friendly_id :name, use: [:slugged, :history]
 
+  validates :interest_id, inclusion: {in: Interest.interest_ids}
+  validates :party_id, numericality: true
+  validates :start_year, presence: true
+  validates :live, inclusion: {in: BOOLEAN_OPTIONS}
   validates :status, inclusion: {in: STATUSES}
+  validates :demo, inclusion: {in: BOOLEAN_OPTIONS}
+  validates :favorite, inclusion: {in: BOOLEAN_OPTIONS}
+  validates :author_id, numericality: true
 
   has_attached_file(:image, Pugetive::Application.config.paperclip_image_opts)
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/

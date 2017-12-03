@@ -8,6 +8,7 @@ class Tool < ActiveRecord::Base
   validates :type, inclusion: {in: TYPES}
   validates :category, inclusion: {in: Interest.categories}
   validates :front_end, inclusion: {in: BOOLEAN_OPTIONS}
+  validates :fluency, numericality: true
 
   scope :alpha,       -> {order(:name)}
   scope :sorted,      -> {order(:sort)}

@@ -2,6 +2,8 @@ class Place < ApplicationRecord
   extend FriendlyId
   friendly_id :compound_name, use: [:slugged, :history]
 
+  validates :name, presence: true
+
   acts_as_nested_set
 
   has_many :works

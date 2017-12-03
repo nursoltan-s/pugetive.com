@@ -1,4 +1,8 @@
 class SeriesWork < ApplicationRecord
+
+  validates :series_id, numericality: true
+  validates :work_id, numericality: true
+
   belongs_to :series, touch: true
   belongs_to :work, touch: true
 
