@@ -17,7 +17,7 @@ class Piece < Work
 
   def self.other_projects
     # FIXME performance tune this
-    all - blogs - reviews - haiku.works
+    where(interest_id: WRITING_INTEREST_ID) - blogs - reviews - haiku.pieces
   end
 
   def blog?
