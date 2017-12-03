@@ -3,7 +3,7 @@ Pugetive.com
 
 I've migrated the site to toddgehman.com, but still serving the pugetive.com repo.
 
-    I've temporarily disabled code climage because it started analyzing crap I threw into my doc directory, and I suddently when from a near-4.0 grade avg to a failing maintainability grade. Whoops!
+I've temporarily disabled the code climate badge because it started analyzing random stuff that I threw into my doc directory, and I suddently when from a near-4.0 grade avg to a failing maintainability grade. Whoops!
 
 Server Setup/Maintenance
 ------------------------
