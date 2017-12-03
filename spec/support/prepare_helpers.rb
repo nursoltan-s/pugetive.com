@@ -1,4 +1,37 @@
 module PrepareHelpers
+  def prepare_interests
+    create(:interest,
+           name: 'Software',
+           sort: 1,
+           work_name: 'App',
+           series_name: 'Suite',
+           id: SOFTWARE_INTEREST_ID)
+    create(:interest,
+           name: 'Music',
+           sort: 2,
+           series_name: 'Album',
+           work_name: 'Song',
+           id: MUSIC_INTEREST_ID)
+    create(:interest,
+           name: 'Photography',
+           sort: 3,
+           work_name: 'Photo',
+           series_name: 'Gallery',
+           id: PHOTOGRAPHY_INTEREST_ID)
+    create(:interest,
+           name: 'Film',
+           sort: 4,
+           work_name: 'Movie',
+           series_name: 'Series',
+           id: FILM_INTEREST_ID)
+    create(:interest,
+           name: 'Writing',
+           sort: 5,
+           work_name: 'Piece',
+           series_name: 'Series',
+           id: WRITING_INTEREST_ID)
+  end
+
   def prepare_music
     duchess = create(:album, name: 'Duchess of Hazard')
     starlet = create(:artist, name: 'An American Starlet')

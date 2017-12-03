@@ -4,6 +4,12 @@ feature "Vitising top level pages" do
   # background do
   #   User.make(email: 'user@example.com', password: 'caplin')
   # end
+  before(:each) do
+    prepare_interests
+    prepare_music
+    prepare_photography
+    prepare_writing
+  end
 
   scenario "visiting homepage" do
     visit '/'

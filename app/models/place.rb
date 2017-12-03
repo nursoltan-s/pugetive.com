@@ -9,7 +9,7 @@ class Place < ApplicationRecord
   scope :alpha, -> {order(:name)}
 
 
-  
+
   def compound_name
     ancestors.map{|p| p.name}.join('-') + name
   end

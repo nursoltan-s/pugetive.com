@@ -6,7 +6,7 @@ class AboutController < ApplicationController
     # Interest.live.each do |interest|
     #   instance_variable_set("@#{interest.token}", interest)
     # end
-    @todd = Party.find(1)
+    @todd = Party.find(TODD_PARTY_ID)
     @interests = Interest.live
     @photos = Photo.random(25)
   end
