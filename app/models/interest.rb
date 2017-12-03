@@ -6,7 +6,7 @@ class Interest < ApplicationRecord
   validates :name, presence: true
   validates :sort, numericality: true
   validates :token, presence: true, uniqueness: true
-  validates :work_name, presence: true, uniueness: true
+  validates :work_name, presence: true, uniqueness: true
   validates :series_name, presence: true
   validates :icon, presence: true
   validates :public, inclusion: {in: BOOLEAN_OPTIONS}
