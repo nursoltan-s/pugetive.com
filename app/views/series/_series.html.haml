@@ -27,4 +27,4 @@
         - if series.description.present?
           %p.description= series.description
 
-        = render 'works/list', works: series.works
+        = render 'works/list', works: series.works, embedded_content: true
