@@ -4,7 +4,7 @@ class Title < ActiveRecord::Base
   friendly_id :name, use: [:slugged, :history]
 
   validates :name, presence: true
-  validates :category, inclusion: {in: PURSUITS}
+  validates :category, inclusion: {in: Interest.categories}
 
   has_many :roles, dependent: :destroy
   has_many :works, through: :roles

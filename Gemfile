@@ -72,17 +72,16 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'better_errors'
   gem 'byebug'
+ 
+  # gem 'quiet_assets'
+end
+
+group :development do
   gem 'capistrano'
   gem 'capistrano-bundler'
   gem 'capistrano-newrelic'
   gem 'capistrano-passenger'
   gem 'capistrano-rvm', '~> 0.0.3'
-  gem 'rspec-rails'
-
-  # gem 'quiet_assets'
-end
-
-group :development do
   # gem 'capistrano-shortcuts', path: '/Users/todd/Sites/capistrano-shortcuts', require: false
   gem 'capistrano-shortcuts', "~> 0.5.1", require: false
 
@@ -96,7 +95,9 @@ end
 
 group :test do
   gem "capybara"
+  gem 'rspec-rails'
   gem "selenium-webdriver"
+  gem 'simplecov', :require => false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

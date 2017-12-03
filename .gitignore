@@ -22,12 +22,20 @@ vendor/bundle
 # Ignore Byebug command history file.
 .byebug_history
 
+# Ignore coverage
+coverage/*
+
+# Ignore sekrit stuff
 config/database.yml
 config/pugetive.yml
 config/secrets.yml
 config/newrelic.yml
 config/honeybadger.yml
+
+# Ignore sublime stuff
 pugetive.sublime-workspace
 pugetive.sublime-project
+
+# Ignore garbage
 test
 tmp

@@ -6,7 +6,7 @@
                 f.select(:type, options_for_select(Tool::TYPES, selected: @tool.type)))
 
   = label_field(f.label(:category),
-                f.select(:category, options_for_select(PURSUITS, selected: @tool.category)))
+                f.select(:category, options_for_select(Interest.categories, selected: @tool.category)))
 
   = label_field(f.label(:front_end), f.check_box(:front_end))
   = label_field(f.label(:fluency),

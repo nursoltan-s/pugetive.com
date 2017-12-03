@@ -19,19 +19,6 @@ class Series < ApplicationRecord
 
   scope :alpha, -> {order(:name)}
 
-
-  def self.music
-    includes(works: [:titles, :tools, :interest]).joins(:works).where(works: {interest_id: MUSIC_INTEREST_ID}).uniq
-  end
-
-  def self.photography
-    joins(:works).where(works: {interest_id: PHOTOGRAPHY_INTEREST_ID}).uniq
-  end
-
-  def self.band
-    joins(works: :party).where("works.party_id != 1 AND parties.alias != 1")
-  end
-
   def self.solo
     joins(works: :party).where("works.party_id = 1 OR parties.alias = 1")
   end
@@ -40,35 +27,23 @@ class Series < ApplicationRecord
     where(audience: true)
   end
 
-  def self.studio
-    where(audience: false)
-  end
-
-  # Refactor move methods into subclasses
-  def self.portfolio
-    where('series.name LIKE "%portfolio%"')
-  end
-
-  def self.non_portfolio
-    where('series.name NOT LIKE "%portfolio%"')
-  end
-
+  # Refactor
   def self.haiku
     where('name LIKE "%haiku%"').first
   end
 
 
-  def music?
-    works.where(interest_id: MUSIC_INTEREST_ID).any?
-  end
+  # def music?
+  #   works.where(interest_id: MUSIC_INTEREST_ID).any?
+  # end
 
-  def writing?
-    works.where(interest_id: WRITING_INTEREST_ID).any?
-  end
+  # def writing?
+  #   works.where(interest_id: WRITING_INTEREST_ID).any?
+  # end
 
-  def photography?
-    works.where(interest_id: PHOTOGRAPHY_INTEREST_ID).any?
-  end
+  # def photography?
+  #   works.where(interest_id: PHOTOGRAPHY_INTEREST_ID).any?
+  # end
 
   def has_image?
     image.url.present? and not image.url(:thumb).match(/missing/)
@@ -114,23 +89,11 @@ class Series < ApplicationRecord
   end
 
   def start_year
-    start = Time.now.year
-    works.each do |work|
-      if work.start_year < start
-        start = work.start_year
-      end
-    end
-    start
+    works.minimum(:start_year)
   end
 
   def stop_year
-    stop = nil
-    works.each do |work|
-      if work.stop_year.present? and (stop.nil? or work.stop_year > stop)
-        stop = work.stop_year
-      end
-    end
-    stop
+    works.maximum(:stop_year)
   end
 
   def years
