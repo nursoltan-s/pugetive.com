@@ -10,7 +10,7 @@ class Photo < Work
   default_scope {where(interest_id: PHOTOGRAPHY_INTEREST_ID)}
 
   scope :flickr,      -> {where("flickr_id IS NOT NULL AND flickr_id != ''")}
-  scope :sorted, -> {order("stop_year DESC, instagram_id DESC, flickr_id DESC")}
+  scope :sorted, -> {order("stop_year DESC, instagram_id DESC, flickr_id DESC, id DESC")}
   scope :websites,    -> {where('name LIKE "%flickr%" OR name LIKE "%instagram%"')}
 
   def camera
