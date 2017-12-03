@@ -1,5 +1,7 @@
 class Interest < ApplicationRecord
 
+  INTEREST_IDS = [1, 2, 3, 4, 5]
+
   extend FriendlyId
   friendly_id :name, use: [:slugged, :history]
 
@@ -18,10 +20,6 @@ class Interest < ApplicationRecord
 
   def self.categories
     all.map(&:name)
-  end
-
-  def self.interest_ids
-    all.map(&:id)
   end
 
   def music?

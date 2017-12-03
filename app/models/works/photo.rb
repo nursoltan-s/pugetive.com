@@ -6,7 +6,6 @@ class Photo < Work
 
   has_many :galleries, through: :series_works, source: :series, class_name: 'Gallery'
 
-
   default_scope {where(interest_id: PHOTOGRAPHY_INTEREST_ID)}
 
   scope :flickr,      -> {where("flickr_id IS NOT NULL AND flickr_id != ''")}
@@ -56,22 +55,24 @@ class Photo < Work
   end
 
   def self.random(num = 10)
-    includes(:flickr_urls).find(self.random_id(num))
+    # REFACTOR; Need to select only from portfolio-selectd items.
+    order("RAND()").limit(num)
   end
 
-  def self.random_id(num = 1)
-    if @photo_ids.nil?
-      sql = <<-SQL
-        SELECT DISTINCT works.id
-        FROM series, series_works, works
-        WHERE series.name like "%portfolio%"
-        AND series_works.series_id = series.id
-        AND series_works.work_id = works.id
-      SQL
-      @photo_ids = ActiveRecord::Base.connection.select_values(sql)
-    end
-    return @photo_ids.sample(num)
-  end
+
+  # def self.random_id(num = 1)
+  #   if @cached_photo_ids.nil?
+  #     sql = <<-SQL
+  #       SELECT DISTINCT works.id
+  #       FROM series, series_works, works
+  #       WHERE series.name like "%portfolio%"
+  #       AND series_works.series_id = series.id
+  #       AND series_works.work_id = works.id
+  #     SQL
+  #     @cached_photo_ids = ActiveRecord::Base.connection.select_values(sql)
+  #   end
+  #   return @cached_photo_ids.sample(num)
+  # end
 
 
 end

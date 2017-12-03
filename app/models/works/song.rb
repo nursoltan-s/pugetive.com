@@ -1,4 +1,6 @@
 class Song < Work
+  default_scope { music }
+
   has_one :lyric, foreign_key: :work_id
   has_many :albums, through: :series_works, source: :series, class_name: 'Album'
 
@@ -22,21 +24,7 @@ class Song < Work
 
 
   def self.random(num = 10)
-    find(self.random_id(num))
+    order("RAND()").limit(num)
   end
-
-  # REFACTOR move up to Work parent with defined interest_id
-  def self.random_id(num)
-    if @random_ids.nil?
-      sql = <<-SQL
-        SELECT id
-        FROM works
-        WHERE interest_id = #{MUSIC_INTEREST_ID}
-      SQL
-      @random_ids = ActiveRecord::Base.connection.select_values(sql)
-    end
-    return @random_ids.sample(num)
-  end
-
 
 end

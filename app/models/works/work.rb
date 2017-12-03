@@ -6,7 +6,7 @@ class Work < ApplicationRecord
 
   friendly_id :name, use: [:slugged, :history]
 
-  validates :interest_id, inclusion: {in: Interest.interest_ids}
+  validates :interest_id, inclusion: {in: Interest::INTEREST_IDS}
   validates :party_id, numericality: true
   validates :start_year, presence: true
   validates :live, inclusion: {in: BOOLEAN_OPTIONS}
@@ -42,6 +42,7 @@ class Work < ApplicationRecord
   scope :favorite,    -> {where(favorite: true)}
   scope :unfavorite,  -> {where(favorite: false)}
 
+  scope :software,    -> {where(interest_id: SOFTWARE_INTEREST_ID)}
   scope :music,       -> {where(interest_id: MUSIC_INTEREST_ID)}
   scope :film,        -> {where(interest_id: FILM_INTEREST_ID)}
   scope :photography, -> {where(interest_id: PHOTOGRAPHY_INTEREST_ID)}

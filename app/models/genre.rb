@@ -3,7 +3,7 @@ class Genre < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: [:slugged, :history]
 
-  validates :interest_id, inclusion: {in: Interest.interest_ids}
+  validates :interest_id, inclusion: {in: Interest::INTEREST_IDS}
   validates :name, presence: true
 
   belongs_to :interest

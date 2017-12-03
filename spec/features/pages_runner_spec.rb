@@ -5,10 +5,7 @@ feature "Vitising top level pages" do
   #   User.make(email: 'user@example.com', password: 'caplin')
   # end
   before(:each) do
-    prepare_interests
-    prepare_music
-    prepare_photography
-    prepare_writing
+    prepare_pugetive
   end
 
   scenario "visiting homepage" do
@@ -61,8 +58,8 @@ feature "Visiting sample resource show pages" do
     end
   end
 
-  scenario "Visiting sample photo pages" do
-    Photo.random(3).each do |photo|
+  scenario "Visiting photo pages" do
+    Photo.all.each do |photo|
       visit photo_path(photo)
       expect(page).to have_content photo.name
     end
