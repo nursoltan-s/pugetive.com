@@ -41,7 +41,7 @@ end
 
 feature "Visiting sample resource show pages" do
   scenario "Visiting app pages" do
-    App.random(5).each do |app|
+    App.random(3).each do |app|
       visit app_path(app)
       expect(page).to have_content app.name
       # expect(page).to have_content '<h1>Software</h1>'
@@ -49,14 +49,14 @@ feature "Visiting sample resource show pages" do
   end
 
   scenario "Music sample track pages" do
-    Song.random(5).each do |song|
+    Song.random(3).each do |song|
       visit song_path(song)
       expect(page).to have_content song.name
     end
   end
 
   scenario "Visiting sample photo pages" do
-    Photo.random(5).each do |photo|
+    Photo.random(3).each do |photo|
       visit photo_path(photo)
       expect(page).to have_content photo.name
     end
@@ -64,18 +64,38 @@ feature "Visiting sample resource show pages" do
 
 
   scenario "Visiting sample film pages" do
-    Movie.random(5).each do |movie|
+    Movie.random(3).each do |movie|
       visit movie_path(movie)
       expect(page).to have_content movie.name
     end
   end
 
   scenario "Visiting sample writing piece pages" do
-    Piece.random(5).each do |piece|
+    Piece.random(3).each do |piece|
       visit piece_path(piece)
       expect(page).to have_content piece.name
     end
   end
+
+
+end
+
+feature "Visiting sample tools and titles pages" do
+
+  scenario "Visiting sample tool pages" do
+    Tool.random(3).each do |tool|
+      visit tool_path(tool)
+      expect(page).to have_content tool.name
+    end
+  end
+
+  scenario "Visiting sample title pages" do
+    Title.random(3).each do |title|
+      visit title_path(title)
+      expect(page).to have_content title.name
+    end
+  end
+
 
 
 end

@@ -29,5 +29,20 @@ class Title < ActiveRecord::Base
     slug.blank? || name_changed?
   end
 
+  # Refactor: extract into shared module
+  def self.random(num = 10)
+    find(self.random_id(num))
+  end
+
+  def self.random_id(num)
+    if @random_ids.nil?
+      sql = <<-SQL
+        SELECT id
+        FROM titles
+      SQL
+      @random_ids = ActiveRecord::Base.connection.select_values(sql)
+    end
+    return @random_ids.sample(num)
+  end
 
 end

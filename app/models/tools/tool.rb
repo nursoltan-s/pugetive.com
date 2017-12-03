@@ -59,11 +59,6 @@ class Tool < ActiveRecord::Base
     works.map{|p| p.last_active_year}.max.to_i
   end
 
-  # def frequency
-  #   ((num_projects.to_f/ max_project_count(type)) * 3).round
-  # end
-
-
   def iphone?
     name.match(/iphone/i)
   end
@@ -72,21 +67,21 @@ class Tool < ActiveRecord::Base
     slug.blank? || name_changed?
   end
 
-  private
-    # def tool_frequencies_hash(category)
-    #   unless (@tool_frequencies_hash.nil? or @tool_frequencies_hash[category].nil?)
-    #     return @tool_frequencies_hash[category]
-    #   end
-    #   @tool_frequencies_hash = {}
-    #   @tool_frequencies_hash[category] = {}
 
-    #   Tool.send(category.downcase.pluralize).each do |tool|
-    #     @tool_frequencies_hash[category][tool.id] = tool.num_projects
-    #   end
-    #   @tool_frequencies_hash[category]
-    # end
+  # Refactor: extract into shared module
+  def self.random(num = 10)
+    find(self.random_id(num))
+  end
 
-    # def max_project_count(category)
-    #   tool_frequencies_hash(category).values.max
-    # end
+  def self.random_id(num)
+    if @random_ids.nil?
+      sql = <<-SQL
+        SELECT id
+        FROM tools
+      SQL
+      @random_ids = ActiveRecord::Base.connection.select_values(sql)
+    end
+    return @random_ids.sample(num)
+  end
+
 end
