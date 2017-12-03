@@ -1,2 +1,2 @@
-class GalleriesController < ApplicationController
+class GalleriesController < SeriesController
 end
