@@ -5,6 +5,6 @@
     %h1
       %span.tool-name= @title.name
     %p
-      Listing works where I operated as a #{content_tag(:i, @title.name)}.
+      Listing works where I operated as #{content_tag(:i, @title.name)}.
 
 = render 'works/stacked', works: @title.works, show_meta: true, show_genre: true
