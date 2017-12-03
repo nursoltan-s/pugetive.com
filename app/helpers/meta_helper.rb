@@ -64,7 +64,7 @@ module MetaHelper
 
     unless title_text.blank?
       rv << title_text
-      rv << ' :::'
+      rv << " #{DIVIDER}"
     end
     rv << " " + web_host
 
