@@ -15,7 +15,7 @@ Pugetive::Application.config.paperclip_image_opts = {
   s3_protocol:     PUGETIVE_CONFIG[Rails.env][:host_protocol],
   url:             ':s3_alias_url',
   path:            ':subject_class/:subject_id/:subject_class-:subject_id.:id.:style.:extension',
-  default_url:     "/images/default/missing.png"}
+  default_url:     "/errors/missing-image.png"}
 
 
 

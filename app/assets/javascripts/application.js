@@ -31,6 +31,11 @@ $(function(){
               });
       });
 
+  $(".thumbnail").on("error", function(){
+    $(this).attr('src', './errors/missing-image.png');
+  });
+
+
 });
 
 
