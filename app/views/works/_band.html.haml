@@ -3,7 +3,7 @@
     .medium-3.columns.medium-offset-2.medium-text-right.title-box
       %h3
         - if band.url.present?
-          = link_to(band.name, band.url)
+          = link_to(band.name, band.url, target: "_blank")
         - else
           = band.name
       .years
