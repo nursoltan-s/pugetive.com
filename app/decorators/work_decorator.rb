@@ -26,6 +26,24 @@ class WorkDecorator < Draper::Decorator
     h.raw(rv)
   end
 
+  def byline
+    text = "by #{h.content_tag(:b, model.party.name)}"
+    h.raw(h.content_tag(:p, text, class: 'artist'))
+  end
+
+  def genre_and_years
+    p_contents = ''
+    if model.genre
+      p_contents += h.content_tag(:span, h.link_to(work.genre.name, work.genre), class: 'genre')
+    end
+    p_contents += h.content_tag(:div, work.years, class: 'years')
+    return h.raw(h.content_tag(:p, h.raw(p_contents)))
+  end
+
+  def status
+    h.raw(h.content_tag(:p, h.raw("Status: #{h.combo_status(work)}"), class: 'status'))
+  end
+
   def thumbnail(link_to_original = false)
     return nil unless model.has_image?
     rv = ''
@@ -89,6 +107,27 @@ class WorkDecorator < Draper::Decorator
   end
 
 
+  def summary
+    return if model.summary.blank?
+    h.content_tag(:p, model.summary, class: 'summary')
+  end
+
+  def tools
+    return unless model.tools.any?
+    # Refactor
+    rv = ''
+    if model.active_tools.any?
+      text = h.raw(model.active_tools.map{|t| h.link_to(t.name, t)}.join(', '))
+      formatted_text = h.content_tag(:b, h.raw("Buzzwords: #{text}"))
+      rv += h.content_tag(:p, formatted_text, class: 'tools')
+    end
+    if work.legacy_tools.any?
+      text = h.raw(model.legacy_tools.map{|t| h.link_to(t.name, t)}.join(', '))
+      formatted_text = h.content_tag(:b, h.raw("Legacy: #{text}"))
+      rv += h.content_tag(:p, formatted_text, class: 'tools')
+    end
+    h.raw(rv)
+  end
 
   def source_website
     source = 'Originally posted to '

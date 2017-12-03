@@ -1,33 +1,22 @@
--# REFACTOR
-- work ||= movie
-- cache work do
-  %section.work{class: work.interest.token, itemscope: true}
+- cache movie do
+  - movie = movie.decorate
+  %section.work.film{itemscope: true}
     .row
 
       .medium-3.columns.medium-offset-2.medium-text-right.title-box
-        = render "works/#{work.interest.work_name.downcase}_meta_info", work: work
+        = movie.genre_and_years
+
+        = movie.status
+
+        = movie.thumbnail
+
+        = movie.titles_and_instruments
+
+        = render "works/admin_links", work: movie
 
       .medium-5.columns.end.info-box
-        %h3= link_to(work.name, work)
+        %h3= link_to(movie.name, movie)
 
-        - if work.has_thumbnail?
-          = thumbnail(work)
-        %p.artist
-          by
-          %b= work.party.name
-          - if work.party.alias?
-            %i.subdued [solo alias]
+        = movie.summary
 
-        -# = work.decorate.series_info
-        - if work.summary.present?
-          %p.summary
-            = work.summary
-
-        - if work.active_tools.any?
-          %p.tools
-            %b Buzzwords:
-            = raw(work.active_tools.map{|t| link_to(t.name, t)}.join(', '))
-        - if work.legacy_tools.any?
-          %p.tools
-            %b Legacy:
-            = raw(work.legacy_tools.map{|t| link_to(t.name, t)}.join(', '))
+        = movie.tools
