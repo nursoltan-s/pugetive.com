@@ -3,9 +3,6 @@ Pugetive.com
 
 I've migrated the site to toddgehman.com, but serving the repo named after the previous location.
 
-*How am I doing, Code Climate?*
-
-[![Code Climate](https://codeclimate.com/github/pugetive/pugetive.com/badges/gpa.svg)](https://codeclimate.com/github/pugetive/pugetive.com)
 
 Server Setup/Maintenance
 ------------------------
