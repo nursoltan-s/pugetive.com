@@ -1,4 +1,4 @@
-class Band < Artist
+class Band < Party
 
   SAMPLE_TRACKS = {'Lushy' => {file: "/music/lushy-bella-beretta.mp3", name: 'Bella Beretta'},
                    'An American Starlet' => {file: "/music/starlet-half-a-heart.mp3", name: 'Half a Heart'},
