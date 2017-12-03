@@ -110,6 +110,10 @@ class Work < ApplicationRecord
     DateRange.new(start_year, stop_year)
   end
 
+  def stop_year
+    read_attribute(:stop_year) || Time.now.year
+  end
+
   def mine?
     author_id == 1
   end

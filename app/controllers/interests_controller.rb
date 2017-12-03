@@ -38,10 +38,11 @@ class InterestsController < MetaResourceController
 
   def photography
     authorize(@interest)
-    # @series = Series.includes(photographs: [:titles, :tools, :interest]).photography
-    @portfolios = Gallery.portfolio
-    @series     = Gallery.non_portfolio.photography
-    @profiles   = Photo.websites.sorted
+    @portfolios = Gallery.portfolio.sort_by{|p| -p.photos.count}
+    @series     = Gallery.non_portfolio.sort_by{|p| -p.stop_year}
+
+    # Refactor: Profiles need a new data model
+    @profiles   = Photo.websites.sort_by{|p| -p.stop_year}
     render :photography
   end
 
