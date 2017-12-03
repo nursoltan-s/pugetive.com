@@ -1,6 +1,20 @@
 class Gallery < Series
   has_many :photos, through: :series_works, source: :work, class_name: 'Photo'
 
+  default_scope {photography}
+
+  def self.photography
+    select("DISTINCT series.*").joins(:works).where(works: {interest_id: PHOTOGRAPHY_INTEREST_ID})
+  end
+
+  def self.portfolio
+    where('series.name LIKE "%portfolio%"')
+  end
+
+  def self.non_portfolio
+    where('series.name NOT LIKE "%portfolio%"')
+  end
+
 
   def prev(photo)
     location = photos.sorted.index(photo)
