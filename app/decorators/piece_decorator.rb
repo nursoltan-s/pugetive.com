@@ -1,4 +1,4 @@
-class PieceDecorator < Draper::Decorator
+class PieceDecorator < WorkDecorator
   delegate_all
 
   def title

@@ -13,10 +13,6 @@ class Photo < Work
   scope :sorted, -> {order("stop_year DESC, instagram_id DESC, flickr_id DESC")}
   scope :websites,    -> {where('name LIKE "%flickr%" OR name LIKE "%instagram%"')}
 
-  def self.model_name
-    Work.model_name
-  end
-
   def camera
     tools.first
   end

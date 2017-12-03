@@ -1,4 +1,4 @@
-class PhotoDecorator < SeriesDecorator
+class PhotoDecorator < WorkDecorator
   delegate_all
 
   def photo_meta
