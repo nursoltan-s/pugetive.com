@@ -73,6 +73,10 @@ class Work < ApplicationRecord
   end
 
 
+  def canonical_path
+    "/#{interest.work_name.downcase.pluralize}/#{slug}"
+  end
+
 
   def image_token
     'work'

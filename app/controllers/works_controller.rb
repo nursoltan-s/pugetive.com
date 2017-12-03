@@ -1,6 +1,15 @@
 class WorksController < MetaResourceController
 
 
+  def show
+    authorize(:about, :home?)
+    # Works are now served via subclasses
+    # and this sends any old requests onto the new handlers
+    if params[:controller] == 'works' and
+      params[:action] == 'show'
+      redirect_to @work.canonical_path
+    end
+  end
 
   def tools
     @work = Work.friendly.find(params[:work_id])
