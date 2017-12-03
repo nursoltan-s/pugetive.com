@@ -2,17 +2,20 @@
 - show_meta ||= false
 - show_genre ||= false
 
-%ol.works
-  - works.each do |work|
-    %li{class: work.favorite? ? 'favorite' : nil}
-      %span.work-name= work.decorate.title
-      - if work.photography?
-        .row
-          .small-2.columns= link_to(thumbnail(work), work)
-          .small-6.columns.end
-            - if show_meta
-              %span.meta
-                %span.years= work.years
-                - if show_genre
-                  = work.decorate.genre_info
-                = work.decorate.album_info
+.row
+  .medium-7.medium-offset-5.columns
+    %section.works
+      %ol.works
+        - works.each do |work|
+          %li{class: work.favorite? ? 'favorite' : nil}
+            %span.work-name= work.decorate.title
+            - if work.photography?
+              .row
+                .small-2.columns= link_to(thumbnail(work), work)
+                .small-6.columns.end
+                  - if show_meta
+                    %span.meta
+                      %span.years= work.years
+                      - if show_genre
+                        = work.decorate.genre_info
+                      = work.decorate.album_info
