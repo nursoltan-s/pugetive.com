@@ -6,7 +6,7 @@ class Photo < Work
 
   has_many :galleries, through: :series_works, source: :series, class_name: 'Gallery'
 
-  default_scope {where(interest_id: PHOTOGRAPHY_INTEREST_ID)}
+  default_scope {includes(:flickr_urls).where(interest_id: PHOTOGRAPHY_INTEREST_ID)}
 
   scope :flickr,      -> {where("flickr_id IS NOT NULL AND flickr_id != ''")}
   scope :sorted, -> {order("stop_year DESC, instagram_id DESC, flickr_id DESC, id DESC")}
@@ -42,7 +42,6 @@ class Photo < Work
   end
 
   def self.random(num = 10)
-    # REFACTOR; Need to select only from portfolio-selectd items.
     order("RAND()").limit(num)
   end
 
