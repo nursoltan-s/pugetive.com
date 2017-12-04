@@ -46,7 +46,7 @@ module IconHelper
   end
 
   def env_icon(token = '')
-    if ENVIRONMENT_ICONS[token.to_s]
+    if ENVIRONMENT_ICONS[token.to_sym]
       return awesome_icon(ENVIRONMENT_ICONS[token.to_sym])
     else
       return awesome_icon('code-fork')
