@@ -53,8 +53,14 @@ module PrepareHelpers
   end
 
   def prepare_software
+    amazon = create(:app, name: 'Amazon.com', favorite: true)
     ['Amazon.com', '43 Things', 'Hopville', 'Major White', 'FAIR'].each do |name|
       create(:app, name: name, favorite: name != 'Major White')
+    end
+
+    ['C', 'Perl'].each do |name|
+      tool = create(:tool, name: name, type: 'Language', category: 'Software')
+      amazon.tools << tool
     end
   end
 

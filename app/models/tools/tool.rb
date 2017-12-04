@@ -4,9 +4,10 @@ class Tool < ActiveRecord::Base
   friendly_id :name, use: [:slugged, :history]
 
   TYPES = ['Language', 'System', 'Program', 'Concept', 'Instrument']
+
   validates :name, presence: true
   validates :type, inclusion: {in: TYPES}
-  validates :category, inclusion: {in: Interest.categories}
+  validates :category, inclusion: {in: Interest::CATEGORIES}
   validates :front_end, inclusion: {in: BOOLEAN_OPTIONS}
   validates :fluency, numericality: true
 
@@ -29,9 +30,7 @@ class Tool < ActiveRecord::Base
 
   scope :programs,    -> {where(type: 'Program')}
 
-
-
-  has_many :wields
+  has_many :wields, dependent: :destroy
   has_many :works, through: :wields
 
   def self.types

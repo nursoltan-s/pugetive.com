@@ -1,5 +1,6 @@
 class Interest < ApplicationRecord
 
+  CATEGORIES = ['Software', 'Music', 'Photography', 'Film', 'Writing']
   INTEREST_IDS = [1, 2, 3, 4, 5]
 
   extend FriendlyId
@@ -17,10 +18,6 @@ class Interest < ApplicationRecord
 
   scope :live, -> {where(public: true)}
   scope :software, -> {where(id: SOFTWARE_INTEREST_ID)}
-
-  def self.categories
-    all.map(&:name)
-  end
 
   def music?
     id == MUSIC_INTEREST_ID
