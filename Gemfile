@@ -73,7 +73,6 @@ group :development, :test do
   gem 'better_errors'
   gem 'byebug'
   gem "factory_bot_rails", "~> 4.0"
-  # gem 'quiet_assets'
 end
 
 group :development do
