@@ -37,19 +37,6 @@ class Series < ApplicationRecord
     where('name LIKE "%haiku%"').first
   end
 
-
-  # def music?
-  #   works.where(interest_id: MUSIC_INTEREST_ID).any?
-  # end
-
-  # def writing?
-  #   works.where(interest_id: WRITING_INTEREST_ID).any?
-  # end
-
-  # def photography?
-  #   works.where(interest_id: PHOTOGRAPHY_INTEREST_ID).any?
-  # end
-
   def has_image?
     image.url.present? and not image.url(:thumb).match(/missing/)
   end
@@ -58,7 +45,6 @@ class Series < ApplicationRecord
     return nil unless works.any?
     works.first.interest.token
   end
-
 
   def artist
     return nil unless works.any?
@@ -89,20 +75,12 @@ class Series < ApplicationRecord
     list
   end
 
-  def date_range
-    DateRange.new(start_year, stop_year)
-  end
-
   def start_year
     works.minimum(:start_year)
   end
 
   def stop_year
     works.maximum(:stop_year)
-  end
-
-  def years
-    date_range.years
   end
 
   def should_generate_new_friendly_id?
