@@ -89,20 +89,9 @@ class Tool < ActiveRecord::Base
     resume.alpha - resume_current
   end
 
-  # Refactor: extract into shared module
   def self.random(num = 10)
-    find(self.random_id(num))
+    order("RAND()").limit(num)
   end
 
-  def self.random_id(num)
-    if @random_ids.nil?
-      sql = <<-SQL
-        SELECT id
-        FROM tools
-      SQL
-      @random_ids = ActiveRecord::Base.connection.select_values(sql)
-    end
-    return @random_ids.sample(num)
-  end
 
 end

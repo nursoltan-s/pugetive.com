@@ -124,6 +124,8 @@ class Work < ApplicationRecord
     slug.blank? || name_changed?
   end
 
-
+  def self.random(num = 10)
+    order("RAND()").limit(num)
+  end
 
 end

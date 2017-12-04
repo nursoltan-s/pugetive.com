@@ -41,11 +41,6 @@ class Photo < Work
 
   end
 
-  def self.random(num = 10)
-    order("RAND()").limit(num)
-  end
-
-
   private
 
     def update_flickr_url(token)
