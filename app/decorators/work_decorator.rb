@@ -20,8 +20,12 @@ class WorkDecorator < Draper::Decorator
   end
 
   def live_link
-    return unless model.url.present? and model.live?
-    h.raw(h.link_to(h.raw("Live link #{h.external_icon}"), work.url))
+    return unless model.url.present?
+    if model.live?
+      h.raw(h.link_to(h.raw("Live link #{h.external_icon}"), work.url))
+    elsif model.archived?
+      h.raw(h.link_to(h.raw("Internet archive #{h.external_icon}"), work.url))
+    end
   end
 
   def location_display

@@ -1,3 +1,5 @@
+WEB_ARCHIVE_DOMAIN = 'web.archive.org'
+
 class App < Work
   default_scope { software }
 
@@ -13,6 +15,11 @@ class App < Work
 
   def self.solo
     joins(:party).where("parties.id = 1 OR parties.alias = 1")
+  end
+
+  def archived?
+    return false if url.blank?
+    url.match(/#{WEB_ARCHIVE_DOMAIN}/)
   end
 
 end
