@@ -13,7 +13,7 @@ class InterestsController < MetaResourceController
     @featured = []
     @pro_projects = []
     @side_projects = []
-    App.sorted.each do |app|
+    App.includes(:titles).sorted.each do |app|
       if app.favorite?
         @featured << app
       end
