@@ -6,6 +6,11 @@ class Song < Work
 
   belongs_to :author, class_name: 'Artist'
 
+
+  def self.random(num = 10)
+    order("RAND()").limit(num)
+  end
+
   def solo?
     party_id == TODD_PARTY_ID or party.alias?
   end
@@ -27,9 +32,9 @@ class Song < Work
     soundcloud_id.present?
   end
 
-
-  def self.random(num = 10)
-    order("RAND()").limit(num)
+  def daw
+    self.tools.where("name like 'garageband' or name like 'protools'").first
   end
+
 
 end

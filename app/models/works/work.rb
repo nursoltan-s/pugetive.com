@@ -3,6 +3,7 @@ class Work < ApplicationRecord
   STATUSES = ['pre', 'production', 'post', 'released', 'scrapped', 'retired']
 
   extend FriendlyId
+  include Rangeable
 
   friendly_id :name, use: [:slugged, :history]
 
@@ -22,7 +23,7 @@ class Work < ApplicationRecord
   belongs_to :party
   belongs_to :genre
 
-  # Refactor out
+  # Songs or writing Piecds
   has_one :lyric
 
   has_many :roles, dependent: :destroy
@@ -54,7 +55,6 @@ class Work < ApplicationRecord
     party_id == TODD_PARTY_ID
   end
 
-
   # Keep this in parent class because
   # both Song and Piece models use it
   def has_lyric?
@@ -68,7 +68,6 @@ class Work < ApplicationRecord
   def canonical_path
     "/#{interest.work_name.downcase.pluralize}/#{slug}"
   end
-
 
   def image_token
     'work'
@@ -94,18 +93,6 @@ class Work < ApplicationRecord
     interest_id == FILM_INTEREST_ID
   end
 
-  def years
-    date_range.years
-  end
-
-  def date_range
-    DateRange.new(start_year, stop_year)
-  end
-
-  def stop_year
-    read_attribute(:stop_year) || Time.now.year
-  end
-
   def mine?
     author_id == 1
   end
@@ -118,14 +105,6 @@ class Work < ApplicationRecord
     instagram_id.present? or flickr_id.present?
   end
 
-  def daw
-    self.tools.where("name like 'garageband' or name like 'protools'").first
-  end
-
-  def should_generate_new_friendly_id?
-    slug.blank? || name_changed?
-  end
-
   def active_tools
     wields.where(legacy: false).map{|w| w.tool}
   end
@@ -133,6 +112,11 @@ class Work < ApplicationRecord
   def legacy_tools
     wields.where(legacy: true).map{|w| w.tool}
   end
+
+  def should_generate_new_friendly_id?
+    slug.blank? || name_changed?
+  end
+
 
 
 end

@@ -1,6 +1,8 @@
 class Series < ApplicationRecord
 
   extend FriendlyId
+  include  Rangeable
+
   friendly_id :name, use: [:slugged, :history]
 
   validates :name, presence: true, uniqueness: true
