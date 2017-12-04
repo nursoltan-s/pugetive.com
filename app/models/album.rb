@@ -1,8 +1,13 @@
 class Album < Series
-  # default_scope {music}
+
+  default_scope {includes(songs: [:titles, :tools, :party])}
+
+  has_many :songs, through: :series_works, source: :work, class_name: 'Song'
+  has_many :titles, through: :songs
+  has_many :tools, through: :songs
 
   def self.music
-    includes(works: [:titles, :tools, :interest]).joins(:works).where(works: {interest_id: MUSIC_INTEREST_ID})
+    joins(:songs)
   end
 
   def self.band
@@ -21,5 +26,12 @@ class Album < Series
     solo.music.uniq.sort{|a, b| b.stop_year <=> a.stop_year}
   end
 
+  def start_year
+    songs.map(&:start_year).min
+  end
+
+  def stop_year
+    songs.map(&:stop_year).max
+  end
 
 end

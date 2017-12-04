@@ -11,7 +11,7 @@
         %span.titles
           = raw(series.titles.sort_by{|t| t.sort}.map{|t| link_to(t.name, t)}.join(', '))
         %span.tools
-          = raw(series.instruments.map{|t| link_to(t.name, t)}.join(', '))
+          = raw(series.tools.map{|t| link_to(t.name, t)}.join(', '))
 
         - if series.has_image?
           = link_to(image_tag(series.image.url(:thumb)), series.image.url(:original), target: "_blank")

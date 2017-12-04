@@ -75,6 +75,9 @@ GEM
       rack (>= 0.9.0)
     bindex (0.5.0)
     builder (3.2.3)
+    bullet (5.6.1)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.10.0)
     byebug (9.1.0)
     capistrano (3.10.0)
       airbrussh (>= 1.0.0)
@@ -327,6 +330,7 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.0.0)
       execjs (>= 0.3.0, < 3)
+    uniform_notifier (1.10.0)
     warden (1.2.7)
       rack (>= 1.0)
     web-console (3.5.1)
@@ -353,6 +357,7 @@ DEPENDENCIES
   awesome_nested_set
   aws-sdk (~> 2)
   better_errors
+  bullet
   byebug
   capistrano
   capistrano-bundler

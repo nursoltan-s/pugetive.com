@@ -113,11 +113,11 @@ class Work < ApplicationRecord
   end
 
   def active_tools
-    wields.where(legacy: false).map{|w| w.tool}
+    wields.includes(:tool).where(legacy: false).map{|w| w.tool}
   end
 
   def legacy_tools
-    wields.where(legacy: true).map{|w| w.tool}
+    wields.includes(:tool).where(legacy: true).map{|w| w.tool}
   end
 
   def should_generate_new_friendly_id?

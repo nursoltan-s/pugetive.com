@@ -81,7 +81,6 @@ class WorkDecorator < Draper::Decorator
   end
 
   def tools_display(label = true)
-    return unless model.tools.any?
     h.raw(active_tools_display(label) + legacy_tools_display(label))
   end
 

@@ -11,9 +11,10 @@ class Series < ApplicationRecord
   has_many :series_works, dependent: :destroy
 
   has_many :works, through: :series_works
+  has_many :titles, through: :works
 
-  has_many :songs,  through: :series_works, source: :work, class_name: 'Song'
   has_many :pieces, through: :series_works, source: :work, class_name: 'Piece'
+  has_many :tools, through: :pieces
 
   has_attached_file(:image, Pugetive::Application.config.paperclip_image_opts)
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
@@ -51,36 +52,12 @@ class Series < ApplicationRecord
     works.first.party
   end
 
-  def titles
-    list = []
-    works.each do |work|
-      work.titles.each do |title|
-        unless list.include?(title)
-          list << title
-        end
-      end
-    end
-    list
-  end
-
-  def instruments
-    list = []
-    works.each do |work|
-      work.tools.reject{|t| t.category != 'Instrument'}.each do |title|
-        unless list.include?(title)
-          list << title
-        end
-      end
-    end
-    list
-  end
-
   def start_year
-    works.minimum(:start_year)
+    works.map(&:start_year).min
   end
 
   def stop_year
-    works.maximum(:stop_year)
+    works.map(&:stop_year).max
   end
 
   def should_generate_new_friendly_id?
