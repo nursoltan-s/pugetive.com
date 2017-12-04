@@ -10,4 +10,8 @@
     %p= @tool.decorate.tool_list_info
 
 
-= render "works/stacked", works: @tool.works, show_meta: true, show_genre: true
+
+- if @tool.works.size < 6
+  = render("works/list", works: @tool.works)
+- else
+  = render 'works/stacked', works: @tool.works, show_meta: true
