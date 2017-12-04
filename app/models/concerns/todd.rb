@@ -1,6 +1,6 @@
 class Todd
 
-  delegate :summary, :objective, :email_address, :phone_number, :address, to: :user
+  delegate :summary, :objective, :address, to: :user
 
   def initialize
     @software = Interest.find(SOFTWARE_INTEREST_ID)
@@ -12,6 +12,14 @@ class Todd
 
   # @jobs = Company.all.sort_by{|c| c.start_year}.reverse
   # @side_projects = Project.amateur
+
+  def email
+    Email.first
+  end
+
+  def phone
+    Phone.first
+  end
 
   def jobs
     [@fair] + Company.all.sort_by{|c| c.stop_year}.reverse

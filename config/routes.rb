@@ -47,7 +47,7 @@ Rails.application.routes.draw do
 
   get 'works/:work_id/tools' => 'works#tools', as: 'work_tools'
 
-  get 'todd-gehman-resume' => 'resume#show', as: :resume
+  get 'todd-gehman-resume' => 'resume#show', as: :resume_generator
   match 'settings' => 'users#edit', via: [:get, :patch], as: :settings
 
   get 'artists/:slug' => 'parties#show'

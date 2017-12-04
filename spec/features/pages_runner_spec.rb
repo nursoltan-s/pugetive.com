@@ -99,6 +99,12 @@ feature "Visiting sample tools and titles pages" do
     end
   end
 
+end
 
+
+feature "resume handling" do
+  scenario "generating a new resume"
+
+  scenario "downloading the public resume"
 
 end

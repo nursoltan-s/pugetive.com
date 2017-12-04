@@ -9,6 +9,6 @@ describe App, '#random' do
     num = rand(App.count)
     results = App.random(num)
     expect(results.size).to eq(num)
-    expect(results.first.interest_id).to eq(SOFTWARE_INTEREST_ID)
+    expect(results.first).to be_an_instance_of(App)
   end
 end

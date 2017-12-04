@@ -4,7 +4,7 @@
     %p Actively seeking my next big gig in New York City.
     %p
       = render "resume/button"
-      = link_to("Generate", "/todd-gehman-resume.pdf", rel: "nofollow", data: {visible_to: 'admin'}, class: 'small button')
+      = link_to("Generate", resume_generator_path, rel: "nofollow", data: {visible_to: 'admin'}, class: 'small button')
 .row
   .small-12.medium-offset-3-medium-6.columns
     = render "layouts/tabs", tabs: [{title: 'Featured Projects',
