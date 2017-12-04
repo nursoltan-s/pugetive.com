@@ -8,20 +8,7 @@ module ApplicationHelper
   end
 
   def status(work)
-    case work.status.to_sym
-    when :pre
-      return "Pre-Production"
-    when :production
-      return "In Production"
-    when :post
-      return "Post-Production"
-    when :scrapped
-      return "Unfinished"
-    when :retired
-      return "Retired"
-    when :released
-      return "Released"
-    end
+    Work::STATUS_TEXT[work.status.to_sym]
   end
 
   def combo_status(work)

@@ -1,6 +1,13 @@
 class Work < ApplicationRecord
 
   STATUSES = ['pre', 'production', 'post', 'released', 'scrapped', 'retired']
+  STATUS_TEXT = {pre: "Pre-Production",
+                 production: "In Production",
+                 post: "Post-Production",
+                 scrapped: "Unfinished",
+                 retired: "Retired",
+                 released: "Released"}
+
 
   extend FriendlyId
   include Rangeable
