@@ -8,12 +8,12 @@ class User < ActiveRecord::Base
     self.id == 1
   end
 
-  def email
-    Email.first
+  def email_address
+    Email.first.address
   end
 
-  def phone
-    Phone.first
+  def phone_number
+    Phone.first.address
   end
 
   def address

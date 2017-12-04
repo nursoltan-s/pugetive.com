@@ -1,6 +1,6 @@
 class Todd
 
-  delegate :summary, :objective, :email, :phone, :address, to: :user
+  delegate :summary, :objective, :email_address, :phone_number, :address, to: :user
 
   def initialize
     @software = Interest.find(SOFTWARE_INTEREST_ID)
