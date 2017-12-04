@@ -246,7 +246,6 @@ module IconHelper
       favicon_link_tag("icons/favicons/android-chrome-192x192.png",
                        rel: "icon",
                        type: "image/png",
-                       href: "/",
                        sizes: "192x192")
 
 
