@@ -26,6 +26,7 @@ class Tool < ActiveRecord::Base
   scope :film,        -> {where(category: 'Film')}
   scope :writing,     -> {where(category: 'Writing')}
 
+
   scope :instruments, -> {where(type: 'Instrument')}
 
   scope :programs,    -> {where(type: 'Program')}
@@ -67,6 +68,26 @@ class Tool < ActiveRecord::Base
     slug.blank? || name_changed?
   end
 
+  def self.resume_current
+    sql = <<-SQL
+      SELECT tools.*, COUNT(works.id) AS num_works
+      FROM tools
+      LEFT JOIN wields
+        ON wields.tool_id = tools.id
+      LEFT JOIN works
+        ON wields.work_id = works.id
+      WHERE tools.resume = 1
+      AND works.interest_id = 1
+      AND (works.stop_year = '' OR works.stop_year IS NULL OR works.stop_year > ?)
+      GROUP BY tools.id
+      ORDER BY tools.name
+    SQL
+    Tool.find_by_sql([sql, Time.now.year - 1])
+  end
+
+  def self.resume_lapsed
+    resume.alpha - resume_current
+  end
 
   # Refactor: extract into shared module
   def self.random(num = 10)
