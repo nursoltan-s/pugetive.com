@@ -12,6 +12,6 @@
 
 
 - if @tool.works.size < 6
-  = render("works/list", works: @tool.works)
+  = render("works/list", works: @tool.works.sorted)
 - else
-  = render 'works/stacked', works: @tool.works, show_meta: true
+  = render 'works/stacked', works: @tool.works.sorted, show_meta: true
