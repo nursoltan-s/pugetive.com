@@ -5,7 +5,7 @@ I've migrated the site to toddgehman.com, but still serving the pugetive.com rep
 
 *How am I doing, Code Climate?*
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/634d2e5d5da0475d51f4/maintainability)](https://codeclimate.com/github/pugetive/pugetive.com/maintainability)
 
 Server Setup/Maintenance
 ------------------------
