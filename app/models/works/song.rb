@@ -10,6 +10,11 @@ class Song < Work
     party_id == TODD_PARTY_ID or party.alias?
   end
 
+  # Refactor OUT
+  def has_audio?
+    soundcloud_id.present?
+  end
+
   def has_lyric?
     unless interest_id == MUSIC_INTEREST_ID or
       interest_id == WRITING_INTEREST_ID

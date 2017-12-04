@@ -7,4 +7,18 @@ class User < ActiveRecord::Base
   def admin?
     self.id == 1
   end
+
+  def email
+    Email.first
+  end
+
+  def phone
+    Phone.first
+  end
+
+  def address
+    Address.first
+  end
+
+
 end

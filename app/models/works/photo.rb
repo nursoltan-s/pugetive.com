@@ -16,7 +16,6 @@ class Photo < Work
     tools.first
   end
 
-
   def year
     years
   end

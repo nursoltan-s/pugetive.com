@@ -6,7 +6,6 @@ class ResumeController < ApplicationController
     authorize :resume, :show?
 
     @todd = Todd.new
-    # render pdf: "show", layout: 'pdf'
 
     respond_to do |format|
       format.pdf do

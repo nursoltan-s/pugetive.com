@@ -1,5 +1,7 @@
 class Todd
 
+  delegate :summary, :objective, :email, :phone, :address, to: :user
+
   def initialize
     @software = Interest.find(SOFTWARE_INTEREST_ID)
     @fair = NonProfit.find(23)
@@ -11,24 +13,12 @@ class Todd
   # @jobs = Company.all.sort_by{|c| c.start_year}.reverse
   # @side_projects = Project.amateur
 
-  def email
-    Email.first
-  end
-
-  def phone
-    Phone.first
-  end
-
-  def address
-    Address.first
-  end
-
   def jobs
     [@fair] + Company.all.sort_by{|c| c.stop_year}.reverse
   end
 
   def side_projects
-    @software.works.solo.sorted
+    App.solo.sorted
   end
 
   def awards
@@ -86,17 +76,6 @@ class Todd
     Account.find_by_company('LinkedIn')
   end
 
-  def one_liner
-    user.one_liner
-  end
-
-  def summary
-    user.summary
-  end
-
-  def objective
-    user.objective
-  end
 
   def update(attribute, value)
     user.update_attribute(attribute, value)

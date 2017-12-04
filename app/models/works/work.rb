@@ -55,23 +55,8 @@ class Work < ApplicationRecord
   end
 
 
-  # Refactor OUT
-  has_many :flickr_urls, foreign_key: :work_id
-
-  def blog?
-    name =~ /blog/i
-  end
-
-  # Refactor OUT
-  def camera
-    return nil unless photography?
-    return tools.first
-  end
-  # Refactor OUT
-  def has_audio?
-    soundcloud_id.present?
-  end
-  # Refactor OUT
+  # Keep this in parent class because
+  # both Song and Piece models use it
   def has_lyric?
     unless interest_id == MUSIC_INTEREST_ID or
       interest_id == WRITING_INTEREST_ID
@@ -79,7 +64,6 @@ class Work < ApplicationRecord
     end
     lyric.present?
   end
-
 
   def canonical_path
     "/#{interest.work_name.downcase.pluralize}/#{slug}"

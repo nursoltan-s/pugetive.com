@@ -1,0 +1,7 @@
+%section.work
+  .title= app.name
+  .dates= app.years
+  .url
+    - if app.url.present? and app.live?
+      = app.url
+  %p.description= app.description

@@ -21,12 +21,13 @@ class Piece < Work
     where(interest_id: WRITING_INTEREST_ID) - blogs - reviews - haiku.pieces
   end
 
-  def blog?
-    name =~ /blog/i
-  end
-
   def self.random(num = 10)
     order("RAND()").limit(num)
+  end
+
+
+  def blog?
+    name =~ /blog/i
   end
 
 
