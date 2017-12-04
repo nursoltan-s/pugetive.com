@@ -1,4 +1,19 @@
+ENVIRONMENT_ICONS = {development: 'laptop',
+                     staging:     'cloud',
+                     production:  'cloud'}
+
+SOCIAL_ICONS = {facebook:   'facebook-square',
+                flickr:     'flickr',
+                github:     'github',
+                instagram:  'instagram',
+                linkedin:   'linkedin',
+                medium:     'medium',
+                twitter:    'twitter-square',
+                soundcloud: 'soundcloud'}
+
+
 module IconHelper
+
 
 
   def admin_icon
@@ -31,13 +46,8 @@ module IconHelper
   end
 
   def env_icon(token = '')
-    case token.to_sym
-    when :development
-      return awesome_icon('laptop')
-    when :staging
-      return awesome_icon('cloud')
-    when :production
-      return awesome_icon('cloud')
+    if ENVIRONMENT_ICONS[token.to_s]
+      return awesome_icon(ENVIRONMENT_ICONS[token.to_sym])
     else
       return awesome_icon('code-fork')
     end
@@ -88,24 +98,7 @@ module IconHelper
   end
 
   def social_icon(token)
-    case token.to_sym
-    when :facebook
-      awesome_icon('facebook-square')
-    when :flickr
-      awesome_icon('flickr')
-    when :github
-      awesome_icon('github')
-    when :instagram
-      awesome_icon('instagram')
-    when :linkedin
-      awesome_icon('linkedin')
-    when :medium
-      awesome_icon('medium')
-    when :twitter
-      awesome_icon('twitter-square')
-    when :soundcloud
-      awesome_icon('soundcloud')
-    end
+    awesome_icon(SOCIAL_ICONS[token.to_sym])
   end
 
   def spinner
