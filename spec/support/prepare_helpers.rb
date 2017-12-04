@@ -53,15 +53,27 @@ module PrepareHelpers
   end
 
   def prepare_software
-    amazon = create(:app, name: 'Amazon.com', favorite: true)
-    ['Amazon.com', '43 Things', 'Hopville', 'Major White', 'FAIR'].each do |name|
+    amazon = create(:app,
+                    name: 'amazon.com',
+                    favorite: true,
+                    start_year: 1998,
+                    stop_year: 2004)
+    fair = create(:app, name: 'fair.org', favorite: true, start_year: 2015, stop_year: 2017)
+
+    ['43 Things', 'Hopville', 'Major White'].each do |name|
       create(:app, name: name, favorite: name != 'Major White')
     end
 
     ['C', 'Perl'].each do |name|
-      tool = create(:tool, name: name, type: 'Language', category: 'Software')
+      tool = create(:tool, name: name, type: 'Language', category: 'Software', resume: true)
       amazon.tools << tool
     end
+
+    php = create(:tool, name: 'PHP', type: 'Language', category: 'Software', resume: true)
+    wordpress = create(:tool, name: "Wordpress", type: 'System', category: 'Software', resume: true)
+
+    fair.tools << php
+    fair.tools << wordpress
   end
 
 

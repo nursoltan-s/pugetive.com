@@ -16,7 +16,7 @@ feature "Vitising top level pages" do
 
   scenario "visiting software page" do
     visit "/software"
-    expect(page).to have_content 'Amazon'
+    expect(page).to have_content /amazon/
   end
 
   scenario "visiting music page" do
