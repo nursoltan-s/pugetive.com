@@ -34,21 +34,9 @@ class Photo < Work
     # url_o : Original
     return unless flickr_id.present?
 
-    FlickRaw.api_key = PUGETIVE_CONFIG[Rails.env][:flickr_api_key]
-    FlickRaw.shared_secret = PUGETIVE_CONFIG[Rails.env][:flickr_secret]
-
     info = flickr.photos.getInfo(photo_id: flickr_id)
     [:url_q, :url, :url_b, :url_o, :url_z].each do |token|
-      if url = FlickRaw.send(token, info)
-        existing_row = flickr_urls.find_by_flickraw_token(token)
-        if existing_row
-          existing_row.update!(url: url)
-        else
-          FlickrUrl.create!(work_id: self.id, flickraw_token: token, url: url)
-        end
-      else
-        raise 'failed'
-      end
+      update_flickr_url(token)
     end
 
   end
@@ -59,20 +47,21 @@ class Photo < Work
   end
 
 
-  # def self.random_id(num = 1)
-  #   if @cached_photo_ids.nil?
-  #     sql = <<-SQL
-  #       SELECT DISTINCT works.id
-  #       FROM series, series_works, works
-  #       WHERE series.name like "%portfolio%"
-  #       AND series_works.series_id = series.id
-  #       AND series_works.work_id = works.id
-  #     SQL
-  #     @cached_photo_ids = ActiveRecord::Base.connection.select_values(sql)
-  #   end
-  #   return @cached_photo_ids.sample(num)
-  # end
+  private
 
+    def update_flickr_url(token)
+      FlickRaw.api_key = PUGETIVE_CONFIG[Rails.env][:flickr_api_key]
+      FlickRaw.shared_secret = PUGETIVE_CONFIG[Rails.env][:flickr_secret]
+
+      if url = FlickRaw.send(token, info)
+        existing_row = flickr_urls.find_by_flickraw_token(token)
+        if existing_row
+          existing_row.update!(url: url)
+        else
+          FlickrUrl.create!(work_id: self.id, flickraw_token: token, url: url)
+        end
+      end
+    end
 
 end
 
