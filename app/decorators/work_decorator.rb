@@ -21,7 +21,7 @@ class WorkDecorator < Draper::Decorator
 
   def live_link
     return unless model.url.present? and model.live?
-    h.raw(h.link_to(h.raw("Link #{h.external_icon}"), work.url))
+    h.raw(h.link_to(h.raw("Live link #{h.external_icon}"), work.url))
   end
 
   def location_display
