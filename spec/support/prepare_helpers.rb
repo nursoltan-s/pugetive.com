@@ -82,6 +82,9 @@ module PrepareHelpers
     starlet = create(:artist, name: 'An American Starlet')
     lushy   = create(:party, name: 'Lushy', type: 'Band')
 
+    songwriter = create(:title, name: 'Songwriter', category: 'Music')
+    performer = create(:title, name: 'Performer', category: 'Music')
+
     ["Maker's Lament", 'Half a Heart', 'The Dirt'].each do |name|
       song = create(:song,
                     name: name,
@@ -98,6 +101,7 @@ module PrepareHelpers
     ['Aurora Boring Alice', 'Oh, Well', 'Golden Gardens', 'Wild Sands'].each do |name|
       song = create(:song, name: name, party_id: todd.id, start_year: 2015)
       song.series_works.create(series_id: shingletown.id, work_id: song.id)
+      song.titles << songwriter
     end
   end
 
@@ -131,7 +135,19 @@ end
 
 def prepare_film
   doc = create(:genre, name: 'Documentary', interest_id: FILM_INTEREST_ID)
+  exp = create(:genre, name: 'Experimental', interest_id: FILM_INTEREST_ID)
+  director = create(:title, name: 'Director', category: 'Film')
+  editor = create(:title, name: 'Editor', category: 'Film')
+
+
   omo = create(:movie, name: 'Omo Valley Sunday', genre_id: doc.id)
+  globetrot = create(:movie, name: '43 Countries', genre_id: doc.id)
+  cummings = create(:movie, name: 'nobody loses all the time', genre_id: exp.id)
+
+  omo.titles << director
+  globetrot.titles << director
+  cummings.titles << director
+
 
 end
 

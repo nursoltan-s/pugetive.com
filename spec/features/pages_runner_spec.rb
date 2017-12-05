@@ -43,8 +43,14 @@ end
 
 
 feature "Visiting sample resource show pages" do
+  before(:each) do
+    prepare_pugetive
+  end
+
   scenario "Visiting app pages" do
-    App.random(3).each do |app|
+    apps = App.random(3)
+    expect(apps.size).to eq 3
+    apps.each do |app|
       visit app_path(app)
       expect(page).to have_content app.name
       # expect(page).to have_content '<h1>Software</h1>'
@@ -52,14 +58,18 @@ feature "Visiting sample resource show pages" do
   end
 
   scenario "Music sample track pages" do
-    Song.random(3).each do |song|
+    songs = Song.random(3)
+    expect(songs.size).to eq 3
+    songs.each do |song|
       visit song_path(song)
       expect(page).to have_content song.name
     end
   end
 
   scenario "Visiting photo pages" do
-    Photo.all.each do |photo|
+    photos = Photo.random(3)
+    expect(photos.size).to eq 3
+    photos.each do |photo|
       visit photo_path(photo)
       expect(page).to have_content photo.name
     end
@@ -67,14 +77,18 @@ feature "Visiting sample resource show pages" do
 
 
   scenario "Visiting sample film pages" do
-    Movie.random(3).each do |movie|
+    movies = Movie.random(3)
+    expect(movies.size).to eq 3
+    movies.each do |movie|
       visit movie_path(movie)
       expect(page).to have_content movie.name
     end
   end
 
   scenario "Visiting sample writing piece pages" do
-    Piece.random(3).each do |piece|
+    pieces = Piece.random(3)
+    expect(pieces.size).to eq 3
+    pieces.each do |piece|
       visit piece_path(piece)
       expect(page).to have_content piece.name
     end
@@ -85,15 +99,23 @@ end
 
 feature "Visiting sample tools and titles pages" do
 
+  before(:each) do
+    prepare_pugetive
+  end
+
   scenario "Visiting sample tool pages" do
-    Tool.random(3).each do |tool|
+    tools = Tool.random(3)
+    expect(tools.size).to eq 3
+    tools.each do |tool|
       visit tool_path(tool)
       expect(page).to have_content tool.name
     end
   end
 
   scenario "Visiting sample title pages" do
-    Title.random(3).each do |title|
+    titles = Title.random(3)
+    expect(titles.size).to eq 3
+    titles.each do |title|
       visit title_path(title)
       expect(page).to have_content title.name
     end

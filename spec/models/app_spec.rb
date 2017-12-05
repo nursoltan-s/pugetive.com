@@ -6,9 +6,8 @@ describe App, '#random' do
   end
 
   it 'returns a random array of apps' do
-    num = rand(App.count)
-    results = App.random(num)
-    expect(results.size).to eq(num)
+    results = App.random(3)
+    expect(results.size).to eq(3)
     expect(results.first).to be_an_instance_of(App)
   end
 end

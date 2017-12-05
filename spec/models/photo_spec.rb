@@ -9,7 +9,7 @@ describe Photo, '#random' do
     num = rand(Photo.count)
     random_photos = Photo.random(num)
     expect(random_photos.size).to eq(num)
-    expect(random_photos.first.class.name).to eq('Photo')
+    expect(random_photos.first).to be_an_instance_of(Photo)
   end
 end
 
