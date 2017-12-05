@@ -65,7 +65,7 @@ class InterestsController < MetaResourceController
     render :writing
   end
 
-  caches_action :software, :music, :photography, :film, :writing
+  caches_action :show
 
   private
 
