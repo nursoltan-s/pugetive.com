@@ -65,7 +65,7 @@ class InterestsController < MetaResourceController
     render :writing
   end
 
-  caches_action :show
+  # caches_action :show
 
   private
 
