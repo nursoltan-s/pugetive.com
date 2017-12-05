@@ -21,7 +21,8 @@ describe Tool do
     work = tool.works.first
 
     expect(tools.size).to be > 0
-    expect(work.stop_year).to be > Time.now.year - 2
+    stop = work.stop_year.nil? ? Time.now.year : work.stop_year
+    expect(stop).to be > Time.now.year - 2
     expect(tool.resume?).to be true
   end
 

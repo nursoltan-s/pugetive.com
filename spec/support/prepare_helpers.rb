@@ -1,6 +1,7 @@
 module PrepareHelpers
   def prepare_pugetive
     prepare_interests
+
     prepare_software
     prepare_music
     prepare_photography
@@ -53,27 +54,60 @@ module PrepareHelpers
   end
 
   def prepare_software
+    developer = create(:title, name: 'Developer', category: 'Software')
+    founder =   create(:title, name: 'Founder',   category: 'Software')
+
+
     amazon = create(:app,
                     name: 'amazon.com',
                     favorite: true,
                     start_year: 1998,
                     stop_year: 2004)
-    fair = create(:app, name: 'fair.org', favorite: true, start_year: 2015, stop_year: 2017)
 
-    ['43 Things', 'Hopville', 'Major White'].each do |name|
-      create(:app, name: name, favorite: name != 'Major White')
-    end
+    fair =   create(:app,
+                    name: 'fair.org',
+                    favorite: true,
+                    start_year: 2015,
+                    stop_year: nil)
 
-    ['C', 'Perl'].each do |name|
-      tool = create(:tool, name: name, type: 'Language', category: 'Software', resume: true)
-      amazon.tools << tool
-    end
+    things = create(:app,
+                    name: '43 Things',
+                    favorite: true,
+                    start_year: 2004,
+                    stop_year: 2009)
 
-    php = create(:tool, name: 'PHP', type: 'Language', category: 'Software', resume: true)
-    wordpress = create(:tool, name: "Wordpress", type: 'System', category: 'Software', resume: true)
+    mw =     create(:app,
+                    name: "Major White",
+                    favorite: false,
+                    start_year: 2006,
+                    stop_year: 2010)
+    hopville = create(:app, name: 'Hopville', favorite: true)
+
+    amazon.titles   << developer
+    fair.titles     << developer
+    things.titles   << developer
+    mw.titles       << developer
+    hopville.titles << developer
+    hopville.titles << founder
+
+    c         = create(:tool, name: 'C',         type: 'Language', category: 'Software', resume: true)
+    perl      = create(:tool, name: 'Perl',      type: 'Language', category: 'Software', resume: true)
+    php       = create(:tool, name: 'PHP',       type: 'Language', category: 'Software', resume: true)
+    catsubst  = create(:tool, name: 'Catsubst',  type: 'Language', category: 'Software', resume: false)
+
+    emacs     = create(:tool, name: 'Emacs',     type: 'Program',  category: 'Software', resume: false)
+    sublime   = create(:tool, name: 'Sublime',   type: 'Program',  category: 'Software', resume: false)
+
+    wordpress = create(:tool, name: 'Wordpress', type: 'System',   category: 'Software', resume: true)
+
+    amazon.tools << c
+    amazon.tools << perl
+    amazon.tools << emacs
+    amazon.tools << catsubst
 
     fair.tools << php
     fair.tools << wordpress
+    fair.tools << sublime
   end
 
 
