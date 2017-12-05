@@ -85,6 +85,7 @@ group :development do
   gem 'capistrano-rvm', '~> 0.0.3'
   # gem 'capistrano-shortcuts', path: '/Users/todd/Sites/capistrano-shortcuts', require: false
   gem 'capistrano-shortcuts', "~> 0.5.1", require: false
+  gem 'guard-rspec', require: false
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 3.0'

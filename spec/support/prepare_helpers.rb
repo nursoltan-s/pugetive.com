@@ -120,6 +120,7 @@ module PrepareHelpers
     duchess     = create(:album, name: 'Duchess of Hazard')
     shingletown = create(:album, name: 'Shingletown Country')
     nyc         = create(:album, name: 'New York City')
+    empty       = create(:album, name: 'Empty Album')
 
     starlet     = create(:artist, name: 'An American Starlet', type: 'Band')
     lushy       = create(:artist, name: 'Lushy', type: 'Band')
