@@ -151,24 +151,25 @@ module PrepareHelpers
     animals   = create(:gallery, name: 'Animals Series')
     abstract  = create(:gallery, name: 'Abstract Portfolio')
     street    = create(:gallery, name: 'Street Phography Portfolio')
+    empty     = create(:gallery, name: 'Empty Gallery')
 
     ['Second Avenue', 'Trees in St Ignatius', 'Salk Exit'].each do |name|
       photo = create(:photo, name: name)
-      photo.series_works.create(work_id: photo.id, series_id: abstract.id)
+      abstract.photos << photo
     end
 
     ['Kaela', 'Nikki', 'Katherine', 'Kate'].each do |name|
       photo = create(:photo, name: name)
-      photo.series_works.create(work_id: photo.id, series_id: portraits.id)
+      portraits.photos << photo
     end
 
     ['Donkey at Grand Canyon', 'Utah Bull', 'Faroe Island Goat'].each do |name|
       photo = create(:photo, name: name)
-      photo.series_works.create(work_id: photo.id, series_id: animals.id)
+      animals.photos << photo
     end
 
     photo = create(:photo, name: 'Tenderloin Pedestrian')
-    photo.series_works.create(work_id: photo.id, series_id: street.id)
+    street.photos << photo
 
   end
 end
