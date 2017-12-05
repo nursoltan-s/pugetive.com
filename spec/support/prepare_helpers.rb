@@ -154,6 +154,9 @@ module PrepareHelpers
     street    = create(:gallery, name: 'Street Phography Portfolio')
     empty     = create(:gallery, name: 'Empty Gallery')
 
+    # Pending Refactor: move photo profilesl to accounts
+    instagram = create(:photo,   name: 'Instagram Profile', stop_year: nil)
+
     ['Second Avenue', 'Trees in St Ignatius', 'Salk Exit'].each do |name|
       photo = create(:photo, name: name)
       abstract.photos << photo
