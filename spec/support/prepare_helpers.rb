@@ -64,7 +64,7 @@ module PrepareHelpers
                     start_year: 1998,
                     stop_year: 2004)
 
-    fair =   create(:app,
+    fair   = create(:app,
                     name: 'fair.org',
                     favorite: true,
                     start_year: 2015,
@@ -76,7 +76,7 @@ module PrepareHelpers
                     start_year: 2004,
                     stop_year: 2009)
 
-    mw =     create(:app,
+    mw     = create(:app,
                     name: "Major White",
                     favorite: false,
                     start_year: 2006,
@@ -112,12 +112,18 @@ module PrepareHelpers
 
 
   def prepare_music
-    duchess = create(:album, name: 'Duchess of Hazard')
-    starlet = create(:artist, name: 'An American Starlet')
-    lushy   = create(:party, name: 'Lushy', type: 'Band')
-
     songwriter = create(:title, name: 'Songwriter', category: 'Music')
-    performer = create(:title, name: 'Performer', category: 'Music')
+    performer  = create(:title, name: 'Performer',  category: 'Music')
+    mastering  = create(:title, name: 'Mastering',  category: 'Music')
+
+
+    duchess     = create(:album, name: 'Duchess of Hazard')
+    shingletown = create(:album, name: 'Shingletown Country')
+    nyc         = create(:album, name: 'New York City')
+
+    starlet     = create(:artist, name: 'An American Starlet', type: 'Band')
+    lushy       = create(:artist, name: 'Lushy', type: 'Band')
+    todd        = create(:artist, name: 'Todd Gehamn', id: TODD_PARTY_ID)
 
     ["Maker's Lament", 'Half a Heart', 'The Dirt'].each do |name|
       song = create(:song,
@@ -125,17 +131,17 @@ module PrepareHelpers
                     party_id: starlet.id,
                     interest_id: MUSIC_INTEREST_ID,
                     start_year: 2004)
-      song.series_works.create(series_id: duchess.id, work_id: song.id)
+      duchess.songs << song
     end
-
-
-    shingletown = create(:album, name: 'Shingletown Country')
-    todd = create(:artist, name: 'Todd', id: TODD_PARTY_ID)
 
     ['Aurora Boring Alice', 'Oh, Well', 'Golden Gardens', 'Wild Sands'].each do |name|
       song = create(:song, name: name, party_id: todd.id, start_year: 2015)
-      song.series_works.create(series_id: shingletown.id, work_id: song.id)
-      song.titles << songwriter
+      shingletown.songs << song
+    end
+
+    ["Astrid's Eyes", "Subway Club", "Green-Wood"].each do |name|
+      song = create(:song, name: name, party_id: todd.id, start_year: 2016)
+      nyc.songs << song
     end
   end
 
@@ -168,27 +174,27 @@ module PrepareHelpers
 end
 
 def prepare_film
-  doc = create(:genre, name: 'Documentary', interest_id: FILM_INTEREST_ID)
+  doc = create(:genre, name: 'Documentary',  interest_id: FILM_INTEREST_ID)
   exp = create(:genre, name: 'Experimental', interest_id: FILM_INTEREST_ID)
+
   director = create(:title, name: 'Director', category: 'Film')
-  editor = create(:title, name: 'Editor', category: 'Film')
+  editor   = create(:title, name: 'Editor',   category: 'Film')
 
 
-  omo = create(:movie, name: 'Omo Valley Sunday', genre_id: doc.id)
-  globetrot = create(:movie, name: '43 Countries', genre_id: doc.id)
-  cummings = create(:movie, name: 'nobody loses all the time', genre_id: exp.id)
+  omo       = create(:movie, name: 'Omo Valley Sunday',         genre_id: doc.id)
+  globetrot = create(:movie, name: '43 Countries',              genre_id: doc.id)
+  cummings  = create(:movie, name: 'nobody loses all the time', genre_id: exp.id)
 
-  omo.titles << director
+  omo.titles       << director
   globetrot.titles << director
-  cummings.titles << director
-
+  cummings.titles  << director
 
 end
 
 def prepare_writing
-  amazon = create(:party, name: 'Amazon.com')
-  medium = create(:piece, name: 'Medium Blog', start_year: 2015)
-  haiku = create(:series, name: 'Bad Rock Haiku')
+  amazon = create(:party,  name: 'Amazon.com')
+  medium = create(:piece,  name: 'Medium Blog', start_year: 2015)
+  haiku  = create(:series, name: 'Bad Rock Haiku')
 
   ['Jesse Sykes', 'Spoon', 'Mike Dumovich'].each do |name|
     piece = create(:piece, name: name)
