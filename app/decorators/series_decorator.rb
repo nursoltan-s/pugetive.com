@@ -11,11 +11,11 @@ class SeriesDecorator < Draper::Decorator
   #   end
 
   def titles_and_tools
-    titles_text = h.raw(model.titles.sort_by{|t| t.sort}.map{|t| h.link_to(t.name, t)}.join(', '))
-    rv = h.content_tag(:span, h.raw(titles_text), class: 'titles')
-    tools_text = h.raw(model.tools.map{|t| h.link_to(t.name, t)}.join(', '))
-    rv += h.content_tag(:span, h.raw(tools_text), class: 'tools')
-    rv
+    # titles_text = h.raw(model.titles.sort_by{|t| t.sort}.map{|t| h.link_to(t.name, t)}.join(', '))
+    # rv = h.content_tag(:span, h.raw(titles_text), class: 'titles')
+    # tools_text = h.raw(model.tools.map{|t| h.link_to(t.name, t)}.join(', '))
+    # rv += h.content_tag(:span, h.raw(tools_text), class: 'tools')
+    # rv
   end
 
   def years_display

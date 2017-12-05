@@ -3,8 +3,8 @@ class Album < Series
   default_scope {includes(songs: [:titles, :tools, :party])}
 
   has_many :songs, through: :series_works, source: :work, class_name: 'Song'
-  has_many :titles, through: :songs
-  has_many :tools, through: :songs
+  # has_many :titles, through: :songs
+  # has_many :tools, through: :songs
 
   def self.music
     joins(:songs)

@@ -11,7 +11,7 @@ class Series < ApplicationRecord
   has_many :series_works, dependent: :destroy
 
   has_many :works, through: :series_works
-  has_many :titles, through: :works
+  has_many :titles, -> { uniq }, through: :works
 
   has_many :pieces, through: :series_works, source: :work, class_name: 'Piece'
   has_many :tools, through: :pieces

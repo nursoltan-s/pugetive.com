@@ -8,8 +8,8 @@
           %span.years
             = series.years
 
-        %span.titles
-          = raw(series.titles.sort_by{|t| t.sort}.map{|t| link_to(t.name, t)}.join(', '))
+        -# %span.titles
+        -#   = raw(series.titles.sort_by{|t| t.sort}.map{|t| link_to(t.name, t)}.join(', '))
         %span.tools
           = raw(series.tools.map{|t| link_to(t.name, t)}.join(', '))
 
