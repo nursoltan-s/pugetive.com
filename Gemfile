@@ -33,6 +33,7 @@ gem 'jbuilder', '~> 2.0'
 # Use Capistrano for deployment
 gem 'capistrano-rails', group: :development
 
+gem 'actionpack-action_caching'
 gem 'actionview-encoded_mail_to'
 # This was required to use Draper under Rails 5
 gem 'activemodel-serializers-xml', git: 'https://github.com/rails/activemodel-serializers-xml'

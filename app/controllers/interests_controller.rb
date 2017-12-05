@@ -65,6 +65,8 @@ class InterestsController < MetaResourceController
     render :writing
   end
 
+  caches_action :software, :music, :photography, :film, :writing
+
   private
 
     # Never trust parameters from the scary internet, only allow the white list through.
