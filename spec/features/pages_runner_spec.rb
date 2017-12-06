@@ -27,6 +27,8 @@ feature "Vitising top level pages" do
   scenario "visiting photography page" do
     visit '/photography'
     expect(page).to have_content 'Street'
+    expect(page).to have_content 'Instagram'
+    expect(page).to have_content 'Flickr'
   end
 
   scenario "visiting documentary page" do

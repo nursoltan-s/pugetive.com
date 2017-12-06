@@ -11,6 +11,8 @@ module PrepareHelpers
 
   def prepare_interests
 
+
+
     create(:interest,
            name: 'Software',
            sort: 1,
@@ -116,7 +118,6 @@ module PrepareHelpers
     performer  = create(:title, name: 'Performer',  category: 'Music')
     mastering  = create(:title, name: 'Mastering',  category: 'Music')
 
-
     duchess     = create(:album, name: 'Duchess of Hazard')
     shingletown = create(:album, name: 'Shingletown Country')
     nyc         = create(:album, name: 'New York City')
@@ -124,7 +125,8 @@ module PrepareHelpers
 
     starlet     = create(:artist, name: 'An American Starlet', type: 'Band')
     lushy       = create(:artist, name: 'Lushy', type: 'Band')
-    todd        = create(:artist, name: 'Todd Gehamn', id: TODD_PARTY_ID)
+
+    todd        = create(:artist, name: 'Todd Gehman', id: TODD_PARTY_ID)
 
     ["Maker's Lament", 'Half a Heart', 'The Dirt'].each do |name|
       song = create(:song,
@@ -144,6 +146,7 @@ module PrepareHelpers
       song = create(:song, name: name, party_id: todd.id, start_year: 2016)
       nyc.songs << song
     end
+
   end
 
 
@@ -154,8 +157,8 @@ module PrepareHelpers
     street    = create(:gallery, name: 'Street Phography Portfolio')
     empty     = create(:gallery, name: 'Empty Gallery')
 
-    # Pending Refactor: move photo profilesl to accounts
-    instagram = create(:photo,   name: 'Instagram Profile', stop_year: nil)
+    instagram = create(:account, name: 'Instagram', interest_id: PHOTOGRAPHY_INTEREST_ID, start_year: 2010, stop_year: nil)
+    flickr    = create(:account, name: 'Flickr',    interest_id: PHOTOGRAPHY_INTEREST_ID, start_year: 2012, stop_year: 2014)
 
     ['Second Avenue', 'Trees in St Ignatius', 'Salk Exit'].each do |name|
       photo = create(:photo, name: name)
@@ -200,10 +203,15 @@ def prepare_writing
   amazon = create(:party,  name: 'Amazon.com')
   medium = create(:piece,  name: 'Medium Blog', start_year: 2015)
   haiku  = create(:series, name: 'Bad Rock Haiku')
+  begin
+    todd   = create(:party,  name: 'Todd Gehman', id: TODD_PARTY_ID)
+  rescue ActiveRecord::RecordNotUnique
+    todd = Artist.find(TODD_PARTY_ID)
+  end
 
-  ['Jesse Sykes', 'Spoon', 'Mike Dumovich'].each do |name|
-    piece = create(:piece, name: name)
-    piece.series_works.create(work_id: piece.id, series_id: haiku.id)
+  ['Haiku: Jesse Sykes at the Tractor Tavern', 'Haiku: Spoon at Neumos', 'Haiku: Mike Dumovich at the Josephine'].each do |name|
+    piece = create(:piece, name: name, party_id: TODD_PARTY_ID)
+    haiku.pieces << piece
   end
 
   ['Temperament', 'Black Sea', 'Wine for Dummies'].each do |name|

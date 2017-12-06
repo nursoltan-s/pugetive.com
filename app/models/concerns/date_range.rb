@@ -3,6 +3,7 @@ class DateRange
   attr_accessor :start_date, :stop_date
 
   def initialize(start_date, stop_date)
+    raise "DateRange objects require at least a start_date, which can be a date object or year integer" if start_date.blank?
     @start_date = parsed(start_date)
     @stop_date = parsed(stop_date)
   end

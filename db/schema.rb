@@ -13,12 +13,14 @@
 ActiveRecord::Schema.define(version: 20171206021711) do
 
   create_table "accounts", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string "company"
+    t.string "name"
     t.string "username"
     t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "interest_id", null: false
+    t.integer "start_year"
+    t.integer "stop_year"
   end
 
   create_table "addresses", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|

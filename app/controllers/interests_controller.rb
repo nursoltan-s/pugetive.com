@@ -41,8 +41,7 @@ class InterestsController < MetaResourceController
     @portfolios = Gallery.portfolio.sort_by{|p| -p.photos.count}
     @series     = Gallery.non_portfolio.sort_by{|p| -p.stop_year}
 
-    # Refactor: Profiles need a new data model
-    @profiles   = Photo.websites.sort_by{|p|  - (p.stop_year || Time.now.year)}
+    @profiles   = Account.photography
     render :photography
   end
 
