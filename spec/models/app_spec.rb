@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe App, '#random' do
   before(:each) do
-    prepare_pugetive
+    prepare_software
   end
 
   it 'returns a random array of apps' do
@@ -73,3 +73,4 @@ describe App, '#archived?' do
   end
 
 end
+

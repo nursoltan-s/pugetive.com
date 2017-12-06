@@ -1,17 +1,20 @@
 require 'rails_helper'
 
-describe Album, 'album methods' do
+describe Account, '#photography' do
   before(:each) do
     prepare_pugetive
   end
 
-  it '#photography should return a list of photo profiles' do
+  it 'should return a list of photo profiles' do
+    blog      = create(:account, name: 'Medium',    interest_id: WRITING_INTEREST_ID)
+    flickr    = create(:account, name: 'Flickr',    interest_id: PHOTOGRAPHY_INTEREST_ID)
+    instagram = create(:account, name: 'Instagram', interest_id: PHOTOGRAPHY_INTEREST_ID)
 
     profiles = Account.photography
 
-    expect(profiles.size).to be > 0
+    expect(profiles.size).to eq 2
     profiles.each do |profile|
-      expect(profile.photography?).to be_truthy
+      expect(profile.photography?).to be true
     end
   end
 

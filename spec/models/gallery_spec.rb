@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 
-describe Gallery, 'gallery methods' do
+describe Gallery, '#next' do
   before(:each) do
-    prepare_pugetive
+    prepare_photography
   end
 
-  it '#next returns the next photos in the gallery' do
+  it 'returns the next photos in the gallery' do
     portfolios = Gallery.portfolio.sample(2)
     expect(portfolios.size).to be > 0
     portfolios.each do |gallery|
@@ -14,6 +14,12 @@ describe Gallery, 'gallery methods' do
       next unless photos.size > 1
       expect(gallery.next(photos[0])).to eq photos[1]
     end
+  end
+end
+
+describe Gallery, '#prev' do
+  before(:each) do
+    prepare_photography
   end
 
   it '#prev returns the previous item in the series' do
@@ -25,3 +31,4 @@ describe Gallery, 'gallery methods' do
     end
   end
 end
+
