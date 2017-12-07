@@ -1,6 +1,6 @@
 module MusicHelpers
 
-  def prepare_music
+  def setup_music
     songwriter = create(:title, name: 'Songwriter', category: 'Music')
     performer  = create(:title, name: 'Performer',  category: 'Music')
     mastering  = create(:title, name: 'Mastering',  category: 'Music')

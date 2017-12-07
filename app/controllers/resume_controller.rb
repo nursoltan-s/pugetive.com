@@ -3,6 +3,7 @@ class ResumeController < ApplicationController
   rescue_from Pundit::NotAuthorizedError, with: :render_not_found
 
   def show
+
     authorize :resume, :show?
 
     @todd = Todd.new
@@ -30,5 +31,7 @@ class ResumeController < ApplicationController
       }
       return default.merge(options)
     end
+
+
 
 end

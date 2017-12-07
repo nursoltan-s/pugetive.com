@@ -1,5 +1,5 @@
 module FilmHelpers
-  def prepare_film
+  def setup_film
     doc = create(:genre, name: 'Documentary',  interest_id: FILM_INTEREST_ID)
     exp = create(:genre, name: 'Experimental', interest_id: FILM_INTEREST_ID)
 

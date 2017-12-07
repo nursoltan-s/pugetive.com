@@ -7,10 +7,9 @@ Rails.application.routes.draw do
   root 'about#home'
 
   get 'code', to: redirect('/software')
-  get 'interests' => 'interests#index'
-
+  get 'interests'  => 'interests#index'
   get 'about/home' => 'about#home'
-  get 'about' => 'about#about'
+  get 'about'      => 'about#about'
 
   resources :accounts
   resources :albums
@@ -41,16 +40,17 @@ Rails.application.routes.draw do
 
 
   devise_for :users
-  match 'status' => 'admin#status', via: [:get, :post], as: 'status'
-  get 'touch/:object_type/:object_id' => 'admin#touch', as: 'touch'
-  get 'exception/:id' => "admin#exception", as: :exception
+
+  match 'status'                      => 'admin#status',    via: [:get, :post], as: 'status'
+  get 'touch/:object_type/:object_id' => 'admin#touch',     as: 'touch'
+  get 'exception/:id'                 => "admin#exception", as: :exception
 
   get 'works/:work_id/tools' => 'works#tools', as: 'work_tools'
 
-  get 'todd-gehman-resume' => 'resume#show', as: :resume_generator
-  match 'settings' => 'users#edit', via: [:get, :patch], as: :settings
+  get '/resume'              => 'resume#show', as: :resume_generator
+  match 'settings'           => 'users#edit', via: [:get, :patch], as: :settings
 
-  get 'artists/:slug' => 'parties#show'
+  get 'artists/:slug'        => 'parties#show'
 
   resources :interests, path: '/'
 

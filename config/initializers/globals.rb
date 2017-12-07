@@ -6,11 +6,14 @@ SITE_DESCRIPTION = 'Online hub for Todd Gehman (internet handle: pugetive) and h
 US_STATES = Carmen::Country.coded('US').subregions.map{|subregion| [subregion.code, subregion.name]}
 YEARS_OF_LIFE = Time.now.year.downto(1970)
 
-TODD_PARTY_ID = 1
-AMAZON_GENRE_ID = 11
+TODD_USER_ID     = 1
+TODD_PARTY_ID    = 1
 
-FILM_INTEREST_ID        = 4
+AMAZON_GENRE_ID  = 11
+FAIR_PARTY_ID    = 23
+
+SOFTWARE_INTEREST_ID    = 1
 MUSIC_INTEREST_ID       = 2
 PHOTOGRAPHY_INTEREST_ID = 3
-SOFTWARE_INTEREST_ID    = 1
+FILM_INTEREST_ID        = 4
 WRITING_INTEREST_ID     = 5

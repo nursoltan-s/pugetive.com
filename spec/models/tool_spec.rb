@@ -2,8 +2,8 @@ require 'rails_helper'
 
 describe Tool, '#destroy' do
   before(:each) do
-    prepare_pugetive
-    prepare_software
+    setup_pugetive
+    setup_software
   end
 
   it 'destroys any associated wields' do
@@ -21,8 +21,8 @@ end
 
 describe Tool, '#resume_current' do
   before(:each) do
-    prepare_pugetive
-    prepare_software
+    setup_pugetive
+    setup_software
   end
 
   it 'shows resume-approved tools in active use' do
@@ -39,8 +39,8 @@ end
 
 describe Tool, '#resume_lapsed' do
   before(:each) do
-    prepare_pugetive
-    prepare_software
+    setup_pugetive
+    setup_software
   end
 
   it 'shows resume-approved tools no longer in use' do

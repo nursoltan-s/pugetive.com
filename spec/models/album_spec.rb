@@ -3,11 +3,12 @@ require 'rails_helper'
 describe Album, '#band_recordings' do
 
   before(:each) do
-    prepare_music
+    setup_music
   end
 
-  it 'should albums by third party artists' do
+  it "returns albums by bands I've played in" do
     albums = Album.band_recordings.sample(2)
+
     expect(albums.size).to eq 2
     albums.each do |series|
       expect(series.songs.size).to be > 0
@@ -17,12 +18,14 @@ describe Album, '#band_recordings' do
 end
 
 describe Album, '#solo_recordings' do
+
   before(:each) do
-    prepare_music
+    setup_music
   end
 
-  it 'should return albums by me' do
+  it 'returns albums by me' do
     albums = Album.solo_recordings.sample(2)
+
     expect(albums.size).to eq 2
     albums.each do |series|
       expect(series.songs.size).to be > 0

@@ -2,10 +2,10 @@ require 'rails_helper'
 
 describe Account, '#photography' do
   before(:each) do
-    prepare_pugetive
+    setup_pugetive
   end
 
-  it 'should return a list of photo profiles' do
+  it 'returns a list of photo profiles' do
     blog      = create(:account, name: 'Medium',    interest_id: WRITING_INTEREST_ID)
     flickr    = create(:account, name: 'Flickr',    interest_id: PHOTOGRAPHY_INTEREST_ID)
     instagram = create(:account, name: 'Instagram', interest_id: PHOTOGRAPHY_INTEREST_ID)
@@ -21,3 +21,6 @@ describe Account, '#photography' do
 end
 
 
+describe Account, '#blogs' do
+  it 'returns a list of blog accounts'
+end

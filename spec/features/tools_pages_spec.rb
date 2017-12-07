@@ -1,28 +1,20 @@
 require 'rails_helper'
 
-feature "Tools management" do
+feature "Viewing Tool pages" do
   before(:each) do
-    prepare_pugetive
+    setup_pugetive
   end
 
-  scenario "destroying a tool should redirect back to index page"
-
-end
-
-feature "Viewing tool show pages" do
-  before(:each) do
-    prepare_pugetive
-  end
-
-  scenario "as a regular visitor" do
-    prepare_software
-    prepare_music
+  scenario "as a visitor" do
+    setup_software
+    setup_music
 
     tools = Tool.random(3)
 
     expect(tools.size).to eq 3
     tools.each do |tool|
       visit tool_path(tool)
+
       expect(page).to have_content tool.name
     end
   end

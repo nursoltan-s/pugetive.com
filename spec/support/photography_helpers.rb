@@ -1,6 +1,6 @@
 module PhotographyHelpers
 
-  def prepare_photography
+  def setup_photography
     portraits = create(:gallery, name: 'Portaits Portfolio')
     animals   = create(:gallery, name: 'Animals Series')
     abstract  = create(:gallery, name: 'Abstract Portfolio')

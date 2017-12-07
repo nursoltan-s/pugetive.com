@@ -1,12 +1,9 @@
 require 'rails_helper'
 
 describe Piece, '#random' do
-  before(:each) do
-    prepare_writing
-  end
-
   it 'returns a random array of writing pieces' do
-    num = rand(10)
+    setup_writing
+    num = rand(Piece.count)
 
     pieces = Piece.random(num)
 
@@ -16,11 +13,10 @@ describe Piece, '#random' do
 end
 
 describe Piece, '#blogs' do
-  before(:each) do
-    prepare_writing
-  end
 
   it 'returns a list of blogs' do
+    setup_writing
+
     Piece.blogs.each do |piece|
       expect(piece.name).to match(/blog/i)
     end
@@ -28,13 +24,13 @@ describe Piece, '#blogs' do
 end
 
 describe Piece, '#reviews' do
-  before(:each) do
-    prepare_writing
-  end
 
   it 'returns a list of amazon.com reviews' do
+    setup_writing
     amazon = Party.find_by(name: 'Amazon.com')
+
     reviews = Piece.reviews
+
     expect(reviews.first.party_id).to match(amazon.id)
     expect(reviews.last.party_id).to match(amazon.id)
   end
@@ -42,12 +38,12 @@ describe Piece, '#reviews' do
 end
 
 describe Piece, '#haiku' do
-  before(:each) do
-    prepare_writing
-  end
 
-  it 'returns a series object composed of of bad rock haiku works' do
+  it 'returns a Series of bad rock haiku Works' do
+    setup_writing
+
     series = Piece.haiku
+
     expect(series.pieces.size).to be > 0
     expect(series.pieces.first).to be_a(Work)
   end
@@ -55,12 +51,11 @@ describe Piece, '#haiku' do
 end
 
 describe Piece, '#other_projects' do
-  before(:each) do
-    prepare_writing
-  end
+  it 'returns a list of misc writing Works' do
+    setup_writing
 
-  it 'returns a series of misc writngs' do
     pieces = Piece.other_projects
+
     expect(pieces.size).to be > 0
     [pieces.first, pieces.last].each do |piece|
       expect(Piece.blogs.include?(piece)).to be false

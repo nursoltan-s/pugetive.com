@@ -1,11 +1,11 @@
-module PrepareHelpers
+module PugetiveHelpers
 
-  def prepare_pugetive
-    prepare_interests
+  def setup_pugetive
+    setup_interests
     create(:artist, name: 'Todd Gehman', id: TODD_PARTY_ID)
   end
 
-  def prepare_interests
+  def setup_interests
     create(:interest,
            name: 'Software',
            sort: 1,
@@ -48,11 +48,19 @@ module PrepareHelpers
            id: WRITING_INTEREST_ID)
   end
 
+  def convert_pdf_to_page
+      temp_pdf = Tempfile.new('pdf')
+      temp_pdf << page.source.force_encoding('UTF-8')
+      reader = PDF::Reader.new(temp_pdf)
+      pdf_text = reader.pages.map(&:text)
+      temp_pdf.close
+      page.driver.response.instance_variable_set('@body', pdf_text)
+  end
+
 end
 
 
 RSpec.configure do |c|
-  c.include PrepareHelpers
+  c.include PugetiveHelpers
 end
-
 

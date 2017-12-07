@@ -1,6 +1,6 @@
 module SoftwareHelpers
 
-  def prepare_software
+  def setup_software
     developer = create(:title, name: 'Developer', category: 'Software')
     founder =   create(:title, name: 'Founder',   category: 'Software')
 
@@ -11,11 +11,11 @@ module SoftwareHelpers
                     start_year: 1998,
                     stop_year: 2004)
 
-    fair   = create(:app,
-                    name: 'fair.org',
-                    favorite: true,
-                    start_year: 2015,
-                    stop_year: nil)
+    fair_app   = create(:app,
+                        name: 'fair.org',
+                        favorite: true,
+                        start_year: 2015,
+                        stop_year: nil)
 
     things = create(:app,
                     name: '43 Things',
@@ -31,7 +31,7 @@ module SoftwareHelpers
     hopville = create(:app, name: 'Hopville', favorite: true)
 
     amazon.titles   << developer
-    fair.titles     << developer
+    fair_app.titles     << developer
     things.titles   << developer
     mw.titles       << developer
     hopville.titles << developer
@@ -52,9 +52,11 @@ module SoftwareHelpers
     amazon.tools << emacs
     amazon.tools << catsubst
 
-    fair.tools << php
-    fair.tools << wordpress
-    fair.tools << sublime
+    fair_app.tools << php
+    fair_app.tools << wordpress
+    fair_app.tools << sublime
+
+    fair_org = create(:party, name: 'FAIR', type: 'NonProfit')
   end
 
 end

@@ -3,11 +3,11 @@ require 'rails_helper'
 feature "Viewing homepage" do
 
   before(:each) do
-    prepare_pugetive
+    setup_pugetive
   end
 
-  scenario "as an anonymous browser" do
-    prepare_photography
+  scenario "as a visitor" do
+    setup_photography
 
     visit '/'
 
@@ -16,18 +16,13 @@ feature "Viewing homepage" do
 
 end
 
-feature "Viewing resumes" do
-  scenario "downloading the public resume as a regular visitor"
-  scenario "generating a new resume as admin"
-end
-
 feature "Viewing main software page" do
   before(:each) do
-    prepare_pugetive
+    setup_pugetive
   end
 
-  scenario "as an anonymous browser" do
-    prepare_software
+  scenario "as a visitor" do
+    setup_software
 
     visit "/software"
 
@@ -38,11 +33,11 @@ end
 
 feature "Viewing main music page" do
   before(:each) do
-    prepare_pugetive
+    setup_pugetive
   end
 
-  scenario "as an anonymous browser" do
-    prepare_music
+  scenario "as a visitor" do
+    setup_music
 
     visit "/music"
 
@@ -55,11 +50,11 @@ end
 feature "Viewing main photography page" do
 
   before(:each) do
-    prepare_pugetive
+    setup_pugetive
   end
 
-  scenario "as an anonymous browser" do
-    prepare_photography
+  scenario "as a visitor" do
+    setup_photography
 
     visit '/photography'
 
@@ -72,11 +67,11 @@ end
 
 feature "Viewing main film page" do
   before(:each) do
-    prepare_pugetive
+    setup_pugetive
   end
 
-  scenario "as an anonymous browser" do
-    prepare_film
+  scenario "as a visitor" do
+    setup_film
 
     visit '/film'
 
@@ -88,11 +83,11 @@ end
 
 feature "visiting main writing page" do
   before(:each) do
-    prepare_pugetive
+    setup_pugetive
   end
 
-  scenario "as an anonymous browser" do
-    prepare_writing
+  scenario "as a visitor" do
+    setup_writing
 
     visit '/writing'
 
@@ -100,5 +95,3 @@ feature "visiting main writing page" do
   end
 
 end
-
-
