@@ -31,9 +31,8 @@ gem 'jbuilder', '~> 2.0'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Capistrano for deployment
-gem 'capistrano-rails', group: :development
 
-gem 'actionpack-action_caching'
+# gem 'actionpack-action_caching'
 gem 'actionview-encoded_mail_to'
 # This was required to use Draper under Rails 5
 gem 'activemodel-serializers-xml', git: 'https://github.com/rails/activemodel-serializers-xml'
@@ -42,8 +41,6 @@ gem 'aws-sdk', '~> 2'
 gem 'carmen'
 gem 'dalli'
 gem 'devise'
-
-# Had to specify repo due to problems with Rails 5
 gem 'draper'
 gem 'flickraw'
 gem 'font-awesome-rails'
@@ -52,9 +49,7 @@ gem 'foundation-rails', '6.3'
 gem 'friendly_id'
 gem 'haml'
 gem 'haml-rails'
-gem 'honeybadger', '~> 3.1'
 gem 'jplayer-rails'
-gem 'newrelic_rpm'
 gem "nilify_blanks"
 # Dependencies on this gem broke deployment after a bundler update,
 # so pinning the gem to an earlier version.
@@ -69,6 +64,11 @@ gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 # gem 'wkhtmltopdf-binary-edge', '~> 0.12.3.0'
 
+group :production do
+  gem 'honeybadger', '~> 3.1'
+  gem 'newrelic_rpm'
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'better_errors'
@@ -82,6 +82,7 @@ group :development do
   gem 'capistrano-bundler'
   gem 'capistrano-newrelic'
   gem 'capistrano-passenger'
+  gem 'capistrano-rails'
   gem 'capistrano-rvm', '~> 0.0.3'
   # gem 'capistrano-shortcuts', path: '/Users/todd/Sites/capistrano-shortcuts', require: false
   gem 'capistrano-shortcuts', "~> 0.5.1", require: false
