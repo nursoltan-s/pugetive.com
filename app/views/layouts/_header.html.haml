@@ -1,3 +1,9 @@
-%header= render "layouts/nav"
+%header
+  -# We test this in ruby instead of JS to prevent FOUC on each page load
+  - if !home_page? and current_user and current_user.admin?
+    - raise 'doing it'
+    = render "layouts/private_menu"
+  = render "layouts/public_menu"
+
 = render 'layouts/flash'
 

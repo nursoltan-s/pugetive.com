@@ -18,25 +18,3 @@
 
 var Pugetive = {};
 
-$(function(){
-  $(document).foundation();
-
-  // FIXME rewrite in Vue
-  $('a.foundation-remote').one('click',
-      function() {
-        $clicked_link = $(this)
-        $.get($clicked_link.attr('href'),
-              function(data) {
-                $clicked_link.parent().find('.accordion-content').html(data)
-              });
-      });
-
-  $("img.thumbnail").on("error", function(){
-    $(this).attr('src', './errors/missing-image.png').attr('title', 'Error Loading Image');
-  });
-
-
-});
-
-
-

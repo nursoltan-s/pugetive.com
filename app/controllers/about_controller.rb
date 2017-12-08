@@ -3,9 +3,6 @@ class AboutController < ApplicationController
 
   def home
     authorize :about, :home?
-    # Interest.live.each do |interest|
-    #   instance_variable_set("@#{interest.token}", interest)
-    # end
     @todd = Party.find(TODD_PARTY_ID)
     @interests = Interest.live
     @photos = Photo.random(25)
