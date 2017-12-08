@@ -3,8 +3,7 @@ class Interest < ApplicationRecord
   CATEGORIES = ['Software', 'Music', 'Photography', 'Film', 'Writing']
   INTEREST_IDS = [1, 2, 3, 4, 5]
 
-  extend FriendlyId
-  friendly_id :name, use: [:slugged, :history]
+  include Sluggable
 
   validates :name, presence: true
   validates :sort, numericality: true
@@ -37,10 +36,6 @@ class Interest < ApplicationRecord
 
   def writing?
     id == WRITING_INTEREST_ID
-  end
-
-  def should_generate_new_friendly_id?
-    slug.blank? || name_changed?
   end
 
 

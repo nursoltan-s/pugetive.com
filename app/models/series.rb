@@ -1,9 +1,7 @@
 class Series < ApplicationRecord
 
-  extend FriendlyId
-  include  Rangeable
-
-  friendly_id :name, use: [:slugged, :history]
+  include Rangeable
+  include Sluggable
 
   validates :name, presence: true, uniqueness: true
   validates :audience, inclusion: {in: BOOLEAN_OPTIONS}
@@ -58,10 +56,6 @@ class Series < ApplicationRecord
 
   def stop_year
     works.map(&:stop_year).max
-  end
-
-  def should_generate_new_friendly_id?
-    slug.blank? || name_changed?
   end
 
   def self.random(num = 10)

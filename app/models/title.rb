@@ -1,7 +1,6 @@
 class Title < ActiveRecord::Base
 
-  extend FriendlyId
-  friendly_id :name, use: [:slugged, :history]
+  include Sluggable
 
   validates :name, presence: true
   validates :category, inclusion: {in: Interest::CATEGORIES}
@@ -23,10 +22,6 @@ class Title < ActiveRecord::Base
   def self.categories
     #FIXME make direct SQL call
     all.each.map{|t| t.category}.uniq
-  end
-
-  def should_generate_new_friendly_id?
-    slug.blank? || name_changed?
   end
 
   # Refactor: extract into shared module

@@ -30,7 +30,6 @@ module PhotographyHelpers
 
   end
 
-
 end
 
 RSpec.configure do |c|

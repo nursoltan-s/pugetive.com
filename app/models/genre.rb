@@ -1,7 +1,5 @@
 class Genre < ApplicationRecord
-
-  extend FriendlyId
-  friendly_id :name, use: [:slugged, :history]
+  include Sluggable
 
   validates :interest_id, inclusion: {in: Interest::INTEREST_IDS}
   validates :name, presence: true
@@ -16,9 +14,5 @@ class Genre < ApplicationRecord
   scope :writing,     -> {where(interest_id: WRITING_INTEREST_ID)}
 
   scope :alpha, -> {order(:name)}
-
-  def should_generate_new_friendly_id?
-    slug.blank? || name_changed?
-  end
 
 end

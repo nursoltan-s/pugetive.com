@@ -1,7 +1,6 @@
 class Party < ActiveRecord::Base
 
-  extend FriendlyId
-  friendly_id :name, use: [:slugged, :history]
+  include Sluggable
 
   TYPES = ['Company', 'Artist', 'School', 'NonProfit', 'Band']
   validates :name, presence: true
@@ -37,10 +36,6 @@ class Party < ActiveRecord::Base
 
   def date_range
     DateRange.new(start_year, stop_year)
-  end
-
-  def should_generate_new_friendly_id?
-    slug.blank? || name_changed?
   end
 
   def years

@@ -9,10 +9,8 @@ class Work < ApplicationRecord
                  released: "Released"}
 
 
-  extend FriendlyId
   include Rangeable
-
-  friendly_id :name, use: [:slugged, :history]
+  include Sluggable
 
   validates :interest_id, inclusion: {in: Interest::INTEREST_IDS}
   validates :party_id, numericality: true
@@ -118,10 +116,6 @@ class Work < ApplicationRecord
 
   def legacy_tools
     wields.includes(:tool).where(legacy: true).map{|w| w.tool}
-  end
-
-  def should_generate_new_friendly_id?
-    slug.blank? || name_changed?
   end
 
   def self.random(num = 10)
