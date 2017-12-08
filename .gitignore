@@ -32,6 +32,11 @@ config/secrets.yml
 config/newrelic.yml
 config/honeybadger.yml
 
+.env.test
+.env.development
+.env.staging
+.env.production
+
 # Ignore sublime stuff
 pugetive.sublime-workspace
 pugetive.sublime-project
