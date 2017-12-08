@@ -2,10 +2,15 @@ module PugetiveHelpers
 
   def setup_pugetive
     setup_interests
-    create(:artist, name: 'Todd Gehman', id: TODD_PARTY_ID)
+    todd = Artist.find(TODD_PARTY_ID) rescue nil
+    if todd.nil?
+      todd = create(:artist, name: 'Todd Gehman', id: TODD_PARTY_ID)
+    end
+
   end
 
   def setup_interests
+    return if Interest.any?
     create(:interest,
            name: 'Software',
            sort: 1,

@@ -35,8 +35,5 @@ describe Gallery do
     end
   end
 
-  after(:all) do
-    clean_db
-  end
 
 end

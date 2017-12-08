@@ -1,6 +1,7 @@
 module PhotographyHelpers
 
   def setup_photography
+    return if Gallery.any?
     portraits = create(:gallery, name: 'Portaits Portfolio')
     animals   = create(:gallery, name: 'Animals Series')
     abstract  = create(:gallery, name: 'Abstract Portfolio')

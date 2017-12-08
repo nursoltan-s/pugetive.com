@@ -8,7 +8,7 @@ describe Photo do
 
   describe '#random' do
     it 'returns a random array of photos' do
-      num = rand(Photo.count)
+      num = rand(Photo.count) + 1
       random_photos = Photo.random(num)
 
       expect(random_photos.size).to eq(num)
@@ -16,8 +16,5 @@ describe Photo do
     end
   end
 
-  after(:all) do
-    clean_db
-  end
 
 end

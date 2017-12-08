@@ -7,6 +7,8 @@ describe Account do
 
   describe '#photography' do
     it 'returns a list of photo profiles' do
+      Account.destroy_all
+
       blog      = create(:account, name: 'Medium',    interest_id: WRITING_INTEREST_ID)
       flickr    = create(:account, name: 'Flickr',    interest_id: PHOTOGRAPHY_INTEREST_ID)
       instagram = create(:account, name: 'Instagram', interest_id: PHOTOGRAPHY_INTEREST_ID)
@@ -23,10 +25,6 @@ describe Account do
 
   describe '#blogs' do
     it 'returns a list of blog accounts'
-  end
-
-  after(:all) do
-    clean_db
   end
 
 end

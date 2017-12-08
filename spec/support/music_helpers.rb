@@ -15,8 +15,9 @@ module MusicHelpers
     lushy       = create(:artist, name: 'Lushy', type: 'Band')
     shiners     = create(:artist, name: 'The Shiners', type: 'Band')
 
-    unless todd = Artist.find(TODD_PARTY_ID) rescue nil
-      todd = create(:artist, name: 'Todd Gehman', id: TODD_PARTY_ID)
+    todd = Artist.find(TODD_PARTY_ID) rescue nil
+    if todd.nil?
+      todd = create(:party, name: 'Todd Gehman', type: 'Artiat', id: TODD_PARTY_ID)
     end
 
     ["Maker's Lament", 'Half a Heart', 'The Dirt'].each do |name|
