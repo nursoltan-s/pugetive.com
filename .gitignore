@@ -26,6 +26,7 @@ vendor/bundle
 coverage/*
 
 # Ignore sekrit stuff
+config/database.yml
 config/pugetive.yml
 config/secrets.yml
 config/newrelic.yml
