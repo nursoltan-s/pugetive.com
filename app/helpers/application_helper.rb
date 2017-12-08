@@ -7,6 +7,10 @@ module ApplicationHelper
     current_user and current_user.admin?
   end
 
+  def home_page?
+    current_page?(root_path)
+  end
+
   def status(work)
     Work::STATUS_TEXT[work.status.to_sym]
   end
