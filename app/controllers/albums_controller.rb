@@ -1,3 +1,3 @@
-class AlbumsController < MetaResourceController
+class AlbumsController < SeriesController
 
 end

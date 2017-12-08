@@ -39,6 +39,26 @@ feature "Viewing song pages" do
   end
 end
 
+feature "Viewing album pages" do
+
+  before(:each) do
+    setup_pugetive
+  end
+
+  scenario "as a visitor" do
+    setup_music
+    albums = Album.band_recordings.sample(2) + Album.solo_recordings.sample(2)
+
+    expect(albums.size).to eq 4
+    albums.each do |album|
+      visit album_path(album)
+
+      expect(page).to have_content album.name
+    end
+  end
+
+end
+
 feature "Viewing photo pages" do
   before(:each) do
     setup_pugetive

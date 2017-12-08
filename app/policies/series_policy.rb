@@ -1,2 +1,3 @@
-class SeriesPolicy < PartyPolicy
+class SeriesPolicy < ApplicationPolicy
+
 end
