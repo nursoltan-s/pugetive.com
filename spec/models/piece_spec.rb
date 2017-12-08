@@ -1,68 +1,71 @@
 require 'rails_helper'
 
-describe Piece, '#random' do
-  it 'returns a random array of writing pieces' do
+describe Piece do
+
+  before(:all) do
+    setup_pugetive
     setup_writing
-    num = rand(Piece.count)
-
-    pieces = Piece.random(num)
-
-    expect(pieces.size).to eq num
   end
 
-end
+  describe '#random' do
+    it 'returns a random array of writing pieces' do
+      num = rand(Piece.count)
 
-describe Piece, '#blogs' do
+      pieces = Piece.random(num)
 
-  it 'returns a list of blogs' do
-    setup_writing
+      expect(pieces.size).to eq num
+    end
 
-    Piece.blogs.each do |piece|
-      expect(piece.name).to match(/blog/i)
+  end
+
+  describe '#blogs' do
+    it 'returns a list of blogs' do
+
+      Piece.blogs.each do |piece|
+        expect(piece.name).to match(/blog/i)
+      end
     end
   end
-end
 
-describe Piece, '#reviews' do
+  describe '#reviews' do
+    it 'returns a list of amazon.com reviews' do
+      amazon = Party.find_by(name: 'Amazon.com')
 
-  it 'returns a list of amazon.com reviews' do
-    setup_writing
-    amazon = Party.find_by(name: 'Amazon.com')
+      reviews = Piece.reviews
 
-    reviews = Piece.reviews
+      expect(reviews.first.party_id).to match(amazon.id)
+      expect(reviews.last.party_id).to match(amazon.id)
+    end
 
-    expect(reviews.first.party_id).to match(amazon.id)
-    expect(reviews.last.party_id).to match(amazon.id)
   end
 
-end
+  describe '#haiku' do
+    it 'returns a Series of bad rock haiku Works' do
 
-describe Piece, '#haiku' do
+      series = Piece.haiku
 
-  it 'returns a Series of bad rock haiku Works' do
-    setup_writing
+      expect(series.pieces.size).to be > 0
+      expect(series.pieces.first).to be_a(Work)
+    end
 
-    series = Piece.haiku
-
-    expect(series.pieces.size).to be > 0
-    expect(series.pieces.first).to be_a(Work)
   end
 
-end
+  describe '#other_projects' do
+    it 'returns a list of misc writing Works' do
 
-describe Piece, '#other_projects' do
-  it 'returns a list of misc writing Works' do
-    setup_writing
+      pieces = Piece.other_projects
 
-    pieces = Piece.other_projects
-
-    expect(pieces.size).to be > 0
-    [pieces.first, pieces.last].each do |piece|
-      expect(Piece.blogs.include?(piece)).to be false
-      expect(Piece.reviews.include?(piece)).to be false
-      expect(Piece.haikus.include?(piece)).to be false
+      expect(pieces.size).to be > 0
+      [pieces.first, pieces.last].each do |piece|
+        expect(Piece.blogs.include?(piece)).to be false
+        expect(Piece.reviews.include?(piece)).to be false
+        expect(Piece.haikus.include?(piece)).to be false
+      end
     end
   end
+
+
+  after(:all) do
+    clean_db
+  end
 end
-
-

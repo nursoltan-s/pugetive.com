@@ -97,6 +97,7 @@ end
 
 group :test do
   gem "capybara"
+  gem 'database_cleaner'
   gem 'pdf-reader'
   gem 'rspec-rails'
   gem "selenium-webdriver"

@@ -1,15 +1,25 @@
 require 'rails_helper'
 
-describe Song, '#random' do
+describe Song do
 
-  it 'returns a random array of songs' do
+  before(:all) do
+    setup_pugetive
     setup_music
-    num = rand(5)
+  end
 
-    songs = Song.random(num)
+  describe '#random' do
+    it 'returns a random array of songs' do
+      num = rand(5) + 1
 
-    expect(songs.size).to eq num
-    expect(songs.first).to be_an_instance_of(Song)
+      songs = Song.random(num)
+
+      expect(songs.size).to eq num
+      expect(songs.first).to be_an_instance_of(Song)
+    end
+  end
+
+  after(:all) do
+    clean_db
   end
 
 end

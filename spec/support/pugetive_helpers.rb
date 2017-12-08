@@ -57,6 +57,10 @@ module PugetiveHelpers
       page.driver.response.instance_variable_set('@body', pdf_text)
   end
 
+  def clean_db
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
 end
 
 
