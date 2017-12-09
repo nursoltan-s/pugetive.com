@@ -18,14 +18,30 @@ describe Photo do
 
 
   describe '#thumbnail' do
-    it 'should return a linked thumbnail image tag' do
+    it 'returns a linked thumbnail image tag' do
       insta_photo  = create(:photo, :instagram)
       flickr_photo = create(:photo, :flickr)
       create(:flickr_url, :thumbnail, work_id: flickr_photo.id)
 
-      expect(insta_photo.thumbnail).to  match /instagram/
-      expect(flickr_photo.thumbnail).to match /flickr/
+      expect(insta_photo.thumbnail).to  match 'instagram'
+      expect(insta_photo.thumbnail).to  match 'href'
+      expect(flickr_photo.thumbnail).to match 'flickr'
+      expect(flickr_photo.thumbnail).to match 'href'
     end
   end
+
+
+  describe '#thumbnail(false)' do
+    it 'returns an unlinked thumbnail image tag' do
+      insta_photo  = create(:photo, :instagram)
+      flickr_photo = create(:photo, :flickr)
+      create(:flickr_url, :thumbnail, work_id: flickr_photo.id)
+
+      expect(insta_photo.thumbnail(false)).not_to  match 'href'
+      expect(flickr_photo.thumbnail(false)).not_to match 'href'
+    end
+  end
+
+
 
 end

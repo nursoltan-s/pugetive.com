@@ -13,11 +13,11 @@ class HostedImage
   end
 
   def thumbnail(linked = true, options = {})
-    image.thumbnail(linked = true, options.merge(class: 'thumbnail'))
+    image.thumbnail(linked, options.merge(class: 'thumbnail'))
   end
 
   def large(linked = true, options = {})
-    image.large(linked = true, options.merge(class: 'photograph'))
+    image.large(linked, options.merge(class: 'photograph'))
   end
 
   def photo_path(photo)
@@ -31,10 +31,6 @@ class HostedImage
   def link_to(body, url, html_options = {})
     ActionController::Base.helpers.link_to(body, url, html_options = {})
   end
-
-  # def url_for(options = {})
-  #   ActionController::Base.helpers.link_to(options)
-  # end
 
 end
 
