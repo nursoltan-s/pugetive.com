@@ -1,0 +1,3 @@
+class AwesomeIconPolicy < IconPolicy
+
+end

@@ -2,12 +2,13 @@ module PugetiveHelpers
 
   def setup_pugetive
     setup_interests
-    setup_icons
+
+    create(:icon, name: 'question')
+
     todd = Artist.find(TODD_PARTY_ID) rescue nil
     if todd.nil?
       todd = create(:artist, name: 'Todd Gehman', id: TODD_PARTY_ID)
     end
-
   end
 
   def setup_interests
@@ -54,43 +55,6 @@ module PugetiveHelpers
            id: WRITING_INTEREST_ID)
   end
 
-  def setup_icons
-    iconize(Interest.all.map(&:token))
-    setup_site_icons
-    setup_resource_icons
-    setup_social_icons
-  end
-
-  def setup_site_icons
-    iconize(%w(
-               creative-commons
-               delete
-               edit
-               email
-               external
-               left
-               new
-               pause
-               phone
-               play
-               right
-               signin
-               stop
-               touch
-               ))
-  end
-
-  def setup_resource_icons
-    iconize([:interest, :party, :work, :series, :title, :tool, :genre, :place, :role])
-  end
-
-  def setup_social_icons
-    iconize([:facebook, :flickr, :github, :instagram, :linkedin, :medium, :twitter, :soundcloud])
-  end
-
-  def iconize(list)
-    list.map{|name| create(:icon, name: name)}
-  end
 
   def convert_pdf_to_page
       temp_pdf = Tempfile.new('pdf')

@@ -1,0 +1,3 @@
+class FoundationIconPolicy < IconPolicy
+
+end

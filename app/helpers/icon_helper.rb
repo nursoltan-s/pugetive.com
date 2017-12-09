@@ -1,10 +1,10 @@
 module IconHelper
 
-  def icon(name, options = {})
+  def icon(icon_name, options = {})
     begin
-      Icon.find_by(name: name).to_html
-    rescue => e
-      raise PugetiveError, "IconHelper#icon cannot find icon named #{name}"
+      Icon.for(icon_name).to_html
+    rescue Exception => e
+      raise PugetiveError, "IconHelper#icon failed completely with name #{icon_name}"
     end
   end
 

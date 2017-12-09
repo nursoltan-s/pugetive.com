@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe App do
   before(:all) do
+    setup_pugetive
     setup_software
   end
 
