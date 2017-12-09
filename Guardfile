@@ -29,6 +29,8 @@ guard :rspec, cmd: "bundle exec rspec" do
   dsl = Guard::RSpec::Dsl.new(self)
 
   # Feel free to open issues for suggestions and improvements
+  # notification :growl
+  notification :terminal_notifier
 
   # RSpec files
   rspec = dsl.rspec
