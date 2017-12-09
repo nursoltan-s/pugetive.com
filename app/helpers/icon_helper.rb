@@ -28,23 +28,22 @@ module IconHelper
   private
 
 
+    # <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+    # <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+    # ...etc
+    # [[16, 16],
+    #  [32, 32],
+    #  [57, 57],
+    #  [60, 60],
+    #  [72, 72],
+    #  [76, 76],
+    #  [96, 96],
+    #  [114, 114],
+    #  [144, 144],
     def apple_icons
-      # <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
-      # <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
-      # ...etc
       links = [favicon_link_tag("icons/favicons/apple-touch-icon.png",
                                 rel: 'apple-touch-icon',
                                 type: 'image/png')]
-
-       # [[16, 16],
-       #  [32, 32],
-       #  [57, 57],
-       #  [60, 60],
-       #  [72, 72],
-       #  [76, 76],
-       #  [96, 96],
-       #  [114, 114],
-       #  [144, 144],
 
        [[120, 120],
         [152, 152],
