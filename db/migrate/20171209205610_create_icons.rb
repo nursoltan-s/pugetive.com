@@ -205,6 +205,10 @@ class CreateIcons < ActiveRecord::Migration[5.1]
         {name: 'creative-commons',
          type: 'AwesomeIcon',
          token: 'creative-commons',
+         category: 'site'},
+        {name: 'question',
+         type: 'AwesomeIcon',
+         token: 'question-circle',
          category: 'site'}
 
       ])

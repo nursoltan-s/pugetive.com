@@ -24,6 +24,7 @@ class ApplicationController < ActionController::Base
   rescue_from ActionController::RoutingError,      with: :render_not_found
   rescue_from StandardError,                       with: :render_system_error
   rescue_from NoMethodError,                       with: :render_system_error
+  rescue_from PugetiveError,                       with: :render_system_error
 
   private
 
