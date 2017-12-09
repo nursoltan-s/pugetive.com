@@ -21,8 +21,8 @@
             = submit(f)
         %td= link_to(title.name, title)
         %td= title.category
-        %td= link_to edit_icon, edit_title_path(title)
-        %td= link_to destroy_icon, title, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= link_to icon(:edit), edit_title_path(title)
+        %td= link_to icon(:delete), title, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 

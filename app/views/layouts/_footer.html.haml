@@ -1,36 +1,17 @@
--# .row
--#   .large-12.columns
--#     %footer.panel.subdued
--#       - if user_signed_in?
--#         = link_to delete_icon, destroy_user_session_path, :method => :delete, class: 'secondary'
--#       - else
--#         = link_to signin_icon, new_user_session_path, class: 'secondary subdued'
-
-
 .row
   .large-6.columns
     %ul.social-icons
-      %li= mail_to('toddgehman@gmail.com', email_icon, encode: 'hex', title: 'Email Todd')
-      %li= link_to(social_icon(:facebook),   'https://www.facebook.com/pugetive',        title: 'Facebook Profile')
-      %li= link_to(social_icon(:twitter),    'https://twitter.com/pugetive',             title: 'Twitter Profile')
-      %li= link_to(social_icon(:instagram),  'https://instagram.com/pugetive',           title: 'Instagram Photos')
-      %li= link_to(social_icon(:flickr),     'https://www.flickr.com/photos/pugetive',   title: 'Flickr Photos')
-      %li= link_to(social_icon(:soundcloud), 'https://soundcloud.com/pugetive',          title: 'Soundcloud Music')
-      %li= link_to(social_icon(:github),     'https://github.com/pugetive/pugetive.com', title: 'Github Software')
-      %li= link_to(social_icon(:medium),     'https://medium.com/@pugetive',             title: 'Medium Blog')
-      %li= link_to(social_icon(:linkedin),   'https://www.linkedin.com/in/pugetive',     title: 'LinkedIn Profile')
-      -# %li= link_to(phone_icon, "tel:#{Phone.first.number}")
+      %li= mail_to('toddgehman@gmail.com', icon(:email), encode: 'hex', title: 'Email Todd')
+      %li= link_to(icon(:facebook),   'https://www.facebook.com/pugetive',        title: 'Facebook Profile')
+      %li= link_to(icon(:twitter),    'https://twitter.com/pugetive',             title: 'Twitter Profile')
+      %li= link_to(icon(:instagram),  'https://instagram.com/pugetive',           title: 'Instagram Photos')
+      %li= link_to(icon(:flickr),     'https://www.flickr.com/photos/pugetive',   title: 'Flickr Photos')
+      %li= link_to(icon(:soundcloud), 'https://soundcloud.com/pugetive',          title: 'Soundcloud Music')
+      %li= link_to(icon(:github),     'https://github.com/pugetive/pugetive.com', title: 'Github Software')
+      %li= link_to(icon(:medium),     'https://medium.com/@pugetive',             title: 'Medium Blog')
+      %li= link_to(icon(:linkedin),   'https://www.linkedin.com/in/pugetive',     title: 'LinkedIn Profile')
 
   .large-6.columns.text-right
     .mono.subdued{data: {visible_to: 'admin'}}
       pugetive.com
       = link_to(Git::REVISION, "https://github.com/pugetive/pugetive.com/commit/#{Git::REVISION}")
-
-    / %footer.panel.subdued
-    /   All content, photography, and music is owned by moi.
-    /   &copy;
-    /   Copyright 2015
-    /   - if Time.now.year != 2015
-    /     == -#{Time.now.year}
-    /   Todd Gehman
-

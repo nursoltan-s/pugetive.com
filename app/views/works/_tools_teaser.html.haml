@@ -5,7 +5,7 @@
     - if work.tools.include?(tool)
       - wield = work.wields.find_by_tool_id(tool.id)
       %div
-        = link_to(raw("#{raw(destroy_icon)} #{tool.name}"), wield, method: :delete, class: 'button remove-button', data: {confirm: 'Are you sure?'})
+        = link_to(raw("#{raw(icon(:delete))} #{tool.name}"), wield, method: :delete, class: 'button remove-button', data: {confirm: 'Are you sure?'})
         = form_for wield do |f|
           = f.check_box(:legacy)
           = f.submit('Update Legacy Flag', class: 'tiny')

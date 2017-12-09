@@ -1,4 +1,4 @@
 %li
   = link_to(place.name, place)
   %span.subdued{data: {visible_to: 'admin'}}
-    = link_to(edit_icon, edit_place_path(place))
+    = link_to(icon(:edit), edit_place_path(place))

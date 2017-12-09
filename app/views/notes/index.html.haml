@@ -4,7 +4,7 @@
   %thead
     %tr
       %th Noteable type
-      %th Notable
+      %th Noteable
       %th Contents
       %th
       %th
@@ -14,7 +14,7 @@
     - @notes.each do |note|
       %tr
         %td= note.noteable_type
-        %td= note.notable_id
+        %td= note.noteable_id
         %td= note.contents
         %td= link_to 'Show', note
         %td= link_to 'Edit', edit_note_path(note)

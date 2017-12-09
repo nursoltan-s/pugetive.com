@@ -4,7 +4,7 @@ class SongDecorator < WorkDecorator
   def title
     rv = h.link_to(model.name, model)
     if model.has_audio?
-      rv += h.raw('&nbsp;') + h.audio_icon
+      rv += h.raw('&nbsp;') + h.icon(:audio)
     end
     if model.demo?
       text = work.music? ? ' [home demo]' : ' [prototype&nbsp;/&nbsp;rough&nbsp;draft]'
@@ -53,7 +53,7 @@ class SongDecorator < WorkDecorator
     model.albums.each do |album|
       line = 'From the album '
       line += h.link_to(album.name, album)
-      line += h.link_to(h.raw(h.destroy_icon), SeriesWork.for(album, song), method: :delete, class: 'subdued', data: {visible_to: 'admin', confirm: 'Are you sure?'})
+      line += h.link_to(h.raw(h.icon(:delete)), SeriesWork.for(album, song), method: :delete, class: 'subdued', data: {visible_to: 'admin', confirm: 'Are you sure?'})
       line_item = h.content_tag(:li, h.raw(line))
       list += line_item
     end

@@ -12,11 +12,11 @@ module LinksHelper
     end
   end
 
-  def flickr_link(flickr_id, content = "Flickr #{flickr_icon}")
+  def flickr_link(flickr_id, content = "Flickr #{icon(:flickr)}")
     link_to(raw(content), "https://www.flickr.com/photos/pugetive/#{flickr_id}/", title: "View photograph on Flickr", target: "_blank")
   end
 
-  def instagram_link(instagram_id, content = "Instagram #{instagram_icon}")
+  def instagram_link(instagram_id, content = "Instagram #{icon(:instagram)}")
     link_to(raw(content), "https://www.instagram.com/p/#{instagram_id}", title: "View photograph on Instagram", target: "_blank")
   end
 
@@ -25,7 +25,7 @@ module LinksHelper
   end
 
   def environment_link(token)
-    link_to(raw("#{env_icon(token)} #{token}"),
+    link_to(raw("#{icon(token)} #{token}"),
             request.parameters.except(:controller, :action, :id)
                    .merge(only_path: false,
                           protocol:  PUGETIVE_CONFIG[token][:host_protocol],

@@ -23,7 +23,7 @@
     - else
       %p None.
     %p{data: {visible_to: 'admin'}}
-      = link_to(new_icon, new_place_path(parent_id: @place.id))
+      = link_to(icon(:new), new_place_path(parent_id: @place.id))
 
 
 - if @place.works.any?

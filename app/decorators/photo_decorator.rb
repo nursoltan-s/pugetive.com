@@ -24,7 +24,7 @@ class PhotoDecorator < WorkDecorator
 
   def license
     label = h.content_tag(:b, 'Photo License "CC BY-NC"')
-    license_text = h.content_tag(:div, h.awesome_icon('creative-commons') + ' Attribution-NonCommercial')
+    license_text = h.content_tag(:div, h.icon('creative-commons') + ' Attribution-NonCommercial')
     h.content_tag(:div, label + license_text, class: 'photo-license')
   end
 

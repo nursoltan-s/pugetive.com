@@ -22,10 +22,10 @@
         %td= interest.token
         %td= interest.work_name
         %td= interest.series_name
-        %td= interest_icon(interest)
+        %td= icon(interest.token)
         %td= interest.public? ? 'Y' : nil
-        %td= link_to edit_icon, edit_interest_path(interest)
-        %td= link_to destroy_icon, interest, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= link_to icon(:edit), edit_interest_path(interest)
+        %td= link_to icon(:delete), interest, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 

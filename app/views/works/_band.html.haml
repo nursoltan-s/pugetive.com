@@ -15,8 +15,8 @@
         = link_to(image_tag(band.image.url(:thumb), class: 'thumbnail'), band.image.url(:original), target: "_blank")
 
       %p.admin{data: {visible_to: 'admin'}}
-        %smaller.subdued= link_to(edit_icon, edit_party_path(band), rel: 'nofollow')
-        %smaller.subdued= link_to(destroy_icon, party_path(band), method: :delete, data: {confirm: 'Are you sure?'}, rel: 'nofollow')
+        %smaller.subdued= link_to(icon(:edit), edit_party_path(band), rel: 'nofollow')
+        %smaller.subdued= link_to(icon(:delete), party_path(band), method: :delete, data: {confirm: 'Are you sure?'}, rel: 'nofollow')
 
     .medium-5.columns.end.info-box
       .titles

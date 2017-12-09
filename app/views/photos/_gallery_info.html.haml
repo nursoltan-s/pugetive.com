@@ -7,11 +7,11 @@
         %td.left-nav.nav
           = gallery.prev(photo).thumbnail
           %span.thumb-nav-icon
-            = link_to(left_icon, photo_path(gallery.prev(photo), gallery_id: params[:gallery_id]))
+            = link_to(icon(:left), photo_path(gallery.prev(photo), gallery_id: params[:gallery_id]))
         %td.series-link
           From the series
           = link_to(gallery.name, gallery)
         %td.right-nav.nav
           = gallery.next(photo).thumbnail
           %span.thumb-nav-icon
-            = link_to(right_icon, photo_path(gallery.next(photo), gallery_id: params[:gallery_id]))
+            = link_to(icon(:right), photo_path(gallery.next(photo), gallery_id: params[:gallery_id]))

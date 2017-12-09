@@ -38,9 +38,9 @@ class WorkDecorator < Draper::Decorator
   def live_link
     return unless model.url.present?
     if model.live?
-      h.raw(h.link_to(h.raw("Live link #{h.external_icon}"), work.url))
+      h.raw(h.link_to(h.raw("Live link #{h.icon(:external)}"), work.url))
     elsif model.archived?
-      h.raw(h.link_to(h.raw("Internet archive #{h.external_icon}"), work.url))
+      h.raw(h.link_to(h.raw("Internet archive #{h.icon(:external)}"), work.url))
     end
   end
 
@@ -90,7 +90,7 @@ class WorkDecorator < Draper::Decorator
     if model.has_lyric?
       return h.raw(h.render(model.lyric))
     end
-    contents = h.link_to(h.raw("#{h.new_icon} Lyric"), h.new_lyric_path(work_id: model.id))
+    contents = h.link_to(h.raw("#{h.icon(:new)} Lyric"), h.new_lyric_path(work_id: model.id))
     h.raw(h.content_tag(:div, h.raw(contents), data: {visible_to: 'admin'}))
   end
 

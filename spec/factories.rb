@@ -45,6 +45,13 @@ FactoryBot.define do
     name "Placeholder Genre Name"
   end
 
+  factory :icon do
+    name :edit
+    type 'AwesomeIcon'
+    token 'edit'
+    category 'site'
+  end
+
   factory :interest do
     name "Placeholder Interest Name"
     public true

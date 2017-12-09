@@ -1,4 +1,4 @@
 - cache note do
   %li
     = note.contents
-    = link_to(delete_icon, note, method: :delete, data: {visible_to: 'admin', confirm: 'Are you sure?'})
+    = link_to(icon(:delete), note, method: :delete, data: {visible_to: 'admin', confirm: 'Are you sure?'})

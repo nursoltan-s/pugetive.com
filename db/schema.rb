@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171206021711) do
+ActiveRecord::Schema.define(version: 20171209205610) do
 
   create_table "accounts", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
@@ -89,6 +89,17 @@ ActiveRecord::Schema.define(version: 20171206021711) do
     t.index ["interest_id"], name: "index_genres_on_interest_id"
     t.index ["name"], name: "index_genres_on_name"
     t.index ["slug"], name: "index_genres_on_slug"
+  end
+
+  create_table "icons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name", limit: 32, null: false
+    t.string "type", limit: 16, null: false
+    t.string "token", limit: 32, null: false
+    t.string "category", default: "site", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_icons_on_name"
+    t.index ["type"], name: "index_icons_on_type"
   end
 
   create_table "images", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|

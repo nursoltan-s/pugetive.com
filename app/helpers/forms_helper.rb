@@ -67,8 +67,8 @@ module FormsHelper
     end
 
     def icon_tag(icon_name)
-      icon = self.send("#{icon_name}_icon")
-      icon_html = content_tag(:span, icon, class: 'field-icon')
+      icon_html = icon(icon_name)
+      content_tag(:span, icon, class: 'field-icon')
     end
 
     def icon_field_tag(icon_html, field_html, field_type = :text)

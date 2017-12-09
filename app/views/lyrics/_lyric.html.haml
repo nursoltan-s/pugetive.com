@@ -4,6 +4,6 @@
       - if lyric.work.music?
         %h2
           Song Lyric
-          %span.tiny.subdued{data: {visible_to: 'admin'}}= link_to(edit_icon, edit_lyric_path(lyric))
+          %span.tiny.subdued{data: {visible_to: 'admin'}}= link_to(icon(:edit), edit_lyric_path(lyric))
       %p
         %pre.lyric-content= lyric.content

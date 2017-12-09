@@ -9,10 +9,10 @@
       %ul.dropdown.menu.vertical.medium-horizontal{data: {dropdown_menu: true}}
         %li.menu-text.home
           - if user_signed_in?
-            = link_to(delete_icon, destroy_user_session_path, :method => :delete)
+            = link_to(icon(:delete), destroy_user_session_path, :method => :delete)
           - else
-            = link_to(signin_icon, new_user_session_path)
+            = link_to(icon(:signin), new_user_session_path)
 
           = link_to(raw("Todd Gehman"), root_path)
         - Interest.live.each do |interest|
-          %li.menu-text.interest-item= link_to(raw("#{interest_icon(interest)} #{interest.name}"), interest)
+          %li.menu-text.interest-item= link_to(raw("#{icon(interest.token)} #{interest.name}"), interest)

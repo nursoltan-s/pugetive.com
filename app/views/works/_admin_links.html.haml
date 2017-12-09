@@ -1,4 +1,4 @@
 %p.admin{data: {visible_to: 'admin'}}
-  %smaller.subdued= link_to(edit_icon, edit_work_path(work), rel: 'nofollow')
-  %smaller.subdued= link_to(model_icon('role'), new_role_path(work_id: work.id), rel: 'nofollow')
-  %smaller.subdued= link_to(destroy_icon, work, method: :delete, data: {confirm: 'Are you sure?'}, rel: 'nofollow')
+  %smaller.subdued= link_to(icon(:edit), edit_work_path(work), rel: 'nofollow')
+  %smaller.subdued= link_to(icon(:role), new_role_path(work_id: work.id), rel: 'nofollow')
+  %smaller.subdued= link_to(icon(:delete), work, method: :delete, data: {confirm: 'Are you sure?'}, rel: 'nofollow')

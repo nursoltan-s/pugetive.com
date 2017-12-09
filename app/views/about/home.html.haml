@@ -13,7 +13,7 @@
         %ul
           - @interests.each do |interest|
             %li{class: interest.token}
-              = link_to(raw("#{interest_icon(interest)} #{interest.name}"), interest, class: 'callout')
+              = link_to(raw("#{icon(interest.token)} #{interest.name}"), interest, class: 'callout')
 
       .medium-4.columns.end
         %ul.photo-grid

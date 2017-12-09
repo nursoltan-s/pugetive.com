@@ -15,8 +15,8 @@
       %tr
         %td= link_to(series.name, series)
         %td= series.summary
-        %td= link_to edit_icon, edit_series_path(series)
-        %td= link_to destroy_icon, series, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= link_to icon(:edit), edit_series_path(series)
+        %td= link_to icon(:delete), series, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 

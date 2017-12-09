@@ -18,10 +18,10 @@
 
         %p.admin{data: {visible_to: 'admin'}}
           %smaller.subdued
-            = link_to(touch_icon, touch_path(series))
-            = link_to(new_icon, new_series_work_path(series_id: series.id), rel: 'nofollow')
-            = link_to(edit_icon, edit_series_path(series), rel: 'nofollow')
-            = link_to(destroy_icon, series, :method => :delete, :data => { :confirm => 'Are you sure?' }, rel: 'nofollow')
+            = link_to(icon(:touch), touch_path(series))
+            = link_to(icon(:new), new_series_work_path(series_id: series.id), rel: 'nofollow')
+            = link_to(icon(:edit), edit_series_path(series), rel: 'nofollow')
+            = link_to(icon(:delete), series, :method => :delete, :data => { :confirm => 'Are you sure?' }, rel: 'nofollow')
       .medium-5.columns.end.info-box
         = series.decorate.artist_name
         - if series.description.present?

@@ -1,0 +1,13 @@
+- title "Icons"
+%table
+  %tr
+    %th Icon
+    %th Name
+    %th Token
+    %th Type
+  - @icons.each do |icon|
+    %tr
+      %td.icon= icon.to_html
+      %td= icon.name
+      %td= icon.token
+      %td= icon.type
