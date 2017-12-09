@@ -59,7 +59,7 @@ class InterestsController < MetaResourceController
     # Refactor: Pull everything at once and segment in ruby
     @blogs = Piece.blogs
     @reviews = Piece.reviews
-    @haiku = Series.haiku
+    @haiku = Piece.haiku
     @projects = Piece.other_projects
     render :writing
   end

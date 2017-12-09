@@ -112,3 +112,39 @@ feature "Viewing writing piece pages" do
     end
   end
 end
+
+
+feature "Viewing gallery pages" do
+  before(:each) do
+    setup_pugetive
+    setup_photography
+    setup_music
+  end
+
+  feature "with a current url" do
+    scenario "as a visitor" do 
+      gallery = create(:gallery)
+      photo = create(:photo, :instagram)
+      gallery.photos << photo
+
+      visit gallery_path(gallery)
+
+      expect(page).to have_content gallery.name
+
+    end
+
+  end
+
+  feature "with a deprecated URL" do
+    scenario "as a visitor" do
+      gallery = create(:gallery)
+      gallery.photos << create(:photo, :instagram)
+
+      visit "/series/#{gallery.slug}"
+
+      expect(current_path).to eq gallery.canonical_path
+
+    end
+  end
+
+end

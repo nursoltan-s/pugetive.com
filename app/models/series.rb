@@ -31,18 +31,17 @@ class Series < ApplicationRecord
     where(audience: true)
   end
 
-  # Refactor
-  def self.haiku
-    where('name LIKE "%haiku%"').first
-  end
-
   def has_image?
     image.url.present? and not image.url(:thumb).match(/missing/)
   end
 
   def interest
     return nil unless works.any?
-    works.first.interest.token
+    works.first.interest
+  end
+
+  def canonical_path
+    "/#{interest.series_name.downcase.pluralize}/#{slug}"
   end
 
   def artist

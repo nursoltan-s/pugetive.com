@@ -1,3 +1,3 @@
-class GalleryPolicy < ApplicationPolicy
+class GalleryPolicy < SeriesPolicy
 
 end

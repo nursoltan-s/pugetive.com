@@ -9,8 +9,9 @@ class Piece < Work
   scope :blogs,   -> {where('name LIKE "%typepad%" OR name LIKE "%medium%"')}
   # other projects = all   - @blogs - @reviews - @haiku.map{|s| s.works}.flatten
 
+# Refactor
   def self.haiku
-    Series.haiku
+    Series.where('name LIKE "%haiku%"').first
   end
 
   def self.haikus
