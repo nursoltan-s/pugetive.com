@@ -5,13 +5,13 @@
       - next if params[:gallery_id] and params[:gallery_id].to_i != gallery.id
       %tr
         %td.left-nav.nav
-          = thumbnail(gallery.prev(photo))
+          = gallery.prev(photo).thumbnail
           %span.thumb-nav-icon
             = link_to(left_icon, photo_path(gallery.prev(photo), gallery_id: params[:gallery_id]))
         %td.series-link
           From the series
           = link_to(gallery.name, gallery)
         %td.right-nav.nav
-          = thumbnail(gallery.next(photo))
+          = gallery.next(photo).thumbnail
           %span.thumb-nav-icon
             = link_to(right_icon, photo_path(gallery.next(photo), gallery_id: params[:gallery_id]))

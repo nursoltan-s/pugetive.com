@@ -17,4 +17,15 @@ describe Photo do
   end
 
 
+  describe '#thumbnail' do
+    it 'should return a linked thumbnail image tag' do
+      insta_photo  = create(:photo, :instagram)
+      flickr_photo = create(:photo, :flickr)
+      create(:flickr_url, :thumbnail, work_id: flickr_photo.id)
+
+      expect(insta_photo.thumbnail).to  match /instagram/
+      expect(flickr_photo.thumbnail).to match /flickr/
+    end
+  end
+
 end

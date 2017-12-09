@@ -10,6 +10,22 @@ class WorkDecorator < Draper::Decorator
   #     end
   #   end
 
+  # REFACTOR
+  def thumbnail(link_to_original = false)
+    return nil unless model.has_image?
+    rv = ''
+    image_html = h.image_tag(model.image.url(:thumb), class: 'thumbnail')
+    if link_to_original
+      contents = h.link_to(image_html, model.image.url(:large), target: "_blank")
+    elsif model.url.present? and model.live?
+      contents = h.link_to(image_html, model.url)
+    else
+      contents = image_html
+    end
+    h.content_tag(:div, contents, class: 'screenshot')
+  end
+
+
   def title
     h.raw(h.link_to(model.name, model))
   end
@@ -49,20 +65,6 @@ class WorkDecorator < Draper::Decorator
 
   def status
     h.raw(h.content_tag(:p, h.raw("Status: #{h.combo_status(work)}"), class: 'status'))
-  end
-
-  def thumbnail(link_to_original = false)
-    return nil unless model.has_image?
-    rv = ''
-    image_html = h.image_tag(model.image.url(:thumb), class: 'thumbnail')
-    if link_to_original
-      contents = h.link_to(image_html, model.image.url(:large), target: "_blank")
-    elsif model.url.present? and model.live?
-      contents = h.link_to(image_html, model.url)
-    else
-      contents = image_html
-    end
-    h.content_tag(:div, contents, class: 'screenshot')
   end
 
   def titles_display

@@ -20,9 +20,8 @@
         = render "works/admin_links", work: photo
 
       .medium-5.columns.end.info-box
-        - if photo.has_thumbnail?
-          = thumbnail(photo)
-        = photo_link(photo, large_image(photo))
+        = photo.thumbnail
+        = photo_link(photo, photo.large)
 
         = render "photos/gallery_info", photo: photo
 

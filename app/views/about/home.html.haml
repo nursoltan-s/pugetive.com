@@ -19,6 +19,6 @@
         %ul.photo-grid
           - @photos.in_groups(5) do |group|
             %li.callout
-              - group.each do |photograph|
-                - next if photograph.nil?
-                = link_to(thumbnail(photograph), photograph)
+              - group.each do |photo|
+                - next if photo.nil?
+                = photo.thumbnail

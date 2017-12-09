@@ -1,0 +1,2 @@
+class PugetiveError < StandardError
+end
