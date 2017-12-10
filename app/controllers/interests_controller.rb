@@ -30,7 +30,7 @@ class InterestsController < MetaResourceController
 
   def music
     authorize(@interest)
-    @bands = Party.bands.sort{|a, b| b.stop_year <=> a.stop_year}
+    @bands = Band.cached
 
     @band_recordings = Album.band_recordings
     @solo_recordings = Album.solo_recordings

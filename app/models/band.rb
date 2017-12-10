@@ -17,4 +17,15 @@ class Band < Party
   def sample_track
     SAMPLE_TRACKS[self.name][:name]
   end
+
+  def self.cached
+    key = "Band#cacheds:#{self.all.cache_key}"
+    bands = Rails.cache.fetch key
+
+    unless bands
+      bands = all.sort{|a, b| b.stop_year <=> a.stop_year}
+      Rails.cache.write key, bands
+    end
+    bands
+  end
 end

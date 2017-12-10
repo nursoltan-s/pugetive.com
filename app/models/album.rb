@@ -19,11 +19,11 @@ class Album < Series
   end
 
   def self.band_recordings
-    band.studio.uniq.sort{|a, b| b.stop_year <=> a.stop_year}
+    cached_band_recordings
   end
 
   def self.solo_recordings
-    solo.music.uniq.sort{|a, b| b.stop_year <=> a.stop_year}
+    cached_solo_recordings
   end
 
   def start_year
@@ -33,5 +33,28 @@ class Album < Series
   def stop_year
     songs.map(&:stop_year).max
   end
+
+  private
+    def self.cached_band_recordings
+      key = "Album#cached_band_recordings:#{self.all.cache_key}"
+      albums = Rails.cache.fetch key
+
+      unless albums
+        albums =  band.studio.uniq.sort{|a, b| b.stop_year <=> a.stop_year}.to_a
+        Rails.cache.write key, albums
+      end
+      albums
+    end
+
+    def self.cached_solo_recordings
+      key = "Album#cached_solo_recordings:#{self.all.cache_key}"
+      albums = Rails.cache.fetch key
+
+      unless albums
+        albums = solo.music.uniq.sort{|a, b| b.stop_year <=> a.stop_year}
+        Rails.cache.write key, albums
+      end
+      albums
+    end
 
 end

@@ -42,7 +42,7 @@ class Work < ApplicationRecord
 
   belongs_to :author, class_name: 'Artist'
 
-  default_scope      -> {includes(:interest, wields: :tool)}
+  # default_scope      -> {includes(:interest, wields: :tool)}
   scope :sorted,      -> {order("works.stop_year IS NULL DESC, works.stop_year DESC, start_year ASC, name ASC")}
   scope :alpha,       -> {order(:name)}
 
@@ -61,11 +61,13 @@ class Work < ApplicationRecord
   def self.cached
     key = "Work#cached:#{self.all.cache_key}"
     works = Rails.cache.fetch key
-    return works if works
 
-    works = self.sorted.to_a
-    Rails.cache.write key, works
-    return works
+    unless works
+      works = self.sorted.to_a
+      Rails.cache.write key, works
+    end
+
+    works
   end
 
 

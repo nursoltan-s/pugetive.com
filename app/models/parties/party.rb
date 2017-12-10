@@ -16,8 +16,6 @@ class Party < ActiveRecord::Base
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
 
-  scope :bands, -> {where(type: 'Band')}
-
   def image_token
     'party'
   end
