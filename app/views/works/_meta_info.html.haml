@@ -1,0 +1,7 @@
+.row{data: {visible_to: 'admin'}}
+  .small-12.columns
+    = render "works/series_teaser", work: @work
+  .medium-6.columns
+    = render "works/tools_teaser", work: @work
+  .medium-6.columns
+    = render "works/titles_teaser", work: @work
