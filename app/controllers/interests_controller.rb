@@ -10,10 +10,12 @@ class InterestsController < MetaResourceController
 
   def software
     authorize(@interest)
+
     @featured = []
     @pro_projects = []
     @side_projects = []
-    App.includes(:titles).sorted.each do |app|
+
+    App.cached.each do |app|
       if app.favorite?
         @featured << app
       end

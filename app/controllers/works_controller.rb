@@ -38,27 +38,31 @@ class WorksController < MetaResourceController
   private
 
     def work_params
-      params.require(:work).permit(:author_id,
-                                   :demo,
-                                   :description,
-                                   :favorite,
-                                   :flickr_id,
-                                   :genre_id,
-                                   :image,
-                                   :instagram_id,
-                                   :interest_id,
-                                   :live,
-                                   :location,
-                                   :name,
-                                   :party_id,
-                                   :place_id,
-                                   :slug,
-                                   :start_year,
-                                   :status,
-                                   :status_message,
-                                   :stop_year,
-                                   :soundcloud_id,
-                                   :summary,
-                                   :url)
+      params.require(:work).permit(work_params_list)
+    end
+
+    def work_params_list
+      [:author_id,
+       :demo,
+       :description,
+       :favorite,
+       :flickr_id,
+       :genre_id,
+       :image,
+       :instagram_id,
+       :interest_id,
+       :live,
+       :location,
+       :name,
+       :party_id,
+       :place_id,
+       :slug,
+       :start_year,
+       :status,
+       :status_message,
+       :stop_year,
+       :soundcloud_id,
+       :summary,
+       :url]
     end
 end
