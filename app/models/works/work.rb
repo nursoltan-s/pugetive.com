@@ -57,6 +57,19 @@ class Work < ApplicationRecord
 
   scope :lyrical,     -> {where("interest_id IN (#{MUSIC_INTEREST_ID},#{WRITING_INTEREST_ID})")}
 
+
+  def self.cached
+    key = "Work#cached:#{self.all.cache_key}"
+    works = Rails.cache.fetch key
+    return works if works
+
+    works = self.sorted.to_a
+    Rails.cache.write key, works
+    return works
+  end
+
+
+
   def solo?
     party_id == TODD_PARTY_ID
   end
