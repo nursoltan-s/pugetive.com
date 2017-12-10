@@ -24,9 +24,7 @@ class Tool < ActiveRecord::Base
   scope :film,        -> {where(category: 'Film')}
   scope :writing,     -> {where(category: 'Writing')}
 
-
   scope :instruments, -> {where(type: 'Instrument')}
-
   scope :programs,    -> {where(type: 'Program')}
 
   has_many :wields, dependent: :destroy

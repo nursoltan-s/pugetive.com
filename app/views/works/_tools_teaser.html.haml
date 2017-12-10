@@ -1,9 +1,9 @@
-- tools = Tool.send(work.interest.token).sort{|a,b| a.name <=> b.name}
-- if tools.any?
+- interest_tools = Tool.send(work.interest.token).sort{|a,b| a.name <=> b.name}
+- if interest_tools.any?
   %h3 Tools
-  - tools.each do |tool|
-    - if work.tools.include?(tool)
-      - wield = work.wields.find_by_tool_id(tool.id)
+  - interest_tools.each do |tool|
+    - if work.has_tool?(tool)
+      - wield = work.wield_for(tool)
       %div
         = link_to(raw("#{raw(icon(:delete))} #{tool.name}"), wield, method: :delete, class: 'button remove-button', data: {confirm: 'Are you sure?'})
         = form_for wield do |f|

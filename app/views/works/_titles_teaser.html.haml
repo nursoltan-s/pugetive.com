@@ -1,9 +1,9 @@
 %h3 Titles
 - Title.send(work.interest.token).sort{|a,b| a.name <=> b.name}.each do |title|
-  - if work.titles.include?(title)
-    %div= link_to(raw("#{raw(icon(:delete))} #{title.name}"), work.roles.find_by_title_id(title.id), method: :delete, class: 'button remove-button', data: {confirm: 'Are you sure?'})
-  - else 
+  - if work.has_title?(title)
+    %div= link_to(raw("#{raw(icon(:delete))} #{title.name}"), work.role_for(title), method: :delete, class: 'button remove-button', data: {confirm: 'Are you sure?'})
+  - else
     = form_for work.roles.new(title_id: title.id) do |f|
       = f.hidden_field(:work_id)
       = f.hidden_field(:title_id)
-      = f.submit(title.name, disabled: (work.titles.include?(title) ? 'disabled' : nil))
+      = f.submit(title.name, disabled: (work.has_title?(title) ? 'disabled' : nil))

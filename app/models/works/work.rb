@@ -42,8 +42,9 @@ class Work < ApplicationRecord
 
   belongs_to :author, class_name: 'Artist'
 
-  scope :sorted,     -> {order("works.stop_year IS NULL DESC, works.stop_year DESC, start_year ASC, name ASC")}
-  scope :alpha,      -> {order(:name)}
+  default_scope      -> {includes(:interest, wields: :tool)}
+  scope :sorted,      -> {order("works.stop_year IS NULL DESC, works.stop_year DESC, start_year ASC, name ASC")}
+  scope :alpha,       -> {order(:name)}
 
   scope :favorite,    -> {where(favorite: true)}
   scope :unfavorite,  -> {where(favorite: false)}
@@ -125,8 +126,24 @@ class Work < ApplicationRecord
     wields.includes(:tool).where(legacy: true).map{|w| w.tool}
   end
 
+  def has_tool?(tool)
+    cached_tools.map(&:id).include?(tool.id)
+  end
+
+  def has_title?(title)
+    cached_titles.map(&:id).include?(title.id)
+  end
+
   def self.random(num = 10)
     order("RAND()").limit(num)
+  end
+
+  def wield_for(tool)
+    cached_wields.find{|wield| wield.tool_id == tool.id}
+  end
+
+  def role_for(title)
+    cached_roles.find{|role| role.title_id == title.id}
   end
 
   private
@@ -135,5 +152,20 @@ class Work < ApplicationRecord
       @hosted_image ||= HostedImage.new(self)
     end
 
+    def cached_tools
+      @cached_tools ||= tools
+    end
+
+    def cached_wields
+      @cached_wields ||= wields
+    end
+
+    def cached_titles
+      @cached_titles ||= titles
+    end
+
+    def cached_roles
+      @cached_roles ||= roles
+    end
 
 end

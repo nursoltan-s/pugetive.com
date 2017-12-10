@@ -18,7 +18,6 @@ Pugetive::Application.config.paperclip_image_opts = {
   default_url:     "/errors/missing-image.png"}
 
 
-
 Paperclip.interpolates :subject_class do |attachment, style|
   attachment.instance.image_token.underscore
 end

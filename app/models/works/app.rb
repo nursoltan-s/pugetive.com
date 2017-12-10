@@ -2,6 +2,8 @@ WEB_ARCHIVE_DOMAIN = 'web.archive.org'
 
 class App < Work
 
+  default_scope -> {includes(:genre, wields: :tool)}
+
   def years
     if read_attribute(:stop_year).nil?
       stop = 'Now'
