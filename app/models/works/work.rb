@@ -78,6 +78,13 @@ class Work < ApplicationRecord
     'work'
   end
 
+  def thumbnail(*args)
+    if has_image?
+      return hosted_image.thumbnail(*args)
+    end
+    nil
+  end
+
   def software?
     interest_id == SOFTWARE_INTEREST_ID
   end
@@ -121,5 +128,12 @@ class Work < ApplicationRecord
   def self.random(num = 10)
     order("RAND()").limit(num)
   end
+
+  private
+
+    def hosted_image
+      @hosted_image ||= HostedImage.new(self)
+    end
+
 
 end

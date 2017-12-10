@@ -1,13 +1,15 @@
 class HostedImage
   attr_accessor :image
 
-  def initialize(photo)
-    if photo.instagram_id.present?
-      @image = InstagramImage.new(photo)
-    elsif photo.flickr_id.present?
-      @image = FlickrImage.new(photo)
+  def initialize(work)
+    if work.instagram_id.present?
+      @image = InstagramImage.new(work)
+    elsif work.flickr_id.present?
+      @image = FlickrImage.new(work)
+    elsif work.has_image?
+      @image = ModelImage.new(work)
     else
-      raise PugetiveError, "Attempted to instantiate a HostedImage with no 3rd party information" +
+      raise PugetiveError, "Attempted to instantiate a HostedImage with no 3rd party information " +
                            "associated with the Work passed in."
     end
   end

@@ -5,7 +5,8 @@
 
       .medium-3.columns.medium-offset-2.medium-text-right.hide-for-small-only
         = app.years_display
-        = app.thumbnail(true)
+        - if app.has_image?
+          %div.screenshot= app.thumbnail
         = app.live_link
         = render "works/admin_links", work: app
 
@@ -16,6 +17,7 @@
 
       .small-12.columns.show-for-small-only
         = app.years_display
-        = app.thumbnail(true)
+        - if app.has_image?
+          %div.screenshot= app.thumbnail
 
         = render "works/app_details", app: app
