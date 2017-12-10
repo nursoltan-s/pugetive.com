@@ -30,14 +30,27 @@ module LinksHelper
                    .merge(only_path: false,
                           protocol:  PUGETIVE_CONFIG[token][:host_protocol],
                           host:      PUGETIVE_CONFIG[token][:host_with_port],
-                          port:      PUGETIVE_CONFIG[token][:port].to_i == 80 ? nil : PUGETIVE_CONFIG[token][:port]))
+                          port:      PUGETIVE_CONFIG[token][:port].to_i == 80 ? nil : PUGETIVE_CONFIG[token][:port]),
+            class: env_class(token) )
   end
-
 
   def audio_player(work)
     if work.soundcloud_id
       return render "soundcloud_player", soundcloud_id: work.soundcloud_id
     end
   end
+
+  private
+    def env_class(token)
+      case token.to_sym
+      when :development
+        return 'alert'
+      when :staging
+        return 'message'
+      when :production
+        return 'success'
+      end
+      nil
+    end
 
 end

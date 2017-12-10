@@ -40,13 +40,30 @@ form label {
   color: lighten($body_color, 30%);
 }
 
+$alert_color: $red_text_color;
+$neutral_color: gold;
+$success_color: #6a9;
+
 .flash-message .alert {
-  background: $red_text_color;
+  background: $alert_color;
   color: #ffc;
 }
 
+.menu > li > a, #private-menu-wrapper a {
+  &.alert {
+    color: darken($alert_color, 10%);
+  }
+  &.success {
+    color: darken($success_color, 10%);
+  }
+  &.message {
+    color: darken($neutral_color, 10%);
+  }
+}
+
+
 .flash-message .success {
-  background: #6a9;
+  background: $success_color;
   color: #fff;
 }
 
