@@ -141,3 +141,15 @@ ul.tabs {
 a.callout, a.callout:visited {
   color: $link_color;
 }
+
+span.label {
+  background-color: $link_color;
+  display: incline-block;
+  padding: 5px 10px;
+  font-size: 0.75em;
+  @include rounded(10px);
+  margin-right: 0.5em;
+  a {
+    color: $alt_background;
+  }
+}
