@@ -1,16 +1,14 @@
 class Icon < ApplicationRecord
 
-  scope :sorted, -> {order(:name)}
-
   def self.from_category(category_name)
-    where(["category = ?", category_name])
+    cached_icons.select{|icon| icon.category == category_name.to_s}
   end
 
   def self.for(name)
-    icon = self.find_by(name: name) rescue nil
+    icon = cached_icons.find{|i| i.name == name.to_s}
     if icon.nil?
       begin
-        icon = self.find_by(name: 'question')
+        icon = cached_icons.find{|i| i.name == 'question'}
       rescue
         raise PugetiveError, "IconHelper#icon can find niether '#{name}' nor the default icon 'question'"
       end
@@ -19,10 +17,12 @@ class Icon < ApplicationRecord
   end
 
   def self.categories
-    sql = <<-SQL
-      SELECT DISTINCT category
-      FROM icons
-    SQL
-    ActiveRecord::Base.connection.select_values(sql)
+    cached_icons.map(&:category).uniq
   end
+
+  private
+
+    def self.cached_icons
+      @cached_icons ||= Icon.all.order(:name)
+    end
 end

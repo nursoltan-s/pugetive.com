@@ -10,7 +10,7 @@
     %th Name
     %th Token
     %th Type
-  - @icons.sorted.each do |icon|
+  - @icons.each do |icon|
     %tr
       %td.icon= icon.to_html
       %td= link_to(icon.name, edit_icon_path(icon))

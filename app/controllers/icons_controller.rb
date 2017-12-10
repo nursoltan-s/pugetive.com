@@ -7,8 +7,8 @@ class IconsController < MetaResourceController
       @icons = Icon.all
     end
 
-    policy_scope(@icons)
-    authorize(@icons, :index?)
+    policy_scope(Icon)
+    authorize(Icon, :update?)
 
   end
 
