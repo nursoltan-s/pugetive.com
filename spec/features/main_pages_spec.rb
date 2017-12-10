@@ -95,3 +95,21 @@ feature "visiting main writing page" do
   end
 
 end
+
+
+feature "Sign in pipeline" do
+  before(:each) do
+    setup_pugetive
+  end
+
+  scenario "as the admin user signing in" do
+    create(:user)
+
+    visit new_user_session_path
+    fill_in 'user[email]', :with => 'test@pugetive.com'
+    fill_in 'user[password]', :with => 'testymctesterson'
+    find('input[name="commit"]').click
+
+    expect(page).to have_content "Signed in successfully"
+  end
+end
