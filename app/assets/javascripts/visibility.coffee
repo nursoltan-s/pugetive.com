@@ -27,7 +27,7 @@ $ ->
 
     handle_missing_images: ->
       $("img.thumbnail").on "error", ->
-        $(this).attr('src', './errors/missing-image.png').attr('title', 'Error Loading Image');
+        $(this).attr('src', '/errors/missing-image.png').attr('title', 'Error Loading Image');
 
 
   new Pugetive.Visibility()
