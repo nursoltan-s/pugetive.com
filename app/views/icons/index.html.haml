@@ -2,13 +2,14 @@
 
 = new_button(:icon)
 
+= render "filters"
 %table
   %tr
     %th Icon
     %th Name
     %th Token
     %th Type
-  - @icons.each do |icon|
+  - @icons.sorted.each do |icon|
     %tr
       %td.icon= icon.to_html
       %td= link_to(icon.name, edit_icon_path(icon))
