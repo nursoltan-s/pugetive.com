@@ -4,7 +4,7 @@ class Piece < Work
 
   belongs_to :author, class_name: 'Author'
 
-  default_scope { writing.includes(:lyric) }
+  default_scope { includes(:lyric) }
   scope :reviews, -> {where(genre_id: 11)}
   scope :blogs,   -> {where('name LIKE "%typepad%" OR name LIKE "%medium%"')}
   # other projects = all   - @blogs - @reviews - @haiku.map{|s| s.works}.flatten

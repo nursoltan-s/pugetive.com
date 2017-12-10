@@ -1,3 +1,3 @@
-class AppsController < MetaResourceController
+class AppsController < WorksController
 
 end

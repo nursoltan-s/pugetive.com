@@ -1,5 +1,6 @@
 class Song < Work
-  default_scope { music }
+
+  default_scope { includes(:lyric) }
 
   has_one :lyric, foreign_key: :work_id
   has_many :albums, through: :series_works, source: :series, class_name: 'Album'

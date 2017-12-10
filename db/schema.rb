@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171209205610) do
+ActiveRecord::Schema.define(version: 20171210180702) do
 
   create_table "accounts", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 20171209205610) do
     t.index ["slug"], name: "index_genres_on_slug"
   end
 
-  create_table "icons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "icons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", limit: 32, null: false
     t.string "type", limit: 16, null: false
     t.string "token", limit: 32, null: false
@@ -305,6 +305,7 @@ ActiveRecord::Schema.define(version: 20171209205610) do
   create_table "works", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name", null: false
     t.integer "interest_id", null: false
+    t.string "type", limit: 16, default: "App", null: false
     t.integer "party_id", null: false
     t.string "url"
     t.integer "start_year", null: false
@@ -343,6 +344,8 @@ ActiveRecord::Schema.define(version: 20171209205610) do
     t.index ["start_year"], name: "index_works_on_start_year"
     t.index ["status"], name: "index_works_on_status"
     t.index ["stop_year"], name: "index_works_on_stop_year"
+    t.index ["type", "id"], name: "index_works_on_type_and_id"
+    t.index ["type"], name: "index_works_on_type"
   end
 
 end

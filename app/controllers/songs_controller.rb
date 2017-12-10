@@ -1,4 +1,4 @@
-class SongsController < MetaResourceController
+class SongsController < WorksController
 
  
 end

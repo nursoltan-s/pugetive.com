@@ -1,7 +1,6 @@
 WEB_ARCHIVE_DOMAIN = 'web.archive.org'
 
 class App < Work
-  default_scope { software }
 
   def years
     if read_attribute(:stop_year).nil?

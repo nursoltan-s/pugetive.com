@@ -5,7 +5,7 @@ class Photo < Work
 
   has_many :galleries, through: :series_works, source: :series, class_name: 'Gallery'
 
-  default_scope {includes(:flickr_urls).where(interest_id: PHOTOGRAPHY_INTEREST_ID)}
+  default_scope {includes(:flickr_urls) }
 
   scope :flickr,      -> {where("flickr_id IS NOT NULL AND flickr_id != ''")}
   scope :sorted, -> {order("stop_year DESC, instagram_id DESC, flickr_id DESC, id DESC")}
