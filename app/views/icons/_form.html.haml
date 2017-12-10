@@ -1,7 +1,7 @@
 = form_for @icon do |f|
   - handle_errors(@icon)
 
-  = label_field(f.label(:name),     f.text_field(:name))
+  = label_field(f.label(:name),     f.text_field(:name, disabled: @icon.name == 'question' ? 'disabled' : nil))
   = label_field(f.label(:type),     f.select(:type,      options_for_select(Icon.all.map(&:type).uniq,    selected: @icon.type)))
   = label_field(f.label(:token),    f.text_field(:token))
   = label_field(f.label(:category), f.select(:category,  options_for_select(Icon.all.map(&:category).uniq, selected: @icon.type)))

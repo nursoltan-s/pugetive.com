@@ -11,6 +11,6 @@
   - @icons.each do |icon|
     %tr
       %td.icon= icon.to_html
-      %td= icon.name
+      %td= link_to(icon.name, edit_icon_path(icon))
       %td= icon.token
       %td= icon.type
