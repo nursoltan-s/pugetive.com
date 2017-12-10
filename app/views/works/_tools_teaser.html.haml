@@ -1,17 +1,18 @@
-- interest_tools = Tool.send(work.interest.token).sort{|a,b| a.name <=> b.name}
-- if interest_tools.any?
-  %h3 Tools
-  - interest_tools.each do |tool|
-    - if work.has_tool?(tool)
-      - wield = work.wield_for(tool)
-      %div
-        = link_to(raw("#{raw(icon(:delete))} #{tool.name}"), wield, method: :delete, class: 'button remove-button', data: {confirm: 'Are you sure?'})
-        = form_for wield do |f|
-          = f.check_box(:legacy)
-          = f.submit('Update Legacy Flag', class: 'tiny')
+- cache ['tools-teaser', work] do
+  - interest_tools = Tool.send(work.interest.token).sort{|a,b| a.name <=> b.name}
+  - if interest_tools.any?
+    %h3 Tools
+    - interest_tools.each do |tool|
+      - if work.has_tool?(tool)
+        - wield = work.wield_for(tool)
+        %div
+          = link_to(raw("#{raw(icon(:delete))} #{tool.name}"), wield, method: :delete, class: 'button remove-button', data: {confirm: 'Are you sure?'})
+          = form_for wield do |f|
+            = f.check_box(:legacy)
+            = f.submit('Update Legacy Flag', class: 'tiny')
 
-    - else
-      = form_for work.wields.new(tool_id: tool.id) do |f|
-        = f.hidden_field(:work_id)
-        = f.hidden_field(:tool_id)
-        = f.submit(tool.name)
+      - else
+        = form_for work.wields.new(tool_id: tool.id) do |f|
+          = f.hidden_field(:work_id)
+          = f.hidden_field(:tool_id)
+          = f.submit(tool.name)

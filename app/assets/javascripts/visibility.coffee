@@ -9,6 +9,7 @@ $ ->
       @show_admin_elements()
       @bind_lazy_loaders()
       @handle_missing_images()
+      new Pugetive.Style()
 
     foundationize: ->
       $(document).foundation()
@@ -24,6 +25,7 @@ $ ->
         $clicked_link = $(this)
         $.get $clicked_link.attr('href'), (data) ->
           $clicked_link.parent().find('.accordion-content').html(data)
+          new Pugetive.Style()
 
     handle_missing_images: ->
       $("img.thumbnail").on "error", ->
