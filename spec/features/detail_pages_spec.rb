@@ -56,6 +56,8 @@ feature "Viewing album pages" do
       visit album_path(album)
 
       expect(page).to have_content album.name
+      expect(page).to have_content album.tools.first.name
+      expect(page).to have_content album.titles.first.name
     end
   end
 

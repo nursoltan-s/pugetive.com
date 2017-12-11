@@ -11,13 +11,21 @@ class Series < ApplicationRecord
   has_many :series_works, dependent: :destroy
 
   has_many :works, through: :series_works
-  has_many :titles, -> { uniq }, through: :works
 
-  has_many :pieces, through: :series_works, source: :work, class_name: 'Piece'
-  has_many :tools, through: :pieces
+  has_many :roles, through: :works
+  has_many :titles, -> {group('titles.id')}, through: :roles
+
+  has_many :wields, through: :works
+  has_many :tools, -> {group('tools.id')}, through: :wields
 
   has_attached_file(:image, Pugetive::Application.config.paperclip_image_opts)
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+
+  scope :software,    -> {joins(:works).where(works: {interest_id: SOFTWARE_INTEREST_ID}    ).group('series.id')}
+  scope :music,       -> {joins(:works).where(works: {interest_id: MUSIC_INTEREST_ID}       ).group('series.id')}
+  scope :photography, -> {joins(:works).where(works: {interest_id: PHOTOGRAPHY_INTEREST_ID} ).group('series.id')}
+  scope :film,        -> {joins(:works).where(works: {interest_id: FILM_INTEREST_ID}        ).group('series.id')}
+  scope :writing,     -> {joins(:works).where(works: {interest_id: WRITING_INTEREST_ID}     ).group('series.id')}
 
   scope :alpha, -> {order(:name)}
 
