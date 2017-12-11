@@ -127,11 +127,11 @@ class Work < ApplicationRecord
   end
 
   def active_tools
-    wields.includes(:tool).where(legacy: false).map{|w| w.tool}
+    cached_wields.includes(:tool).where(legacy: false).map{|w| w.tool}
   end
 
   def legacy_tools
-    wields.includes(:tool).where(legacy: true).map{|w| w.tool}
+    cached_wields.includes(:tool).where(legacy: true).map{|w| w.tool}
   end
 
   def has_tool?(tool)

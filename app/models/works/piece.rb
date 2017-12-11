@@ -4,7 +4,7 @@ class Piece < Work
 
   belongs_to :author, class_name: 'Author'
 
-  default_scope { includes(:lyric) }
+  default_scope { includes(:lyric, :genre) }
   # scope :reviews, -> {where(genre_id: 11)}
   # scope :blogs,   -> {where('name LIKE "%typepad%" OR name LIKE "%medium%"')}
   # other projects = all   - @blogs - @reviews - @haiku.map{|s| s.works}.flatten
@@ -17,13 +17,12 @@ class Piece < Work
     cached_pieces.select{|piece| piece.genre_id == AMAZON_GENRE_ID}
   end
 
-# Refactor
   def self.haiku
-    Series.where('name LIKE "%haiku%"').first
+    @haiku ||= Collection.where('name LIKE "%haiku%"').first
   end
 
   def self.haikus
-    Series.haiku.works
+    Collection.haiku.works
   end
 
   def self.other_projects

@@ -1,7 +1,6 @@
 class Gallery < Series
   has_many :photos, through: :series_works, source: :work, class_name: 'Photo'
 
-  default_scope {photography}
   scope :portfolio,     -> { where('series.name LIKE "%portfolio%"') }
   scope :non_portfolio, -> { where('series.name NOT LIKE "%portfolio%"') }
 

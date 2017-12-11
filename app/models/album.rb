@@ -3,8 +3,6 @@ class Album < Series
   default_scope {includes(songs: [:titles, :tools, :party])}
 
   has_many :songs, through: :series_works, source: :work, class_name: 'Song'
-  # has_many :titles, through: :songs
-  # has_many :tools, through: :songs
 
   def self.music
     joins(:songs)
@@ -35,6 +33,7 @@ class Album < Series
   end
 
   private
+
     def self.cached_band_recordings
       key = "Album#cached_band_recordings:#{self.all.cache_key}"
       Cache.new(key, 'band.studio.uniq').value.sort{|a, b| b.stop_year <=> a.stop_year}

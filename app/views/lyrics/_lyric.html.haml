@@ -1,9 +1,8 @@
 - cache lyric do
   %section.lyric
     .lyric-box
-      - if lyric.work.music?
-        %h2
-          Song Lyric
-          %span.tiny.subdued{data: {visible_to: 'admin'}}= link_to(icon(:edit), edit_lyric_path(lyric))
+      %h2.song-lyric-title
+        Song Lyric
+        %span.tiny.subdued{data: {visible_to: 'admin'}}= link_to(icon(:edit), edit_lyric_path(lyric))
       %p
         %pre.lyric-content= lyric.content

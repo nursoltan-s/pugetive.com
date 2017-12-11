@@ -1,0 +1,28 @@
+- cache collection do
+  %section.series.writing
+    .row
+      .medium-3.columns.medium-offset-2.medium-text-right.title-box
+        %h3
+          = link_to(collection.name, collection)
+        %p
+          %span.years
+            = collection.years
+
+        %span.tools
+          = raw(collection.tools.map{|t| link_to(t.name, t)}.join(', '))
+
+        - if collection.has_image?
+          = link_to(image_tag(collection.image.url(:thumb)), collection.image.url(:original), target: "_blank")
+
+        %p.admin{data: {visible_to: 'admin'}}
+          %smaller.subdued
+            = link_to(icon(:touch), touch_path(collection))
+            = link_to(icon(:new), new_series_work_path(series_id: collection.id), rel: 'nofollow')
+            = link_to(icon(:edit), edit_series_path(collection), rel: 'nofollow')
+            = link_to(icon(:delete), collection, :method => :delete, :data => { :confirm => 'Are you sure?' }, rel: 'nofollow')
+      .medium-5.columns.end.info-box
+        = collection.decorate.artist_name
+        - if collection.description.present?
+          %p.description= collection.description
+
+        = render 'works/list', works: collection.works, embedded_content: true

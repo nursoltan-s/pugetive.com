@@ -61,7 +61,7 @@ class InterestsController < MetaResourceController
 
     @blogs = Piece.blogs
     @reviews = Piece.reviews
-    @haiku = Piece.haiku
+    @haiku = Collection.haiku
     @projects = Piece.other_projects
 
     render :writing

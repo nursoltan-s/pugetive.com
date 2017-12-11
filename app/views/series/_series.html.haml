@@ -1,30 +1,30 @@
-- cache series do
-  %section.series{class: series.interest}
-    .row
-      .medium-3.columns.medium-offset-2.medium-text-right.title-box
-        %h3
-          = link_to(series.name, series)
-        %p
-          %span.years
-            = series.years
+-# - cache series do
+-#   %section.series{class: series.interest}
+-#     .row
+-#       .medium-3.columns.medium-offset-2.medium-text-right.title-box
+-#         %h3
+-#           = link_to(series.name, series)
+-#         %p
+-#           %span.years
+-#             = series.years
 
-        -# %span.titles
-        -#   = raw(series.titles.sort_by{|t| t.sort}.map{|t| link_to(t.name, t)}.join(', '))
-        %span.tools
-          = raw(series.tools.map{|t| link_to(t.name, t)}.join(', '))
+-#         -# %span.titles
+-#         -#   = raw(series.titles.sort_by{|t| t.sort}.map{|t| link_to(t.name, t)}.join(', '))
+-#         %span.tools
+-#           = raw(series.tools.map{|t| link_to(t.name, t)}.join(', '))
 
-        - if series.has_image?
-          = link_to(image_tag(series.image.url(:thumb)), series.image.url(:original), target: "_blank")
+-#         - if series.has_image?
+-#           = link_to(image_tag(series.image.url(:thumb)), series.image.url(:original), target: "_blank")
 
-        %p.admin{data: {visible_to: 'admin'}}
-          %smaller.subdued
-            = link_to(icon(:touch), touch_path(series))
-            = link_to(icon(:new), new_series_work_path(series_id: series.id), rel: 'nofollow')
-            = link_to(icon(:edit), edit_series_path(series), rel: 'nofollow')
-            = link_to(icon(:delete), series, :method => :delete, :data => { :confirm => 'Are you sure?' }, rel: 'nofollow')
-      .medium-5.columns.end.info-box
-        = series.decorate.artist_name
-        - if series.description.present?
-          %p.description= series.description
+-#         %p.admin{data: {visible_to: 'admin'}}
+-#           %smaller.subdued
+-#             = link_to(icon(:touch), touch_path(series))
+-#             = link_to(icon(:new), new_series_work_path(series_id: series.id), rel: 'nofollow')
+-#             = link_to(icon(:edit), edit_series_path(series), rel: 'nofollow')
+-#             = link_to(icon(:delete), series, :method => :delete, :data => { :confirm => 'Are you sure?' }, rel: 'nofollow')
+-#       .medium-5.columns.end.info-box
+-#         = series.decorate.artist_name
+-#         - if series.description.present?
+-#           %p.description= series.description
 
-        = render 'works/list', works: series.works, embedded_content: true
+-#         = render 'works/list', works: series.works, embedded_content: true

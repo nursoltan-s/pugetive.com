@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171210180702) do
+ActiveRecord::Schema.define(version: 20171211005249) do
 
   create_table "accounts", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 20171210180702) do
     t.index ["slug"], name: "index_genres_on_slug"
   end
 
-  create_table "icons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "icons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name", limit: 32, null: false
     t.string "type", limit: 16, null: false
     t.string "token", limit: 32, null: false
@@ -217,6 +217,7 @@ ActiveRecord::Schema.define(version: 20171210180702) do
   end
 
   create_table "series", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "type", limit: 16, default: "Album", null: false
     t.string "name", null: false
     t.string "summary"
     t.text "description"
@@ -230,6 +231,8 @@ ActiveRecord::Schema.define(version: 20171210180702) do
     t.datetime "image_updated_at"
     t.index ["audience"], name: "index_series_on_audience"
     t.index ["slug"], name: "index_series_on_slug"
+    t.index ["type", "id"], name: "index_series_on_type_and_id"
+    t.index ["type"], name: "index_series_on_type"
   end
 
   create_table "series_works", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|

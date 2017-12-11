@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :awards
   resources :addresses
   resources :artists
+  resources :collections
   resources :companies
   resources :emails
   resources :icons
