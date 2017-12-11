@@ -8,9 +8,6 @@
           %span.years
             = collection.years
 
-        %span.tools
-          = raw(collection.tools.map{|t| link_to(t.name, t)}.join(', '))
-
         - if collection.has_image?
           = link_to(image_tag(collection.image.url(:thumb)), collection.image.url(:original), target: "_blank")
 

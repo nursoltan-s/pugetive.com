@@ -1,5 +1,6 @@
 class Title < ActiveRecord::Base
 
+  include Randomable
   include Sluggable
 
   validates :name, presence: true
@@ -15,29 +16,8 @@ class Title < ActiveRecord::Base
 
   scope :music,       -> {where(category: 'Music')}
   scope :photography, -> {where(category: 'Photography')}
-  scope :software,    -> {where(category: 'Software')} 
+  scope :software,    -> {where(category: 'Software')}
   scope :film,        -> {where(category: 'Film')}
   scope :writing,     -> {where(category: 'Writing')}
-
-  def self.categories
-    #FIXME make direct SQL call
-    all.each.map{|t| t.category}.uniq
-  end
-
-  # Refactor: extract into shared module
-  def self.random(num = 10)
-    find(self.random_id(num))
-  end
-
-  def self.random_id(num)
-    if @random_ids.nil?
-      sql = <<-SQL
-        SELECT id
-        FROM titles
-      SQL
-      @random_ids = ActiveRecord::Base.connection.select_values(sql)
-    end
-    return @random_ids.sample(num)
-  end
 
 end

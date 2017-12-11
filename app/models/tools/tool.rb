@@ -1,4 +1,6 @@
 class Tool < ActiveRecord::Base
+
+  include Randomable
   include Sluggable
 
   TYPES = ['Language', 'System', 'Program', 'Concept', 'Instrument']
@@ -84,10 +86,5 @@ class Tool < ActiveRecord::Base
   def self.resume_lapsed
     resume.alpha - resume_current
   end
-
-  def self.random(num = 10)
-    order("RAND()").limit(num)
-  end
-
 
 end

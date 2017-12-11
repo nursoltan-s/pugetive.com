@@ -9,11 +9,11 @@ class Album < Series
   end
 
   def self.band
-    music.joins(works: :party).where("works.party_id != 1 AND parties.alias != 1")
+    self.joins(works: :party).where("works.party_id != 1 AND parties.alias != 1")
   end
 
   def self.studio
-    music.where(audience: false)
+    self.where(audience: false)
   end
 
   def self.band_recordings

@@ -1,17 +1,11 @@
 class Song < Work
 
-  default_scope { includes(:lyric) }
-
   has_one :lyric, foreign_key: :work_id
+
   has_many :albums, through: :series_works, source: :series, class_name: 'Album'
   has_many :instruments, through: :wields
 
   belongs_to :author, class_name: 'Artist'
-
-
-  def self.random(num = 10)
-    order("RAND()").limit(num)
-  end
 
   def solo?
     party_id == TODD_PARTY_ID or party.alias?

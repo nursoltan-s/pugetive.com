@@ -71,8 +71,9 @@ class WorkDecorator < Draper::Decorator
   end
 
   def lyric_display
-    if model.has_lyric?
-      return h.raw(h.render(model.lyric))
+    lyric = model.lyric
+    if lyric
+      return h.raw(h.render(lyric))
     end
     contents = h.link_to(h.raw("#{h.icon(:new)} Lyric"), h.new_lyric_path(work_id: model.id))
     h.raw(h.content_tag(:div, h.raw(contents), data: {visible_to: 'admin'}))

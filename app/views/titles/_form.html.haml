@@ -2,7 +2,7 @@
   - handle_errors(@title)
 
   = label_field(f.label(:name), f.text_field(:name))
-  = label_field(f.label(:category), 
+  = label_field(f.label(:category),
                 f.select(:category, options_for_select(Interest::CATEGORIES, selected: @title.category)))
   = submit(f)
 

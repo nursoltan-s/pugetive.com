@@ -11,15 +11,16 @@ class Work < ApplicationRecord
 
   include Rangeable
   include Sluggable
+  include Randomable
 
-  validates :interest_id, inclusion: {in: Interest::INTEREST_IDS}
-  validates :party_id, numericality: true
-  validates :start_year, presence: true
-  validates :live, inclusion: {in: BOOLEAN_OPTIONS}
-  validates :status, inclusion: {in: STATUSES}
-  validates :demo, inclusion: {in: BOOLEAN_OPTIONS}
-  validates :favorite, inclusion: {in: BOOLEAN_OPTIONS}
-  validates :author_id, numericality: true
+  validates :interest_id, inclusion:    {in: Interest::INTEREST_IDS}
+  validates :party_id,    numericality: true
+  validates :start_year,  presence:     true
+  validates :live,        inclusion:    {in: BOOLEAN_OPTIONS}
+  validates :status,      inclusion:    {in: STATUSES}
+  validates :demo,        inclusion:    {in: BOOLEAN_OPTIONS}
+  validates :favorite,    inclusion:    {in: BOOLEAN_OPTIONS}
+  validates :author_id,   numericality: true
 
   has_attached_file(:image, Pugetive::Application.config.paperclip_image_opts)
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
@@ -27,9 +28,6 @@ class Work < ApplicationRecord
   belongs_to :interest
   belongs_to :party
   belongs_to :genre
-
-  # Songs or writing Piecds
-  has_one :lyric
 
   has_many :roles, dependent: :destroy
   has_many :titles, through: :roles
@@ -49,12 +47,6 @@ class Work < ApplicationRecord
   scope :favorite,    -> {where(favorite: true)}
   scope :unfavorite,  -> {where(favorite: false)}
 
-  scope :software,    -> {where(interest_id: SOFTWARE_INTEREST_ID)}
-  scope :music,       -> {where(interest_id: MUSIC_INTEREST_ID)}
-  scope :film,        -> {where(interest_id: FILM_INTEREST_ID)}
-  scope :photography, -> {where(interest_id: PHOTOGRAPHY_INTEREST_ID)}
-  scope :writing,     -> {where(interest_id: WRITING_INTEREST_ID)}
-
   scope :lyrical,     -> {where("interest_id IN (#{MUSIC_INTEREST_ID},#{WRITING_INTEREST_ID})")}
 
 
@@ -63,20 +55,16 @@ class Work < ApplicationRecord
     Cache.new(key, -> {self.sorted}).value
   end
 
+  # def titles
+  #   @titles ||= Title.joins(roles: {work: {series_works: :series}}).where(['series.id = ?', self.id]).group('titles.id')
+  # end
 
+  # def tools
+  #   @tools ||= Tool.joins(wields: {work: {series_works: :series}}).where(['series.id = ?', self.id]).group('tools.id')
+  # end
 
   def solo?
     party_id == TODD_PARTY_ID
-  end
-
-  # Keep this in parent class because
-  # both Song and Piece models use it
-  def has_lyric?
-    unless interest_id == MUSIC_INTEREST_ID or
-      interest_id == WRITING_INTEREST_ID
-      return false
-    end
-    lyric.present?
   end
 
   def canonical_path
@@ -102,16 +90,16 @@ class Work < ApplicationRecord
     image.url.present? and not image.url(:thumb).match(/missing/)
   end
 
-  def has_thumbnail?
-    instagram_id.present? or flickr_id.present?
-  end
+  # def has_thumbnail?
+  #   instagram_id.present? or flickr_id.present?
+  # end
 
   def active_tools
-    cached_wields.includes(:tool).where(legacy: false).map{|w| w.tool}
+    cached_wields.where(legacy: false).map{|w| w.tool}
   end
 
   def legacy_tools
-    cached_wields.includes(:tool).where(legacy: true).map{|w| w.tool}
+    cached_wields.where(legacy: true).map{|w| w.tool}
   end
 
   def has_tool?(tool)
@@ -120,10 +108,6 @@ class Work < ApplicationRecord
 
   def has_title?(title)
     cached_titles.map(&:id).include?(title.id)
-  end
-
-  def self.random(num = 10)
-    order("RAND()").limit(num)
   end
 
   def wield_for(tool)
