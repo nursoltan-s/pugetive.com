@@ -40,10 +40,11 @@ class InterestsController < MetaResourceController
 
   def photography
     authorize(@interest)
-    @portfolios = Gallery.portfolios.sort_by{|p| -p.photos.count}
-    @series     = Gallery.non_portfolios.sort_by{|p| -p.stop_year}
+    @portfolios    = Gallery.portfolios.sort_by{|p| -p.photos.count}
+    @non_portfolios = Gallery.non_portfolios
 
     @profiles   = Account.photography
+
     render :photography
   end
 

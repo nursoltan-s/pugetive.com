@@ -17,6 +17,7 @@ class SeriesController < MetaResourceController
                                      :description,
                                      :image,
                                      :name,
-                                     :summary)
+                                     :summary,
+                                     :type)
     end
 end

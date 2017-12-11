@@ -19,6 +19,10 @@ FactoryBot.define do
     start_year Time.now.year - 10
   end
 
+  factory :collection do
+    name "Placeholder Collection Name"
+  end
+
   factory :email do
     id TODD_USER_ID
     address 'test@pugetive.com'

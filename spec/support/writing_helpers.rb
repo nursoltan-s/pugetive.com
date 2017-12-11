@@ -1,9 +1,9 @@
 module WritingHelpers
 
   def setup_writing
-    amazon = create(:party,  name: 'Amazon.com')
-    medium = create(:piece,  name: 'Medium Blog', start_year: 2015)
-    haiku  = create(:series, name: 'Bad Rock Haiku')
+    amazon = create(:party,      name: 'Amazon.com')
+    medium = create(:piece,      name: 'Medium Blog', start_year: 2015)
+    haiku  = create(:collection, name: 'Bad Rock Haiku')
     begin
       todd   = create(:party,  name: 'Todd Gehman', id: TODD_PARTY_ID)
     rescue ActiveRecord::RecordNotUnique

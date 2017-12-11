@@ -1,13 +1,12 @@
 class Gallery < Series
   has_many :photos, through: :series_works, source: :work, class_name: 'Photo'
 
-  scope :portfolio,     -> { where('series.name LIKE "%portfolio%"') }
-  scope :non_portfolio, -> { where('series.name NOT LIKE "%portfolio%"') }
+  scope :portfolio,     -> { joins(:series_works).where('series.name LIKE "%portfolio%"'    ).group('series.id') }
+  scope :non_portfolio, -> { joins(:series_works).where('series.name NOT LIKE "%portfolio%"').group('series.id') }
 
   def self.photography
     select("DISTINCT series.*").joins(:works).where(works: {interest_id: PHOTOGRAPHY_INTEREST_ID})
   end
-
 
   def self.portfolios
     key = "Gallery#cached_porfolio:#{self.all.cache_key}"

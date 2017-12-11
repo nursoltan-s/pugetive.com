@@ -3,6 +3,7 @@ class Piece < Work
   has_one :lyric, foreign_key: :work_id
 
   belongs_to :author, class_name: 'Author'
+  has_and_belongs_to_many :collections
 
   default_scope { includes(:lyric, :genre) }
   # scope :reviews, -> {where(genre_id: 11)}
@@ -22,12 +23,11 @@ class Piece < Work
   end
 
   def self.haikus
-    Collection.haiku.works
+    self.haiku.pieces
   end
 
   def self.other_projects
-    # FIXME performance tune this
-    where(interest_id: WRITING_INTEREST_ID) - blogs - reviews - haiku.pieces
+    all - blogs - reviews - haikus
   end
 
 

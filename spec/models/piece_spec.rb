@@ -40,12 +40,11 @@ describe Piece do
   end
 
   describe '#haiku' do
-    it 'returns a Series of bad rock haiku Works' do
+    it 'returns a Collection of bad rock haiku Works' do
+      collection = Collection.haiku.first
 
-      series = Piece.haiku
-
-      expect(series.pieces.size).to be > 0
-      expect(series.pieces.first).to be_a(Work)
+      expect(collection.pieces.size).to be > 0
+      expect(collection.pieces.first).to be_a(Piece)
     end
 
   end

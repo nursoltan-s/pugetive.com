@@ -4,6 +4,7 @@ class Cache
 
   def initialize(key, method_chain)
     set_calling_class
+
     @value = Rails.cache.fetch key
 
     unless @value

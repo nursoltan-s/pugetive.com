@@ -1,4 +1,5 @@
 class Series < ApplicationRecord
+  TYPES = ['Album', 'Gallery', 'Collection']
 
   include Rangeable
   include Sluggable
@@ -60,7 +61,7 @@ class Series < ApplicationRecord
   end
 
   def stop_year
-    works.map(&:stop_year).max
+    works.map(&:stop_year).max || Time.now.year
   end
 
   def self.random(num = 10)
