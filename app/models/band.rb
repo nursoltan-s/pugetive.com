@@ -20,6 +20,6 @@ class Band < Party
 
   def self.cached
     key = "Band#cacheds:#{self.all.cache_key}"
-    Cache.new(key, 'all').value.sort{|a, b| b.stop_year <=> a.stop_year}
+    Cache.new(key, -> {Band.all.sort{|a, b| b.stop_year <=> a.stop_year}}).value
   end
 end

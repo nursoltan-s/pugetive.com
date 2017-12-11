@@ -27,7 +27,7 @@ class Piece < Work
   end
 
   def self.other_projects
-    all - blogs - reviews - haikus
+    cached_pieces - blogs - reviews - haikus
   end
 
 
@@ -39,7 +39,7 @@ class Piece < Work
   private
     def self.cached_pieces
       key = "Piece#cached_pieces:#{self.all.cache_key}"
-      Cache.new(key, 'all.sorted').value
+      Cache.new(key, -> {Piece.all.sorted}).value
     end
 
 end

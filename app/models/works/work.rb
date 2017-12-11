@@ -60,7 +60,7 @@ class Work < ApplicationRecord
 
   def self.cached
     key = "Work#cached:#{self.all.cache_key}"
-    Cache.new(key, :sorted).value
+    Cache.new(key, -> {self.sorted}).value
   end
 
 

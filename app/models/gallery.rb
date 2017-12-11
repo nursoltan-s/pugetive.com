@@ -10,12 +10,12 @@ class Gallery < Series
 
   def self.portfolios
     key = "Gallery#cached_porfolio:#{self.all.cache_key}"
-    Cache.new(key, 'portfolio').value
+    Cache.new(key, -> {Gallery.portfolio}).value
   end
 
   def self.non_portfolios
     key = "Gallery#cached_non_porfolio:#{self.all.cache_key}"
-    Cache.new(key, 'non_portfolio').value
+    Cache.new(key, -> {Gallery.non_portfolio}).value
   end
 
   def prev(photo)

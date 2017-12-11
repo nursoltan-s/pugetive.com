@@ -36,12 +36,12 @@ class Album < Series
 
     def self.cached_band_recordings
       key = "Album#cached_band_recordings:#{self.all.cache_key}"
-      Cache.new(key, 'band.studio.uniq').value.sort{|a, b| b.stop_year <=> a.stop_year}
+      Cache.new(key, -> {Album.band.studio.uniq.sort{|a, b| b.stop_year <=> a.stop_year}}).value
     end
 
     def self.cached_solo_recordings
       key = "Album#cached_solo_recordings:#{self.all.cache_key}"
-      Cache.new(key, 'solo.music.uniq').value.sort{|a, b| b.stop_year <=> a.stop_year}
+      Cache.new(key, -> {Album.solo.music.uniq.sort{|a, b| b.stop_year <=> a.stop_year}}).value
     end
 
 end
