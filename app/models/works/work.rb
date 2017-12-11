@@ -60,14 +60,7 @@ class Work < ApplicationRecord
 
   def self.cached
     key = "Work#cached:#{self.all.cache_key}"
-    works = Rails.cache.fetch key
-
-    unless works
-      works = self.sorted.to_a
-      Rails.cache.write key, works
-    end
-
-    works
+    Cache.new(key, :sorted).value
   end
 
 

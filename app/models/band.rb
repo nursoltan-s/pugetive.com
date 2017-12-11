@@ -20,12 +20,6 @@ class Band < Party
 
   def self.cached
     key = "Band#cacheds:#{self.all.cache_key}"
-    bands = Rails.cache.fetch key
-
-    unless bands
-      bands = all.sort{|a, b| b.stop_year <=> a.stop_year}
-      Rails.cache.write key, bands
-    end
-    bands
+    Cache.new(key, 'all').value.sort{|a, b| b.stop_year <=> a.stop_year}
   end
 end

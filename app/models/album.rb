@@ -37,24 +37,12 @@ class Album < Series
   private
     def self.cached_band_recordings
       key = "Album#cached_band_recordings:#{self.all.cache_key}"
-      albums = Rails.cache.fetch key
-
-      unless albums
-        albums =  band.studio.uniq.sort{|a, b| b.stop_year <=> a.stop_year}.to_a
-        Rails.cache.write key, albums
-      end
-      albums
+      Cache.new(key, 'band.studio.uniq').value.sort{|a, b| b.stop_year <=> a.stop_year}
     end
 
     def self.cached_solo_recordings
       key = "Album#cached_solo_recordings:#{self.all.cache_key}"
-      albums = Rails.cache.fetch key
-
-      unless albums
-        albums = solo.music.uniq.sort{|a, b| b.stop_year <=> a.stop_year}
-        Rails.cache.write key, albums
-      end
-      albums
+      Cache.new(key, 'solo.music.uniq').value.sort{|a, b| b.stop_year <=> a.stop_year}
     end
 
 end
