@@ -1,5 +1,4 @@
-- gallery_id ||= nil
-- cache ["gallery/thumbnails", photos.map{|w| w.id}.sort, "-", gallery_id] do
-  - photos.each do |photo|
-    - cache ["thumbnail", photo, "-", gallery_id] do
-      = link_to(photo.thumbnail(false), photo_path(photo, gallery_id: gallery_id))
+- cache ["gallery/thumbnails", gallery] do
+  - gallery.photos.sorted.each do |photo|
+    - cache ["thumbnail", photo, gallery] do
+      = link_to(photo.thumbnail(false), photo_path(photo, gallery_id: gallery.id))

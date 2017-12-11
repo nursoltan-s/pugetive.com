@@ -40,8 +40,8 @@ class InterestsController < MetaResourceController
 
   def photography
     authorize(@interest)
-    @portfolios = Gallery.portfolio.sort_by{|p| -p.photos.count}
-    @series     = Gallery.non_portfolio.sort_by{|p| -p.stop_year}
+    @portfolios = Gallery.portfolios.sort_by{|p| -p.photos.count}
+    @series     = Gallery.non_portfolios.sort_by{|p| -p.stop_year}
 
     @profiles   = Account.photography
     render :photography
@@ -50,19 +50,20 @@ class InterestsController < MetaResourceController
   def film
     authorize(@interest)
 
-    @featured = Movie.favorite
-    @other_projects = Movie.unfavorite
+    @featured = Movie.favorites
+    @other_projects = Movie.unfavorites
 
     render :film
   end
 
   def writing
     authorize(@interest)
-    # Refactor: Pull everything at once and segment in ruby
+
     @blogs = Piece.blogs
     @reviews = Piece.reviews
     @haiku = Piece.haiku
     @projects = Piece.other_projects
+
     render :writing
   end
 

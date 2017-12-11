@@ -2,19 +2,23 @@ class Gallery < Series
   has_many :photos, through: :series_works, source: :work, class_name: 'Photo'
 
   default_scope {photography}
+  scope :portfolio,     -> { where('series.name LIKE "%portfolio%"') }
+  scope :non_portfolio, -> { where('series.name NOT LIKE "%portfolio%"') }
 
   def self.photography
     select("DISTINCT series.*").joins(:works).where(works: {interest_id: PHOTOGRAPHY_INTEREST_ID})
   end
 
-  def self.portfolio
-    where('series.name LIKE "%portfolio%"')
+
+  def self.portfolios
+    key = "Gallery#cached_porfolio:#{self.all.cache_key}"
+    Cache.new(key, 'portfolio').value
   end
 
-  def self.non_portfolio
-    where('series.name NOT LIKE "%portfolio%"')
+  def self.non_portfolios
+    key = "Gallery#cached_non_porfolio:#{self.all.cache_key}"
+    Cache.new(key, 'non_portfolio').value
   end
-
 
   def prev(photo)
     location = photos.sorted.index(photo)
@@ -38,5 +42,6 @@ class Gallery < Series
     end
 
   end
+
 
 end

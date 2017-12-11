@@ -5,9 +5,17 @@ class Piece < Work
   belongs_to :author, class_name: 'Author'
 
   default_scope { includes(:lyric) }
-  scope :reviews, -> {where(genre_id: 11)}
-  scope :blogs,   -> {where('name LIKE "%typepad%" OR name LIKE "%medium%"')}
+  # scope :reviews, -> {where(genre_id: 11)}
+  # scope :blogs,   -> {where('name LIKE "%typepad%" OR name LIKE "%medium%"')}
   # other projects = all   - @blogs - @reviews - @haiku.map{|s| s.works}.flatten
+
+  def self.blogs
+    cached_pieces.select{|piece| piece.blog? }
+  end
+
+  def self.reviews
+    cached_pieces.select{|piece| piece.genre_id == AMAZON_GENRE_ID}
+  end
 
 # Refactor
   def self.haiku
@@ -15,7 +23,7 @@ class Piece < Work
   end
 
   def self.haikus
-    haiku.works
+    Series.haiku.works
   end
 
   def self.other_projects
@@ -28,5 +36,11 @@ class Piece < Work
     name =~ /blog/i
   end
 
+
+  private
+    def self.cached_pieces
+      key = "Piece#cached_pieces:#{self.all.cache_key}"
+      Cache.new(key, 'all.sorted').value
+    end
 
 end
