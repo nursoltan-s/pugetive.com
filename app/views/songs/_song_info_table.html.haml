@@ -1,5 +1,3 @@
-%h3.show-for-small-only= song.title
-
 %table.compact
 
   = song.player_row
@@ -35,7 +33,4 @@
       %th
       %td= song.album_info
 
-  = render "works/roles_table_row", work: song, visibility_class: 'hide-for-small-only'
-
-
-= render "works/admin_links", work: song
+  = render "roles/roles_table_rows", subject: song, visibility_class: 'hide-for-small-only'

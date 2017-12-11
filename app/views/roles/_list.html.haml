@@ -1,5 +1,8 @@
-%section.roles.panel
-  %h4 Roles
-  %ul= render project.roles
-
-  %p{data: {visible_to: 'admin'}= link_to(icon(:new), new_role_path(project_id: project.id), class: 'button')
+%ul.titles
+  - subject.titles.each do |title|
+    %li.title
+      = link_to(title.name, title)
+      - if title.name == 'Performer' and subject.tools.instruments.any?
+        %ul.instruments
+          - subject.tools.instruments.sorted.each do |instrument|
+            %li= link_to(instrument.name, instrument)

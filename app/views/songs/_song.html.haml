@@ -4,7 +4,10 @@
     .row
 
       .medium-3.columns.medium-offset-2.medium-text-right.title-box
-        = render "works/song_meta_info", song: song
+        %h3.show-for-small-only= song.title
+
+        = render "songs/song_info_table", song: song
+        = render "works/admin_links", work: song
 
       .medium-5.columns.end.info-box
         %h3.hide-for-small-only= song.title
@@ -18,5 +21,5 @@
 
         = song.lyric_display
 
-        = song.roles_table('show-for-small-only')
+        -# = song.roles_table('show-for-small-only')
 

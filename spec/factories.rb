@@ -121,7 +121,7 @@ FactoryBot.define do
   end
 
   factory :title do
-    name "Placeholder Party Name"
+    name "Placeholder Title Name"
   end
 
   factory :tool do

@@ -24,10 +24,10 @@ feature "Viewing song pages" do
 
   before(:each) do
     setup_pugetive
+    setup_music
   end
 
   scenario "as a visitor" do
-    setup_music
     songs = Song.random(3)
 
     expect(songs.size).to eq 3
@@ -35,6 +35,8 @@ feature "Viewing song pages" do
       visit song_path(song)
 
       expect(page).to have_content song.name
+      expect(page).to have_content song.tools.first.name
+      expect(page).to have_content song.titles.first.name
     end
   end
 end
