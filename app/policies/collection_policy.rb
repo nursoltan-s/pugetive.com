@@ -1,0 +1,2 @@
+class CollectionPolicy < SeriesPolicy
+end

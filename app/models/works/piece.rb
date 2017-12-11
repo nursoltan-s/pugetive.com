@@ -3,7 +3,7 @@ class Piece < Work
   has_one :lyric, foreign_key: :work_id
 
   belongs_to :author, class_name: 'Author'
-  has_and_belongs_to_many :collections
+  has_many :collections, through: :series_works, source: :series, class_name: 'Collection'
 
   default_scope { includes(:lyric, :genre) }
   # scope :reviews, -> {where(genre_id: 11)}
