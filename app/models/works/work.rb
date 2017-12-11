@@ -94,26 +94,6 @@ class Work < ApplicationRecord
     nil
   end
 
-  def software?
-    interest_id == SOFTWARE_INTEREST_ID
-  end
-
-  def music?
-    interest_id == MUSIC_INTEREST_ID
-  end
-
-  def writing?
-    interest_id == WRITING_INTEREST_ID
-  end
-
-  def photography?
-    interest_id == PHOTOGRAPHY_INTEREST_ID
-  end
-
-  def film?
-    interest_id == FILM_INTEREST_ID
-  end
-
   def mine?
     author_id == 1
   end

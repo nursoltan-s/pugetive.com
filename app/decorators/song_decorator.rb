@@ -7,7 +7,7 @@ class SongDecorator < WorkDecorator
       rv += h.raw('&nbsp;') + h.icon(:audio)
     end
     if model.demo?
-      text = work.music? ? ' [home demo]' : ' [prototype&nbsp;/&nbsp;rough&nbsp;draft]'
+      text = ' [home demo]'
       rv += h.content_tag(:span, h.raw(text), class: 'demo-warning')
     end
     h.raw(rv)
