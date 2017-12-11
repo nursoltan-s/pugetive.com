@@ -1,19 +1,20 @@
-- cache ['public-meny', Interest.live.cache_key] do
-  %section#public-menu-wrapper.no-js
-    .title-bar-left{data: {responsive_toggle: 'public-menu', hide_for: 'medium'}}
-      %button.menu-icon{type: 'button', data: {toggle: true}}
-      .title-bar-title Menu
+%section#public-menu-wrapper.no-js
+  .title-bar-left{data: {responsive_toggle: 'public-menu', hide_for: 'medium'}}
+    %button.menu-icon{type: 'button', data: {toggle: true}}
+    .title-bar-title Menu
 
 
-    #public-menu.top-bar
-      .top-bar-right
-        %ul.dropdown.menu.vertical.medium-horizontal{data: {dropdown_menu: true}}
-          %li.menu-text.home
-            - if user_signed_in?
-              = link_to(icon(:delete), destroy_user_session_path, :method => :delete)
-            - else
-              = link_to(icon(:signin), new_user_session_path)
+  #public-menu.top-bar
+    .top-bar-right
+      %ul.dropdown.menu.vertical.medium-horizontal{data: {dropdown_menu: true}}
+        %li.menu-text.home
+          - if user_signed_in?
+            = link_to(icon(:delete), destroy_user_session_path, :method => :delete)
+          - else
+            = link_to(icon(:signin), new_user_session_path)
 
-            = link_to(raw("Todd Gehman"), root_path)
+          = link_to(raw("Todd Gehman"), root_path)
+        - cache ['public-meny', Interest.live.cache_key] do
+
           - Interest.live.each do |interest|
             %li.menu-text.interest-item= link_to(raw("#{icon(interest.token)} #{interest.name}"), interest)

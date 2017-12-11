@@ -2,11 +2,16 @@
   - album = album.decorate
   %section.series.music
     .row
+      .medium-offset-5.medium-7.columns.eyebrow
+        %h1= link_to('Music', album.interest)
+
+
+    .row
       .medium-3.columns.medium-offset-2.medium-text-right.title-box
         %h3
           = link_to(album.name, album)
 
-        = album.years
+        %p.years= album.years
 
         = album.titles_and_tools
 
