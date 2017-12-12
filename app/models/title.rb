@@ -14,6 +14,7 @@ class Title < ActiveRecord::Base
   scope :alpha,       -> {order(:name)}
   scope :sorted,      -> {order(:sort)}
 
+  # Refactor change to interest_id and use Interesting module
   scope :music,       -> {where(category: 'Music')}
   scope :photography, -> {where(category: 'Photography')}
   scope :software,    -> {where(category: 'Software')}

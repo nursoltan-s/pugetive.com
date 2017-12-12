@@ -24,7 +24,14 @@ describe Account do
 
 
   describe '#blogs' do
-    it 'returns a list of blog accounts'
+    it 'returns a list of blog accounts' do
+      setup_writing
+      blogs = Account.blogs
+
+      blogs.each do |account|
+        expect(account).to be writing
+      end
+    end
   end
 
 end

@@ -60,7 +60,7 @@ class InterestsController < MetaResourceController
   def writing
     authorize(@interest)
 
-    @blogs = Piece.blogs
+    @blogs = Account.blogs
     @reviews = Piece.reviews
     @haiku = Collection.haiku
     @projects = Piece.other_projects

@@ -20,6 +20,7 @@ class Tool < ActiveRecord::Base
   scope :programs,    -> {where(type: 'Program')}
   scope :concepts,    -> {where(type: 'Concept')}
 
+  # Refactor chnage to interest_id and use Interesting
   scope :software,    -> {where(category: 'Software')}
   scope :music,       -> {where(category: 'Music')}
   scope :photography, -> {where(category: 'Photography')}
