@@ -122,6 +122,7 @@ FactoryBot.define do
 
   factory :title do
     name "Placeholder Title Name"
+    interest_id SOFTWARE_INTEREST_ID
   end
 
   factory :tool do

@@ -1,8 +1,8 @@
 module SoftwareHelpers
 
   def setup_software
-    developer = create(:title, name: 'Developer', category: 'Software')
-    founder =   create(:title, name: 'Founder',   category: 'Software')
+    developer = create(:title, name: 'Developer', interest_id: SOFTWARE_INTEREST_ID)
+    founder =   create(:title, name: 'Founder',   interest_id: SOFTWARE_INTEREST_ID)
 
 
     amazon = create(:app,
@@ -37,15 +37,15 @@ module SoftwareHelpers
     hopville.titles << developer
     hopville.titles << founder
 
-    c         = create(:tool, name: 'C',         type: 'Language', category: 'Software', resume: true)
-    perl      = create(:tool, name: 'Perl',      type: 'Language', category: 'Software', resume: true)
-    php       = create(:tool, name: 'PHP',       type: 'Language', category: 'Software', resume: true)
-    catsubst  = create(:tool, name: 'Catsubst',  type: 'Language', category: 'Software', resume: false)
+    c         = create(:tool, name: 'C',         type: 'Language', interest_id: SOFTWARE_INTEREST_ID, resume: true)
+    perl      = create(:tool, name: 'Perl',      type: 'Language', interest_id: SOFTWARE_INTEREST_ID, resume: true)
+    php       = create(:tool, name: 'PHP',       type: 'Language', interest_id: SOFTWARE_INTEREST_ID, resume: true)
+    catsubst  = create(:tool, name: 'Catsubst',  type: 'Language', interest_id: SOFTWARE_INTEREST_ID, resume: false)
 
-    emacs     = create(:tool, name: 'Emacs',     type: 'Program',  category: 'Software', resume: false)
-    sublime   = create(:tool, name: 'Sublime',   type: 'Program',  category: 'Software', resume: false)
+    emacs     = create(:tool, name: 'Emacs',     type: 'Program', interest_id: SOFTWARE_INTEREST_ID, resume: false)
+    sublime   = create(:tool, name: 'Sublime',   type: 'Program', interest_id: SOFTWARE_INTEREST_ID, resume: false)
 
-    wordpress = create(:tool, name: 'Wordpress', type: 'System',   category: 'Software', resume: true)
+    wordpress = create(:tool, name: 'Wordpress', type: 'System',  interest_id: SOFTWARE_INTEREST_ID, resume: true)
 
     amazon.tools << c
     amazon.tools << perl

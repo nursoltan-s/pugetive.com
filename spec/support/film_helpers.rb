@@ -3,8 +3,8 @@ module FilmHelpers
     doc = create(:genre, name: 'Documentary',  interest_id: FILM_INTEREST_ID)
     exp = create(:genre, name: 'Experimental', interest_id: FILM_INTEREST_ID)
 
-    director = create(:title, name: 'Director', category: 'Film')
-    editor   = create(:title, name: 'Editor',   category: 'Film')
+    director = create(:title, name: 'Director', interest_id: FILM_INTEREST_ID)
+    editor   = create(:title, name: 'Editor',   interest_id: FILM_INTEREST_ID)
 
 
     omo       = create(:movie, name: 'Omo Valley Sunday',         genre_id: doc.id)

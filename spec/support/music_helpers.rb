@@ -1,9 +1,9 @@
 module MusicHelpers
 
   def setup_music
-    songwriter = create(:title, name: 'Songwriter', category: 'Music')
-    performer  = create(:title, name: 'Performer',  category: 'Music')
-    mastering  = create(:title, name: 'Mastering',  category: 'Music')
+    songwriter = create(:title, name: 'Songwriter', interest_id: MUSIC_INTEREST_ID)
+    performer  = create(:title, name: 'Performer',  interest_id: MUSIC_INTEREST_ID)
+    mastering  = create(:title, name: 'Mastering',  interest_id: MUSIC_INTEREST_ID)
 
     duchess     = create(:album, name: 'Duchess of Hazard')
     greatest    = create(:album, name: 'Shiners Greatest Hits')
@@ -15,8 +15,8 @@ module MusicHelpers
     lushy       = create(:artist, name: 'Lushy', type: 'Band')
     shiners     = create(:artist, name: 'The Shiners', type: 'Band')
 
-    performer   = create(:title, name: 'Performer', category: 'Music')
-    bass        = create(:tool,  name: 'Bass',      type: 'Instrument', category: 'Music')
+    performer   = create(:title, name: 'Performer', interest_id: MUSIC_INTEREST_ID)
+    bass        = create(:tool,  name: 'Bass',      type: 'Instrument', interest_id: MUSIC_INTEREST_ID)
 
     todd = Artist.find(TODD_PARTY_ID) rescue nil
     if todd.nil?

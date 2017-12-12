@@ -2,13 +2,12 @@ class ToolDecorator < Draper::Decorator
   delegate_all
 
   def type_info
-    case model.category
-    when 'Photography'
+    if model.photography?
       if model.type == 'Instrument'
         return 'Camera'
       end
     else
-      return "#{model.category} #{model.type}"
+      return "#{model.interest.name} #{model.type}"
     end
   end
 

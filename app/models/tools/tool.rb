@@ -1,5 +1,6 @@
 class Tool < ActiveRecord::Base
 
+  include Interesting
   include Randomable
   include Sluggable
 
@@ -7,7 +8,6 @@ class Tool < ActiveRecord::Base
 
   validates :name, presence: true
   validates :type, inclusion: {in: TYPES}
-  validates :category, inclusion: {in: Interest::CATEGORIES}
   validates :front_end, inclusion: {in: BOOLEAN_OPTIONS}
   validates :fluency, numericality: true
 
@@ -19,13 +19,6 @@ class Tool < ActiveRecord::Base
   scope :languages,   -> {where(type: 'Language')}
   scope :programs,    -> {where(type: 'Program')}
   scope :concepts,    -> {where(type: 'Concept')}
-
-  # Refactor chnage to interest_id and use Interesting
-  scope :software,    -> {where(category: 'Software')}
-  scope :music,       -> {where(category: 'Music')}
-  scope :photography, -> {where(category: 'Photography')}
-  scope :film,        -> {where(category: 'Film')}
-  scope :writing,     -> {where(category: 'Writing')}
 
   scope :instruments, -> {where(type: 'Instrument')}
   scope :programs,    -> {where(type: 'Program')}
@@ -40,11 +33,6 @@ class Tool < ActiveRecord::Base
 
   def num_projects
     @num_projects ||= projects.count
-  end
-
-  # FIXME this column should use interest_id
-  def interest
-    Interest.find_by_name(category)
   end
 
   def score

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171212110431) do
+ActiveRecord::Schema.define(version: 20171212111957) do
 
   create_table "accounts", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 20171212110431) do
     t.index ["slug"], name: "index_genres_on_slug"
   end
 
-  create_table "icons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "icons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name", limit: 32, null: false
     t.string "type", limit: 16, null: false
     t.string "token", limit: 32, null: false
@@ -229,7 +229,9 @@ ActiveRecord::Schema.define(version: 20171212110431) do
     t.string "image_content_type"
     t.integer "image_file_size"
     t.datetime "image_updated_at"
+    t.integer "interest_id", default: 1, null: false
     t.index ["audience"], name: "index_series_on_audience"
+    t.index ["interest_id"], name: "index_series_on_interest_id"
     t.index ["slug"], name: "index_series_on_slug"
     t.index ["type", "id"], name: "index_series_on_type_and_id"
     t.index ["type"], name: "index_series_on_type"
@@ -244,13 +246,13 @@ ActiveRecord::Schema.define(version: 20171212110431) do
 
   create_table "titles", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string "name", null: false
-    t.string "category", limit: 16, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
     t.integer "sort"
-    t.index ["category", "sort"], name: "index_titles_on_category_and_sort", unique: true
-    t.index ["category"], name: "index_titles_on_category"
+    t.integer "interest_id", default: 1, null: false
+    t.index ["interest_id", "sort"], name: "index_titles_on_interest_id_and_sort"
+    t.index ["interest_id"], name: "index_titles_on_interest_id"
     t.index ["name"], name: "index_titles_on_name"
     t.index ["slug"], name: "index_titles_on_slug"
     t.index ["sort"], name: "index_titles_on_sort"
@@ -259,7 +261,6 @@ ActiveRecord::Schema.define(version: 20171212110431) do
   create_table "tools", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string "name", null: false
     t.string "type", limit: 16, null: false
-    t.string "category", limit: 16, null: false
     t.boolean "front_end", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -267,11 +268,14 @@ ActiveRecord::Schema.define(version: 20171212110431) do
     t.string "slug"
     t.integer "sort"
     t.boolean "resume", default: false
+    t.integer "interest_id", default: 1, null: false
     t.index ["fluency"], name: "index_tools_on_fluency"
+    t.index ["interest_id", "sort"], name: "index_tools_on_interest_id_and_sort"
+    t.index ["interest_id"], name: "index_tools_on_interest_id"
     t.index ["name"], name: "index_tools_on_name"
     t.index ["slug"], name: "index_tools_on_slug"
     t.index ["sort"], name: "index_tools_on_sort"
-    t.index ["type", "category", "sort"], name: "index_tools_on_type_and_category_and_sort", unique: true
+    t.index ["type", "sort"], name: "index_tools_on_type_and_category_and_sort", unique: true
     t.index ["type"], name: "index_tools_on_type"
   end
 

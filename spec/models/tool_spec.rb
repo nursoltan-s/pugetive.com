@@ -8,7 +8,7 @@ describe Tool do
 
   describe '#destroy' do
     it 'destroys any associated wields' do
-      tool = create(:tool, name: 'Perl', type: 'Language', category: 'Software')
+      tool = create(:tool, name: 'Perl', type: 'Language', interest_id: SOFTWARE_INTEREST_ID)
       app  = create(:app,  name: 'Catsubst Macro DB')
       app.tools << tool
 
