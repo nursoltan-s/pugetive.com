@@ -27,10 +27,13 @@ class Todd
     # be treated as one unified project.
 
     merged_app_ids = [TODDGEHMAN_APP_ID, PUGETIVE_APP_ID]
-    @tg = App.find(TODDGEHMAN_APP_ID)
-    @tg.start_year = @pugetive.start_year
 
-    [@tg] + App.solo.sorted.reject{|app| merged_app_ids.include? app.id}
+    tg       = App.find(TODDGEHMAN_APP_ID)
+    pugetive = App.find(PUGETIVE_APP_ID)
+
+    tg.start_year = pugetive.start_year
+
+    [tg] + App.solo.sorted.reject{|app| merged_app_ids.include? app.id}
   end
 
   def awards
