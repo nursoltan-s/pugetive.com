@@ -34,12 +34,6 @@ module LinksHelper
             class: env_class(token) )
   end
 
-  def audio_player(work)
-    if work.soundcloud_id
-      return render "soundcloud_player", soundcloud_id: work.soundcloud_id
-    end
-  end
-
   private
     def env_class(token)
       case token.to_sym
