@@ -1,8 +1,8 @@
 class TitlesController < MetaResourceController
 
   def index
-    if params[:category]
-      @titles = Title.send(params[:category].downcase)
+    if params[:interest_id]
+      @titles = Title.where(interest_id: params[:interest_id])
     else
       @titles = Title.all
     end
@@ -15,7 +15,7 @@ class TitlesController < MetaResourceController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def title_params
-      params.require(:title).permit(:category,
+      params.require(:title).permit(:interest_id,
                                     :name,
                                     :sort)
     end

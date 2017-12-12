@@ -16,6 +16,7 @@ class SeriesController < MetaResourceController
       params.require(:series).permit(:audience,
                                      :description,
                                      :image,
+                                     :interest_id,
                                      :name,
                                      :summary,
                                      :type)

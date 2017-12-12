@@ -2,7 +2,7 @@
   - handle_errors(@title)
 
   = label_field(f.label(:name), f.text_field(:name))
-  = label_field(f.label(:category),
-                f.select(:category, options_for_select(Interest::CATEGORIES, selected: @title.category)))
+  = label_field(f.label(:interest_id),
+                f.select(:interest_id, options_from_collection_for_select(Interest.all, :id, :name, selected: @title.interest_id)))
   = submit(f)
 

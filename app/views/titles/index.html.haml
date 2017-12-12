@@ -1,14 +1,14 @@
 - title('Titles')
 
-- Title.categories.each do |category|
-  = link_to(category, category: category)
+- Interest.all.each do |interest|
+  = link_to(interest.name, interest_id: interest.id)
 
 %table
   %thead
     %tr
       %th Sort
       %th Name
-      %th Category
+      %th Interest
       %th
       %th
 
@@ -20,7 +20,7 @@
             = f.select(:sort, options_for_select(1..@titles.count, selected: title.sort))
             = submit(f)
         %td= link_to(title.name, title)
-        %td= title.category
+        %td= title.interest.name
         %td= link_to icon(:edit), edit_title_path(title)
         %td= link_to icon(:delete), title, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
