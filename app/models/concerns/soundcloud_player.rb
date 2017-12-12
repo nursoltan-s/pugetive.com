@@ -1,15 +1,15 @@
 class SoundcloudPlayer < AudioPlayer
 
-  attr_reader :song
+  attr_reader :soundcloud_id
 
-  def initialize(subject)
-    @song = subject
+  def initialize(s_id)
+    @soundcloud_id = s_id
   end
 
   def to_html
 
     source_path = "https://w.soundcloud.com/player/?" +
-                  "url=https%3A//api.soundcloud.com/tracks/#{song.soundcloud_id}&amp;" +
+                  "url=https%3A//api.soundcloud.com/tracks/#{soundcloud_id}&amp;" +
                   "color=ff5500&amp;" +
                   "inverse=false&amp;" +
                   "auto_play=false&amp;" +

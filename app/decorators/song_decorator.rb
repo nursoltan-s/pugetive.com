@@ -38,7 +38,7 @@ class SongDecorator < WorkDecorator
   def player_row
     return unless model.has_audio?
     row_contents = h.content_tag(:th, 'Audio') +
-                   h.content_tag(:td, song.player)
+                   h.content_tag(:td, song.audio_player)
     h.content_tag(:tr, h.raw(row_contents))
   end
 

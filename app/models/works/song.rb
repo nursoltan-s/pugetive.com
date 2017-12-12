@@ -32,8 +32,8 @@ class Song < Work
     self.tools.where("name like 'garageband' or name like 'protools'").first
   end
 
-  def player
-    @player ||= AudioPlayer.new(self).to_html
+  def audio_player
+    @player ||= AudioPlayer.new(soundcloud_id: soundcloud_id).to_html
   end
 
 

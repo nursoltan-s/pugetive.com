@@ -3,9 +3,11 @@ class AudioPlayer
 
   attr_reader :player
 
-  def initialize(subject)
-    if subject.respond_to?(:soundcloud_id) and subject.soundcloud_id
-      @player = SoundcloudPlayer.new(subject)
+  def initialize(options = {})
+    if options[:soundcloud_id]
+      @player = SoundcloudPlayer.new(options[:soundcloud_id])
+    elsif options[:mp3]
+      @player = Mp3Player.new(options[:mp3], options[:name])
     end
   end
 

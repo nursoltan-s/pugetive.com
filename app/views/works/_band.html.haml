@@ -25,6 +25,6 @@
 
       - if band.has_audio?
         %p
-          = render "layouts/jplayer", audio_name: band.sample_track, audio_file: band.sample_mp3
+          = band.audio_player
           %b Sample track:
           %i= band.sample_track

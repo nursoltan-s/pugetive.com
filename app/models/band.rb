@@ -18,6 +18,12 @@ class Band < Party
     SAMPLE_TRACKS[self.name][:name]
   end
 
+  def audio_player
+    return nil unless has_audio?
+    @player ||= AudioPlayer.new(mp3: sample_mp3, name: sample_track).to_html
+    ActionController::Base.helpers.raw(@player)
+  end
+
   def self.cached
     key = "Band#cacheds:#{self.all.cache_key}"
     Cache.new(key, -> {Band.all.sort{|a, b| b.stop_year <=> a.stop_year}}).value

@@ -7,7 +7,17 @@
 }
 .jp-audio {
   button {
-    color: $link_color;
-    font-size: 2em;
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+    padding: 0;
+    @include rounded(50%);
+    background-color: #FF3A00;
+    color: #fff;
+    // color: $link_color;
+    font-size: 0.75em;
+    &.jp-play {
+      padding-left: 2px;
+    }
   }
 }
