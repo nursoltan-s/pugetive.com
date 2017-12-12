@@ -83,3 +83,19 @@ html.resume-show {
     }
   }
 }
+
+html.resume-blurbs {
+  table.compact {
+    thead, tbody {
+      th {
+        font-weight: bold;
+        color: $body_color;
+        background: $alt_background;
+      }
+      td.content {
+        width: 40%;
+        padding: 0 2em 2em;
+      }
+    }
+  }
+}

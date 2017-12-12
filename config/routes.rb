@@ -50,8 +50,10 @@ Rails.application.routes.draw do
   get 'works/:work_id/tools'     => 'works#tools',      as: 'work_tools'
   get 'works/:work_id/meta_info' => 'works#meta_info',  as: 'work_meta_info'
 
-  get '/resume'              => 'resume#show', as: :resume_generator
+  get '/resume'              => 'resume#show', as:   :resume_generator
+  get '/resume/blurbs'       => 'resume#blurbs', as: :resume_blurbs
   match 'settings'           => 'users#edit', via: [:get, :patch], as: :settings
+
 
   get 'artists/:slug'        => 'parties#show'
 

@@ -76,6 +76,8 @@ GEM
       erubi (>= 1.0.0)
       rack (>= 0.9.0)
     bindex (0.5.0)
+    binding_of_caller (0.7.3)
+      debug_inspector (>= 0.0.1)
     builder (3.2.3)
     bullet (5.6.1)
       activesupport (>= 3.0.0)
@@ -127,6 +129,7 @@ GEM
     crass (1.0.3)
     dalli (2.7.6)
     database_cleaner (1.6.2)
+    debug_inspector (0.0.3)
     devise (4.3.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -402,6 +405,7 @@ DEPENDENCIES
   awesome_nested_set
   aws-sdk (~> 2)
   better_errors
+  binding_of_caller
   bullet
   byebug
   capistrano

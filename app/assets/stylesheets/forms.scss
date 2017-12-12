@@ -52,3 +52,21 @@ a.remove-button {
   @include subdued();
   margin-left: 0;
 }
+
+form.edit_party {
+  #party_summary {
+    height: 5em;
+  }
+  #party_description {
+    height: 10em;
+  }
+}
+
+form.edit_app {
+  #app_summary {
+    height: 5em;
+  }
+  #app_description {
+    height: 10em;
+  }
+}

@@ -22,7 +22,7 @@
       %li= link_to(raw("#{icon(:series)} Series"), series_index_path, title: 'View Series', rel: 'nofollow')
       %li= link_to(raw("#{icon(:title)} Titles"),  titles_path,       title: 'Titles',      rel: 'nofollow')
       %li= link_to(raw("#{icon(:tool)} Tools"),    tools_path,        title: 'Tools',       rel: 'nofollow')
-      %li= link_to(raw("#{icon(:icon)} Icons"),     icons_path,        title: 'Icons',       rel: 'nofollow')
+      %li= link_to(raw("#{icon(:icon)} Icons"),    icons_path,        title: 'Icons',       rel: 'nofollow')
       %li= link_to(raw("#{icon(:genre)} Genres"),  genres_path,       title: 'Genres',      rel: 'nofollow')
       %li= link_to(raw("#{icon(:place)} Places"),  places_path,       title: 'Places',      rel: 'nofollow')
       %li
@@ -31,5 +31,6 @@
             %a{href: '#'}= icon(:admin)
             %ul.menu
               %li= link_to(raw("#{icon(:status)} Status"), status_path,   title: 'Status')
+              %li= link_to(raw("#{icon(:resume)} Resume Blurbs"), resume_blurbs_path, title: 'Resume Blurbs')
               - [:development, :staging, :production].each do |token|
                 %li= environment_link(token)

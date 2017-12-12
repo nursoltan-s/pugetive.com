@@ -28,8 +28,8 @@
   = label_field(f.label(:stop_year),
                 f.select(:stop_year, options_for_select(YEARS_OF_LIFE, selected: @work.stop_year), include_blank: true))
 
+  = label_field(f.label(:summary),     f.text_area(:summary, maxlength: 255))
   = label_field(f.label(:description), f.text_area(:description))
-  = label_field(f.label(:summary),     f.text_field(:summary, maxlength: 255))
 
   = label_field(f.label(:live),     f.check_box(:live))
   = label_field(f.label(:demo),     f.check_box(:demo))

@@ -1,0 +1,42 @@
+- title('Resume Blurbs')
+
+.row
+  .medium-10.columns.medium-offset-1.end
+
+    %table.compact
+      %thead
+        %tr
+          %th{colspan: 4}
+            %h2 Companies
+        %tr
+          %th Company
+          %th Description #{DIVIDER} Resume
+          %th Summary
+          %th= icon(:edit)
+      %tbody
+        - @jobs.each do |company|
+          %tr
+            %th= company.name
+            %td.content= company.description
+            %td.content= company.summary
+            %td= link_to(icon(:edit), edit_party_path(company))
+
+
+
+      %thead
+        %tr
+          %th{colspan: 4}
+            %h2 Apps
+      %tbody
+        %tr
+          %th App
+          %th Description #{DIVIDER} Resume
+          %th Summary #{DIVIDER} Web Partial
+          %th= icon(:edit)
+        - @side_projects.each do |app|
+          %tr
+            %th= app.name
+            %td= app.description
+            %td= app.summary
+            %td= link_to(icon(:edit), edit_app_path(app))
+

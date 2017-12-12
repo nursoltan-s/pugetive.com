@@ -21,6 +21,16 @@ class ResumeController < ApplicationController
 
   end
 
+
+  def blurbs
+    authorize :resume, :show?
+
+    @jobs          = [NonProfit.find(23)] + Company.all.sort_by{|c| c.stop_year}.reverse
+    @side_projects = App.solo.sorted
+
+
+  end
+
   private
     def pdf_options(options = {})
       default = {
