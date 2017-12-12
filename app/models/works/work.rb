@@ -9,11 +9,11 @@ class Work < ApplicationRecord
                  released: "Released"}
 
 
+  include Interesting
   include Rangeable
   include Sluggable
   include Randomable
 
-  validates :interest_id, inclusion:    {in: Interest::INTEREST_IDS}
   validates :party_id,    numericality: true
   validates :start_year,  presence:     true
   validates :live,        inclusion:    {in: BOOLEAN_OPTIONS}
@@ -25,7 +25,6 @@ class Work < ApplicationRecord
   has_attached_file(:image, Pugetive::Application.config.paperclip_image_opts)
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
-  belongs_to :interest
   belongs_to :party
   belongs_to :genre
 
