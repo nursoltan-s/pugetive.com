@@ -16,6 +16,7 @@ feature "Viewing sofware app pages" do
 
       expect(page).to have_content 'Software'
       expect(page).to have_content app.name
+      expect(page).to have_selector '#public-menu'
     end
   end
 end
@@ -37,6 +38,8 @@ feature "Viewing song pages" do
       expect(page).to have_content song.name
       expect(page).to have_content song.tools.first.name
       expect(page).to have_content song.titles.first.name
+      expect(page).to have_selector '#public-menu'
+
     end
   end
 end
@@ -58,6 +61,7 @@ feature "Viewing album pages" do
       expect(page).to have_content album.name
       expect(page).to have_content album.tools.first.name
       expect(page).to have_content album.titles.first.name
+      expect(page).to have_selector '#public-menu'
     end
   end
 
@@ -77,6 +81,7 @@ feature "Viewing photo pages" do
       visit photo_path(photo)
 
       expect(page).to have_content photo.name
+      expect(page).to have_selector '#public-menu'
     end
   end
 end
@@ -95,6 +100,7 @@ feature "Viewing film show pages" do
       visit movie_path(movie)
 
       expect(page).to have_content movie.name
+      expect(page).to have_selector '#public-menu'
     end
   end
 end
@@ -113,6 +119,7 @@ feature "Viewing writing piece pages" do
       visit piece_path(piece)
 
       expect(page).to have_content piece.name
+      expect(page).to have_selector '#public-menu'
     end
   end
 end
@@ -134,6 +141,7 @@ feature "Viewing gallery pages" do
       visit gallery_path(gallery)
 
       expect(page).to have_content gallery.name
+      expect(page).to have_selector '#public-menu'
 
     end
 
@@ -147,6 +155,7 @@ feature "Viewing gallery pages" do
       visit "/series/#{gallery.slug}"
 
       expect(current_path).to eq gallery.canonical_path
+      expect(page).to have_selector '#public-menu'
 
     end
   end

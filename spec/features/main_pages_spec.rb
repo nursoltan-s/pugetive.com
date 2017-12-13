@@ -12,6 +12,7 @@ feature "Viewing homepage" do
     visit '/'
 
     expect(page).to have_content 'Photography'
+    expect(page).not_to have_content '#public-menu'
   end
 
 end
@@ -27,6 +28,7 @@ feature "Viewing main software page" do
     visit "/software"
 
     expect(page).to have_content /amazon/
+    expect(page).to have_selector '#public-menu'
   end
 
 end
@@ -42,6 +44,7 @@ feature "Viewing main music page" do
     visit "/music"
 
     expect(page).to have_content 'Lushy'
+    expect(page).to have_selector '#public-menu'
   end
 
 end
@@ -61,6 +64,7 @@ feature "Viewing main photography page" do
     expect(page).to have_content 'Street'
     expect(page).to have_content 'Instagram'
     expect(page).to have_content 'Flickr'
+    expect(page).to have_selector '#public-menu'
   end
 end
 
@@ -76,6 +80,7 @@ feature "Viewing main film page" do
     visit '/film'
 
     expect(page).to have_content 'Documentary'
+    expect(page).to have_selector '#public-menu'
   end
 
 end
@@ -92,6 +97,7 @@ feature "visiting main writing page" do
     visit '/writing'
 
     expect(page).to have_content 'Haiku'
+    expect(page).to have_selector '#public-menu'
   end
 
 end
