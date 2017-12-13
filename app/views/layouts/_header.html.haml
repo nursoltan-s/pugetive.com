@@ -1,6 +1,6 @@
 %header
   -# We test this in ruby instead of JS to prevent FOUC on each page load
-  - if current_user and current_user.admin?
+  - if !home_page? and current_user and current_user.admin?
     = render "layouts/private_menu"
   - if !home_page?
     = render "layouts/public_menu"
