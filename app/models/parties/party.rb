@@ -24,6 +24,10 @@ class Party < ActiveRecord::Base
     all.sort_by{|p| p.alpha_name}
   end
 
+  def self.jobs
+    [NonProfit.find(FAIR_PARTY_ID)] + Company.all.sort_by{|c| c.stop_year}.reverse
+  end
+
   def has_image?
     image.url.present? and not image.url(:thumb).match(/missing/)
   end

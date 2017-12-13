@@ -4,7 +4,6 @@ class Todd
 
   def initialize
     @software = Interest.find(SOFTWARE_INTEREST_ID)
-    @fair = NonProfit.find(FAIR_PARTY_ID)
   end
 
   def email
@@ -15,24 +14,32 @@ class Todd
     Phone.first
   end
 
+  def website
+    App.toddgehman
+  end
+
   def jobs
-    [@fair] + Company.all.sort_by{|c| c.stop_year}.reverse
+    Party.jobs
   end
 
   def side_projects
-    App.resume.solo
+    App.resume_side_projects
+  end
+
+  def non_profits
+    App.resume_non_profits
   end
 
   def awards
     Award.all.sort_by{|c| c.start_year}.reverse
   end
 
-  def schools
-    School.all.sort_by{|c| c.start_year}.reverse
+  def current_tools
+    Tool.resume_current
   end
 
-  def non_profits
-    NonProfit.all.where("id != 23").sort_by{|c| c.start_year}.reverse
+  def lapsed_tools
+    Tool.resume_lapsed
   end
 
   def update(attribute, value)

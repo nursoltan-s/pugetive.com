@@ -1,4 +1,3 @@
-
 %section.label
   .portrait-frame
     = wicked_pdf_image_tag('profile-pic-bw.jpg', size: '50x50', class: 'portrait')
@@ -16,4 +15,4 @@
       = render @todd.phone
     %li
       %span.label w:
-      = link_to("toddgehman.com", "https://toddgehman.com")
+      = link_to(@todd.website.domain, @todd.website.url)

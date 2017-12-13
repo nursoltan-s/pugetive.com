@@ -1,5 +1,7 @@
 class Award < ApplicationRecord
 
+  include Rangeable
+  
   validates :name, presence: true
   validates :summary, presence: true
   validates :start_year, inclusion: {in: YEARS_OF_LIFE}
