@@ -71,10 +71,6 @@ module MetaHelper
     raw(rv)
   end
 
-  def web_host
-    PUGETIVE_CONFIG[Rails.env][:host_with_port]
-  end
-
   def page_rank_icon
     text = <<-TEXT
       <a href="http://www.prchecker.info/" title="PRchecker.info" target="_blank" rel="nofollow">

@@ -28,9 +28,9 @@ module LinksHelper
     link_to(raw("#{icon(token)} #{token}"),
             request.parameters.except(:controller, :action, :id)
                    .merge(only_path: false,
-                          protocol:  PUGETIVE_CONFIG[token][:host_protocol],
-                          host:      PUGETIVE_CONFIG[token][:host_with_port],
-                          port:      PUGETIVE_CONFIG[token][:port].to_i == 80 ? nil : PUGETIVE_CONFIG[token][:port]),
+                          protocol:  host_protocol(token),
+                          host:      web_host(token),
+                          port:      host_port(token) == 80 ? nil : host_port(token)),
             class: env_class(token) )
   end
 

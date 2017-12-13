@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include Pundit
+  include ConfigHelper
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -10,14 +11,6 @@ class ApplicationController < ActionController::Base
   after_action :verify_authorized, unless: :devise_controller?
   after_action :verify_policy_scoped, only: :index
 
-
-  # rescue_from Unauthorized,                        with: :render_unauthorized
-  # rescue_from NotFound,                            with: :render_not_found
-  # rescue_from BadRequest,                          with: :render_bad_request
-  # rescue_from Conflict,                            with: :render_conflict
-  # rescue_from ActionController::RoutingError,      with: :render_not_found
-  # rescue_from ActionController::UnknownController, with: :render_not_found
-  # rescue_from ActionController::UnknownAction,     with: :render_not_found
 
   rescue_from Pundit::NotAuthorizedError,          with: :render_unauthorized
   rescue_from ActiveRecord::RecordNotFound,        with: :render_not_found
@@ -63,8 +56,8 @@ class ApplicationController < ActionController::Base
 
     def canonize_domain
       # return unless request.subdomains.any?
-      if request.host_with_port != PUGETIVE_CONFIG[Rails.env][:host_with_port]
-        permanent_redirect("#{PUGETIVE_CONFIG[Rails.env][:host_protocol]}://#{PUGETIVE_CONFIG[Rails.env][:host_with_port]}#{request.path}")
+      if request.host_with_port != web_host
+        permanent_redirect("#{host_protocol}://#{web_host}#{request.path}")
       end
 
       if Rails.env == 'staging'
