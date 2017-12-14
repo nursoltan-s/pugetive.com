@@ -12,10 +12,11 @@
       %li= link_to(icon(:linkedin),   'https://www.linkedin.com/in/pugetive',     title: 'LinkedIn Profile')
       %li.subdued
   .large-4.columns.text-center
-    .subdued.small
-      All original content Copyright © 2000 - #{Time.now.year} Todd Gehman
+    .subdued.small{data: {visible_to: 'admin'}}
+      pugetive.com
+      = link_to(Git::REVISION, "https://github.com/pugetive/pugetive.com/commit/#{Git::REVISION}")
 
   .large-4.columns.text-right
     .subdued.small
-      pugetive.com
-      = link_to(Git::REVISION, "https://github.com/pugetive/pugetive.com/commit/#{Git::REVISION}")
+      All original content Copyright © 2000 - #{Time.now.year} Todd Gehman
+
