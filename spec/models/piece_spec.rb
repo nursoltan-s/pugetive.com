@@ -14,6 +14,7 @@ describe Piece do
       pieces = Piece.random(num)
 
       expect(pieces.size).to eq num
+      expect(pieces.sample).to be_writing
     end
 
   end
@@ -44,7 +45,7 @@ describe Piece do
       collection = Collection.haiku.first
 
       expect(collection.pieces.size).to be > 0
-      expect(collection.pieces.first).to be_a(Piece)
+      expect(collection.pieces.sample).to be_writing
     end
 
   end

@@ -30,7 +30,7 @@ module Interesting
     end
 
     def writing?
-      interest_id == PHOTOGRAPHY_INTEREST_ID
+      interest_id == WRITING_INTEREST_ID
     end
 
 
