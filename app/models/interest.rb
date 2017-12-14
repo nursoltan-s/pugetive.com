@@ -3,6 +3,7 @@ class Interest < ApplicationRecord
   CATEGORIES = ['Software', 'Music', 'Photography', 'Film', 'Writing']
   INTEREST_IDS = [1, 2, 3, 4, 5]
 
+  include Randomable
   include Sluggable
 
   validates :name, presence: true

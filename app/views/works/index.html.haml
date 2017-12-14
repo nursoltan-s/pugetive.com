@@ -15,7 +15,7 @@
   %tbody
     - @works.each do |work|
       %tr
-        %td.nowrap= link_to(work.name, work)
+        %td= link_to(work.name, work)
         %td= work.interest.name
         %td= work.party.name
         %td= work.summary

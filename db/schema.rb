@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171212111957) do
+ActiveRecord::Schema.define(version: 20171214133701) do
 
   create_table "accounts", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 20171212111957) do
     t.index ["slug"], name: "index_genres_on_slug"
   end
 
-  create_table "icons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "icons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", limit: 32, null: false
     t.string "type", limit: 16, null: false
     t.string "token", limit: 32, null: false
@@ -130,6 +130,7 @@ ActiveRecord::Schema.define(version: 20171212111957) do
     t.string "slug"
     t.string "icon", limit: 32
     t.boolean "public", default: false, null: false
+    t.string "summary"
     t.index ["public"], name: "index_interests_on_public"
     t.index ["slug"], name: "index_interests_on_slug"
     t.index ["sort"], name: "index_interests_on_sort"
@@ -251,7 +252,6 @@ ActiveRecord::Schema.define(version: 20171212111957) do
     t.string "slug"
     t.integer "sort"
     t.integer "interest_id", default: 1, null: false
-    t.index ["interest_id", "sort"], name: "index_titles_on_interest_id_and_sort"
     t.index ["interest_id"], name: "index_titles_on_interest_id"
     t.index ["name"], name: "index_titles_on_name"
     t.index ["slug"], name: "index_titles_on_slug"
@@ -270,7 +270,6 @@ ActiveRecord::Schema.define(version: 20171212111957) do
     t.boolean "resume", default: false
     t.integer "interest_id", default: 1, null: false
     t.index ["fluency"], name: "index_tools_on_fluency"
-    t.index ["interest_id", "sort"], name: "index_tools_on_interest_id_and_sort"
     t.index ["interest_id"], name: "index_tools_on_interest_id"
     t.index ["name"], name: "index_tools_on_name"
     t.index ["slug"], name: "index_tools_on_slug"

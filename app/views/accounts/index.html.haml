@@ -3,7 +3,7 @@
 %table
   %thead
     %tr
-      %th Company
+      %th Name
       %th Username
       %th Url
       %th
@@ -13,7 +13,7 @@
   %tbody
     - @accounts.each do |account|
       %tr
-        %td= account.company
+        %td= account.name
         %td= account.username
         %td= account.url
         %td= link_to 'Show', account

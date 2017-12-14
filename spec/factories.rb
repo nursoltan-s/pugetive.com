@@ -58,6 +58,11 @@ FactoryBot.define do
 
   factory :interest do
     name "Placeholder Interest Name"
+    sort 6
+    token 'placeholder'
+    work_name 'placeholder'
+    series_name 'bunch'
+    icon :question
     public true
   end
 
