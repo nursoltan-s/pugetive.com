@@ -1,5 +1,5 @@
 .row
-  .large-6.columns
+  .large-4.columns
     %ul.social-icons
       %li= mail_to('toddgehman@gmail.com', icon(:email), encode: 'hex', title: 'Email Todd')
       %li= link_to(icon(:facebook),   'https://www.facebook.com/pugetive',        title: 'Facebook Profile')
@@ -10,8 +10,12 @@
       %li= link_to(icon(:github),     'https://github.com/pugetive/pugetive.com', title: 'Github Software')
       %li= link_to(icon(:medium),     'https://medium.com/@pugetive',             title: 'Medium Blog')
       %li= link_to(icon(:linkedin),   'https://www.linkedin.com/in/pugetive',     title: 'LinkedIn Profile')
+      %li.subdued
+  .large-4.columns.text-center
+    .subdued.small
+      All original content Copyright © 2000 - #{Time.now.year} Todd Gehman
 
-  .large-6.columns.text-right
-    .mono.subdued{data: {visible_to: 'admin'}}
+  .large-4.columns.text-right
+    .subdued.small
       pugetive.com
       = link_to(Git::REVISION, "https://github.com/pugetive/pugetive.com/commit/#{Git::REVISION}")
