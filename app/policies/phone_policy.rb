@@ -1,0 +1,2 @@
+class PhonePolicy < ApplicationPolicy
+end
