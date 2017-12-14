@@ -1,0 +1,8 @@
+- if @interest.summary.present?
+  .row
+    .medium-7.columns.medium-offset-5
+      %p.interest-summary= raw(@interest.summary)
+      - if @interest.software?
+        %p
+          = render "resume/button"
+          = link_to("Generate", resume_generator_path(format: :pdf), rel: "nofollow", data: {visible_to: 'admin'}, class: 'small button')

@@ -1,4 +1,7 @@
 - title('Photography')
+
+= render "interests/summary"
+
 - portfolio_tabs = @portfolios.map{|gallery| {title: gallery.name.gsub(' Portfolio', ''), content: render(gallery)}}
 = render "layouts/tabs", tabs: portfolio_tabs.concat([{title: 'Series & Exhibits',
                                                       content: render(@non_portfolios)},

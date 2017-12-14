@@ -93,11 +93,15 @@ feature "visiting main writing page" do
 
   scenario "as a visitor" do
     setup_writing
+    writing = Interest.find_by(name: 'Writing')
+    writing.summary = 'this is the summary'
+    writing.save!
 
     visit '/writing'
 
     expect(page).to have_content 'Haiku'
     expect(page).to have_selector '#public-menu'
+    expect(page).to have_content 'this is the summary'
   end
 
 end
