@@ -2,7 +2,7 @@ class TitlesController < MetaResourceController
 
   def index
     if params[:interest_id]
-      @titles = Title.where(interest_id: params[:interest_id])
+      @titles = Title.for(params[:interest_id])
     else
       @titles = Title.all
     end

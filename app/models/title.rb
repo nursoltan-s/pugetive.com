@@ -14,4 +14,7 @@ class Title < ActiveRecord::Base
   scope :alpha,       -> {order(:name)}
   scope :sorted,      -> {order(:sort)}
 
+  def self.for(interest_id)
+    self.where(interest_id: interest_id)
+  end
 end
