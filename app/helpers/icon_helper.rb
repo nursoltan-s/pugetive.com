@@ -2,10 +2,12 @@ module IconHelper
 
   def icon(icon_name, options = {})
     begin
-      Icon.for(icon_name).to_html
+      icon = Icon.for(icon_name).to_html
     rescue Exception => e
-      raise PugetiveError, "IconHelper#icon failed completely with name #{icon_name}"
+      # raise PugetiveError, "IconHelper#icon failed completely with name #{icon_name}"
+      icon = '[?]'
     end
+    icon
   end
 
   def spinner

@@ -1,6 +1,22 @@
 FactoryBot.define do
   factory :account do
     name "Placeholder Account Name"
+    interest_id SOFTWARE_INTEREST_ID
+  end
+
+  factory :address do
+    street "17 Monitor"
+    city "Brooklyn"
+    state "NY"
+    zip "11222"
+  end
+
+  factory :award do
+    name "Placeholder Award Name"
+    summary "Here is my award summary, be it humble and true."
+    start_year 1998
+    stop_year 2004
+    live true
   end
 
   factory :album do
@@ -41,12 +57,18 @@ FactoryBot.define do
     end
   end
 
+  factory :lyric do
+    work_id 1
+    content "My mistresses eyes are nothing like the sun."
+  end
+
   factory :gallery do
     name "Placeholder Gallery Name"
   end
 
   factory :genre do
     name "Placeholder Genre Name"
+    interest_id FILM_INTEREST_ID
   end
 
   factory :icon do
@@ -114,6 +136,15 @@ FactoryBot.define do
     start_year Time.now.year - 7
   end
 
+  factory :place do
+    name "Seattle"
+  end
+
+  factory :role do
+    work_id 1
+    title_id 1
+  end
+
   factory :series do
     name "Placeholder Series Name"
   end
@@ -132,12 +163,24 @@ FactoryBot.define do
 
   factory :tool do
     name "Placeholder Tool Name"
+    type 'Language'
   end
 
   factory :user do
     id TODD_USER_ID
     email 'test@pugetive.com'
     password 'testymctesterson'
+  end
+
+  factory :work do
+    name 'toddgehman.io:3000'
+    party_id TODD_PARTY_ID
+    interest_id SOFTWARE_INTEREST_ID
+    start_year 2017
+    live true
+    status 'released'
+    demo false
+    favorite true
   end
 
 end

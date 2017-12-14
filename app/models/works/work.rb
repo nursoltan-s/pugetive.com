@@ -20,7 +20,7 @@ class Work < ApplicationRecord
   validates :status,      inclusion:    {in: STATUSES}
   validates :demo,        inclusion:    {in: BOOLEAN_OPTIONS}
   validates :favorite,    inclusion:    {in: BOOLEAN_OPTIONS}
-  validates :author_id,   numericality: true
+  validates :author_id,   numericality: true, allow_nil: true
 
   has_attached_file(:image, Pugetive::Application.config.paperclip_image_opts)
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
