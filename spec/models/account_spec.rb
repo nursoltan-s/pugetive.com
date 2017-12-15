@@ -1,23 +1,20 @@
 require 'rails_helper'
 
 describe Account do
-  before(:all) do
+  before do
     setup_pugetive
+    create(:account, name: 'Medium Blog', interest_id: WRITING_INTEREST_ID)
+    create(:account, name: 'Flickr',      interest_id: PHOTOGRAPHY_INTEREST_ID)
+    create(:account, name: 'Instagram',   interest_id: PHOTOGRAPHY_INTEREST_ID)
   end
 
   describe '#photography' do
     it 'returns a list of photo profiles' do
-      Account.destroy_all
-
-      blog      = create(:account, name: 'Medium',    interest_id: WRITING_INTEREST_ID)
-      flickr    = create(:account, name: 'Flickr',    interest_id: PHOTOGRAPHY_INTEREST_ID)
-      instagram = create(:account, name: 'Instagram', interest_id: PHOTOGRAPHY_INTEREST_ID)
-
       profiles = Account.photography
 
-      expect(profiles.size).to eq 2
+      expect(profiles.size).to be > 0
       profiles.each do |profile|
-        expect(profile.photography?).to be true
+        expect(profile).to be_photography
       end
     end
   end
@@ -25,11 +22,11 @@ describe Account do
 
   describe '#blogs' do
     it 'returns a list of blog accounts' do
-      setup_writing
       blogs = Account.blogs
 
+      expect(blogs.size).to be > 0
       blogs.each do |account|
-        expect(account).to be writing
+        expect(account).to be_writing
       end
     end
   end

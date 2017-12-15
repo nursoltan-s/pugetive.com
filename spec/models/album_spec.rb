@@ -14,7 +14,7 @@ describe Album do
       expect(albums.size).to eq 2
       albums.each do |series|
         expect(series.songs.size).to be > 0
-        expect(series.songs.sample.solo?).to be false
+        expect(series.songs.sample).not_to be_solo
       end
     end
   end
@@ -26,7 +26,7 @@ describe Album do
       expect(albums.size).to eq 2
       albums.each do |series|
         expect(series.songs.size).to be > 0
-        expect(series.songs.sample.solo?).to be true
+        expect(series.songs.sample).to be_solo
       end
     end
   end

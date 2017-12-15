@@ -5,10 +5,7 @@ class Piece < Work
   belongs_to :author, class_name: 'Author'
   has_many :collections, through: :series_works, source: :series, class_name: 'Collection'
 
-  default_scope { includes(:lyric, :genre) }
-  # scope :reviews, -> {where(genre_id: 11)}
-  # scope :blogs,   -> {where('name LIKE "%typepad%" OR name LIKE "%medium%"')}
-  # other projects = all   - @blogs - @reviews - @haiku.map{|s| s.works}.flatten
+  # default_scope { includes(:lyric, :genre) }
 
   def self.blogs
     cached_pieces.select{|piece| piece.blog? }

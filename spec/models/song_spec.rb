@@ -14,7 +14,7 @@ describe Song do
       songs = Song.random(num)
 
       expect(songs.size).to eq num
-      expect(songs.first).to be_an_instance_of(Song)
+      expect(songs.first).to be_music
     end
   end
 

@@ -11,7 +11,7 @@ describe App do
       results = App.random(3)
 
       expect(results.size).to eq(3)
-      expect(results.first).to be_an_instance_of(App)
+      expect(results.first).to be_software
     end
   end
 
