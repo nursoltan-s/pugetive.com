@@ -16,7 +16,7 @@
       %tbody
         - @jobs.each do |company|
           %tr
-            %th= company.name
+            %th= link_to(company.name, company)
             %td.content= company.description
             %td.content= company.summary
             %td= link_to(icon(:edit), edit_party_path(company))
@@ -35,7 +35,7 @@
           %th= icon(:edit)
         - @side_projects.each do |app|
           %tr
-            %th= app.name
+            %th= link_to(app.name, app)
             %td= app.description
             %td= app.summary
             %td= link_to(icon(:edit), edit_app_path(app))
