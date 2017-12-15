@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Piece do
 
-  before(:all) do
+  before do
     setup_pugetive
     setup_writing
   end
