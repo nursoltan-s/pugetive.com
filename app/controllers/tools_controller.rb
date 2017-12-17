@@ -2,7 +2,7 @@ class ToolsController < MetaResourceController
 
   def index
     if params[:type]
-      @tools = params[:type].constantize.all
+      @tools = params[:type].safe_constantize.all
     else
       @tools = Tool.all
     end

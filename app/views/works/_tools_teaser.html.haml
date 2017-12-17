@@ -1,8 +1,7 @@
-- cache ['tools-teaser', work] do
-  - interest_tools = Tool.send(work.interest.token).sort{|a,b| a.name <=> b.name}
-  - if interest_tools.any?
+- cache ['tools-teaser', work, Tool.all.cache_key] do
+  - if work.available_tools.any?
     %h3 Tools
-    - interest_tools.each do |tool|
+    - work.available_tools.each do |tool|
       - if work.has_tool?(tool)
         - wield = work.wield_for(tool)
         %div

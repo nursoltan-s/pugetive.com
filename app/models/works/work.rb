@@ -101,6 +101,10 @@ class Work < ApplicationRecord
     cached_wields.where(legacy: true).map{|w| w.tool}
   end
 
+  def available_tools
+     Tool.send(interest.token).sort{|a,b| a.name.downcase <=> b.name.downcase}
+  end
+
   def has_tool?(tool)
     cached_tools.map(&:id).include?(tool.id)
   end
