@@ -5,4 +5,5 @@
       - if @interest.software?
         %p
           = render "resume/button"
-          = link_to("Generate", resume_generator_path(format: :pdf), rel: "nofollow", data: {visible_to: 'admin'}, class: 'small button')
+          - if development?
+            = link_to("Generate", resume_generator_path(format: :pdf), rel: "nofollow", data: {visible_to: 'admin'}, id: 'resume-generator-button', class: 'small button')

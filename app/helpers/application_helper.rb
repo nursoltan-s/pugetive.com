@@ -3,6 +3,10 @@ module ApplicationHelper
     Rails.env == 'production'
   end
 
+  def development?
+    Rails.env == 'development'
+  end
+
   def admin?
     current_user and current_user.admin?
   end
