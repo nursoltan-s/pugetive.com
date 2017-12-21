@@ -29,6 +29,12 @@ describe App do
       expect(app.years).to match /Now/
     end
 
+
+    it 'includes only a single year for within-year projects' do
+      app = create(:app, start_year: 2003, stop_year: 2003)
+
+      expect(app.years).to match 2003
+    end
   end
 
 

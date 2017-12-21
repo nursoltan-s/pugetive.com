@@ -5,16 +5,6 @@ class App < Work
 
   default_scope -> {includes(:genre, wields: :tool)}
 
-  def years
-    if read_attribute(:stop_year).nil?
-      stop = 'Now'
-    else
-      stop = stop_year
-    end
-
-    "#{start_year} - #{stop}"
-  end
-
   def self.solo(merge_pugetive = false)
     joins(:party).where("parties.id = 1 OR parties.alias = 1")
   end
