@@ -1,0 +1,23 @@
+%h1 Listing variants
+
+%table
+  %thead
+    %tr
+      %th Work
+      %th Name
+      %th
+      %th
+      %th
+
+  %tbody
+    - @variants.each do |variant|
+      %tr
+        %td= variant.work_id
+        %td= variant.name
+        %td= link_to 'Show', variant
+        %td= link_to 'Edit', edit_variant_path(variant)
+        %td= link_to 'Destroy', variant, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Variant', new_variant_path

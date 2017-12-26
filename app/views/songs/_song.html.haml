@@ -22,6 +22,8 @@
 
         = song.summary_display
 
+        = render "variants/list", work: song
+
         = song.lyric_display
 
         -# = song.roles_table('show-for-small-only')

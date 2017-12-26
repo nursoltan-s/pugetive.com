@@ -1,0 +1,4 @@
+= render work.variants
+
+%p.admin{data: {visible_to: 'admin'}}
+  = link_to(raw("#{icon(:new)} Add Variant"), new_variant_path(work_id: work.id))

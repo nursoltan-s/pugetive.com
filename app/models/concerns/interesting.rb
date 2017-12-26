@@ -33,6 +33,22 @@ module Interesting
       interest_id == WRITING_INTEREST_ID
     end
 
+    private
+
+      def type_and_interest_match?
+        case interest_id
+        when SOFTWARE_INTEREST_ID
+          type == 'App'
+        when MUSIC_INTEREST_ID
+          type == 'Song'
+        when PHOTOGRAPHY_INTEREST_ID
+          type == 'Photo'
+        when FILM_INTEREST_ID
+          type == 'Movie'
+        when WRITING_INTEREST_ID
+          type == 'Piece'
+        end
+      end
 
   end
 

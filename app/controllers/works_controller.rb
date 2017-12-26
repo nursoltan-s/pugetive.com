@@ -1,6 +1,12 @@
 class WorksController < MetaResourceController
 
 
+  def new
+    @interest = Interest.find(params[:interest_id])
+    @work = Work.new(interest_id: @interest.id, type: @interest.work_name)
+    authorize(@work, :create?)
+  end
+
   def show
     authorize(:about, :home?)
     # Works are now served via subclasses
@@ -63,6 +69,7 @@ class WorksController < MetaResourceController
        :stop_year,
        :soundcloud_id,
        :summary,
+       :type,
        :url,
        documents_attributes: [:data, :name]]
     end

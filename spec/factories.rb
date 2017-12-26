@@ -172,6 +172,11 @@ FactoryBot.define do
     password 'testymctesterson'
   end
 
+  factory :variant do
+    work_id 1
+    name 'Placeholer Variant Name'
+  end
+
   factory :work do
     name 'toddgehman.io:3000'
     party_id TODD_PARTY_ID

@@ -1,0 +1,7 @@
+= form_for @variant do |f|
+  - handle_errors(@variant)
+
+  = f.hidden_field(:work_id)
+  = label_field(f.label(:name), f.text_field(:name))
+  = label_field(f.label(:year), f.select(:year, options_for_select(YEARS_OF_LIFE, selected: @variant.year), include_blank: true))
+  = submit(f)

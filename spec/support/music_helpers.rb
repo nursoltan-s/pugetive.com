@@ -3,6 +3,7 @@ module MusicHelpers
   def setup_music
     songwriter = create(:title, name: 'Songwriter', interest_id: MUSIC_INTEREST_ID)
     performer  = create(:title, name: 'Performer',  interest_id: MUSIC_INTEREST_ID)
+    composer   = create(:title, name: 'Composer',   interest_id: MUSIC_INTEREST_ID)
     mastering  = create(:title, name: 'Mastering',  interest_id: MUSIC_INTEREST_ID)
 
     duchess     = create(:album, name: 'Duchess of Hazard')
@@ -54,6 +55,10 @@ module MusicHelpers
       song.tools  << bass
       song.titles << performer
     end
+
+    fugue = create(:song, name: 'G Minor Fugue', genre_id: CLASSICAL_GENRE_ID, party_id: TODD_PARTY_ID)
+    fugue.variants << create(:variant, name: 'Arranged for String Trio')
+    fugue.variants << create(:variant, name: 'Arranged for Piano')
 
   end
 

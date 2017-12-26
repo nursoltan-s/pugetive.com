@@ -44,6 +44,26 @@ feature "Viewing song pages" do
   end
 end
 
+feature "Viewing classical composition pages" do
+
+  before(:each) do
+    setup_pugetive
+    setup_music
+  end
+
+  scenario "as a visitor to a piece with variants" do
+    song = Song.classical.sample
+
+    visit song_path(song)
+
+    expect(page).to have_content song.name
+    expect(page).to have_content song.variants.first.name
+
+    expect(page).to have_selector '#public-menu'
+  end
+end
+
+
 feature "Viewing album pages" do
 
   before(:each) do

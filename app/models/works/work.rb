@@ -23,6 +23,8 @@ class Work < ApplicationRecord
   validates :demo,        inclusion:    {in: BOOLEAN_OPTIONS}
   validates :favorite,    inclusion:    {in: BOOLEAN_OPTIONS}
   validates :author_id,   numericality: true, allow_nil: true
+  validate  :type_and_interest_match, on: :create
+
 
   belongs_to :party
   belongs_to :genre
@@ -35,6 +37,8 @@ class Work < ApplicationRecord
 
   has_many :series_works, dependent: :destroy
   has_many :series, through: :series_works
+
+  has_many :variants
 
   belongs_to :author, class_name: 'Artist'
 
@@ -53,14 +57,6 @@ class Work < ApplicationRecord
     Cache.new(key, -> {self.sorted}).value
   end
 
-  # def titles
-  #   @titles ||= Title.joins(roles: {work: {series_works: :series}}).where(['series.id = ?', self.id]).group('titles.id')
-  # end
-
-  # def tools
-  #   @tools ||= Tool.joins(wields: {work: {series_works: :series}}).where(['series.id = ?', self.id]).group('tools.id')
-  # end
-
   def solo?
     party_id == TODD_PARTY_ID
   end
@@ -73,9 +69,12 @@ class Work < ApplicationRecord
     author_id == 1
   end
 
-  # def has_thumbnail?
-  #   instagram_id.present? or flickr_id.present?
-  # end
+  def thumbnail(*args)
+    if has_image?
+      return hosted_image.thumbnail(*args)
+    end
+    nil
+  end
 
   def active_tools
     cached_wields.where(legacy: false).map{|w| w.tool}
@@ -125,6 +124,12 @@ class Work < ApplicationRecord
 
     def cached_roles
       @cached_roles ||= roles
+    end
+
+    def type_and_interest_match
+      unless type_and_interest_match?
+        errors.add(:type, "is different from the standard for this Interest")
+      end
     end
 
 end

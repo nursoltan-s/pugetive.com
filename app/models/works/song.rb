@@ -7,6 +7,8 @@ class Song < Work
 
   belongs_to :author, class_name: 'Artist'
 
+  scope :classical, -> {where(genre_id: CLASSICAL_GENRE_ID)}
+
   def solo?
     party_id == TODD_PARTY_ID or party.alias?
   end

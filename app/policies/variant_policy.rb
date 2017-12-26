@@ -1,0 +1,2 @@
+class VariantPolicy < ApplicationPolicy
+end

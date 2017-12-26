@@ -18,6 +18,13 @@ describe Song do
     end
   end
 
+  describe '#variants' do
+    it 'returns the variants for the song' do
+      song = Song.classical.first
+      expect(song.variants.size).to eq 2
+    end
+  end
+
   after(:all) do
     clean_db
   end

@@ -1,5 +1,5 @@
-- title('New work', false)
+- title("New #{@interest.work_name}", false)
 
-= label_field(nil, content_tag(:h1, 'New Work'))
+= label_field(nil, content_tag(:h1, "New #{@interest.work_name}"))
 
 = render 'form'
