@@ -1,5 +1,6 @@
 class Party < ActiveRecord::Base
 
+  include Imageable
   include Sluggable
 
   TYPES = ['Company', 'Artist', 'School', 'NonProfit', 'Band']
@@ -12,24 +13,12 @@ class Party < ActiveRecord::Base
   validates :live, inclusion: {in: BOOLEAN_OPTIONS}
   validates :alias, inclusion: {in: BOOLEAN_OPTIONS}
 
-  has_attached_file(:image, Pugetive::Application.config.paperclip_image_opts)
-  validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
-
-
-  def image_token
-    'party'
-  end
-
   def self.sorted
     all.sort_by{|p| p.alpha_name}
   end
 
   def self.jobs
     [NonProfit.find(FAIR_PARTY_ID)] + Company.all.sort_by{|c| c.stop_year}.reverse
-  end
-
-  def has_image?
-    image.url.present? and not image.url(:thumb).match(/missing/)
   end
 
   def alpha_name

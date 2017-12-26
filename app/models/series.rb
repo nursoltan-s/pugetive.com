@@ -1,6 +1,7 @@
 class Series < ApplicationRecord
   TYPES = ['Album', 'Gallery', 'Collection']
 
+  include Imageable
   include Interesting
   include Randomable
   include Rangeable
@@ -19,9 +20,6 @@ class Series < ApplicationRecord
   has_many :wields, through: :works
   has_many :tools, -> {group('tools.id')}, through: :wields
 
-  has_attached_file(:image, Pugetive::Application.config.paperclip_image_opts)
-  validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
-
   scope :alpha, -> {order(:name)}
 
   def self.solo
@@ -30,14 +28,6 @@ class Series < ApplicationRecord
 
   def self.live
     where(audience: true)
-  end
-
-  def image_token
-    'series'
-  end
-
-  def has_image?
-    image.url.present? and not image.url(:thumb).match(/missing/)
   end
 
   def interest
@@ -55,11 +45,11 @@ class Series < ApplicationRecord
   end
 
   def start_year
-    works.map(&:start_year).min
+    @start_year ||= works.map(&:start_year).min
   end
 
   def stop_year
-    works.map(&:stop_year).max || Time.now.year
+    @stop_year ||= works.map(&:stop_year).max || Time.now.year
   end
 
 end

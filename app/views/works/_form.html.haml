@@ -44,11 +44,7 @@
   = label_field(f.label(:instagram_id), f.text_field(:instagram_id))
   = label_field(f.label(:flickr_id), f.text_field(:flickr_id))
 
-  = label_field(f.label(:image), f.file_field(:image))
-
   - unless @work.new_record?
-    %fieldset
-      %legend Attach Document (optional)
-      = label_field(f.label(:document), document_fields(f, @work))
+    = label_field(f.label(:document), document_fields(f, @work))
 
   = submit(f)

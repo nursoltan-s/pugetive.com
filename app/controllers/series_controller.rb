@@ -13,12 +13,17 @@ class SeriesController < MetaResourceController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def series_params
-      params.require(:series).permit(:audience,
-                                     :description,
-                                     :image,
-                                     :interest_id,
-                                     :name,
-                                     :summary,
-                                     :type)
+      params.require(:series).permit(series_params_list)
     end
+
+    def series_params_list
+      [:audience,
+       :description,
+       :interest_id,
+       :name,
+       :summary,
+       :type,
+       images_attributes: [:data, :name]]
+    end
+
 end

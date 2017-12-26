@@ -10,6 +10,7 @@ class Work < ApplicationRecord
 
 
   include Documentable
+  include Imageable
   include Interesting
   include Rangeable
   include Sluggable
@@ -22,9 +23,6 @@ class Work < ApplicationRecord
   validates :demo,        inclusion:    {in: BOOLEAN_OPTIONS}
   validates :favorite,    inclusion:    {in: BOOLEAN_OPTIONS}
   validates :author_id,   numericality: true, allow_nil: true
-
-  has_attached_file(:image, Pugetive::Application.config.paperclip_image_opts)
-  validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
   belongs_to :party
   belongs_to :genre
@@ -71,23 +69,8 @@ class Work < ApplicationRecord
     "/#{interest.work_name.downcase.pluralize}/#{slug}"
   end
 
-  def image_token
-    'work'
-  end
-
-  def thumbnail(*args)
-    if has_image?
-      return hosted_image.thumbnail(*args)
-    end
-    nil
-  end
-
   def mine?
     author_id == 1
-  end
-
-  def has_image?
-    image.url.present? and not image.url(:thumb).match(/missing/)
   end
 
   # def has_thumbnail?

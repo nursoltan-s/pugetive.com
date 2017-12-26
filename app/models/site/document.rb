@@ -1,5 +1,4 @@
 class Document < ActiveRecord::Base
-  include ConfigHelper
 
   has_attached_file(:data,
                     Pugetive::Application.config.paperclip_document_opts)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171226144154) do
+ActiveRecord::Schema.define(version: 20171226154119) do
 
   create_table "accounts", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
@@ -182,10 +182,6 @@ ActiveRecord::Schema.define(version: 20171226144154) do
     t.string "slug"
     t.boolean "live", default: false
     t.boolean "alias", default: false, null: false
-    t.string "image_file_name"
-    t.string "image_content_type"
-    t.integer "image_file_size"
-    t.datetime "image_updated_at"
     t.index ["alias"], name: "index_parties_on_alias"
     t.index ["name"], name: "index_parties_on_name"
     t.index ["slug"], name: "index_parties_on_slug"
@@ -239,10 +235,6 @@ ActiveRecord::Schema.define(version: 20171226144154) do
     t.datetime "updated_at", null: false
     t.string "slug"
     t.boolean "audience", default: false, null: false
-    t.string "image_file_name"
-    t.string "image_content_type"
-    t.integer "image_file_size"
-    t.datetime "image_updated_at"
     t.integer "interest_id", default: 1, null: false
     t.index ["audience"], name: "index_series_on_audience"
     t.index ["interest_id"], name: "index_series_on_interest_id"
@@ -344,10 +336,6 @@ ActiveRecord::Schema.define(version: 20171226144154) do
     t.boolean "favorite", default: false, null: false
     t.integer "author_id", default: 1, null: false
     t.integer "soundcloud_id"
-    t.string "image_file_name"
-    t.string "image_content_type"
-    t.integer "image_file_size"
-    t.datetime "image_updated_at"
     t.integer "genre_id"
     t.integer "place_id"
     t.string "instagram_id"
