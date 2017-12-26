@@ -18,8 +18,9 @@
                 f.select(:stop_year, options_for_select(YEARS_OF_LIFE, selected: @party.stop_year), include_blank: true))
   = label_field(f.label(:live), f.check_box(:live))
   = label_field(f.label(:alias), f.check_box(:alias))
-  -# = label_field(f.label(:flickr_id), f.text_field(:flickr_id))
 
-  = label_field(f.label(:image), f.file_field(:image))
+  - unless @party.new_record?
+    = label_field(f.label(:image), image_fields(f, @party))
+
 
   = submit(f)

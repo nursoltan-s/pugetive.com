@@ -12,7 +12,6 @@ class PartiesController < MetaResourceController
     def party_params
       params.require(:party).permit(:alias,
                                     :description,
-                                    :image,
                                     :live,
                                     :location,
                                     :name,
@@ -21,6 +20,7 @@ class PartiesController < MetaResourceController
                                     :stop_year,
                                     :summary,
                                     :type,
-                                    :url)
+                                    :url,
+                                    images_attributes: [:data, :name])
     end
 end

@@ -50,7 +50,6 @@ ActiveRecord::Schema.define(version: 20171226154119) do
 
   create_table "documents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
-    t.string "description"
     t.integer "documentable_id", null: false
     t.string "documentable_type", null: false
     t.string "data_file_name"
