@@ -6,6 +6,6 @@ class Variant < ApplicationRecord
   validates :name,    presence: true
   validates :year, inclusion: {in: YEARS_OF_LIFE}, allow_blank: true
 
-  belongs_to :work
+  belongs_to :work, touch: true
 
 end

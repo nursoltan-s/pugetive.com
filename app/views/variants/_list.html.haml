@@ -4,7 +4,10 @@
     %tr
       %td= render variant.documents
       -# %td [Audio]
-      %th.text-left= variant.name
+      %th.text-left
+        = variant.name
+        %span.small.subdued{data: {visible_to: 'admin'}}
+          = link_to(icon(:edit), edit_variant_path(variant))
 
 
 %p.admin{data: {visible_to: 'admin'}}
