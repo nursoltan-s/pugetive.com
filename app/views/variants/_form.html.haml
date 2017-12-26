@@ -4,4 +4,7 @@
   = f.hidden_field(:work_id)
   = label_field(f.label(:name), f.text_field(:name))
   = label_field(f.label(:year), f.select(:year, options_for_select(YEARS_OF_LIFE, selected: @variant.year), include_blank: true))
+  - unless @variant.new_record?
+    = label_field(f.label(:document), document_fields(f, @variant))
+
   = submit(f)

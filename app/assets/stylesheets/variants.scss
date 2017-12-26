@@ -1,0 +1,13 @@
+@import 'mixins';
+
+section.variant {
+  border-top: 1px solid $border_color;
+  padding-top: 1em;
+}
+
+table.variants {
+  border-collapse: collapse;
+  tr td, tr th {
+    border-top: 1px solid $border_color;
+  }
+}

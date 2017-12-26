@@ -1,9 +1,7 @@
-.row.variant
+%section.row.variant
+  %h6= variant.name
   .medium-6.columns
-    %h6= variant.name
-  .medium-3.columns
     %p [Audio]
-  .medium-3.columns
-    %p [Documents]
-    %p.admin{data: {visible_to: 'admin'}}
-      = link_to(raw("#{icon(:new)} Add Document"), new_document_path(documentable_type: 'Variant', documentable_id: variant.id))
+  .medium-6.columns
+    %p
+      = render variant.documents

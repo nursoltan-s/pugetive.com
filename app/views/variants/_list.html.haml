@@ -1,4 +1,11 @@
-= render work.variants
+%table.variants
+
+  - work.variants.each do |variant|
+    %tr
+      %td= render variant.documents
+      -# %td [Audio]
+      %th.text-left= variant.name
+
 
 %p.admin{data: {visible_to: 'admin'}}
   = link_to(raw("#{icon(:new)} Add Variant"), new_variant_path(work_id: work.id))

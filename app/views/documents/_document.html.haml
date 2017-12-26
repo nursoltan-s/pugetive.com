@@ -1,13 +1,2 @@
-%section.document{data: {document_id: document.id}}
-  .row.panel
-    .small-6.columns
-      - if document.name.blank?
-        %p.null No name.
-      - else
-        = document.name
-      - if document.description.present?
-        %p= document.description
-    -# .small-6.columns
-    -#   .dynamic-link{data: {document_id: document.id}}
-    -#     Loading document link dynamically...
-    = link_to(icon(:document), document.url)
+%section.document
+  = link_to(image_tag("icons/sheet-music-pdf-icon.jpg", size: '50x50'), document.url)
