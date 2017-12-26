@@ -34,6 +34,7 @@ class InterestsController < MetaResourceController
 
     @band_recordings = Album.band_recordings
     @solo_recordings = Album.solo_recordings
+    # @compositions    = Song.classical
 
     render :music
   end

@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @document.name
+%p
+  %b Description:
+  = @document.description
+%p
+  %b User:
+  = @document.user_id
+%p
+  %b Documentable:
+  = @document.documentable_id
+%p
+  %b Documentable type:
+  = @document.documentable_type
+%p
+  %b Data:
+  = @document.data
+
+= link_to 'Edit', edit_document_path(@document)
+\|
+= link_to 'Back', documents_path

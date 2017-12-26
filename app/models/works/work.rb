@@ -9,6 +9,7 @@ class Work < ApplicationRecord
                  released: "Released"}
 
 
+  include Documentable
   include Interesting
   include Rangeable
   include Sluggable

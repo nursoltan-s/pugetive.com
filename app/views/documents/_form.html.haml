@@ -1,0 +1,15 @@
+= form_for @document, html: {multipart: true} do |f|
+  - if @document.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@document.errors.count, "error")} prohibited this document from being saved:"
+      %ul
+        - @document.errors.full_messages.each do |msg|
+          %li= msg
+
+  = label_field(f.label(:name), f.text_field(:name))
+  = label_field(f.label(:description), f.text_field(:description))
+  = f.hidden_field :documentable_id
+  = f.hidden_field :documentable_type
+  - if @document.new_record?
+    = label_field(nil, f.file_field(:data, class: 'button'))
+  = label_field(nil, f.submit('Save'))

@@ -54,6 +54,15 @@ module FormsHelper
             data: {visible_to: 'admin'})
   end
 
+  def document_fields(f, object)
+    rv = ""
+    f.fields_for :documents, object.documents.build do |data_field|
+      rv = data_field.file_field :data
+      rv += data_field.text_field :name
+    end
+    rv
+  end
+
   private
 
     def icon_field_type(field_name)

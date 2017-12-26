@@ -1,0 +1,4 @@
+%h4 Custom Documents
+- if subject.documents.any?
+  = render subject.documents
+= link_to(raw("#{upload_icon} Upload Document"), new_document_path(document: {documentable_type: subject.class.name, documentable_id: subject.id}))

@@ -63,6 +63,7 @@ class WorksController < MetaResourceController
        :stop_year,
        :soundcloud_id,
        :summary,
-       :url]
+       :url,
+       documents_attributes: [:data, :name]]
     end
 end

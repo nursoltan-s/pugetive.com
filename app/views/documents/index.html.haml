@@ -1,0 +1,19 @@
+- title('Listing documents')
+
+%table
+  %tr
+    %th Name
+    %th Description
+    %th User
+    %th Subject
+    %th File
+
+  - @documents.each do |document|
+
+    %tr
+      %td= document.name
+      %td= document.description
+      %td= link_to(document.user.name, document.user)
+      %td= link_to(document.subject.name, document.subject)
+      %td= link_to(document_icon(document), document.url)
+
