@@ -4,7 +4,12 @@
 
 @import 'mixins';
 
-section.work, section.series, , section.gallery, section.band, section.works {
+section.work,
+section.song,
+section.series,
+section.gallery,
+section.band,
+section.works {
   margin-bottom: 3em;
 
   h3 {
