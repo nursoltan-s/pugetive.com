@@ -54,7 +54,6 @@ class WorksController < MetaResourceController
        :favorite,
        :flickr_id,
        :genre_id,
-       :image,
        :instagram_id,
        :interest_id,
        :live,
@@ -71,6 +70,7 @@ class WorksController < MetaResourceController
        :summary,
        :type,
        :url,
-       documents_attributes: [:data, :name]]
+       documents_attributes: [:data, :name],
+       images_attributes: [:data, :name]]
     end
 end

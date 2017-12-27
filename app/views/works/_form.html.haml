@@ -46,6 +46,9 @@
   = label_field(f.label(:flickr_id), f.text_field(:flickr_id))
 
   - unless work.new_record?
+    = label_field(f.label(:image), image_fields(f, work))
+
+  - unless work.new_record?
     = label_field(f.label(:document), document_fields(f, work))
 
   = submit(f)
