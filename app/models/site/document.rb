@@ -3,10 +3,7 @@ class Document < ActiveRecord::Base
   has_attached_file(:data,
                     Pugetive::Application.config.paperclip_document_opts)
 
-  validates_attachment :data,
-      :presence => true,
-      :size => { :in => 0..10.megabytes },
-      :content_type => { :content_type => [/^application\/pdf$/, 'audio/mpeg'] }
+  validates_attachment_file_name :data, :matches => [/(pdf|mp3)\Z/]
 
   validates :documentable_type, presence: true
 
