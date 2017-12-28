@@ -4,6 +4,7 @@ class Document < ActiveRecord::Base
                     Pugetive::Application.config.paperclip_document_opts)
 
   validates_attachment_file_name :data, :matches => [/(pdf|mp3)\Z/]
+  do_not_validate_attachment_file_type :data
 
   validates :documentable_type, presence: true
 
