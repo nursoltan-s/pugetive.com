@@ -26,7 +26,8 @@ Pugetive::Application.config.paperclip_document_opts = SHARED_S3_CONFIG.merge(
     s3_host_alias:   PUGETIVE_CONFIG[Rails.env][:s3_documents_host],
     s3_credentials:  {access_key_id:     PUGETIVE_CONFIG[Rails.env][:s3_access_key_id],
                       secret_access_key: PUGETIVE_CONFIG[Rails.env][:s3_secret_access_key],
-                      bucket:            PUGETIVE_CONFIG[Rails.env][:s3_documents_bucket]}
+                      bucket:            PUGETIVE_CONFIG[Rails.env][:s3_documents_bucket]},
+    validate_media_type: false
   )
 
 
