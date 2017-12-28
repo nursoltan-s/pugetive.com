@@ -6,7 +6,7 @@ class Document < ActiveRecord::Base
   validates_attachment :data,
       :presence => true,
       :size => { :in => 0..10.megabytes },
-      :content_type => { :content_type => [/^application\/pdf$/] }
+      :content_type => { :content_type => [/^application\/pdf$/, 'audio/mpeg'] }
 
   validates :documentable_type, presence: true
 
@@ -18,6 +18,14 @@ class Document < ActiveRecord::Base
 
   def url
     data.url
+  end
+
+  def pdf?
+    data_content_type.match(/^application\/pdf$/)
+  end
+
+  def mp3?
+    data_content_type == 'audio/mpeg'
   end
 
   # def url(size = nil)

@@ -2,8 +2,10 @@
 
   - work.variants.each do |variant|
     %tr
-      %td= render variant.documents
-      -# %td [Audio]
+      - if variant.has_audio?
+        %td= raw(AudioPlayer.new(mp3: variant.mp3_url).to_html)
+      - if variant.has_score?
+        %td= render variant.score
       %th.text-left
         = variant.name
         - if variant.year.present?

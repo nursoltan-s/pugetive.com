@@ -12,7 +12,7 @@ Pugetive::Application.config.paperclip_image_opts = SHARED_S3_CONFIG.merge(
               medium: "600x400>",
               small:  "300x200>",
               thumb:  "100x100#" },
-    convert_options: {all: "-quality 100 -strip -sharpen 0x3" },
+    convert_options: {all: "-quality 92 -strip -sharpen 0x3" },
     s3_host_alias:   PUGETIVE_CONFIG[Rails.env][:s3_images_host],
     s3_credentials:  {access_key_id:     PUGETIVE_CONFIG[Rails.env][:s3_access_key_id],
                       secret_access_key: PUGETIVE_CONFIG[Rails.env][:s3_secret_access_key],
