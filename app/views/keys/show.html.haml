@@ -1,0 +1,19 @@
+- title(@key.name, false)
+
+.row
+  .medium-7.medium-offset-5.columns
+    %h1
+      %span.tool-name= @key.name
+
+    %h2.subhead Musical Key
+
+    %p
+      Listing songs in the key of
+      %i= @key.short_name
+
+
+
+- if @key.songs.size < 6
+  = render("works/list", works: @key.songs.sorted)
+- else
+  = render 'works/stacked', works: @key.songs.sorted, show_meta: true

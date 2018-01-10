@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   resources :genres
   resources :lyrics
   resources :movies
+  resources :keys
   resources :notes
   resources :parties
   resources :phones

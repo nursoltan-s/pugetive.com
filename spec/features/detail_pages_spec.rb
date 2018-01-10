@@ -33,11 +33,14 @@ feature "Viewing song pages" do
 
     expect(songs.size).to eq 3
     songs.each do |song|
+      song.key ||= Key.find(1)
+      song.save
       visit song_path(song)
 
       expect(page).to have_content song.name
       expect(page).to have_content song.tools.first.name
       expect(page).to have_content song.titles.first.name
+      expect(page).to have_content song.key.short_name
       expect(page).to have_selector '#public-menu'
 
     end

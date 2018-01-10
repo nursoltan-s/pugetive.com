@@ -16,9 +16,14 @@
       %td
         .genre= link_to(song.genre.name, song.genre)
 
+  - if song.key.present?
+    %tr
+      %th Key
+      %td= link_to(song.key.short_name, song.key)
+
   - if song.daw.present?
     %tr
-      %th Recording
+      %th Recorded with
       %td= song.daw.name
 
   %tr.show-for-small-only

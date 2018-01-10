@@ -6,6 +6,7 @@ class Song < Work
   has_many :instruments, through: :wields
 
   belongs_to :author, class_name: 'Artist'
+  belongs_to :key
 
   scope :classical, -> {where(genre_id: CLASSICAL_GENRE_ID)}
 

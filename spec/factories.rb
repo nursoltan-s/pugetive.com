@@ -88,6 +88,11 @@ FactoryBot.define do
     public true
   end
 
+  factory :key do
+    name "A minor"
+    short_name 'Am'
+  end
+
   factory :movie do
     name "Placeholder Movie Name"
     interest_id FILM_INTEREST_ID

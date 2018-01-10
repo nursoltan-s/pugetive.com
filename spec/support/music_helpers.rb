@@ -24,6 +24,8 @@ module MusicHelpers
       todd = create(:party, name: 'Todd Gehman', type: 'Artist', id: TODD_PARTY_ID)
     end
 
+    a_minor = create(:key)
+
     ["Maker's Lament", 'Half a Heart', 'The Dirt'].each do |name|
       song = create(:song,
                     name: name,
@@ -51,6 +53,7 @@ module MusicHelpers
 
     ["Astrid's Eyes", "Subway Club", "Green-Wood"].each do |name|
       song = create(:song, name: name, party_id: todd.id, start_year: 2016)
+      song.key = a_minor
       nyc.songs   << song
       song.tools  << bass
       song.titles << performer

@@ -56,6 +56,7 @@ class WorksController < MetaResourceController
        :genre_id,
        :instagram_id,
        :interest_id,
+       :key_id,
        :live,
        :location,
        :name,

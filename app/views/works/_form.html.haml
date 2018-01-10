@@ -41,6 +41,8 @@
 
   = label_field(f.label(:status_message), f.text_field(:status_message))
 
+
+  = label_field(f.label(:key_id), f.select(:key_id, options_from_collection_for_select(Key.all, :id, :short_name, selected: work.key_id), include_blank: true))
   = label_field(f.label(:soundcloud_id), f.number_field(:soundcloud_id))
   = label_field(f.label(:instagram_id), f.text_field(:instagram_id))
   = label_field(f.label(:flickr_id), f.text_field(:flickr_id))

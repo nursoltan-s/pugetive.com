@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171226162157) do
+ActiveRecord::Schema.define(version: 20180110034020) do
 
   create_table "accounts", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
@@ -147,6 +147,15 @@ ActiveRecord::Schema.define(version: 20171226162157) do
     t.index ["slug"], name: "index_interests_on_slug"
     t.index ["sort"], name: "index_interests_on_sort"
     t.index ["token"], name: "index_interests_on_token"
+  end
+
+  create_table "keys", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name", limit: 16, null: false
+    t.string "short_name", null: false
+    t.string "slug"
+    t.index ["name"], name: "index_keys_on_name"
+    t.index ["short_name"], name: "index_keys_on_short_name"
+    t.index ["slug"], name: "index_keys_on_slug"
   end
 
   create_table "lyrics", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -349,12 +358,14 @@ ActiveRecord::Schema.define(version: 20171226162157) do
     t.integer "place_id"
     t.string "instagram_id"
     t.bigint "flickr_id"
+    t.integer "key_id"
     t.index ["author_id"], name: "index_works_on_author_id"
     t.index ["favorite"], name: "index_works_on_favorite"
     t.index ["flickr_id"], name: "index_works_on_flickr_id"
     t.index ["genre_id"], name: "index_works_on_genre_id"
     t.index ["instagram_id"], name: "index_works_on_instagram_id"
     t.index ["interest_id"], name: "index_works_on_interest_id"
+    t.index ["key_id"], name: "index_works_on_key_id"
     t.index ["live"], name: "index_works_on_live"
     t.index ["party_id"], name: "index_works_on_party_id"
     t.index ["slug"], name: "index_works_on_slug"
