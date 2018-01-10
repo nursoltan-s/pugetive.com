@@ -1,11 +1,9 @@
 class CreateKeys < ActiveRecord::Migration[5.1]
   def change
-    ActiveRecord::Base.connection.execute "SET collation_connection = 'utf8_general_ci' "
-
     create_table :keys, force: true do |t|
       t.string :name, limit: 16, null: false
-      t.string :short_name, null: false
-      t.string :slug
+      t.string :short_name, limit: 4, null: false
+      t.string :slug, limit: 16
     end
 
     add_index(:keys, :name)
