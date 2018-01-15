@@ -14,7 +14,7 @@ describe Piece do
       pieces = Piece.random(num)
 
       expect(pieces.size).to eq num
-      expect(pieces.sample).to be_writing
+      expect(pieces.first).to be_writing
     end
 
   end

@@ -43,7 +43,7 @@ class Work < ApplicationRecord
   belongs_to :author, class_name: 'Artist'
 
   # default_scope      -> {includes(:interest, wields: :tool)}
-  scope :sorted,      -> {order("works.stop_year IS NULL DESC, works.stop_year DESC, start_year ASC, name ASC")}
+  scope :sorted,      -> {order("works.stop_year IS NULL DESC, works.stop_year DESC, start_year DESC, name ASC")}
   scope :alpha,       -> {order(:name)}
 
   scope :favorite,    -> {where(favorite: true)}

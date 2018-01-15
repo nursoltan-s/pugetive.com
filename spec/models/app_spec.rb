@@ -83,6 +83,17 @@ describe App do
     end
   end
 
+  describe '#sorted' do
+    it 'sorts apps with earlier start year and same stop year properly' do
+      App.destroy_all
+      earlier_work = create(:app, start_year: 2003, stop_year: 2008)
+      later_work   = create(:app, start_year: 2005, stop_year: 2008)
+
+      expect(App.sorted.first).to eq later_work
+      expect(App.sorted.last).to eq earlier_work
+    end
+  end
+
   after(:all) do
     clean_db
   end

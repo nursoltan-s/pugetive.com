@@ -149,10 +149,10 @@ ActiveRecord::Schema.define(version: 20180110034020) do
     t.index ["token"], name: "index_interests_on_token"
   end
 
-  create_table "keys", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "keys", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", limit: 16, null: false
-    t.string "short_name", limit: 4, null: false
-    t.string "slug", limit: 16
+    t.string "short_name"
+    t.string "slug"
     t.index ["name"], name: "index_keys_on_name"
     t.index ["short_name"], name: "index_keys_on_short_name"
     t.index ["slug"], name: "index_keys_on_slug"
@@ -358,6 +358,7 @@ ActiveRecord::Schema.define(version: 20180110034020) do
     t.integer "place_id"
     t.string "instagram_id"
     t.bigint "flickr_id"
+    t.string "musical_key", limit: 3
     t.integer "key_id"
     t.index ["author_id"], name: "index_works_on_author_id"
     t.index ["favorite"], name: "index_works_on_favorite"
@@ -367,6 +368,7 @@ ActiveRecord::Schema.define(version: 20180110034020) do
     t.index ["interest_id"], name: "index_works_on_interest_id"
     t.index ["key_id"], name: "index_works_on_key_id"
     t.index ["live"], name: "index_works_on_live"
+    t.index ["musical_key"], name: "index_works_on_musical_key"
     t.index ["party_id"], name: "index_works_on_party_id"
     t.index ["slug"], name: "index_works_on_slug"
     t.index ["soundcloud_id"], name: "index_works_on_soundcloud_id"

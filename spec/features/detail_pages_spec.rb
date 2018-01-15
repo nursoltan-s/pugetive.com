@@ -33,7 +33,7 @@ feature "Viewing song pages" do
 
     expect(songs.size).to eq 3
     songs.each do |song|
-      song.key ||= Key.find(1)
+      song.key ||= Key.all.first
       song.save
       visit song_path(song)
 
