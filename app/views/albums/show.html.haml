@@ -1,4 +1,8 @@
 - title(@album.name, false)
 
+.row
+  .medium-offset-5.medium-7.columns.eyebrow
+    %h1= link_to('Music', @album.interest)
+
 = render @album
 
