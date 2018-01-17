@@ -16,7 +16,8 @@ class Song < Work
 
   # Refactor OUT
   def has_audio?
-    soundcloud_id.present?
+    soundcloud_id.present? or
+    has_mp3?
   end
 
   def has_lyric?
@@ -27,8 +28,12 @@ class Song < Work
     lyric.present?
   end
 
-  def has_audio?
-    soundcloud_id.present?
+  def has_mp3?
+    mp3.present?
+  end
+
+  def mp3
+    documents.find{|d| d.mp3?}
   end
 
   def daw
@@ -36,7 +41,14 @@ class Song < Work
   end
 
   def audio_player
-    @player ||= AudioPlayer.new(soundcloud_id: soundcloud_id).to_html
+    return @player unless @player.blank?
+    if soundcloud_id.present?
+       @player = AudioPlayer.new(soundcloud_id: soundcloud_id).to_html
+    else
+      @player = AudioPlayer.new(mp3:  mp3.url,
+                                name: name).to_html
+    end
+    @player
   end
 
 

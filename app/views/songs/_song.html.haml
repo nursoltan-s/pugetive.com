@@ -9,8 +9,8 @@
         = render "songs/song_info_table", song: song
         = render "works/admin_links", work: song
 
-        - if song.documents.any?
-          = render song.documents
+        -# - if song.documents.any?
+        -#   = render song.documents
 
       .medium-5.columns.end.info-box
         %h3.hide-for-small-only= song.title
