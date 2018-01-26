@@ -8,6 +8,8 @@
         - if app.has_image?
           %div.screenshot= app.thumbnail
         = app.live_link
+        - if app.id == HOPVILLE_APP_ID
+          %p= link_to(raw("Seattle Magazine #{icon(:external)}"), 'http://seattlemag.com/article/beer-calculator')
         = render "works/admin_links", work: app
 
       .small-12.medium-7.columns
