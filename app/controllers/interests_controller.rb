@@ -75,6 +75,13 @@ class InterestsController < MetaResourceController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def interest_params
-      params.require(:interest).permit(:name, :sort, :token, :work_name, :series_name, :public, :icon)
+      params.require(:interest).permit(:icon,
+                                       :name,
+                                       :public,
+                                       :series_name,
+                                       :sort,
+                                       :summary,
+                                       :token,
+                                       :work_name)
     end
 end

@@ -1,7 +1,8 @@
-- if @interest.summary.present?
+- if @interest.summary.present? or @interest.software?
   .row
     .medium-7.columns.medium-offset-5
-      %p.interest-summary= raw(@interest.summary)
+      - if @interest.summary.present?
+        %p.interest-summary= raw(@interest.summary)
       - if @interest.software?
         %p
           = render "resume/button"
