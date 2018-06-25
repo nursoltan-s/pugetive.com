@@ -20,7 +20,7 @@ set :ssh_options, {
   keys: ["/Users/todd/.ssh/deployer-key-pair-us-east.pem"]
 }
 
-set :aws_key_pair, '/Users/todd/.ssh/deployer-key-pair-us-east.pem'
+set :aws_key_pair, '$HOME/.ssh/deployer-key-pair-us-east.pem'
 
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 
