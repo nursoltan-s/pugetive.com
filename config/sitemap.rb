@@ -27,28 +27,29 @@ SitemapGenerator::Sitemap.create do
   #     add article_path(article), :lastmod => article.updated_at
   #   end
 
-  add root_path
+  add root_path, changefreq: 'daily'
 
   Interest::INTEREST_IDS.each do |interest_id|
     interest = Interest.find(interest_id)
-    add interest_path(interest)
+    add interest_path(interest), changefreq: 'monthly', lastmod: interest.updated_at
+
     work_class = interest.work_name.safe_constantize
     work_class.all.each do |work|
-      add self.send("#{interest.work_name.downcase}_path", work), lastmod: work.updated_at
+      add self.send("#{interest.work_name.downcase}_path", work), lastmod: work.updated_at, changefreq: 'monthly'
     end
 
   end
 
   Tool.all.each do |tool|
-    add tool_path(tool)
+    add tool_path(tool), changefreq: 'monthly', lastmod: tool.updated_at
   end
 
   Genre.all.each do |genre|
-    add genre_path(genre)
+    add genre_path(genre), changefreq: 'monthly', lastmod: genre.updated_at
   end
 
   Title.all.each do |title|
-    add title_path(title)
+    add title_path(title), changefreq: 'monthly', lastmod: title.updated_at
   end
 
 
