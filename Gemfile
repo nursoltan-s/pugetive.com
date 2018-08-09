@@ -59,6 +59,7 @@ gem 'pdfkit'
 gem 'pundit'
 # gem 'rack-cors', require: 'rack/cors'
 gem 'rack-mini-profiler', require: false
+gem 'sitemap_generator'
 gem 'whenever', require: false
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'

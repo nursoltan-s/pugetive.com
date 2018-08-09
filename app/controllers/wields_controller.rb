@@ -1,4 +1,5 @@
 class WieldsController < MetaResourceController
+  skip_before_action :verify_authenticity_token
 
   def new
     @wield = Wield.new(project_id: params[:project_id])

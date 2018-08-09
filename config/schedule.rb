@@ -35,3 +35,7 @@ every :day do
   command "/usr/bin/find /home/deployer/apps/pugetive/shared/log/ -mtime +7 -name '*backup*.sql' -delete"
   command "/usr/bin/find /home/deployer/apps/pugetive/shared/log/ -mtime +7 -name '*backup*.gz' -delete"
 end
+
+every 1.day, :at => '5:00 am' do
+  rake "-s sitemap:refresh"
+end

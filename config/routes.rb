@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :variants
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   # Serve websocket cable requests in-process
@@ -40,6 +39,7 @@ Rails.application.routes.draw do
   resources :songs
   resources :titles
   resources :tools
+  resources :variants
   resources :wields
   resources :works
 
