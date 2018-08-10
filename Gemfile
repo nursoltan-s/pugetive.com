@@ -40,6 +40,7 @@ gem 'awesome_nested_set'
 gem 'aws-sdk', '~> 2'
 gem 'carmen'
 gem 'dalli'
+gem 'database_cleaner'
 gem 'devise'
 gem 'draper'
 gem 'flickraw'
@@ -56,6 +57,7 @@ gem "nilify_blanks"
 gem "nokogiri", "1.8.1"
 gem "paperclip", "~> 5.1.0"
 gem 'pdfkit'
+gem 'pdf-reader'
 gem 'pundit'
 # gem 'rack-cors', require: 'rack/cors'
 gem 'rack-mini-profiler', require: false
