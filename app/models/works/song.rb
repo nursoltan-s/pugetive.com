@@ -37,7 +37,12 @@ class Song < Work
   end
 
   def daw
-    self.tools.where("name like 'garageband' or name like 'protools' or name like 'logic%'").first
+    sql = <<-SQL
+      name LIKE 'garageband'
+      OR name LIKE 'protools'
+      OR name LIKE 'logic%'
+    SQL
+    self.tools.where(sql).first
   end
 
   def audio_player
