@@ -62,8 +62,9 @@ class InterestsController < MetaResourceController
     authorize(@interest)
 
     @blogs = Account.blogs
-    @reviews = Piece.reviews
     @haiku = Collection.haiku
+    @epitaphs = Piece.epitaphs
+    @reviews = Piece.reviews
     @projects = Piece.other_projects
 
     render :writing

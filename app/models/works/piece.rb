@@ -15,6 +15,10 @@ class Piece < Work
     cached_pieces.select{|piece| piece.genre_id == AMAZON_GENRE_ID}
   end
 
+  def self.epitaphs
+    cached_pieces.select{|piece| piece.genre_id == EPITAPHS_GENRE_ID}
+  end
+
   def self.haiku
     @haiku ||= Collection.where('name LIKE "%haiku%"').first
   end

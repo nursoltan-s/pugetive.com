@@ -4,12 +4,15 @@
 = render "layouts/tabs", tabs: [{title: 'Blogs',
                                  content: render(@blogs),
                                  comment: "I'm an intermittent blogger, at best."},
-                                {title: 'Amazon.com Reviews',
-                                 content: render(@reviews),
-                                 comment: "Although I worked on the website, Amazon was a scrappy company populated by Liberal Arts majors, and they let no talent lie unexploited. So I was also tasked with writing Amazon's official book and music reviews for some items in my areas of interest."},
                                 {title: 'Bad Rock Haiku',
                                  content: render(@haiku),
                                  comment: "For some time, I made a promise to myself to produce a Haiku documenting every rock show I saw in Seattle. Sometimes I think I should reboot this project for the countless events I attend in New York City."},
+                                {title: 'Epitaphs',
+                                 content: render(@epitaphs),
+                                 comment: "Not sure why I find it so amusing, but I like to make up epitaphs for myself."},
+                                {title: 'Amazon.com Reviews',
+                                 content: render(@reviews),
+                                 comment: "Although I worked on the website, Amazon was a scrappy company populated by Liberal Arts majors, and they let no talent lie unexploited. So I was also tasked with writing Amazon's official book and music reviews for some items in my areas of interest."},
                                 {title: 'Other Projects', content: render(@projects)}]
 
 
