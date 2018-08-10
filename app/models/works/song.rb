@@ -37,7 +37,7 @@ class Song < Work
   end
 
   def daw
-    self.tools.where("name like 'garageband' or name like 'protools'").first
+    self.tools.where("name like 'garageband' or name like 'protools' or name like 'logic%'").first
   end
 
   def audio_player
