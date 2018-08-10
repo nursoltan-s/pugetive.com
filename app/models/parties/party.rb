@@ -18,7 +18,7 @@ class Party < ActiveRecord::Base
   end
 
   def self.jobs
-    [NonProfit.find(FAIR_PARTY_ID)] + Company.all.sort_by{|c| c.stop_year}.reverse
+    ([NonProfit.find(FAIR_PARTY_ID)] + Company.all).sort_by{|c| (c.stop_year.blank? ? (c.start_year + 20) : c.stop_year)}.reverse
   end
 
   def alpha_name
