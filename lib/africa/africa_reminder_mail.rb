@@ -1,5 +1,20 @@
 require 'csv'
 
+require 'mail'
+
+gpass = YAML.load_file("config/pugetive.yml")['production']['gmail_app_key']
+options = { :address              => "smtp.gmail.com",
+            :port                 => 587,
+            :user_name            => 'toddgehman@gmail.com',
+            :password             => gpass,
+            :authentication       => 'plain',
+            :enable_starttls_auto => true  }
+
+Mail.defaults do
+  delivery_method :smtp, options
+end
+
+
 class AfricaReminderMail
 
   attr_reader :log_csv, :num_days, :headers
@@ -13,7 +28,19 @@ class AfricaReminderMail
   end
 
   def mail_todays_reminder
-    puts contents_for_index(days_index)
+    contents = contents_for_index(days_index)
+
+    contents += "Trailmix:\nhttps://www.trailmix.life/entries?page=#{trailmix_offset}"
+    Mail.deliver do
+           to 'toddgehman@gmail.com'
+         from 'toddgehman@gmail.com'
+      subject 'Daily Skeleton Coast Log'
+         body contents
+    end
+  end
+
+  def trailmix_offset
+    days_since_epoch - 17301
   end
 
   def contents_for_index(index)
@@ -29,7 +56,7 @@ class AfricaReminderMail
     (days_since_epoch(date) % num_days)
   end
 
-  def days_since_epoch(date)
+  def days_since_epoch(date = Date.today)
     date.to_time.to_i / (60 * 60 * 24)
   end
 
