@@ -190,6 +190,9 @@ gem install wkhtmltopdf-binary
 # ln -s /home/deployer/.rvm/gems/ruby-2.3.0/bin/wkhtmltopdf /home/deployer/apps/pugetive/shared/bin/wkhtmltopdf
 
 
+# used by a cron reminder mail
+gem install mail
+
 sudo a2enmod ssl
 
 # ---------------------
