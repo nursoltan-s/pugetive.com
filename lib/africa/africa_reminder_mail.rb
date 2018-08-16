@@ -40,7 +40,7 @@ class AfricaReminderMail
   end
 
   def trailmix_offset
-    days_since_epoch - 17301
+    days_since_epoch - 17303
   end
 
   def contents_for_index(index)
