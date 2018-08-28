@@ -1,7 +1,7 @@
 require 'csv'
 require 'mail'
 
-OFFSET_DAYS = 17309
+OFFSET_PAGES = 457
 
 gpass = YAML.load_file("config/pugetive.yml")['production']['gmail_app_key']
 options = { :address              => "smtp.gmail.com",
@@ -41,7 +41,7 @@ class AfricaReminderMail
   end
 
   def trailmix_offset
-    days_since_epoch - OFFSET_DAYS
+    OFFSET_PAGES
   end
 
   def contents_for_index(index)
