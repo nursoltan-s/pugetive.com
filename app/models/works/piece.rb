@@ -28,7 +28,7 @@ class Piece < Work
   end
 
   def self.other_projects
-    cached_pieces - blogs - reviews - haikus
+    cached_pieces - blogs - reviews - haikus - epitaphs
   end
 
 
