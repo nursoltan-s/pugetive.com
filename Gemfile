@@ -61,7 +61,9 @@ gem 'pdf-reader'
 gem 'pundit'
 # gem 'rack-cors', require: 'rack/cors'
 gem 'rack-mini-profiler', require: false
+gem 'react-rails'
 gem 'sitemap_generator'
+gem 'webpacker'
 gem 'whenever', require: false
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
