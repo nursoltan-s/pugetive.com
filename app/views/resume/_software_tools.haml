@@ -2,5 +2,5 @@
 %section.contents
   %h3 Currently/Recently Used
   %p= @todd.current_tools.map{|t| t.name}.join(', ')
-  %h3 Lapsed
+  %h3 Limited/Lapsed
   %p= @todd.lapsed_tools.map{|t| t.name}.join(', ')
