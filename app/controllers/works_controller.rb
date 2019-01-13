@@ -40,6 +40,14 @@ class WorksController < MetaResourceController
     works_path
   end
 
+  def sample_photo
+    @photo = Photo.where(live: true).sample
+    authorize(:about, :home?)
+    respond_to do |format|
+      format.json
+    end
+  end
+
 
   private
 

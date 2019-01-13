@@ -50,8 +50,10 @@ Rails.application.routes.draw do
   get 'touch/:object_type/:object_id' => 'admin#touch',     as: 'touch'
   get 'exception/:id'                 => "admin#exception", as: :exception
 
-  get 'works/:work_id/tools'     => 'works#tools',      as: 'work_tools'
-  get 'works/:work_id/meta_info' => 'works#meta_info',  as: 'work_meta_info'
+  get 'works/:work_id/tools'     => 'works#tools',        as: 'work_tools'
+  get 'works/:work_id/meta_info' => 'works#meta_info',    as: 'work_meta_info'
+  get 'sample-photo'             => 'works#sample_photo', as: 'sample_photo'
+
 
   get '/resume'              => 'resume#show', as:   :resume_generator
   get '/resume/blurbs'       => 'resume#blurbs', as: :resume_blurbs
