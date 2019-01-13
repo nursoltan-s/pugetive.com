@@ -41,7 +41,10 @@ class WorksController < MetaResourceController
   end
 
   def sample_photo
+     headers['Access-Control-Allow-Origin'] = '*'
+
     @photo = Photo.where(live: true).sample
+    # @photo = Photo.find(348)
     authorize(:about, :home?)
     respond_to do |format|
       format.json

@@ -1,6 +1,7 @@
 :plain
   {
-    "name": "#{j(@photo.name)}",
+    "id": #{@photo.id},
+    "name": "#{@photo.name.html_safe.gsub('"', '\"')}",
     "tag": "#{j(@photo.large)}",
     "url": "#{photo_url(@photo)}"
   }
