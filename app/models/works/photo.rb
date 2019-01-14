@@ -14,6 +14,13 @@ class Photo < Work
   validate :hosted_image_id_must_be_present
 
 
+  def self.todays_sample_photo
+    photos = self.where(live: true)
+    days_since_epoch =  Date.today.to_time.to_i / (60 * 60 * 24)
+    photo_index = days_since_epoch % photos.length
+    return photos[photo_index]
+  end
+
   def camera
     tools.first
   end
@@ -29,6 +36,7 @@ class Photo < Work
   def large(*args)
     hosted_image.large(*args)
   end
+
 
   private
 
