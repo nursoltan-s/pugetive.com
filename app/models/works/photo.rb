@@ -15,7 +15,7 @@ class Photo < Work
 
 
   def self.todays_sample_photo
-    photos = self.where(live: true)
+    photos = self.where(live: true).sort_by{|photo| Digest::SHA1.hexdigest(photo.id.to_s)}
     days_since_epoch =  Date.today.to_time.to_i / (60 * 60 * 24)
     photo_index = days_since_epoch % photos.length
     photo = photos[photo_index]
