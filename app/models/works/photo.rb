@@ -19,6 +19,7 @@ class Photo < Work
     days_since_epoch =  Date.today.to_time.to_i / (60 * 60 * 24)
     photo_index = days_since_epoch % photos.length
     photo = photos[photo_index]
+    # photo = Photo.find(327) # Cairo via Instagram
   end
 
   def camera
@@ -41,9 +42,17 @@ class Photo < Work
     hosted_image.url
   end
 
+  def flickr?
+    flickr_id.present?
+  end
+
   def palette
-    colors = Miro::DominantColors.new(url)
-    colors.to_hex
+    if flickr?
+      colors = Miro::DominantColors.new(url)
+      return colors.to_hex
+    else
+      return Array.new(8, '#000')
+    end
   end
 
   private
