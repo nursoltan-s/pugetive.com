@@ -22,6 +22,10 @@ class HostedImage
     image.large(linked, options.merge(class: 'photograph'))
   end
 
+  def url
+    image.url
+  end
+
   def photo_path(photo)
     Rails.application.routes.url_helpers.photo_path(photo)
   end

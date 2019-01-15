@@ -14,7 +14,12 @@ class FlickrImage < HostedImage
 
   def large(linked = true, options = {})
      flickr_large(options.merge(class: 'photograph'))
-   end
+  end
+
+  def url
+    cached_info = photo.flickr_urls.find{|fu| fu.flickraw_token == 'url_z'}
+    cached_info.url
+  end
 
   private
 

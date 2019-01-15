@@ -51,6 +51,7 @@ gem 'friendly_id'
 gem 'haml'
 gem 'haml-rails'
 gem 'jplayer-rails'
+gem 'miro'
 gem "nilify_blanks"
 # Dependencies on this gem broke deployment after a bundler update,
 # so pinning the gem to an earlier version.
@@ -104,7 +105,6 @@ end
 
 group :test do
   gem "capybara"
-  gem 'database_cleaner'
   gem 'pdf-reader'
   gem 'rspec-rails'
   gem "selenium-webdriver"

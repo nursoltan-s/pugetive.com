@@ -16,6 +16,10 @@ class InstagramImage < HostedImage
     image_tag(instagram_url(photo.instagram_id), options)
   end
 
+  def url
+    instagram_url(photo.instagram_id)
+  end
+
   private
 
     def img_tag(options = {})

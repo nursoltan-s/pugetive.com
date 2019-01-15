@@ -7,9 +7,9 @@ class Photo < Work
 
   default_scope {includes(:flickr_urls) }
 
-  scope :flickr,      -> {where("flickr_id IS NOT NULL AND flickr_id != ''")}
-  scope :sorted, -> {order("stop_year DESC, instagram_id DESC, flickr_id DESC, id DESC")}
-  scope :websites,    -> {where('name LIKE "%flickr%" OR name LIKE "%instagram%"')}
+  scope :flickr,   -> {where("flickr_id IS NOT NULL AND flickr_id != ''")}
+  scope :sorted,   -> {order("stop_year DESC, instagram_id DESC, flickr_id DESC, id DESC")}
+  scope :websites, -> {where('name LIKE "%flickr%" OR name LIKE "%instagram%"')}
 
   validate :hosted_image_id_must_be_present
 
@@ -18,7 +18,7 @@ class Photo < Work
     photos = self.where(live: true)
     days_since_epoch =  Date.today.to_time.to_i / (60 * 60 * 24)
     photo_index = days_since_epoch % photos.length
-    return photos[photo_index]
+    photo = photos[photo_index]
   end
 
   def camera
@@ -37,6 +37,14 @@ class Photo < Work
     hosted_image.large(*args)
   end
 
+  def url
+    hosted_image.url
+  end
+
+  def palette
+    colors = Miro::DominantColors.new(url)
+    colors.to_hex
+  end
 
   private
 

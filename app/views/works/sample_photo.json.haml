@@ -4,6 +4,7 @@
     {
       "id": #{@photo.id},
       "name": "#{@photo.name.html_safe.gsub('"', '\"')}",
+      "palette": [#{raw(@photo.palette.map{|c| raw("\"#{c}\"")}.join(', '))}],
       "tag": "#{j(@photo.large)}",
       "url": "#{photo_url(@photo)}"
     }
