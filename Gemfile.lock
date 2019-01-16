@@ -159,6 +159,7 @@ GEM
       factory_bot (~> 4.8.2)
       railties (>= 3.0.0)
     ffi (1.9.18)
+    final_redirect_url (0.1.0)
     flickraw (0.9.9)
     font-awesome-rails (4.7.0.2)
       railties (>= 3.2, < 5.2)
@@ -435,6 +436,7 @@ DEPENDENCIES
   dotenv-rails
   draper
   factory_bot_rails (~> 4.0)
+  final_redirect_url
   flickraw
   font-awesome-rails
   foundation-icons-sass-rails

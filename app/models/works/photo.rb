@@ -47,13 +47,19 @@ class Photo < Work
     flickr_id.present?
   end
 
+  def instagram?
+    instagram_id.present?
+  end
+
   def palette
-    if flickr?
-      colors = Miro::DominantColors.new(url)
-      return colors.to_hex
+    if instagram?
+      image_url = FinalRedirectUrl.final_redirect_url(url)
     else
-      return Array.new(8, '#000')
+      image_url = url
     end
+    colors = Miro::DominantColors.new(image_url)
+    return colors.to_hex
+    # return Array.new(8, '#000')
   end
 
   private
