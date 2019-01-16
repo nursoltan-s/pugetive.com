@@ -20,6 +20,7 @@ class Photo < Work
     photo_index = days_since_epoch % photos.length
     photo = photos[photo_index]
     # photo = Photo.find(327) # Cairo via Instagram
+    # photo = Photo.find(306) # Luxor eye via Flickr
   end
 
   def camera
