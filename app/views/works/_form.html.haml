@@ -21,7 +21,8 @@
   = label_field(f.label(:author_id), 
                 f.select(:author_id, options_from_collection_for_select(Artist.sorted, :id, :name, selected: @work.author_id)))
 
-  = label_field(f.label(:url), f.text_field(:url))
+  - unless work.interest.photography? and work.new_record?
+    = label_field(f.label(:url), f.text_field(:url))
 
   = label_field(f.label(:start_year), 
                 f.select(:start_year, options_for_select(YEARS_OF_LIFE, selected: @work.start_year), include_blank: true))
