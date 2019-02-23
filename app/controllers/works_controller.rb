@@ -40,17 +40,6 @@ class WorksController < MetaResourceController
     works_path
   end
 
-  def sample_photo
-    headers['Access-Control-Allow-Origin'] = '*'
-
-    # @photo = Photo.find(348)
-    authorize(:about, :home?)
-    respond_to do |format|
-      format.json
-    end
-  end
-
-
   private
 
     def work_params
