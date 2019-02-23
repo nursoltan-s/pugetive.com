@@ -17,7 +17,9 @@ class Photo < Work
   def self.todays_sample_photo
     photos = self.joins(:series_works).uniq.sort_by{|photo| Digest::SHA1.hexdigest(photo.id.to_s)}
     days_since_epoch =  Date.today.to_time.to_i / (60 * 60 * 24)
-    photo_index = days_since_epoch % photos.length
+    freshness_offset = photos.select{|p| p.created_at.to_date > Date.new(2019, 1, 13)}.count
+
+    photo_index = (days_since_epoch + freshness_offset) % photos.length
     photo = photos[photo_index]
     # photo = Photo.find(327) # Cairo via Instagram
     # photo = Photo.find(306) # Luxor eye via Flickr
