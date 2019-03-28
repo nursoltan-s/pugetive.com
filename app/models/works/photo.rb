@@ -15,7 +15,10 @@ class Photo < Work
 
 
   def self.todays_sample_photo
-    photos = self.joins(:series_works).uniq.sort_by{|photo| Digest::SHA1.hexdigest(photo.id.to_s)}
+    photos = self.joins(:series_works)
+                 .where("works.id != 237") # Santa beard selfie, no thanks
+                 .uniq
+                 .sort_by{|photo| Digest::SHA1.hexdigest(photo.id.to_s)}
     days_since_epoch =  Date.today.to_time.to_i / (60 * 60 * 24)
     freshness_offset = photos.select{|p| p.created_at.to_date > Date.new(2019, 1, 13)}.count
 
