@@ -40,6 +40,6 @@ every 1.day, :at => '5:00 am' do
   rake "-s sitemap:refresh"
 end
 
-every 1.day, at: ['1:00 pm'] do
+every 1.day, at: ['10:00 am'] do
   command "cd /home/deployer/apps/pugetive/current;ruby ./lib/africa/africa_reminder_mail.rb"
 end
