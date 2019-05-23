@@ -54,7 +54,8 @@ class AfricaReminderMail
   end
 
   def days_index(date = Date.today)
-    (days_since_epoch(date) % num_days)
+    adjusted_index = days_since_epoch(date) + 61
+    (adjusted_index % num_days)
   end
 
   def days_since_epoch(date = Date.today)
