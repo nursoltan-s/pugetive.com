@@ -1,7 +1,7 @@
 require 'csv'
 require 'mail'
 
-OFFSET_PAGES = 710
+OFFSET_PAGES = 833
 
 gpass = YAML.load_file("config/pugetive.yml")['production']['gmail_app_key']
 options = { :address              => "smtp.gmail.com",
